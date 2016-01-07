@@ -1,20 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-<div class="panel panel-default" style="width: 80%; margin: auto;" >
-
-  <div class="panel-heading">전체 회원 목록 페이지</div>
-
-  <table class="table">
-		<TR ALIGN=CENTER><TD WIDTH=7%><B>번호</B></TD>
-		<TD WIDTH=15%><B>아이디</B></TD>
-		<TD WIDTH=15%><B>회원명</B></TD>
-		<TD WIDTH=20%><B>전화번호</B></TD>
-		<TD WIDTH=20%><B>주소</B></TD>
-		<TD WIDTH=20%><B>비고</B></TD></TR>
-  </table>
-</div>
-
+<div style="color: red;"></div>
 
 <script type="text/javascript">
 $(function() {
@@ -26,40 +12,40 @@ var AdminMemberList = {
 			 
 				$.getJSON(context+'/admin/member_list/'+pageNo ,function(data) {
 					var count = data.count;
+					alert("count"+count);
 					var pageNo = data.pageNo; 
 					var startPage = data.startPage;
 					var groupSize = data.groupSize;
 					var lastPage = data.lastPage;
 					var totalPage = data.totalPage;
-					var arr = [];
 					
-					var table = "<div id='memberList'><h1 align=center style='color:black;margin-bottom:30px'>회원목록</h1>"
-					+"<TABLE id='tab_memberList'>"
+					var table = "<div class='panel panel-default' style='width: 80%; margin: auto;'>"
+					+"<div class='panel-heading'>"
+					+"<div style='color: #7fb3b3; font-size: 30px; font-family: 굴림; margin-left: 500px; font-weight:bold' >"
+					+"전체 회원 목록</div></div>"
+					+"<table class='table'>"
 					+"<TR ALIGN=CENTER><TD WIDTH=7%><B>번호</B></TD>"
 					+"<TD WIDTH=15%><B>아이디</B></TD>"
 					+"<TD WIDTH=15%><B>회원명</B></TD>"
 					+"<TD WIDTH=20%><B>전화번호</B></TD>"
 					+"<TD WIDTH=20%><B>주소</B></TD>"
 					+"<TD WIDTH=20%><B>비고</B></TD></TR>";
-				   
+					
 					$.each(data.list, function(index, value) {
 				 table +='<TR><TD WIDTH=7% ALIGN=CENTER>'+(index+1)+'</TD>'
-						+'<TD WIDTH=15% ALIGN=CENTER><button id="'+this.userid+'">'+this.userid+'</TD>'
+						+'<TD WIDTH=15% ALIGN=CENTER>'
+				 		/* +'<a href="${context}/admin/member_profile/"'+this.userid+'" id="'+this.userid+'">'+this.userid+'</a></TD>' */
+				 		+'<a href="#" id="'+this.userid+'" onclick="AdminMember.detail( ${context}/, '+this.userid+' )">'+this.userid+'</a></TD>'
 						+'<TD WIDTH=15% ALIGN=CENTER><A HREF="BoardContent.jsp">'+this.name+'</A></TD>'
-						+'<TD WIDTH=20% ALIGN=LEFT>'+this.phone+'</TD>'
+						+'<TD WIDTH=20% ALIGN=CENTER>'+this.phone+'</TD>'
 						+'<TD WIDTH=20% ALIGN=CENTER>'+this.addr+'</TD>'
 						+'<TD WIDTH=20% ALIGN=CENTER><A HREF="#">수정</A><A HREF="#">삭제</A></TD></TR>';
 						
-				 		arr.push(this.userid);
 					});
 					
 					table += '</TABLE></div>';
 					
-					$.each(data.list, function(index, value) {
-						$('#'+arr[index]).click(function() {
-							alert("팝업 클릭");
-						});
-					});
+					 $('.mainView').empty().append(table);
 					
 					var pagination ='<TABLE id="pagination">'
 					+'<TR>'
@@ -131,19 +117,12 @@ var AdminMemberList = {
 		},
 		
 		style : function(){
-			$('#tab_memberList').css('width','70%').css('height','50px')
-			.css('margin','auto').css('border','1px solid black')
-			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
-			
-			$('#pagination').css('width','70%').css('height','50px')
-			.css('margin','auto').css('border','1px solid black')
-			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
-			
-			$('td').add('th').css('text-align','center').css('border','1px solid black').css('background-color','white');
-			$('tr').add('th').add('td').css('float','center').css('color','black').css('border','1px solid black');
-			
 
-		},
+			$('#pagination').css('width','70%').css('height','50px')
+			.css('margin','auto')
+			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
+
+		}, 
 	
 		 
 	memberNotExist : function() {
@@ -154,22 +133,27 @@ var AdminMemberList = {
 	}
  };
  
-var Bom = {
-		popup : function(project,id) {
-			alert("팝업");
-			var url = project + "/admin/insert";
-			var name = "팝업";
-			var style = "toolbar=no, status=no, directories=no, scrollbars=yes, location=no, resizable=no, border=0, menubar=no";
-			var param = "page=member_profile&id="+id;
-			var width = 400;
-			var height = 500;
-			var xpos = (screen.availWidth - width) / 2;
-			var ypos = (screen.availHeight - height) / 2;
-			style = style + ",top=" + ypos + ",left=" + xpos + ",width=" + width + ",height=" + height;
-			url = url + param;
-			window.open(url,"",style);
-			}
-		};
+var AdminMember = {
+		detail : function(project, id) {	
+			$.getJSON(project+'admin/member_profile/'+id ,function(data) {
+				var member = data.userid;
+				alert(data.userid);
+				var table = '<table id="tab_admin_member">'
+				+'<tr><th>아이디</th><td id="data_id">'+data.userid+'</td></tr>'
+				+'<tr><th>비밀번호</th><td id="data_password">'+data.password+'</td></tr>'
+				+'<tr><th>이름</th><td id="data_name">'+data.name+'</td></tr>'
+				+'<tr><th>생년</th><td id="data_birth">'+data.birth+'</td></tr>'
+				+'<tr><th>전화번호</th><td id="data_phone">'+data.phone+'</td></tr>'
+				+'<tr><th>이메일</th><td id="data_email">'+data.email+'</td></tr>'
+				+'<tr><th>성별</th><td id="data_gender">'+data.gender+'</td></tr>'
+				+'<tr><th>주소</th><td id="data_addr">'+data.addr+'</td></tr>'
+				+'</table>';
+				
+			$('.mainView').html(table);
+			});
+		}
+};
+
  
 </script>
 

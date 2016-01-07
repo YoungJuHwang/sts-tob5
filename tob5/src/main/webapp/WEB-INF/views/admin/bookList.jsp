@@ -16,8 +16,12 @@ var AdminBookList = {
 					var groupSize = data.groupSize;
 					var lastPage = data.lastPage;
 					var totalPage = data.totalPage;
-					var table = "<div id='bookList'><h1 align=center style='color:black;margin-bottom:30px'>책 목록</h1>"
-					+"<TABLE id='tab_bookList'>"
+					
+					var table = "<div class='panel panel-default' style='width: 80%; margin: auto;'>"
+					+"<div class='panel-heading'>"
+					+"<div style='color: #7fb3b3; font-size: 30px; font-family: 굴림; margin-left: 500px; font-weight:bold' >"
+					+"전체 책 목록</div></div>"
+					+"<table class='table'>"
 					+"<TR ALIGN=CENTER><TD WIDTH=10%><B>번호</B></TD>"
 					+"<TD WIDTH=20%><B>책아이디</B></TD>"
 					+"<TD WIDTH=20%><B>책이름</B></TD>"
@@ -28,8 +32,8 @@ var AdminBookList = {
 				 table +="<TR><TD WIDTH=10% ALIGN=CENTER>"+(index+1)+"</TD>"
 						+"<TD WIDTH=20% ALIGN=CENTER>"+this.bookId+"</TD>"
 						+"<TD WIDTH=20% ALIGN=CENTER><A HREF='BoardContent.jsp'>"+this.bookName+"</A></TD>"
-						+"<TD WIDTH=30% ALIGN=LEFT>"+this.bookPrice+"</TD>"
-						+"<TD WIDTH=18% ALIGN=CENTER>"+this.write+"</TD></TR>"
+						+"<TD WIDTH=30% ALIGN=CENTER>"+this.bookPrice+"</TD>"
+						+"<TD WIDTH=18% ALIGN=CENTER>"+this.writer+"</TD></TR>"
 					});
 					
 					table += '</TABLE></div>';
@@ -105,18 +109,11 @@ var AdminBookList = {
 		},
 		
 		style : function(){
-			$('#tab_BookList').css('width','70%').css('height','50px')
-			.css('margin','auto').css('border','1px solid black')
-			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
-			
-			$('#pagination').css('width','70%').css('height','50px')
-			.css('margin','auto').css('border','1px solid black')
-			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
-			
-			$('td').add('th').css('text-align','center').css('border','1px solid black').css('background-color','white');
-			$('tr').add('th').add('td').css('float','center').css('color','black').css('border','1px solid black');
-			
 
+			$('#pagination').css('width','70%').css('height','50px')
+			.css('margin','auto')
+			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
+			
 		},
 	
 		 
