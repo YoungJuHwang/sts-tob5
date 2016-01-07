@@ -35,7 +35,8 @@
 		
 		<li style="float: right"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
 		<li style="float: right"><a href="${context}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		<li style="float: right"><a href="#joinForm" id="join">Join</a></li>
+		<li style="float: right"><a href="${context}/member/join" id="join">Join</a></li>
+		<li style="float: right"><a href="${context}/member/mypage" id="mypage">My page</a></li>
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right;">${user.name}님 반갑습니다.</li>
