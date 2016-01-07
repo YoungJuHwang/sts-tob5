@@ -139,7 +139,8 @@ var book = {
 $.each(data.list,function(index,value){
 	$('#c'+index).click(function() {
 		alert('장바구니 클릭 됨.');
-		alert(c+'index');
+		
+		Cart.put(arr[index]);
 	});
 });
 $.each(data.list,function(i,value){

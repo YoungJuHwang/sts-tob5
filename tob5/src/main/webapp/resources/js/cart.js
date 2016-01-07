@@ -22,10 +22,11 @@ var Cart = {
 		});
 	},
 	put : function(bookId) {
-		var table = '<div id=cartList"><h1> 장바구니 목록</h1>'
-			+ ''
+		alert('카트 펑션으로 넘어옴');
+		var table = '<div id=cartList"><h1> 장바구니 목록</h1>';
 		$.getJSON('${context}/cart/put/'+bookId, function(data) {
 			alert('카트 put 겟제이슨 진입');
+			alert('넘어온 북 아이디 '+bookId);
 			$.each(data, function() {
 				
 			});
