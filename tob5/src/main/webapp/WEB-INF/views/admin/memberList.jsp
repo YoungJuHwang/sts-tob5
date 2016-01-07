@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div style="color: red;"></div>
-
+	
 <script type="text/javascript">
 $(function() {
-	AdminMemberList.list('1');
+	 AdminMemberList.list('1'); 
 });
 
 var AdminMemberList = {
@@ -12,7 +12,6 @@ var AdminMemberList = {
 			 
 				$.getJSON(context+'/admin/member_list/'+pageNo ,function(data) {
 					var count = data.count;
-					alert("count"+count);
 					var pageNo = data.pageNo; 
 					var startPage = data.startPage;
 					var groupSize = data.groupSize;
@@ -34,18 +33,18 @@ var AdminMemberList = {
 					$.each(data.list, function(index, value) {
 				 table +='<TR><TD WIDTH=7% ALIGN=CENTER>'+(index+1)+'</TD>'
 						+'<TD WIDTH=15% ALIGN=CENTER>'
-				 		/* +'<a href="${context}/admin/member_profile/"'+this.userid+'" id="'+this.userid+'">'+this.userid+'</a></TD>' */
-				 		+'<a href="#" id="'+this.userid+'" onclick="AdminMember.detail( ${context}/, '+this.userid+' )">'+this.userid+'</a></TD>'
+				 		+'<a id="'+this.userid+'" onclick="AdminMember.detail('+'\''+this.userid+'\''+')">'+this.userid+'</a></TD>'
 						+'<TD WIDTH=15% ALIGN=CENTER><A HREF="BoardContent.jsp">'+this.name+'</A></TD>'
 						+'<TD WIDTH=20% ALIGN=CENTER>'+this.phone+'</TD>'
 						+'<TD WIDTH=20% ALIGN=CENTER>'+this.addr+'</TD>'
 						+'<TD WIDTH=20% ALIGN=CENTER><A HREF="#">수정</A><A HREF="#">삭제</A></TD></TR>';
 						
+						
 					});
 					
 					table += '</TABLE></div>';
 					
-					 $('.mainView').empty().append(table);
+					 $('.mainView').html(table);
 					
 					var pagination ='<TABLE id="pagination">'
 					+'<TR>'
@@ -129,13 +128,15 @@ var AdminMemberList = {
 		var table ='<h1>회원목록</h1><table id="tab_member"><tr><th>아이디</th>';
 			table += '<th>이름</th><th>성별</th><th>생년원일</th><th>전화번호</th><th>이메일</th></tr>';
 			table += '<tr><td colspan="6"><h2>회원목록이 없습니다.</h2></td></tr></table>';
-			$(table).appendTo($('#main_right').empty());
+			$('.mainView').html(table);
 	}
  };
  
 var AdminMember = {
-		detail : function(project, id) {	
-			$.getJSON(project+'admin/member_profile/'+id ,function(data) {
+		detail : function(userid) {
+			
+			alert('넘어온 아이디: '+userid)
+			$.getJSON(context+'/admin/member_profile/'+userid ,function(data) {
 				var member = data.userid;
 				alert(data.userid);
 				var table = '<table id="tab_admin_member">'
