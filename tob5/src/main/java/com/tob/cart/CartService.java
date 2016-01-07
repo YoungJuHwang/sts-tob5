@@ -10,10 +10,7 @@ public interface CartService {
 	public CartVO put(String bookid);
 	
 	// 장바구니 목록 확인
-	public List<CartVO> getList();
-	
-	// 넘어온 책아이디로 책정보 조회
-	public BookVO searchBybookid(String bookid);
+	public List<BookCartVO> getList();
 	
 	// 장바구니 수량 변경
 	public int changeCount(int count);

@@ -17,22 +17,16 @@ public class CartServiceImpl implements CartService {
 	@Autowired private SqlSession sqlSession;
 	
 	@Override
-	public CartVO put(String bookid) {
+	public CartVO put(String bookId) {
 		logger.info("CartServiceImpl : regist 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.put(bookid);
+		return mapper.put(bookId);
 	}
 	@Override
-	public List<CartVO> getList() {
+	public List<BookCartVO> getList() {
 		logger.info("CartServiceImpl : getList 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
 		return mapper.getList();
-	}
-	@Override
-	public BookVO searchBybookid(String bookid) {
-		logger.info("CartServiceImpl : searchBybookid 진입");
-		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.searchBybookid(bookid);
 	}
 	@Override
 	public int remove(String bookid) {

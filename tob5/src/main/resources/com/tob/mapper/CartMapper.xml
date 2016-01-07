@@ -2,24 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tob.mapper.CartMapper">
-	<insert id="put">
-	
+	<insert id="put" parameterType="com.tob.cart.CartVO">
+		INSERT INTO CART
+			(CART_NUM, BOOK_ID, USERID, COUNT) VALUES
+			('123123-123123',#{bookId},'a','9')
 	</insert>
-	<select id="getList" resultType="com.tob.cart.CartVO">
+	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="string">
 		SELECT
-			CART_NUM AS cartNum,
-			BOOK_ID AS bookid,
-			USERID AS userid,
-			COUNT AS count
-		FROM CART
-	</select>
-	<select id="searchBybookid">
-		SELECT 
+			b.BOOK_NAME AS bookName,
+			b.PRICE AS bookPrice,
+			b.WIRTER AS writer,
+			c.COUNT AS count,
+		FROM BOOK b, CART c
+		WHERE c.USERID = #{id}
 	</select> 
  	<update id="changeCount">
  	
  	</update>
  	<delete id="remove">
- 	
+ 		DETELE FROM CART WHERE BOOK_ID = #{bookid}
  	</delete>
 </mapper>

@@ -28,19 +28,19 @@ public class CartController {
 	}
 	
 	@RequestMapping("/list")
-	public @ResponseBody List<CartVO> list(){
+	public @ResponseBody List<BookCartVO> list(){
 		logger.info("카트 컨트롤러 - list() 진입");
-		List<CartVO> list = service.getList();
+		List<BookCartVO> list = service.getList();
 		return list;
 	}
 	@RequestMapping("/put/{bookid}")
-	public @ResponseBody BookVO put(
+	public @ResponseBody CartVO put(
 			@PathVariable("bookid")String bookid
 			){
 		logger.info("카트 컨트롤러 - put() 진입");
-		BookVO result = service.searchBybookid(bookid);
+		logger.info("넘어온 북아이디 : {}",bookid);
+		CartVO result = service.put(bookid);
 		return result;
-		
 	}
 	
 }
