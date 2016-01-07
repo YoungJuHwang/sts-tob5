@@ -54,8 +54,7 @@
 	 	#{gender},
 	 	#{email},
 	 	#{phone},
-	 	#{addr},
-	 	sysdate
+	 	#{addr}
  	)
  </insert>
  <update id="update" parameterType="com.tob.member.MemberVO">
@@ -63,8 +62,8 @@
 		PASSWORD = #{password}, 
 		ADDR = #{addr}, 
 		PHONE = #{phone}, 
-		EMAIL = #{email}, 
-	WHERE ID = #{userid}	
+		EMAIL = #{email}
+	WHERE USERID = #{userid}	
  </update>
  <delete id="delete" parameterType="string">
  	DELETE FROM MEMBER WHERE USERID = #{userid}

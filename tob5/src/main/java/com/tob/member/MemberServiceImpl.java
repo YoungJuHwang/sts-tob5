@@ -18,22 +18,32 @@ public class MemberServiceImpl implements MemberService{
 	
 		@SuppressWarnings("unused")
 		@Override
-		public String Join(MemberVO o) {
-			logger.info("MemberServiceImpl : Join");
+		public String joinForm() {
+			logger.info("MemberServiceImpl : joinForm");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return "member/Join.tiles";
+			return "member/join.tiles";
+		}
+		public String loginForm() {
+			logger.info("MemberServiceImpl : loginForm");
+			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+			return "member/login.tiles";
+		}
+		public String mypageForm() {
+			logger.info("MemberServiceImpl : mypageForm");
+			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+			return "member/mypage.tiles";
 		}
 		@Override
-		public int join2(MemberVO o) {
-			logger.info("MemberServiceImpl : join2");
+		public int insert(MemberVO member) {
+			logger.info("MemberServiceImpl : insert");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.insert(o);
+			return mapper.insert(member);
 		}
 		@Override
-		public int change(MemberVO o) {
+		public int change(MemberVO member) {
 			logger.info("MemberServiceImpl : change");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.update(o);
+			return mapper.update(member);
 		}
 		@Override
 		public int remove(String userid) {
@@ -42,10 +52,10 @@ public class MemberServiceImpl implements MemberService{
 			return mapper.delete(userid);
 		}
 		@Override
-		public MemberVO login(String userid, String password) {
+		public MemberVO selectOneBy(String userid) {
 			logger.info("MemberServiceImpl : login");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.login(userid, password);
+			return mapper.selectOneBy(userid);
 		}
 		@Override
 		public int count() {
@@ -81,7 +91,8 @@ public class MemberServiceImpl implements MemberService{
 		public MemberVO logout(String userid, String password) {
 		logger.info("MemberServiceImpl : logout");
 		MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-		return mapper.logout();
+		return mapper.logout(userid,password);
 		}
+		
 }
 		

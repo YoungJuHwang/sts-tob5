@@ -1,6 +1,8 @@
 package com.tob.member;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,22 +25,55 @@ public class MemberController {
     @Autowired MemberServiceImpl service;
     @Autowired MemberVO member;
 
-    @RequestMapping("/Join")
-    public String join(){
-        logger.info("멤버컨트롤러 Join() - 진입");
-        return "member/Join.tiles";
+    @RequestMapping("/joinForm")
+    public String joinForm(){
+        logger.info("멤버컨트롤러 joinForm() - 진입");
+        return "member/join.tiles";
     }
-    @RequestMapping("/Join2")
-    public Model join2(
-            String userid,
-            String password,
-            String name,
-            String birth,
-            String gender,
-            String email,
-            String phone,
-            String addr,
-            Model model){
+    @RequestMapping("/loginForm")
+    public String loginForm(){
+        logger.info("멤버컨트롤러 loginForm() - 진입");
+        return "member/login.tiles";
+    }
+    @RequestMapping("/mypageForm")
+    public String mypagForm(){
+        logger.info("멤버컨트롤러 mypageForm() - 진입");
+        return "member/mypage.tiles";
+    }
+    @RequestMapping("/join")
+    public @ResponseBody MemberVO insert(
+    		@RequestBody MemberVO param){
+        logger.info("멤버컨트롤러 join 진입");
+        member.setUserid(param.getUserid());
+        member.setPassword(param.getPassword());
+        member.setName(param.getName());
+        member.setBirth(param.getBirth());
+        member.setGender(param.getGender());
+        member.setEmail(param.getEmail());
+        member.setPhone(param.getPhone());
+        member.setAddr(param.getAddr());
+        int result = service.insert(member);
+        if (result == 1) {
+            logger.info("회원가입 성공");
+            
+        } else {
+            logger.info("회원가입 실패");
+           
+        }
+        return member;
+    }
+   /*@RequestMapping(value="/join")
+    public @ResponseBody MemberVO insert(
+           @RequestParam("userid")String userid,
+           @RequestParam("password")String password,
+           @RequestParam("name")String name,
+           @RequestParam("birth")String birth,
+           @RequestParam("gender")String gender,
+           @RequestParam("email")String email,
+           @RequestParam("phone")String phone,
+           @RequestParam("addr")String addr,
+           Model model){
+        logger.info("멤버컨트롤러 join 진입");
         logger.info("가입 아이디 : {}",userid);
         logger.info("가입 패스워드 : {}",password);
         logger.info("가입 이름 : {}",name);
@@ -55,8 +90,7 @@ public class MemberController {
         member.setEmail(email);
         member.setPhone(phone);
         member.setAddr(addr);
-
-        int result = service.join2(member);
+        int result = service.insert(member);
         if (result == 1) {
             logger.info("회원가입 성공");
             model.addAttribute("result","success");
@@ -65,19 +99,21 @@ public class MemberController {
             logger.info("회원가입 실패");
             model.addAttribute("result", "fail");
         }
-        return model;
-    }
+        return member;
+    }*/
     @RequestMapping("/login")
-    public @ResponseBody MemberVO login(@RequestBody MemberVO param,Model model){
+    public @ResponseBody MemberVO selectOneBy(
+    		@RequestParam("userid")String userid,
+    		@RequestParam("password")String password,
+    		HttpSession session,
+    		Model model){
         logger.info("멤버컨트롤러 login() - 진입");
-        logger.info("넘어온 유저아이디 : {}",param.getUserid());
-        logger.info("유저비번 : {}",param.getPassword());
-        member = service.login(param.getUserid(), param.getPassword());
-        model.addAttribute("user", member);
-        String u = member.getUserid();
-        logger.info("로그인 과정에서 체크하는 아이디 : {}",u);
-        if (member.getUserid().equals(param.getUserid())) {
+        logger.info("넘어온 유저아이디 : {}",userid);
+        logger.info("유저비번 : {}",password);
+        member = service.selectOneBy(userid);
+        if (member != null) {
             logger.info("로그인성공");
+            session.setAttribute("user", member);
         } else {
             logger.info("로그인실패");
         }
@@ -102,11 +138,6 @@ public class MemberController {
             model.addAttribute("userid", userid);
         }
         return model;
-    }
-    @RequestMapping("/mypage")
-    public String mypage(){
-        logger.info("멤버컨트롤러 mypage() - 진입");
-        return "member/mypage.tiles";
     }
     @RequestMapping("/detail/{userid}")
     public @ResponseBody MemberVO detail(
