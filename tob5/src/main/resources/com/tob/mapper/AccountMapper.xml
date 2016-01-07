@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="com.tob.mapper.AccountMapper">
+ 
+ <insert id="insert" parameterType="com.tob.member.MemberVO">
+ 	INSERT INTO ACCOUNT (ACCOUNT_NUM,TOTAL,ID) 
+ 	VALUES (
+	 	#{account_num},
+	 	#{total},
+	 	#{id} 
+ 	)
+ </insert>
+ 
+ <select id="selectAll" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
+ 	SELECT 
+	 	ACCOUNT_NUM AS account_num,
+	 	TOTAL AS total,
+	 	ID AS id
+ 	FROM (SELECT ROWNUM AS seq, account.* FROM Account account)
+ 	WHERE seq BETWEEN #{start} AND #{end}
+ </select>
+
+ <select id="selectOneBy" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
+ 	SELECT
+ 		ACCOUNT_NUM AS account_num,
+	 	TOTAL AS total,
+	 	ID AS id
+ 	FROM ACCOUNT WHERE ACCOUNT_NUM = #{account_num}
+ </select>
+ 
+ <select id="count" resultType="int">
+ 	SELECT COUNT(*) AS count FROM ACCOUNT
+ </select>
+ 
+ <select id="countByKeyword" resultType="int" parameterType="com.tob.global.Command">
+ SELECT COUNT(*) AS count 
+ FROM ACCOUNT
+ WHERE ${column} LIKE '%' || #{keyword} || '%'
+ </select>
+ 
+ <update id="update">
+   	UPDATE ACCOUNT SET 
+   		TOTAL = #{total}
+   	WHERE ACCOUNT_NUM = #{account_num} 
+ </update>
+ 
+ <delete id="delete" parameterType="string">
+ 	DELETE FROM ACCOUNT WHERE ACCOUNT_NUM = #{account_num}
+ </delete>
+   
+   
+ </mapper>
