@@ -80,6 +80,7 @@
 		
 		$('#event').click(function() {
 			alert('event.js로 분할되면 나한테 말해줘 정민아');
+			Event.event();
 		});
 		
 		$('#book').click(function() {
