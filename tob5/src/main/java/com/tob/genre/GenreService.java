@@ -1,5 +1,6 @@
 package com.tob.genre;
 
+import java.util.List;
 
 public interface GenreService {
 	
@@ -14,4 +15,7 @@ public interface GenreService {
 
 	//장르검색 (카테고리 아이디로)
 	public GenreVO searchByGenre1(String cate);
+	
+	//장르 전체목록
+	public List<GenreVO> selectAll();
 }

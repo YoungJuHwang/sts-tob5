@@ -1,5 +1,34 @@
 var book = {
 		/*책 전체목록*/
+		all2223: function() {
+			var allArr =[];
+			$.getJSON(context + '/genre/Genre',function(data){
+				alert(data);
+				var table = '<h1>전체 목록</h1>';
+					$.each(data.list_abroad,function(index,value){
+					table += '<div class="alpha"><font color="red"><strong>'+this.categoryId+'</strong></font><br /><p><p>';
+					table += '<a href="#" id="'+this.genreId+'">'+this.genreName+'</a><br /><p></div>'; 
+					allArr.push(this.genreId);
+					});
+					
+					
+					
+				$('.mainView').empty().append(table);
+				
+				$.each(data,function(i,value){
+					$('#'+allArr[i]).click(function() {
+						book.bookEmpty(allArr[i]);
+						book.bookSimplePage('1');
+					});
+					
+				});
+				
+			});
+		},
+		
+		
+		
+		/*책 전체목록 임시*/
 		all : function() {
 			$('.mainView').html('<div class="wrap auto"><div class="mainn"></div><div class="alpha"><font color="red"><strong>국내도서</strong></font><br /><p><p>'
 					+'<a href="#" id="social" value="social">social</a><br /><p><a href=""><font>자기계발</font></a><br /><p><a href=""><font>컴퓨터</font></a><br /><p>'
@@ -47,8 +76,8 @@ var book = {
 				bookList += '<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
 				bookList += '<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
 				bookList += '<br /><br /><br /><br />';
-				bookList += '<input type="button"  value="장바구니에 담기" id="cart">';
-				bookList += '<input type="button"  value="바로구매" id="buy">';
+				bookList += '<input type="button"  value="장바구니에 담기" id="c'+index+'">';
+				bookList += '<input type="button"  value="바로구매" id="b'+index+'">';
 				bookList += '<br /><br /><br /><br />';
 				arr.push(this.bookId);
 			});
@@ -100,13 +129,25 @@ var book = {
 			});
 		
 			
-			$.each(data.list, function(i, value) {
-				$('#'+arr[i]).click(function() {
+			$.each(data.list, function(index, value) {
+				$('#'+arr[index]).click(function() {
 					alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
 					book.bookEmpty();
-					book.mainPage(arr[i]);
+					book.mainPage(arr[index]);
 			});
-
+				
+$.each(data.list,function(index,value){
+	$('#c'+index).click(function() {
+		alert('장바구니 클릭 됨.');
+		alert(c+'index');
+	});
+});
+$.each(data.list,function(i,value){
+	$('#b'+index).click(function() {
+		alert('구매 클릭 됨.');
+		alert(b+'index');
+	});
+});
 				
 			});
 			
@@ -137,15 +178,8 @@ var book = {
 				$('.mainView').html(bookPage);
 			});
 		},
-		
-		/*비우기*/
 		bookEmpty : function() {
 			$('.mainView').appendTo($('.mainView').empty());
-		},
-		
-		/*실험용 알러트*/
-		bookSampleAlert : function() {
-			alert('따당')
 		}
 		
 		

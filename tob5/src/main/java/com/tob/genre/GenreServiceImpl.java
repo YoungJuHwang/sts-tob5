@@ -1,5 +1,7 @@
 package com.tob.genre;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +38,11 @@ public class GenreServiceImpl implements GenreService {
 	public GenreVO searchByGenre1(String cate) {
 		GenreMapper mapper = sqlSession.getMapper(GenreMapper.class);
 		return mapper.searchByGenre(cate);
+	}
+
+	public List<GenreVO> selectAll() {
+		GenreMapper mapper = sqlSession.getMapper(GenreMapper.class);
+		return mapper.selectAll();
 	}
 	
 	

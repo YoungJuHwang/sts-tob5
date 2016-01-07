@@ -28,5 +28,14 @@ CATEGORY_ID AS categoryId
  
  </select>
  
+ <select id="selectAll" resultType="com.tob.genre.GenreVO">
+ SELECT
+GENRE_ID AS genreId,
+GENRE_NAME AS genreName,
+CATEGORY_ID AS categoryId 
+
+  FROM GENRE
+ </select>
+ 
  </mapper>
  
