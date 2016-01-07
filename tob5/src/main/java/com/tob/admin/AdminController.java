@@ -42,6 +42,19 @@ public class AdminController {
 		return "admin/admin/main.tiles";
 	}
 	
+	@RequestMapping("/member_profile/{userid}")
+	public @ResponseBody MemberVO memberProfile(
+			@PathVariable("userid")String userid,
+			Model model){
+		logger.info("개인 프로필 진입");
+		logger.info("가져온 아이디 {}",userid);
+		member = memberService.searchById(userid);
+		logger.info("멤버{}", member);
+		/*model.addAttribute("member", member);*/
+		return member;
+		
+	}
+	
 	@RequestMapping("/member_reg")
 	public String memberreg(){
 		logger.info("AdminController-memberReg() 진입");
@@ -201,17 +214,7 @@ public class AdminController {
 	
 	
 	
-	/*@RequestMapping("/member_profile")
-	public Model memberProfile(
-			String id,Model model
-			){
-		logger.info("개인 프로필 진입");
-		logger.info("가져온 아이디{}",id);
-		member = memberService.selectById(id);
-		model.addAttribute("member", member);
-		return model;
-		
-	}*/
+	
 	
 	@RequestMapping("/book_profile")
 	public Model bookProfile(String book_id,Model model){
@@ -222,7 +225,7 @@ public class AdminController {
 		
 		return model;
 	}
-	/*@RequestMapping("/insert")
+	@RequestMapping("/insert")
 	public Model insert(
 		@RequestParam("id") String id,
 		@RequestParam("password") String password,
@@ -233,7 +236,7 @@ public class AdminController {
 		logger.info("email{}",email);
 		logger.info("phone{}",phone);
 		logger.info("addr{}",addr);
-		member = memberService.selectById(id);
+		member = memberService.searchById(id);
 		member.setPassword(password);
 		member.setEmail(email);
 		member.setPhone(phone);
@@ -241,7 +244,7 @@ public class AdminController {
 		int result = memberService.change(member);
 		model.addAttribute("result", id + " 님의 정보수정을 완료했습니다.");
 		return model;
-	}*/
+	}
 	
 	@RequestMapping("/insert2")
 	public Model insert2(String book_name,String price,Model model){
