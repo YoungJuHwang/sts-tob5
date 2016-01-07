@@ -38,14 +38,7 @@ FROM BOOK WHERE BOOK_ID = #{bookId}
 
 <update id="update" parameterType="com.tob.book.BookVO">
 UPDATE BOOK SET
-BOOK_ID = #{bookId},
-BOOK_NAME = #{bookName},
-PRICE = #{bookPrice},
-WRITER = #{writer},
-GRADE = #{grade},
-STOCK_SEQ = #{bookseq},
-OPTION_ID = #{optionBook},
-GENRE_ID = #{genreId}
+GRADE = #{grade}}
 WHERE BOOK_ID = #{bookId}
 </update>
 

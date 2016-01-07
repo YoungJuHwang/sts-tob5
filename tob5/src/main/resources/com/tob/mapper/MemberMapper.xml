@@ -58,10 +58,7 @@
  	)
  </insert>
  <update id="update" parameterType="com.tob.member.MemberVO">
-	UPDATE MEMBER SET 
-		PASSWORD = #{password}, 
-		ADDR = #{addr}, 
-		PHONE = #{phone}, 
+	UPDATE MEMBER SET  
 		EMAIL = #{email}
 	WHERE USERID = #{userid}	
  </update>
