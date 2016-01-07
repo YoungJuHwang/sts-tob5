@@ -11,11 +11,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.tob.member.MemberServiceImpl;
 import com.tob.member.MemberVO;
+import com.tob.global.Constants;
+import com.tob.global.FileUpload;
 import com.tob.book.BookServiceImpl;
 import com.tob.book.BookVO;
 import com.tob.event.EventServiceImpl;
@@ -35,6 +39,27 @@ public class AdminController {
 	@Autowired EventVO event;
 	@Autowired EventServiceImpl eventService;
 	
+	
+	@RequestMapping("/book_search")
+	public String bokSearch(){
+		logger.info("AdminController-adminSearch() 진입");
+		return "admin/admin/bookSearch.tiles";
+	}
+	
+	@RequestMapping("/map")
+	public String map(){
+		logger.info("AdminController-map() 진입");
+		return "admin/admin/map.tiles";
+	}
+	
+	@RequestMapping("/book_proxy")
+	public String bookProxy(){
+		logger.info("AdminController-bookProxy() 진입");
+		return "admin/admin/book_proxy.tiles";
+	}
+	
+	
+	
 	@RequestMapping("/main")
 	public String home(){
 		logger.info("AdminController-home() 진입");
@@ -49,8 +74,9 @@ public class AdminController {
 		logger.info("개인 프로필 진입");
 		logger.info("가져온 아이디 {}",userid);
 		member = memberService.searchById(userid);
+		model.addAttribute("member", member);
 		logger.info("멤버{}", member);
-		/*model.addAttribute("member", member);*/
+		
 		return member;
 		
 	}
@@ -61,17 +87,44 @@ public class AdminController {
 		return "admin/admin/memberReg.tiles";
 	}
 	
-	@RequestMapping("/member_reg3")
-	public String memberReg3(){
-		logger.info("AdminController-memberReg3() 진입");
-		return "admin/admin/memberReg3.tiles";
-	}
-	
 	@RequestMapping("/member_list")
 	public String memberList(){
-		logger.info("AdminController-memberList() 타일즈 진입");
+		logger.info("AdminController-member_list() 진입");
 		return "admin/admin/memberList.tiles";
 	}
+	
+	@RequestMapping(value="/member_update",method=RequestMethod.POST)
+	public @ResponseBody MemberVO memberUpdate(
+			@RequestParam("email")String email
+			){
+		logger.info("멤버컨트롤러 member_update() - 진입");
+		member.setEmail(email);
+
+		int result = memberService.change(member);
+		if (result == 1) {
+			logger.info("멤버 수정성공");
+		} else {
+			logger.info("멤버 수정실패");
+		}
+		return member;
+	}
+	
+	@RequestMapping("/member_delete/{userid}")
+	public @ResponseBody MemberVO memberDelete(
+			@RequestParam("userid")String userid
+			){
+		
+		logger.info("멤버컨트롤러 member_delete() - 진입");
+		
+		int result = memberService.remove(userid);
+		if (result == 1) {
+			logger.info("멤버 삭제 성공");
+		} else {
+			logger.info("멤버 삭제 실패");
+		}
+		return member;
+	}
+
 	
 	@RequestMapping("/member_list/{pageNo}")
 	public @ResponseBody Map<String,Object> memberList(
@@ -123,6 +176,22 @@ public class AdminController {
 		return "admin/admin/bookList.tiles";
 	}
 	
+	@RequestMapping("/book_delete/{bookId}")
+	public @ResponseBody BookVO bookDelete(
+			@RequestParam("bookId")String bookId
+			){
+		
+		logger.info("멤버컨트롤러 book_delete() - 진입");
+		
+		int result = bookService.delete(bookId);
+		if (result == 1) {
+			logger.info("책 삭제성공");
+		} else {
+			logger.info("책 삭제실패");
+		}
+		return book;
+	}
+	
 	@RequestMapping("/book_list/{pageNo}")
 	public @ResponseBody Map<String,Object> bookList(
 			@PathVariable("pageNo")String pageNo,
@@ -153,6 +222,39 @@ public class AdminController {
 		map.put("lastPage", lastPage);
 		map.put("groupSize", groupSize);
 		return map;
+	}
+	
+	
+	@RequestMapping("/book_profile/{bookId}")
+	public @ResponseBody BookVO bookProfile(
+			@PathVariable("bookId")String bookId,
+			Model model){
+		logger.info("책 프로필 진입");
+		logger.info("가져온 책 아이디 {}",bookId);
+		book = bookService.searchByBook(bookId);
+		model.addAttribute("book", book);
+		logger.info("책{}", book);
+		
+		return book;	
+	}
+	
+	@RequestMapping(value="/book_update",method=RequestMethod.POST)
+	public @ResponseBody BookVO bookUpdate(
+
+			@RequestParam("grade")String grade
+
+			){
+		logger.info("멤버컨트롤러 book_update() - 진입");
+
+		book.setGrade(grade);
+
+		int result = bookService.change(book);
+		if (result == 1) {
+			logger.info("컨트롤러 책 수정성공");
+		} else {
+			logger.info("컨트롤러 책 수정실패");
+		}
+		return book;
 	}
 	
 	@RequestMapping("/event_reg")
@@ -212,19 +314,6 @@ public class AdminController {
 		return "admin/admin/accountList.tiles";
 	}
 	
-	
-	
-	
-	
-	@RequestMapping("/book_profile")
-	public Model bookProfile(String book_id,Model model){
-		logger.info(" 책 목록 진입");
-		logger.info(" 가져온 책 번호{}",book_id);
-		book = bookService.searchByBook(book_id);
-		model.addAttribute("book", book);
-		
-		return model;
-	}
 	@RequestMapping("/insert")
 	public Model insert(
 		@RequestParam("id") String id,
@@ -257,12 +346,7 @@ public class AdminController {
 		
 		return model;
 	}
-	/*@RequestMapping("/delete")
-	public Model delete(String id,Model model){
-		memberService.remove(id);
-		model.addAttribute("result",id+"님의 탈퇴를 완료했습니다.");
-		return model;
-	}*/
+	
 	
 	
 }
