@@ -61,8 +61,10 @@
 				datatype : 'json',
 				success : function(data) {
 					if (data != null) {
-						alert('성공');
-
+						alert(data);
+						
+					} else {
+						alert('비밀번호 틀림');
 					}
 				},
 				error : function() {

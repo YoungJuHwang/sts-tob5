@@ -38,7 +38,7 @@
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right;">${user.name}님 반갑습니다.</li>
-		<li style="float: right;"><a href="${context}/member/mypage">마이페이지</a></li>
+		<li style="float: right;"><a href="${context}/member/mypageForm">마이페이지</a></li>
 		<li style="float: right;"><input id="btn_logout" type="submit" name="submit" value="로그아웃" /></li>
 		</c:if>
 	</ul>
