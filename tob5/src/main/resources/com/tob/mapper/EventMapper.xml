@@ -11,7 +11,7 @@
  	 	TO_DT AS toDt,
  	 	PROFILE AS profile
  	 FROM EVENT ORDER BY evtId DESC
- 	  	LIMIT #{start}, 4
+ 	  	LIMIT #{start}, 8
  </select>
  <insert id="insert" parameterType="com.tob.event.EventVO" >
  	INSERT INTO EVENT

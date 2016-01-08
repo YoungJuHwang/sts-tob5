@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tob.book.BookVO;
 import com.tob.global.Command;
 import com.tob.global.CommandFactory;
 
@@ -70,7 +71,7 @@ public class EventController {
 		logger.info("넘어온 페이지No. : {}",pageNo);
 		
 		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 5;
+		int pageSize = 8;
 		int groupSize = 3;
 		int count = service.count();
 		logger.info("번호 : {}",count);
@@ -94,25 +95,14 @@ public class EventController {
 		logger.info("EventController selectAll() 진입");
 		return map;
 	}
-	/*@RequestMapping("event_view/{eventView}")
-	public @ResponseBody EventVO eventView(
-			@PathVariable ("eventView")String name
-			){
-		logger.info("EventController-eventView() 진입");
-		logger.info("이벤트 이름 : {}", name);
-		logger.info("영화제목 : {}", event.getFromDt());
-		logger.info("영화제목 : {}", event.getToDt());
+	@RequestMapping("/Event_main/{evtId}")
+	public @ResponseBody EventVO eventMain(
+			@PathVariable("evtId")String id ){
+		logger.info("EventController evtId()");
+		logger.info("이벤트 번호 : {}",id);
+
 		return event;
 	}
-	@RequestMapping("event_Chart")
-	public @ResponseBody List<EventVO> eventChart(){
-		logger.info("EventController-eventChart() 진입");
-		Command command;
-		List<EventVO> list = service.selectAll(null);
-		System.out.println("서비스 리턴값 :" + list); 
-		logger.info("서비스 리턴값 : {}", list);
-		return list;
-	}*/
 	
 	
 	
@@ -120,19 +110,7 @@ public class EventController {
 	
 	
 	
-	
-	@RequestMapping("/event_form")
-	public String eventForm(){
-		return "event/event_form";
-	}
-	@RequestMapping("/event_remove")
-	public String eventRemove(){
-		return "event/event_remove";
-	}
-	@RequestMapping("/event_update")
-	public String eventUpdate(){
-		return "event/event_update";
-	}
+
 	
 	 
 	
