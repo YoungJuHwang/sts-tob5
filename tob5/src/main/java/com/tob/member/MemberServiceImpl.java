@@ -36,6 +36,14 @@ public class MemberServiceImpl implements MemberService{
 		@Override
 		public int insert(MemberVO member) {
 			logger.info("MemberServiceImpl : insert");
+			logger.info("MemberServiceImpl 아이디 : {}",member.getUserid());
+			logger.info("MemberServiceImpl 비밀번호: {}",member.getPassword());
+			logger.info("MemberServiceImpl 이름: {}",member.getName());
+			logger.info("MemberServiceImpl 생년: {}",member.getBirth());
+			logger.info("MemberServiceImpl 성별: {}",member.getGender());
+			logger.info("MemberServiceImpl 이메일: {}",member.getEmail());
+			logger.info("MemberServiceImpl 전화번호: {}",member.getPhone());
+			logger.info("MemberServiceImpl 주소: {}",member.getAddr());
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 			return mapper.insert(member);
 		}

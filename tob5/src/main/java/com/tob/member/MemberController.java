@@ -35,6 +35,7 @@ public class MemberController {
         logger.info("멤버컨트롤러 loginForm() - 진입");
         return "member/login.tiles";
     }
+    
     @RequestMapping("/mypageForm")
     public String mypagForm(){
         logger.info("멤버컨트롤러 mypageForm() - 진입");
@@ -44,11 +45,14 @@ public class MemberController {
     public @ResponseBody MemberVO insert(
     		@RequestBody MemberVO param){
         logger.info("멤버컨트롤러 join 진입");
+        
         member.setUserid(param.getUserid());
         member.setPassword(param.getPassword());
         member.setName(param.getName());
         member.setBirth(param.getBirth());
+        logger.info("생년 join :{}",param.getBirth());
         member.setGender(param.getGender());
+        logger.info("성별 join :{}",param.getGender());
         member.setEmail(param.getEmail());
         member.setPhone(param.getPhone());
         member.setAddr(param.getAddr());
@@ -62,45 +66,6 @@ public class MemberController {
         }
         return member;
     }
-   /*@RequestMapping(value="/join")
-    public @ResponseBody MemberVO insert(
-           @RequestParam("userid")String userid,
-           @RequestParam("password")String password,
-           @RequestParam("name")String name,
-           @RequestParam("birth")String birth,
-           @RequestParam("gender")String gender,
-           @RequestParam("email")String email,
-           @RequestParam("phone")String phone,
-           @RequestParam("addr")String addr,
-           Model model){
-        logger.info("멤버컨트롤러 join 진입");
-        logger.info("가입 아이디 : {}",userid);
-        logger.info("가입 패스워드 : {}",password);
-        logger.info("가입 이름 : {}",name);
-        logger.info("가입 생년 : {}",birth);
-        logger.info("가입 성별 : {}",gender);
-        logger.info("가입 이메일 : {}",email);
-        logger.info("가입 전화번호 : {}",phone);
-        logger.info("가입 주소 : {}",addr);
-        member.setUserid(userid);
-        member.setPassword(password);
-        member.setName(name);
-        member.setBirth(birth);
-        member.setGender(gender);
-        member.setEmail(email);
-        member.setPhone(phone);
-        member.setAddr(addr);
-        int result = service.insert(member);
-        if (result == 1) {
-            logger.info("회원가입 성공");
-            model.addAttribute("result","success");
-            model.addAttribute("name",member.getName());
-        } else {
-            logger.info("회원가입 실패");
-            model.addAttribute("result", "fail");
-        }
-        return member;
-    }*/
     @RequestMapping("/login")
     public @ResponseBody MemberVO selectOneBy(
     		@RequestParam("userid")String userid,
@@ -124,20 +89,6 @@ public class MemberController {
         logger.info("멤버컨트롤러 logout() - 진입");
         status.setComplete();
         return "redirect:/";
-    }
-    @RequestMapping("/check")
-    public Model check(
-            String userid,
-            Model model){
-        logger.info("멤버컨트롤러 checkOverlap() - 진입");
-        if (service.searchById(userid).getUserid() == null) {
-            model.addAttribute("result", "usable");
-            model.addAttribute("userid", userid);
-        } else {
-            model.addAttribute("result", "unusable");
-            model.addAttribute("userid", userid);
-        }
-        return model;
     }
     @RequestMapping("/detail/{userid}")
     public @ResponseBody MemberVO detail(
