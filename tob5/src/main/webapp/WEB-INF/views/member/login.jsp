@@ -26,7 +26,7 @@
 				<div class="form-group">
 					<div class="col-sm-offset-4 col-sm-10">
 						<div class="checkbox">
-							<label><input type="checkbox"> 로그인 상태유지</label>
+							<label><input type="checkbox" > 로그인 상태유지</label>
 						</div>
 					</div>
 				</div>
@@ -45,6 +45,16 @@
 	$(function() {
 		$('#loginConfirm').click(function() {
 			alert('클릭');
+			if ($("#userid").val() == "") {
+				alert("아이디를 입력하세요.");
+				$("#userid").focus();
+				return false;
+			}
+			if ($("#password").val() == "") {
+				alert("비밀번호를 입력하세요.");
+				$("#password").focus();
+				return false;
+			}
 			member.login();
 		});
 	});
