@@ -5,7 +5,7 @@
 	<insert id="put" parameterType="com.tob.cart.CartVO">
 		INSERT INTO CART
 			(CART_NUM, BOOK_ID, USERID, COUNT) VALUES
-			('123123-123123',#{bookId},'a','9')
+			('123123-123123',#{bookId},'a','1')
 	</insert>
 	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="string">
 		SELECT

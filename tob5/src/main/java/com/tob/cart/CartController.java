@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,14 +34,16 @@ public class CartController {
 		List<BookCartVO> list = service.getList();
 		return list;
 	}
+	
 	@RequestMapping("/put/{bookId}")
-	public @ResponseBody CartVO put(
-			@PathVariable("bookId")String bookId
+	public Model put(
+			@PathVariable("bookId")String bookId,
+			Model model
 			){
 		logger.info("카트 컨트롤러 - put() 진입");
 		logger.info("넘어온 북아이디 : {}",bookId);
-		CartVO result = service.put(bookId);
-		return result;
+		/*CartVO cart = service.put(bookId);*/
+		return model;
 	}
 	
 }

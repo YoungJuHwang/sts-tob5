@@ -22,14 +22,44 @@ var Cart = {
 		});
 	},
 	put : function(bookId) {
-		alert('카트 펑션으로 넘어옴');
-		var table = '<div id=cartList"><h1> 장바구니 목록</h1>';
-		$.getJSON(context+'/cart/put/'+bookId, function(data) {
-			alert('카트 put 겟제이슨 진입');
-			alert('넘어온 북 아이디 '+bookId);
-			$.each(data, function() {
-				
-			});
+		alert('Cart.put()진입 넘겨받은 북아이디 : '+bookId);
+		$.ajax(context+'/cart/put/'+bookId,{
+			data : {
+				bookId : bookId,
+			},
+			dataType : "json",
+			type : 'post',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function() {
+				alert('장바구니에 담겼습니다.');
+			},
+			error : function() {
+				alert('ajax 에러');
+			}
 		});
+		
+		
+		var bookList= '<div id="bookContents" style="color: black;"><h2>책 목록</h2>';
+			$.each(data.list,function(index,value){
+				bookList += '<div class="book1">'
+				bookList += '<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';//수정필요 사진 경로 및 db 아이디 일치\
+				bookList += '<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
+				bookList += '<font color="white" ">'+this.optionBook+'</font>'; //수정필요  없애거나 고정값으로 주거나
+				bookList += '<font color="white" style="color: green">이벤트</font>';
+				bookList += '<font color="white" class="maroon">경품</font>';
+				bookList += '<font color="white" style="background-color: purple;">무료배송</font>';
+				bookList += '<font color="gray">'+this.writer+'</font><br />';
+				bookList += '<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
+				bookList += '<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
+				bookList += '<br /><br /><br /><br />';
+				bookList += '<input type="button"  value="장바구니에 담기" id="c'+index+'">';
+				bookList += '<input type="button"  value="바로구매" id="b'+index+'">';
+				bookList += '<br /><br /><br /><br />';
+				arr.push(this.bookId);
+		});
+				bookList+='</div>';
+				$('.mainView').html(bookList);
 	}
 };

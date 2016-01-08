@@ -30,5 +30,6 @@
 <script src="${js}/cart.js"></script> 
 <script src="${js}/Book.js"></script>
 <script src="${js}/event.js"></script>
+<script src="${js}/member.js"></script>
 </body>
 </html>

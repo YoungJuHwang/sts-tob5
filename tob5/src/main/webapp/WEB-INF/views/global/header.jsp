@@ -34,12 +34,11 @@
 		<li style="float: right"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
 		<li style="float: right"><a href="${context}/member/loginForm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		<li style="float: right"><a href="${context}/member/joinForm" id="join">Join</a></li>
-		<li style="float: right"><a href="${context}/member/mypageForm" id="mypage">My page</a></li>
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right;">${user.name}님 반갑습니다.</li>
-		<li style="float: right;"><a href="${context}/member/mypageForm">마이페이지</a></li>
-		<li style="float: right;"><input id="btn_logout" type="submit" name="submit" value="로그아웃" /></li>
+		<li style="float: right;"><a href="#" id="mypage">마이페이지</a></li>
+		<li style="float: right;"><a href="${context}/member/logout">로그아웃</a></li>
 		</c:if>
 	</ul>
 	</div>
@@ -74,9 +73,9 @@
 			alert('장바구니 버튼 클릭');
 			Cart.main(context);
 		});
-		$('#btn_logout').click(function() {
-			alert('로그아웃');
-			Member.logout(context);
+		$('#mypage').click(function() {
+			alert('마이페이지 버튼 클릭');
+			LoginMember.detail(user.userid);
 		});
 	});
 </script>

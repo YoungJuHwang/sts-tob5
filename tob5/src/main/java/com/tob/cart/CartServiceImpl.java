@@ -1,5 +1,7 @@
 package com.tob.cart;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,7 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tob.book.BookVO;
 import com.tob.mapper.CartMapper;
 
 @Service
@@ -17,10 +18,23 @@ public class CartServiceImpl implements CartService {
 	@Autowired private SqlSession sqlSession;
 	
 	@Override
-	public CartVO put(String bookId) {
+	public String put(String bookId) {
 		logger.info("CartServiceImpl : regist 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.put(bookId);
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("HHmmss");
+
+        Calendar c1 = Calendar.getInstance();
+
+        	String strToday = sdf.format(c1.getTime());
+        	String var = "-";
+        	String strToday2 = sdf2.format(c1.getTime());
+        	String result = strToday + var + strToday2;
+
+     	
+		/*return mapper.put(bookId);*/
+     	return null;
 	}
 	@Override
 	public List<BookCartVO> getList() {
