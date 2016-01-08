@@ -61,8 +61,8 @@
 		});
 		
 		$('#book').click(function() {
-			alert('책 버튼 클릭');
-			book.all();
+			alert('책 버튼 클릭, 세션에 넘기는 아이디 : '+'${user.userid}');
+			book.all('${userid}');
 		});
 		
 		$('#btn_pur').click(function() {
