@@ -48,4 +48,14 @@ public class CartController {
 		return model;
 	}
 	
+	@RequestMapping("/change")
+	public Model change(
+			Model model
+			){
+		logger.info("카트 컨트롤러 - change() 진입");
+		
+		return model;
+	}
+	
+	
 }

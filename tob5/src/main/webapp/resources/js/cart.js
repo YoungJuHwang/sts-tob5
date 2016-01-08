@@ -32,12 +32,12 @@ var Cart = {
 				alert('장바구니에 담겼습니다.');
 			},
 			error : function() {
-				alert('ajax 에러');
+				alert('cart-put의 ajax 에러');
 			}
 		});
 	},
 	
-	list : function(context, userid) {
+	/*list : function(context, userid) {
 		var arr = [];
 		$.getJSON(context+'/cart/list', function(data) {
 			alert('카트 list 겟제이슨 진입');
@@ -55,5 +55,54 @@ var Cart = {
 				table += '<button id="order">주문하기</button>';
 			$(table).appendTo($('#cart_wrap').empty());
 		});
+	},*/
+	
+	change : function(bookId, userid) {
+		alert('변경 진입, 넘어온 책 아이디값 : ' +bookId);
+		alert('변경 진입, 넘어온 유저아이디값 : ' +userid);
+		
+		$.ajax(context+'/cart/change',{
+			data : {
+				
+			},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function() {
+				
+			},
+			error : function() {
+				alert('cart-change의 ajax 실패');
+			}
+			
+		});
 	},
+	
+	remove : function() {
+		
+	},
+	
+	buy : function(bookId, userid) {
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 };
