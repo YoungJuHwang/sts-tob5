@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import com.tob.member.MemberServiceImpl;
 import com.tob.member.MemberVO;
 import com.tob.global.Constants;
 import com.tob.global.FileUpload;
+import com.tob.admin.AdminEmail;
 import com.tob.book.BookServiceImpl;
 import com.tob.book.BookVO;
 import com.tob.event.EventServiceImpl;
@@ -38,6 +40,7 @@ public class AdminController {
 	@Autowired MemberServiceImpl memberService;
 	@Autowired EventVO event;
 	@Autowired EventServiceImpl eventService;
+	/*@Autowired private AdminEmailSender adminEmailSender;*/
 	
 	
 	@RequestMapping("/book_search")
@@ -161,6 +164,73 @@ public class AdminController {
 
 		return map;
 	}
+	
+	/*@RequestMapping(value="/join", method=RequestMethod.POST)
+	public Model joinAdmin(
+			@RequestBody MemberVO param,
+			Model model
+			){
+		logger.info("멤버컨트롤러 joinMember() - 진입");
+		logger.info("가입 아이디 : {}",param.getUserid());
+		logger.info("가입 이메일 : {}",param.getEmail());
+		logger.info("가입 패스워드 : {}",param.getPassword());
+		logger.info("가입 이름 : {}",param.getName());
+		logger.info("가입 전화번호 : {}",param.getPhone());
+		logger.info("가입 인증번호 : {}",param.getConfirm_num());
+		int confirm_Num = Integer.parseInt(param.getConfirm_num());
+		if (auth_Num == confirm_Num) {
+			member.setId(param.getId());
+			member.setPassword(param.getPassword());
+			member.setName(param.getName());
+			member.setEmail(param.getEmail());
+			member.setPhone(param.getPhone());
+			int result = memberService.joinForm(member);
+			if (result == 1) {
+				logger.info("회원가입 성공");
+				model.addAttribute("result","success");
+				model.addAttribute("name",member.getName());
+			} else {
+				logger.info("회원가입 실패");
+				model.addAttribute("result", "fail");
+			}
+		} 
+		
+		else {
+			model.addAttribute("result", "not_Agreement");
+		}
+		
+		return model;
+	}*/
+	
+/*	@RequestMapping("/join_auth")
+	public Model joinAuth (
+			@RequestParam("id")String id,
+			@RequestParam("e_mail")String e_mail,
+ 		    @RequestParam("name")String name, 
+ 		    Model model) throws Exception {
+			AdminEmail email = new AdminEmail();
+		logger.info("멤버컨트롤러 joinAuth() - 진입");
+        
+		auth_Num = (int) (Math.random()*9999) + 1000;
+        	String reciver = e_mail;
+        	String subject = "환영합니다.  "+name+"님, 인증번호 메일입니다.";
+        	String content = name+" 님의 가입 인증번호는 "+auth_Num+"입니다.";
+        			
+        	email.setReciver(reciver);
+            email.setSubject(subject);
+            email.setContent(content);
+            emailSender.sendMail(email);
+            model.addAttribute("success", "success");
+        return model;
+    }
+	*/
+	@RequestMapping("/join_Result")
+	public String joinResult(){
+		logger.info("멤버컨트롤러 joinResult() - 진입");
+		
+		return "member/join_Result";
+	}
+	
 	
 
 	
@@ -313,40 +383,6 @@ public class AdminController {
 		logger.info("AdminController-accountList() 진입");
 		return "admin/admin/accountList.tiles";
 	}
-	
-	@RequestMapping("/insert")
-	public Model insert(
-		@RequestParam("id") String id,
-		@RequestParam("password") String password,
-		String email, String phone, String addr, Model model){
-		logger.info("insert 진입");
-		logger.info("id{}",id);
-		logger.info("password{}",password);
-		logger.info("email{}",email);
-		logger.info("phone{}",phone);
-		logger.info("addr{}",addr);
-		member = memberService.searchById(id);
-		member.setPassword(password);
-		member.setEmail(email);
-		member.setPhone(phone);
-		member.setAddr(addr);
-		int result = memberService.change(member);
-		model.addAttribute("result", id + " 님의 정보수정을 완료했습니다.");
-		return model;
-	}
-	
-	@RequestMapping("/insert2")
-	public Model insert2(String book_name,String price,Model model){
-		logger.info("인서트 진입");
-		logger.info("책이름{}",book_name);
-		logger.info("가격{}",price);
-		book = bookService.searchByBook(book_name);
-		book.setBookPrice(price);
-		model.addAttribute("book",book);
-		
-		return model;
-	}
-	
-	
+
 	
 }

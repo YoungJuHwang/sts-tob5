@@ -159,7 +159,6 @@ var AdminMember = {
 			$('#memberFrm').html(table);
 			
 			$('#confirm').click(function() {
-				alert("확인클릭?");
 				
 				$('#memberFrm').submit(function(e) {
 					e.preventDefault(); 

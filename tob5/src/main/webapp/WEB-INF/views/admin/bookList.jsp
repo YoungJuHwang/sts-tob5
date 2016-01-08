@@ -185,8 +185,12 @@ var AdminBook = {
 								+'<td colspan="2"><button id="confirm" style="width:100px; margin-left: 150px;">확인</button></td></tr>'
 								+'</table>';
 			
-							$('.mainView').empty();
+							
 							$('.mainView').html(table);
+							
+							$('#confirm').click(function() {
+								AdminBookList.list('1');
+							});
 							
 						},
 						error : function(xhr, status, msg) {
