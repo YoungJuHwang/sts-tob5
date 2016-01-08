@@ -100,7 +100,8 @@ public class EventController {
 			@PathVariable("evtId")String id ){
 		logger.info("EventController evtId()");
 		logger.info("이벤트 번호 : {}",id);
-
+		
+		
 		return event;
 	}
 	
