@@ -60,9 +60,9 @@
 				type : 'get',
 				datatype : 'json',
 				success : function(data) {
-					if (data != null) {
-						alert(data);
-						
+					if (data.userid === $('#userid').val()) {
+						alert('로그인 성공'+data.userid);
+						location.href = "${context}/";
 					} else {
 						alert('비밀번호 틀림');
 					}
