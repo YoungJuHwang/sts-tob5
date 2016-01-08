@@ -33,8 +33,7 @@ CATEGORY_ID AS categoryId
 GENRE_ID AS genreId,
 GENRE_NAME AS genreName,
 CATEGORY_ID AS categoryId 
-
-  FROM GENRE
+FROM GENRE
  </select>
  
  </mapper>

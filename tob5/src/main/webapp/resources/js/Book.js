@@ -1,54 +1,119 @@
 var book = {
-		/*책 전체목록*/
-		all2223: function() {
-			var allArr =[];
+		/*책 전체목록 */
+		all : function() {
+			var abroadArr =[];
+			var abroadArrName =[];
+			
+			var domesticArr =[];
+			var domesticArrName =[];
+			
+			var ebookArr =[];
+			var ebookArrName =[];
+			
+			var newArr =[];
+			var newArrName =[];
+			
+			var oldArr =[];
+			var oldArrName =[];
 			$.getJSON(context + '/genre/Genre',function(data){
-				alert(data);
-				var table = '<h1>전체 목록</h1>';
-					$.each(data.list_abroad,function(index,value){
-					table += '<div class="alpha"><font color="red"><strong>'+this.categoryId+'</strong></font><br /><p><p>';
-					table += '<a href="#" id="'+this.genreId+'">'+this.genreName+'</a><br /><p></div>'; 
-					allArr.push(this.genreId);
+			
+				var table = '<h3>전체 목록</h3>';
+				/*해외도서 */
+				table += '<div class="alpha"><font color="red"><strong>'+data.listAbroadName+'</strong></font><br /><p><p>';
+				$.each(data.listAbroad,function(index,value){
+					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					abroadArr.push(this.genreId);
+					abroadArrName.push(this.genreName);
 					});
-					
-					
-					
+				
+				
+				
+				/*국내도서 */
+				table += '<div class="alpha"><font color="red"><strong>'+data.listDomesticName+'</strong></font><br /><p><p>';
+				$.each(data.listDomestic,function(index,value){
+					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					domesticArr.push(this.genreId);
+					domesticArrName.push(this.genreName);
+					});
+				
+				
+				
+				/*전자책 */
+				table += '<div class="alpha"><font color="red"><strong>'+data.listEbookName+'</strong></font><br /><p><p>';
+				$.each(data.listEbook,function(index,value){
+					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					ebookArr.push(this.genreId);
+					ebookArrName.push(this.genreName);
+					});
+				
+				
+				
+				/*신간 */
+				table += '<div class="alpha"><font color="red"><strong>'+data.listNewName+'</strong></font><br /><p><p>';
+				$.each(data.listNew,function(index,value){
+					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					newArr.push(this.genreId);
+					newArrName.push(this.genreName);
+					});
+				
+				/*중고책*/
+				table += '<div class="alpha"><font color="red"><strong>'+data.listOldName+'</strong></font><br /><p><p>';
+				$.each(data.listOld,function(index,value){
+					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					oldArr.push(this.genreId);
+					oldArrName.push(this.genreName);
+					});
 				$('.mainView').empty().append(table);
 				
-				$.each(data,function(i,value){
-					$('#'+allArr[i]).click(function() {
-						book.bookEmpty(allArr[i]);
+				
+				/*------------버튼-------------------------------*/
+				$.each(data.listAbroad,function(i,value){
+					$('#'+abroadArr[i]).click(function() {
+						alert('해외도서 페이지,'+abroadArrName[i]+'  페이지로 이동.')
+						book.bookEmpty(abroadArr[i]);
 						book.bookSimplePage('1');
 					});
 					
 				});
 				
-			});
-		},
-		
-		
-		
-		/*책 전체목록 임시*/
-		all : function() {
-			$('.mainView').html('<div class="wrap auto"><div class="mainn"></div><div class="alpha"><font color="red"><strong>국내도서</strong></font><br /><p><p>'
-					+'<a href="#" id="social" value="social">social</a><br /><p><a href=""><font>자기계발</font></a><br /><p><a href=""><font>컴퓨터</font></a><br /><p>'
-					+'<font>베스트셀러</font><br /><p><font>이달의 책</font><br /><p><font>키위밍</font><br /><p><font>월페이퍼</font><br /><p><font>이벤트</font><br />'
-					+'<p><font>예약판매</font><br /><p></div>'
-					+'<div class="alpha"><font color="red"><strong>외국도서</strong></font><br /><p><p><a href=""><font>인문</font></a><br /><p><a href=""><font>과학</font></a><br />'
-					+'<p><a href=""><font>생활</font></a><br /><p><font>베스트셀러</font><br /><p><font>이달의 책</font><br /><p><font>월페이퍼</font><br /><p><font>일본신간잡지'
-					+'</font>'
-					+'<br /><p><font>일본정지구독잡지</font><br /><p></div><div class="alpha"><font color="red"><strong>eBook</strong></font><br /><p><p><a href=""><font>베스트'
-					+'</font></a><br /><p><a href=""><font>신간</font></a><br /><p><a href=""><font>추천</font></a><br /><p><font>무료</font><br /><p><font>이벤트</font><br /><p>'
-					+'<font>연재</font><br /><p><font>논문</font><br /><p></div><div class="alpha"><font color="red"><strong>sam</strong></font><br /><p><p><a href=""><font>오늘의'
-					+'sam</font></a><br /><p><a href=""><font>신간</font></a><br /><p><a href=""><font>추천</font></a><br /><p><font>베스트셀러</font><br /><p><font>이달의 책</font>'
-					+'<br /><p><font>월페이퍼</font><br /><p></div><div class="alpha"><font color="red"><strong>북모닝CEO</strong></font><br /><p><p><font>회원가입안내</font><br />'
-					+'<p><font>과학</font><br /><p><font>생활</font><br /><p><font>베스트셀러</font><br /><p><font>이달의 책</font><br /><p><font>월페이퍼</font><br /><p><font>경영학'
-					+'원</font><br /><p><font>무료zone</font><br /><p></div>'
-					);
-			
-			$('#social').click(function() {
-			book.bookEmpty();
-			book.bookSimplePage('1');
+				
+				$.each(data.listDomestic,function(i,value){
+					$('#'+domesticArr[i]).click(function() {
+						alert('국내도서 페이지로 이동.')
+						book.bookEmpty(domesticArrName[i]);
+						book.bookSimplePage('1');
+					});
+					
+				});
+				$.each(data.listEbook,function(i,value){
+					$('#'+ebookArr[i]).click(function() {
+						alert('전자책 페이지로 이동.')
+						book.bookEmpty(ebookArrName[i]);
+						book.bookSimplePage('1');
+					});
+					
+				});
+				
+				
+				$.each(data.listNew,function(i,value){
+					$('#'+newArr[i]).click(function() {
+						alert('신간 페이지로 이동.')
+						book.bookEmpty(newArrName[i]);
+						book.bookSimplePage('1');
+					});
+					
+				});
+				
+				
+				$.each(data.listOld,function(i,value){
+					$('#'+oldArr[i]).click(function() {
+						alert('중고책 페이지로 이동.')
+						book.bookEmpty(oldArrName[i]);
+						book.bookSimplePage('1');
+					});
+					
+				});
+				/*--------------------------------------*/
 				
 			});
 		},
