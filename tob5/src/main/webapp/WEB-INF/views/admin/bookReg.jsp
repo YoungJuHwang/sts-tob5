@@ -55,6 +55,85 @@ var AdminBook ={
 	
 	AdminBook.style();
 	
+	$("#reg_book_btn").click(function(){
+		alert('클릭 버튼');
+		var bookId = $("#bookId").val();
+		var bookName = $("#bookName").val();
+		var bookPrice = $("#bookPrice").val();
+		var writer = $("#writer").val();
+		var grade = $("#grade").val();
+		var bookseq = $("#bookseq").val();
+		var optionBook = $("#optionBook").val();
+		var genreId = $("#genreId").val();
+		
+		if (bookId === "") {
+			alert('공란을 채워주세요.');
+		} 
+		else if(bookName === "") {
+			alert('공란을 채워주세요.');
+		} 
+		else if(bookPrice === "") {
+			alert('공란을 채워주세요.');
+		} 
+		else if(writer === "") {
+			alert('공란을 채워주세요.');
+		} 
+		else if(grade === "") {
+			alert('공란을 채워주세요.');
+		}
+		else if(bookseq === "") {
+			alert('공란을 채워주세요.');
+		} 
+		else if(optionBook === "") {
+			alert('공란을 채워주세요.');
+		} 
+		else if(genreId === "") {
+			alert('공란을 채워주세요.');
+		} else {
+			bookReg.join();	
+		}
+		
+	});
+	
+	var bookReg = {
+			
+			join : function() {
+				
+				var join_book = {
+					"bookId" :$("#bookId").val(),
+					"bookName" :$("#bookName").val(),
+					"bookPrice" :$("#bookPrice").val(),
+					"writer" :$("#writer").val(),
+					"grade" :$("#grade").val(),
+					"bookseq" :$("#bookseq").val(),
+					"optionBook" :$("#optionBook").val(),
+					"genreId" :$("#genreId").val()
+				};
+				
+				$.ajax(context + "/admin/book_join",{
+					data : JSON.stringify(join_book),
+					dataType : "json",
+					type : 'post',
+					contentType : "application/json;",
+					mimeType: "application/json;",
+					async : false,
+					success : function(data) {
+						if(data.result == "success"){
+							alert(data.bookName+"책 등록 완료되었습니다.");
+						}
+						if(data.result == "fail"){
+							alert("책 등록 실패하였습니다. 다시 시도해주세요.");
+						}
+					},
+					error : function(xhr, status, msg) {
+					}
+				});
+			}
+	};	
+	
+	
+	
+	
 	$('.button-checkbox').each(function () {
 
         // Settings
@@ -127,102 +206,13 @@ var AdminBook ={
 		.css('background-image','-moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)')
 		.css('background-image','-o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)')
 		.css('background-image','linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)')	
-	},
-	
-	bookReg : function() {
-		var join_book = {
-				
-				"bookId" :$("#bookId").val(),
-				"bookName" :$("#bookName").val(),
-				"bookPrice" :$("#bookPrice").val(),
-				"writer" :$("#writer").val(),
-				"grade" :$("#grade").val(),
-				"bookSeq" :$("bookSeq").val(),
-				"optionBook" :$("optionBook").val(),
-				"confirm_num" :$("genreId").val()
-				
-			};
-			$.ajax(context + "/admin/book_join",{
-				data : JSON.stringify(join_book),
-				dataType : "json",
-				type : 'post',
-				contentType : "application/json;",
-				mimeType: "application/json;",
-				async : false,
-				success : function(data) {
-					if(data.result == "success"){
-						alert(data.bookName+"책 등록이 완료되었습니다.");
-						
-					}
-					if(data.result == "fail"){
-						alert("책 등록을 실패하였습니다. 다시 시도해주세요.");
-					}
-				},
-				error : function(xhr, status, msg) {
-				}
-			});
 	}
-	
 		
 };
 
-	
-	$("#reg_book_btn").click(function() {
-		
-		
-		$.ajax({
-			type:"post",
-			data:$("#regBookForm").serialize(),
-			dataType:"json",
-			url:"${context}/admin/book_reg",
-			success: function(data) {
-				if(data.result == "success") { 
-					alert(data.bookName+"책 등록이 완료 되었습니다.");
-					
-				} else if(data.result == "chk") { 
-					alert("이미 가입된 책ID 입니다.");
-					return false;
-				} else { 
-					alert("책 등록 중 오류가 발생했습니다.");
-					return false;
-				}
-			},
-			error: function(e) {
-				alert(e);
-			}
-		});
-		
-	});	
-	
-	
-	$("#dup_book_btn").click(function() {
-		if($("#bookId").val() == "") {
-			alert("책 아이디를 입력하세요.");
-			$("#bookId").focus();
-			return false;
-		}	
-		
-		$.ajax({
-			type:"post",
-			data:{bookId:$("#bookId").val()},
-			dataType:"json",
-			url:"${context}/admin/book_reg_chk",
-			success: function(data) {
-				if(data.result == "fail") { 
-					alert("이미 등록된 책 아이디입니다.");
-					return false;
-				} else {
-					alert("등록 가능한 책입니다.");
-					$("#bookName").focus();
-				}
-			},
-			error: function(e) {
-				alert(e);
-			}
-		});
-		
-		
-	});
+
+
+
 
 
 </script>

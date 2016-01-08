@@ -65,7 +65,7 @@
 									<div class="form-group" style="margin-top: 10px;">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3" style="margin-top: 20px;">
-												<input type="submit" name="register-submit" id="join" tabindex="4" class="form-control btn btn-register" value="Register Now">
+												<input type="submit" name="register-submit" id="admin_join" tabindex="4" class="form-control btn btn-register" value="Register Now">
 											</div>
 										</div>
 									</div>	
@@ -158,7 +158,7 @@ $(function() {
 	
 	/* ============== 이메일 인증 =======================  */
 	
-	/* var Member = {
+	var adminMember = {
 		memberJoin : function(project) {
 			$('#big_wrap').html('<link rel="stylesheet" href="../css/member.css" />'
 			+'<html id="main_Html"><div id="mainDiv" class="wrap"><div id="subDiv"><h3 class="inline">&nbsp;&nbsp;본인 인증</h3>'
@@ -175,18 +175,19 @@ $(function() {
 			});
 			
 		}
-	}; */
+	};
 
 	$("#btn_confirm").click(function(){
-		Members.join_Auth();
+		AdminReg.join_Auth();
 		$("#btn_confirm").remove();
 	});
 
-	$("#join").click(function(){
-		Members.join();
+	$("#admin_join").click(function(){
+		alert('클릭버튼');
+		AdminReg.join();
 	});
 
-	var Members = {
+	var AdminReg = {
 			join_Auth : function() {
 				alert("join_auth ajax 진입 전");
 				$.ajax(context + "/admin/join_auth",{	
@@ -209,14 +210,16 @@ $(function() {
 			},
 			
 			join : function() {
-				var join_Mem = {
+				alert('join ajax');
+				var join_Admin = {
 					"id" :$("#admin_id").val(),
 					"admin_email" :$("#admin_email").val(),
 					"password" :$("#admin_password").val(),
 					"confirm_num" :$("#confirm_num").val()
+
 				};
-				$.ajax(context + "/admin/join",{
-					data : JSON.stringify(join_Mem),
+				$.ajax(context + "/admin/admin_join",{
+					data : JSON.stringify(join_Admin),
 					dataType : "json",
 					type : 'post',
 					contentType : "application/json;",
@@ -224,11 +227,11 @@ $(function() {
 					async : false,
 					success : function(data) {
 						if(data.result == "success"){
-							alert(data.id+"님 회원가입이 완료되었습니다.");
+							alert(data.id+"님 관리자로 등록되었습니다.");
 							
 						}
 						if(data.result == "fail"){
-							alert("회원가입을 실패하였습니다. 다시 시도해주세요.");
+							alert("관리자 등록을 실패하였습니다. 다시 시도해주세요.");
 						}
 						if(data.result == "not_Agreement"){
 							alert("인증번호가 일치하지 않습니다. 인증을 다시 해주세요.");
@@ -237,29 +240,7 @@ $(function() {
 					error : function(xhr, status, msg) {
 					}
 				});
-			},
-			
-			login : function() {
-				$.ajax(context + "/member/login",{
-					data : {"id" : $("#id").val(),
-							"password" :$("#password").val()
-					},
-					type : "post",
-					success : function(data) {
-						//로그인 결과가 성공이면
-						if(data.id != null){
-							$("#bs-navbar").load(context + "/member/headerReload #bs-navbar");
-						} else{
-						//로그인 결과가 실패면 (데이터가 널이면,)
-							alert("아이디 혹은 패스워드를 다시한번 확인해주세요");
-						}
-					},
-					error : function() {
-					}
-				});
-
-			},
-			
+			}	
 			
 	};
 
