@@ -45,7 +45,7 @@
  	SELECT COUNT(*) AS count FROM MEMBER
  </select>
 <insert id="insert" parameterType="com.tob.member.MemberVO">
- 	INSERT INTO MEMBER (USERID,PASSWORD,NAME,BIRTH,GENDER,EMAIL,PHONE,ADDR,) 
+ 	INSERT INTO MEMBER (USERID,PASSWORD,NAME,BIRTH,GENDER,EMAIL,PHONE,ADDR) 
  	VALUES (
 	 	#{userid},
 	 	#{password},
