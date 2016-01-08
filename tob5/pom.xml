@@ -245,6 +245,23 @@
 	<version>2.2.2</version>
 </dependency>
 
+<!-- Email Auth / mybatis-context.xml에서 사용하는 디펜던시-->
+      <dependency>
+         <groupId>javax.mail</groupId>
+         <artifactId>mail</artifactId>
+         <version>1.4</version>
+      </dependency>
+      <dependency>
+         <groupId>org.springframework</groupId>
+         <artifactId>spring-context-support</artifactId>
+         <version>${org.springframework-version}</version>
+      </dependency>
+      <dependency>
+       <groupId>org.springframework</groupId>
+       <artifactId>spring-context-support</artifactId>
+       <version>3.2.8.RELEASE</version>
+      </dependency>
+
 
 
 <!-- EL -->

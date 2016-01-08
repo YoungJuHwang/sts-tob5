@@ -33,13 +33,13 @@ public class CartController {
 		List<BookCartVO> list = service.getList();
 		return list;
 	}
-	@RequestMapping("/put/{bookid}")
+	@RequestMapping("/put/{bookId}")
 	public @ResponseBody CartVO put(
-			@PathVariable("bookid")String bookid
+			@PathVariable("bookId")String bookId
 			){
 		logger.info("카트 컨트롤러 - put() 진입");
-		logger.info("넘어온 북아이디 : {}",bookid);
-		CartVO result = service.put(bookid);
+		logger.info("넘어온 북아이디 : {}",bookId);
+		CartVO result = service.put(bookId);
 		return result;
 	}
 	
