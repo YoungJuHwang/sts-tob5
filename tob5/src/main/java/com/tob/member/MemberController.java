@@ -16,6 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.tob.global.Constants;
+import com.tob.global.FileUpload;
+
+
 
 @Controller
 @SessionAttributes("user")
@@ -95,21 +101,28 @@ public class MemberController {
     public @ResponseBody MemberVO detail(
             @PathVariable("userid")String userid){
         logger.info("멤버컨트롤러 detail() - 진입");
-        member = service.searchById(userid);
+        member = service.selectOneBy(userid);
         return member;
     }
     @RequestMapping(value="/update",method=RequestMethod.POST)
     public @ResponseBody MemberVO update(
+    		@RequestParam(required=false,value="file")MultipartFile multipartFile,
             @RequestParam("userid")String userid,
             @RequestParam("password")String password,
             @RequestParam("addr")String addr,
             @RequestParam("email")String email,
             @RequestParam("phone")String phone){
         logger.info("멤버컨트롤러 update() - 진입");
+        String path = Constants.imageDomain+"resources\\images\\";
+		FileUpload fileUpload = new FileUpload();
+		String fileName = multipartFile.getOriginalFilename();
+		String fullPath = fileUpload.uploadFile(multipartFile,path,fileName);
+		logger.info("파일업로드 경로 : {}",fullPath);
         member.setPassword(password);
         member.setAddr(addr);
         member.setEmail(email);
         member.setPhone(phone);
+        member.setProfile(fileName);
         int result = service.change(member);
         if (result == 1) {
             logger.info("멤버컨트롤러 수정성공");

@@ -17,6 +17,7 @@ public class MemberVO implements Serializable{
 	private String email; // 이메일
 	private String phone; // 성별
 	private String addr; // 주소
+	private String profile; // 
 	
 	public static MemberVO instance = new MemberVO();
 	public static MemberVO getInstance(){
@@ -28,7 +29,7 @@ public class MemberVO implements Serializable{
 	
 	public MemberVO(String userid, String password, String name, 
 	         String birth, String phone, String email,
-	         String gender, String addr) {
+	         String gender, String addr, String profile) {
 		  this.userid = userid;
 	      this.password = password;
 	      this.name = name;
@@ -37,9 +38,17 @@ public class MemberVO implements Serializable{
 	      this.email = email;
 	      this.phone = phone;
 	      this.addr = addr;
-	 
+	      this.profile = profile;
 	   }
-	 public String getUserid() {
+	 public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public String getUserid() {
 	      return userid;
 	   }
 	   public String getPassword() {

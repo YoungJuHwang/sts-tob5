@@ -142,13 +142,14 @@
 				url : "${context}/member/join",
 				data : JSON.stringify(member),
 				dataType : "json",
-				type : 'post',
+				type: 'post',
 				contentType : "application/json",
 				mimeType : "application/json",
 				async : false,
 				success : function(data) {
 					if (data != null) {
 						alert(data.name + "님 회원가입 가입되었습니다.");
+						location.href = "${context}/";
 					} else {
 						alert("회원가입 중 오류가 발생했습니다.");
 						return false;
