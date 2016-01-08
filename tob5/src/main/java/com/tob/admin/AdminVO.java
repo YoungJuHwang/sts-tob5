@@ -14,7 +14,10 @@ public class AdminVO implements Serializable {
 	 
 	private String id;
 	private String password;
+	private String confirm_num;
 	
+	
+
 	private static AdminVO instance = new AdminVO();
 	public static AdminVO getInstnace(){
 		return instance;
@@ -25,6 +28,14 @@ public class AdminVO implements Serializable {
 	public AdminVO(String id,String password) {
 		this.id = id;
 		this.password = password;
+	}
+	
+	public String getConfirm_num() {
+		return confirm_num;
+	}
+
+	public void setConfirm_num(String confirm_num) {
+		this.confirm_num = confirm_num;
 	}
 	
 	public String getId() {

@@ -49,6 +49,8 @@
           <ul class="dropdown-menu">
             <li><a href="${context}/admin/purchase_list">전체 주문 목록</a></li>
             <li><a href="${context}/admin/account_list">날짜별 주문 목록</a></li>
+            <li><a href="${context}/admin/book_search">검색테스트</a></li>
+            <li><a href="${context}/admin/map">지도</a></li>
           </ul>
         </li>
       </ul>
