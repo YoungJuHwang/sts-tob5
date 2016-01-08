@@ -35,14 +35,16 @@ public class CartController {
 		return list;
 	}
 	
-	@RequestMapping("/put/{bookId}")
+	@RequestMapping("/put")
 	public Model put(
-			@PathVariable("bookId")String bookId,
+			String bookId,
+			String userid,
 			Model model
 			){
 		logger.info("카트 컨트롤러 - put() 진입");
 		logger.info("넘어온 북아이디 : {}",bookId);
-		/*CartVO cart = service.put(bookId);*/
+		logger.info("넘어온 유저아이디 : {}",userid);
+		int result = service.put(bookId, userid);
 		return model;
 	}
 	

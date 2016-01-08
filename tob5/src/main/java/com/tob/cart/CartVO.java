@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CartVO {
 	private String cartNum;
-	private String bookid;
+	private String bookId;
 	private String userid;
 	private String count;
 	
@@ -14,7 +14,7 @@ public class CartVO {
 		return cartNum;
 	}
 	public String getBookid() {
-		return bookid;
+		return bookId;
 	}
 	public String getUserid() {
 		return userid;
@@ -26,7 +26,7 @@ public class CartVO {
 		this.cartNum = cartNum;
 	}
 	public void setBookid(String bookid) {
-		this.bookid = bookid;
+		this.bookId = bookid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;

@@ -222,9 +222,10 @@ $.each(data.list,function(index,value){
 		alert('장바구니 클릭 됨.');
 		alert('Cart.put으로 넘기는 유저아이디 : '+userid);
 		Cart.put(arr[index], userid);
-		
+		book.bookSimplePage('1',userid);
 	});
 });
+
 $.each(data.list,function(i,value){
 	$('#b'+index).click(function() {
 		alert('구매 클릭 됨.');

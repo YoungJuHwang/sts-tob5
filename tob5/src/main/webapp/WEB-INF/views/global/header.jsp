@@ -27,7 +27,6 @@
 		<li style="padding-right: 100px;"><a href="#" id="book"><b>BOOK</b></a></li>    
 		<li style="padding-right: 100px;"><a href="#" id="event"><b>EVENT</b></a></li>
 		<li style="padding-right: 100px;"><a href="#" id="btn_pur"><b>Purchase</b></a></li>
-		<li style="padding-right: 100px;"><a href="#" id="btn_cart"><b>cart</b></a></li>
 		<c:if test="${empty sessionScope.user}">
 	   	<!-- 로그인 안한 상태 -->
 		
@@ -38,6 +37,7 @@
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right;">${user.name}님 반갑습니다.</li>
 		<li style="float: right;"><a href="#" id="mypage">마이페이지</a></li>
+		<li style="float: right;"><a href="#" id="myCart">장바구니</a></li>
 		<li style="float: right;"><a href="${context}/member/logout">로그아웃</a></li>
 		</c:if>
 	</ul>
@@ -69,9 +69,9 @@
 			alert('구매목록 버튼 클릭');
 			Purchase.main(context);
 		});
-		$('#btn_cart').click(function() {
-			alert('장바구니 버튼 클릭'+'${user.userid}');
-			Cart.main(context, '${user.userid}');
+		$('#my_cart').click(function() {
+			alert('내 장바구니 버튼 클릭' + '${user.userid}');
+			Cart.list(context, '${user.userid}');
 		});
 		$('#mypage').click(function() {
 			alert('마이페이지 버튼 클릭');

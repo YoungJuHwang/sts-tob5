@@ -8,7 +8,7 @@ import com.tob.cart.CartVO;
 
 public interface CartMapper {
 		// C
-		public CartVO put(String bookid);
+		public int put(CartVO cart);
 		
 		//R
 		public List<BookCartVO> getList();
