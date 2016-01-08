@@ -172,12 +172,12 @@ public class AdminController {
 		return map;
 	}
 	
-	@RequestMapping(value="/join", method=RequestMethod.POST)
+	@RequestMapping(value="/admin_join", method=RequestMethod.POST)
 	public Model joinAdmin(
 			@RequestBody AdminVO param,
 			Model model
 			){
-		logger.info("멤버컨트롤러 joinMember() - 진입");
+		logger.info("멤버컨트롤러 joinAdmin() - 진입");
 		logger.info("가입 아이디 : {}",param.getId());
 		logger.info("가입 이메일 : {}",param.getAdminEmail());
 		logger.info("가입 패스워드 : {}",param.getPassword());
@@ -235,9 +235,7 @@ public class AdminController {
 		return "member/join_Result";
 	}
 	
-	
 
-	
 	@RequestMapping("/book_reg")
 	public String bookReg(){
 		logger.info("AdminController-bookreg()페이지만 진입");
