@@ -18,5 +18,6 @@ public interface BookMapper {
 	
 	
 	public int count();
+	public List<BookVO> todayBook(Command command);
 
 }
