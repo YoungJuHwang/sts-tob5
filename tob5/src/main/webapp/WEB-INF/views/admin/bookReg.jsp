@@ -6,11 +6,11 @@
 <script>
 
 $(function() {
-	AdminBook.reg(context+'/admin/book_reg');
+	AdminBook.init(context+'/admin/book_reg');
 });
 
 var AdminBook ={
-	reg : function(url) {
+	init : function(url) {
 		$.getJSON(url,
 		function(data) {
 	var table ='<div class="container"><div class="row">'
@@ -42,7 +42,7 @@ var AdminBook ={
 	+'<div class="col-xs-8 col-sm-9 col-md-9">'
 	+'<strong class="label label-primary">책 등록</strong>을 하기전에 <a href="#" data-toggle="modal" data-target="#t_and_c_m">규정사항</a>을 확인하십시오. </div></div><hr class="colorgraph">'
 	+'<div class="row"><div class="col-xs-12 col-md-6">'
-	+'<input type="submit" value="책 등록" class="btn btn-primary btn-block btn-lg" tabindex="2" style="margin-left: 180px; width: 200px;">'
+	+'<input type="submit" id="reg_book_btn" value="책 등록" class="btn btn-primary btn-block btn-lg" tabindex="2" style="margin-left: 180px; width: 200px;">'
 	+'</div></div></form></div></div>'
 	+'<div class="modal fade" id="t_and_c_m" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'
 	+'<div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header">'
@@ -52,7 +52,9 @@ var AdminBook ={
 	+'</div></div></div></div></div>'
 	
 	$('.mainView').html(table);
+	
 	AdminBook.style();
+	
 	$('.button-checkbox').each(function () {
 
         // Settings
@@ -125,125 +127,48 @@ var AdminBook ={
 		.css('background-image','-moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)')
 		.css('background-image','-o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)')
 		.css('background-image','linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4)')	
+	},
+	
+	bookReg : function() {
+		var join_book = {
+				
+				"bookId" :$("#bookId").val(),
+				"bookName" :$("#bookName").val(),
+				"bookPrice" :$("#bookPrice").val(),
+				"writer" :$("#writer").val(),
+				"grade" :$("#grade").val(),
+				"bookSeq" :$("bookSeq").val(),
+				"optionBook" :$("optionBook").val(),
+				"confirm_num" :$("genreId").val()
+				
+			};
+			$.ajax(context + "/admin/book_join",{
+				data : JSON.stringify(join_book),
+				dataType : "json",
+				type : 'post',
+				contentType : "application/json;",
+				mimeType: "application/json;",
+				async : false,
+				success : function(data) {
+					if(data.result == "success"){
+						alert(data.bookName+"책 등록이 완료되었습니다.");
+						
+					}
+					if(data.result == "fail"){
+						alert("책 등록을 실패하였습니다. 다시 시도해주세요.");
+					}
+				},
+				error : function(xhr, status, msg) {
+				}
+			});
 	}
+	
 		
-}
+};
 
-$(function() {
-	
-	$(function () {
-	    $('.button-checkbox').each(function () {
-
-	        // Settings
-	        var $widget = $(this),
-	            $button = $widget.find('button'),
-	            $checkbox = $widget.find('input:checkbox'),
-	            color = $button.data('color'),
-	            settings = {
-	                on: {
-	                    icon: 'glyphicon glyphicon-check'
-	                },
-	                off: {
-	                    icon: 'glyphicon glyphicon-unchecked'
-	                }
-	            };
-
-	        // Event Handlers
-	        $button.on('click', function () {
-	            $checkbox.prop('checked', !$checkbox.is(':checked'));
-	            $checkbox.triggerHandler('change');
-	            updateDisplay();
-	        });
-	        $checkbox.on('change', function () {
-	            updateDisplay();
-	        });
-
-	        // Actions
-	        function updateDisplay() {
-	            var isChecked = $checkbox.is(':checked');
-
-	            // Set the button's state
-	            $button.data('state', (isChecked) ? "on" : "off");
-
-	            // Set the button's icon
-	            $button.find('.state-icon')
-	                .removeClass()
-	                .addClass('state-icon ' + settings[$button.data('state')].icon);
-
-	            // Update the button's color
-	            if (isChecked) {
-	                $button
-	                    .removeClass('btn-default')
-	                    .addClass('btn-' + color + ' active');
-	            }
-	            else {
-	                $button
-	                    .removeClass('btn-' + color + ' active')
-	                    .addClass('btn-default');
-	            }
-	        }
-
-	        // Initialization
-	        function init() {
-
-	            updateDisplay();
-
-	            // Inject the icon if applicable
-	            if ($button.find('.state-icon').length == 0) {
-	                $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
-	            }
-	        }
-	        init();
-	    });
-	});
-	
-	
-	
-	/* ============================================ */
-	
 	
 	$("#reg_book_btn").click(function() {
-		if($("#bookId").val() == "") {
-			alert("책 아이디를 입력하세요s.");
-			$("#bookId").focus();
-			return false;
-		}
-		if($("#bookName").val() == "") {
-			alert("책이름을 입력하세요.");
-			$("#bookName").focus();
-			return false;
-		}
-		if($("#bookPrice").val() == "") {
-			alert("가격을 입력하세요.");
-			$("#bookPrice").focus();
-			return false;
-		}
-		if($("#writer").val() == "") {
-			alert("작가를 입력하세요.");
-			$("writer").focus();
-			return false;
-		}
-		if($("#grade").val() == "") {
-			alert("등급을 입력하세요.");
-			$("grade").focus();
-			return false;
-		}
-		if($("#bookseq").val() == "") {
-			alert("재고량을 입력하세요.");
-			$("bookseq").focus();
-			return false;
-		}
-		if($("#optionBook").val() == "") {
-			alert("옵션를 입력하세요.");
-			$("optionBook").focus();
-			return false;
-		}
-		if($("#genreId").val() == "") {
-			alert("장르를 입력하세요.");
-			$("genreId").focus();
-			return false;
-		}
-
+		
 		
 		$.ajax({
 			type:"post",
@@ -298,6 +223,6 @@ $(function() {
 		
 		
 	});
-});
+
 
 </script>

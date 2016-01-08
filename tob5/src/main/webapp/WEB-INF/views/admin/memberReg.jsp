@@ -2,17 +2,17 @@
 
 <link rel="stylesheet" href="${css}/admin.css" />
 
-<div class="container">
-    	<div class="row">
+<div class="container" >
+    	<div class="row" >
 			<div class="col-md-6 col-md-offset-3">
 				<div class="panel panel-login">
 					<div class="panel-heading">
 						<div class="row">
 							<div class="col-xs-6">
-								<a href="#" class="active" id="login-form-link">회원등록</a>
+								<a href="#" class="active" id="login-form-link">관리자등록</a>
 							</div>
 							<div class="col-xs-6">
-								<a href="#" id="register-form-link">관리자 등록</a>
+								<a href="#" id="register-form-link">회원 등록</a>
 							</div>
 						</div>
 						<hr>
@@ -22,7 +22,63 @@
 							<div class="col-lg-12">
 								<form id="login-form" action="http://phpoll.com/login/process" method="post" role="form" style="display: block;">
 								
+								<div class="form-group">
+								<label></label>
+                        		<input type="text" class="form-control" placeholder="ID" id="admin_id">
+									</div>
+									
 									<div class="form-group">
+										<label></label>
+                        			<input type="password" class="form-control" placeholder="password" id="admin_password">
+									</div>
+									<div class="form-group">
+										<label></label>
+                        				<input type="email" class="form-control" placeholder="Email" id="admin_email">
+									</div>
+									
+				<!-- ========================= 인증 부분 ======================== -->
+				
+					<div class="form-group" style="width: 300px; float: left;">
+						<label></label>
+						<input type="text" name="form-control" id="confirm_num" tabindex="2" class="form-control" placeholder="인증번호">
+					</div>
+									
+					 <button type="button" id="btn_confirm"
+                    style="margin-top:6px; font-size: 12px; width: 100px; border-radius: 10px; float: left;" 
+                    class="btn btn-primary btn-block">인증번호 발송</button>
+                    
+                    
+                <!-- ========================= 약관 ======================== -->
+                    
+<div class="row" style="float: left; margin-top: 20px;">
+	<div class="col-xs-4 col-sm-3 col-md-3">
+		<span class="button-checkbox">
+			<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
+                     <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
+		</span>
+	</div>
+	<div class="col-xs-8 col-sm-9 col-md-9" style="font-size: 14px; margin-top: 5px;">
+		 <strong class="label label-primary">관리자 등록</strong> 을 하기전에 <a href="#" data-toggle="modal" data-target="#t_and_c_m">규정사항</a> 을 확인하십시오
+	</div>
+</div>
+			
+									<div class="form-group" style="margin-top: 10px;">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3" style="margin-top: 20px;">
+												<input type="submit" name="register-submit" id="join" tabindex="4" class="form-control btn btn-register" value="Register Now">
+											</div>
+										</div>
+									</div>	
+									
+								</form>
+								
+								
+				<!-- ========================= 회원등록 화면 전환 ======================== -->
+								
+								<form id="register-form" action="http://phpoll.com/register/process" 
+								method="post" role="form" style="display: none; ">
+								
+								<div class="form-group">
 										<input type="text" name="userid" id="userid" tabindex="1" class="form-control" placeholder="사용자ID" value="">
 									</div>
 									
@@ -30,9 +86,6 @@
 										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="비밀번호">
 									</div>
 									
-									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="비밀번호 확인">
-									</div>
 									
 									<div class="form-group">
 										<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="이름" value="">
@@ -51,7 +104,7 @@
 									</div>
 									
 									<div class="form-group">
-										<input type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="핸드폰" value="">
+										<input type="text" name="phone" id="phone" tabindex="1" class="form-control" placeholder="Phone(  -없이 입력해주세요)" value="">
 									</div>
 									
 									<div class="form-group">
@@ -67,39 +120,7 @@
 										</div>
 									</div>
 									
-								</form>
-								
-								<form id="register-form" action="http://phpoll.com/register/process" method="post" role="form" style="display: none;">
-									<div class="form-group">
-										<input type="text" name="id" id="id" tabindex="1" class="form-control" placeholder="관리자ID" value="">
-									</div>
 									
-									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="비밀번호">
-									</div>
-									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="비밀번호 확인">
-									</div>
-									
-<div class="row">
-	<div class="col-xs-4 col-sm-3 col-md-3">
-		<span class="button-checkbox">
-			<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-                     <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-		</span>
-	</div>
-	<div class="col-xs-8 col-sm-9 col-md-9">
-		 <strong class="label label-primary">관리자 등록</strong> 을 하기전에 <a href="#" data-toggle="modal" data-target="#t_and_c_m">규정사항</a> 을 확인하십시오
-	</div>
-</div>
-			
-									<div class="form-group" style="margin-top: 10px;">
-										<div class="row">
-											<div class="col-sm-6 col-sm-offset-3">
-												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
-											</div>
-										</div>
-									</div>
 			
 								</form>
 							</div>
@@ -123,9 +144,9 @@
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal">I Agree</button>
 			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+		</div>
+	</div>
+</div>
 
 
 
@@ -134,6 +155,115 @@
 <script>
 
 $(function() {
+	
+	/* ============== 이메일 인증 =======================  */
+	
+	/* var Member = {
+		memberJoin : function(project) {
+			$('#big_wrap').html('<link rel="stylesheet" href="../css/member.css" />'
+			+'<html id="main_Html"><div id="mainDiv" class="wrap"><div id="subDiv"><h3 class="inline">&nbsp;&nbsp;본인 인증</h3>'
+			+'<h5 class="inline">&nbsp;&nbsp;&nbsp;안전한 서비스 이용을 위해 본인확인을 진행하고 있습니다.</h5>'
+			+'<br><br><br><h4>&nbsp;&nbsp;&nbsp;본인인증시 제공되는 정보는 해당 사이트에서 직접 수령하며,인증 이외의 용도로 이용 또는 저장하지 않습니다.</h4><br><br>'
+			+'<div id="imgDiv"><img src="../images/lock.png" alt="" /><br><br><img id="join" src="../images/join.PNG" alt="" /></div>'
+			+'<br><br><br><br><br><br><br><br><p id ="p_f">&nbsp;&nbsp;&nbsp;입력하신 소중한 개인정보는 회원님의 명백한 동의 없이 공개 또는 제 3자에게 제공되지 않으며,자사의 보안시스템을 통해 외부위협으로부터 보호하고 있습니다.</p></div></html>'
+			);
+			
+			$("#join").click(function(){
+				history.pushState("Member_provision","","");
+				Member.webEmpty();
+				Member.provision(project);
+			});
+			
+		}
+	}; */
+
+	$("#btn_confirm").click(function(){
+		Members.join_Auth();
+		$("#btn_confirm").remove();
+	});
+
+	$("#join").click(function(){
+		Members.join();
+	});
+
+	var Members = {
+			join_Auth : function() {
+				alert("join_auth ajax 진입 전");
+				$.ajax(context + "/admin/join_auth",{	
+					data : {"id" : $("#admin_id").val(),
+							"admin_email" :$("#admin_email").val()
+					},
+					type : "post",
+					success : function(data) {
+						//이메일이 발송.
+						if(data.success == "success"){
+							alert("인증번호가 이메일로 발송되었습니다.");
+						} else{
+						//이미 가입되어 있는 아이디일 경우(컨트롤러에서 체크)
+							alert("이미 가입되어 있는 아이디 입니다.");
+						}
+					},
+					error : function() {
+					}
+				});
+			},
+			
+			join : function() {
+				var join_Mem = {
+					"id" :$("#admin_id").val(),
+					"admin_email" :$("#admin_email").val(),
+					"password" :$("#admin_password").val(),
+					"confirm_num" :$("#confirm_num").val()
+				};
+				$.ajax(context + "/admin/join",{
+					data : JSON.stringify(join_Mem),
+					dataType : "json",
+					type : 'post',
+					contentType : "application/json;",
+					mimeType: "application/json;",
+					async : false,
+					success : function(data) {
+						if(data.result == "success"){
+							alert(data.id+"님 회원가입이 완료되었습니다.");
+							
+						}
+						if(data.result == "fail"){
+							alert("회원가입을 실패하였습니다. 다시 시도해주세요.");
+						}
+						if(data.result == "not_Agreement"){
+							alert("인증번호가 일치하지 않습니다. 인증을 다시 해주세요.");
+						}
+					},
+					error : function(xhr, status, msg) {
+					}
+				});
+			},
+			
+			login : function() {
+				$.ajax(context + "/member/login",{
+					data : {"id" : $("#id").val(),
+							"password" :$("#password").val()
+					},
+					type : "post",
+					success : function(data) {
+						//로그인 결과가 성공이면
+						if(data.id != null){
+							$("#bs-navbar").load(context + "/member/headerReload #bs-navbar");
+						} else{
+						//로그인 결과가 실패면 (데이터가 널이면,)
+							alert("아이디 혹은 패스워드를 다시한번 확인해주세요");
+						}
+					},
+					error : function() {
+					}
+				});
+
+			},
+			
+			
+	};
+
+
 	/* ============ 회원 & 관리자 화면 전환 ============ */
 	/* AdminMember.reg(context+'/admin/member_reg2'); */
 
@@ -151,6 +281,9 @@ $(function() {
 		$(this).addClass('active');
 		e.preventDefault();
 	});
+	
+	
+
 	
 	/* =============== 이용약관 부분 ================= */
 	
@@ -314,42 +447,6 @@ $(function() {
 		
 		
 	});
-	
-
-
-/*  var AdminMember = {
-	reg : function(url) {
-		$.getJSON(url,
-		function(data) {
-	var table =''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	+''
-	
-	$('.mainView').html(table);
-	AdminMember.style();
-			}
-		)}
-};  */
-	
-    
 
 
 </script>
