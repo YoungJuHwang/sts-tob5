@@ -1,5 +1,4 @@
 var Event = {
-		
 		event : function() {
 			$('.mainView').html('<div class="big"><div class="big_1"><div class="cate">'
 					+'<div class="cate_1"><a class="highlight" href= "css_syntax.asp"><br>이벤트 </a></div>'
@@ -15,22 +14,15 @@ var Event = {
 					+'<input type="checkbox" name="book" value="eBook">eBook <input type="checkbox" name="book" value="문화 이벤트">문화 이벤트 </form></div>'
 					+'<div class="sm_2_2"><form action="action_page.php"><input type="radio" name="promotion" value="전체" checked>전체 '
 					+'<input type="radio" name="promotion" value="경품/할인">경품/할인 <input type="radio" name="promotion" value="1+1">1+1 </form></div>'
-					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="검색"><input type="submit" value="검색" id="search"></form></div></div></div></div></div></div></div>'
+					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="검색"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>'
 			);
-			$('#search').click(function() {
-				Event.EventEmpty();
-				Event.ranking('1');
-			});
 			
+			
+				Event.ranking('1');
 			
 		},
-		
-
   ranking : function(pageNo) {
-  
-      alert("랭킹 넘어와랗");
-     $ .getJSON (context +'/event/Event_selectAll'+pageNo,function (data){
-  
+     $ .getJSON (context +'/event/Event_selectAll/'+pageNo,function (data){
       	var arr = [];
       	var count = data.count;
 		var pageNo = data.pageNo; 
@@ -38,32 +30,103 @@ var Event = {
 		var groupSize = data.groupSize;
 		var lastPage = data.lastPage;
 		var totPage = data.totPage;
-      
-      
-            var rank = '<div id="test"><h2 style="color: white; padding-top: 10;">이벤트</h2></div>'
-           $ .each (data , function(index , value ) {
-           rank += '<div class="img"><img src="'+project+'/resources/images/'+this.profile+'" alt="" width="150" height="100"></a>'
-           +'<div class="desc"><br /><a class="highlight" href= "css_syntax.asp">'+this.evtName+'</a>'
-           +'<br /><br />'+this.fromDt +'~' +this.toDt+'</div></div>'
-
-                arr.push (this.evtId );
-
-     });
-          $('.mainView').empty().append(rank);+
-           $.each(data, function(i,val) {
-                $('#'+ arr[1]).click( function() {
-                     Event.eventName(context,arr[i]);
-                    
-                });
+		
+            var rank = '<div id="test"><h2 style="color: white; padding-top:10;">이벤트</h2></div><div style="height: 550px">'
+           $.each (data.list, function(index , value ) {
+           rank += '<div class="img">'
+           +'<img src="'+context+'/resources/images/'+this.profile+'" alt="'+this.profile+'" width="150" height="100"></a>'
+           +'<div class="desc"><br /><a class="highlight" href= "#" id="'+this.evtId+'">'+this.evtName+'</a>'
+           +'<br /><br />'+this.fromDt +'~' +this.toDt+'</div></div>';
+                arr.push (this.evtId);
            });
-          
+        
+           rank += '</div>';
+          var pagination = '<div style="width : 200px; margin:auto;"><TABLE id="pagination">'
+				if (startPage != 1) {
+					pagination += '<a href="'+context+'/event/Event_selectAll/1">'
+					+'<IMG SRC="'+img+'/btn_bf_block.gif">&nbsp;'
+					+'</a>';
+				}
+				if ((startPage - groupSize) > 0 ) {
+					pagination +='<a href="'+context+'/event/Event_selectAll/'+(startPage-groupSize)+'">'
+					+'<IMG SRC="'+img+'/btn_bf_page.gif">&nbsp;'
+					+'</a>';
+				}
+				for (var i = startPage ; i <= lastPage; i++) {
+					if (i == pageNo) {
+						pagination+='<font style="color:red;font-size: 20px">'
+						+i
+						+'</font>';
+					} else {
+						pagination+='<a href="#" onClick="return event.ranking('+i+')">'
+						+'<font>'
+						+i
+						+'</font>'
+						+'</a>';
+					}
+				}		
+				if ((startPage + groupSize) <= totPage) {
+					pagination += +'<a href="'+context+'/event/Event_selectAll/'+(startPage+groupSize)+'">'
+				}
+				pagination += '</TD>';
+				pagination += '<TD WIDTH=200 ALIGN=RIGHT></div>'
+					
+				  $('.mainView').append(rank);
+				$('.mainView').append(pagination);
+				
+				
+				$.each(data.list, function(i,value) {
+					
+	                $('#'+ arr[i]).click( function() {
+	                	 alert("이벤트 댓글달기로 이동");
+	                     Event.eventPage(arr[i]);
+
+				});
+
+					
+				});
+				
+				
      });
 },
+	eventPage : function(evtId) {
+		$.getJSON(context +'/event/Event_main/'+evtId,function(data){
+			var eventPage = '<div class="contents">'
+				+'<div class="event" style="margin:auto">'
+				+'<img alt="" src="'+context+'/resources/images/skill.jpg">'
+				+'</div>';
+				$('.mainView').html(eventPage);
+				
+				
+				var index = 1;
+				$("#reply_btn").click(function() {
+					if($(".navbar-right a").text() === "로그인"){
+						alert("댓글을 달려면 로그인을 해주세요");
+					}else{
+						$.ajax(context + "/article/reply ",{
+							data : {
+								"code" : $("#code").text(),
+								"id" : $(".navbar-right a").text(),
+								"content" : $("#readModal textarea[name=reply]").val()
+							},
+							success : function() {
+								$("#reply_area").append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val() + "<button id='remove_reply"+ (index++) +"' style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
+								// 댓글지우기 //
+								$("#remove_reply" + (index-1)).click(function() {
+									$("#" + this.id).parent().remove();
+								});	
+							},
+							error : function() {
+								
+							}
+						});
+					}
+				});
+				
+		});
+	},
+      
 
-		
-		
-		
-		
 		
 }
 
