@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,81 +20,52 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	
-
-
-<title>Hanbit - words</title>
-
-<body id="page-top" class="index">
-
-<!-- Navigation -->
-	<nav class="navbar navbar-default navbar-fixed-top">
-
-		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header page-scroll">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#bs-example-navbar-collapse-1">
-				<span class="sr-only">Toggle navigation</span> 
-				<span class="icon-bar"></span> 
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand page-scroll" href="${context}/">TOB|Hanbit</a>
-		</div>
-		
-	<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse"
-			id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="hidden"><a href="#page-top"></a></li>
-		<li><a class="page-scroll" href="#services">SERVICE</a></li>
-				<li><a class="page-scroll" href="#event" >EVENT</a></li>
-				<li><a class="page-scroll" href="#book" >BOOK</a></li>
-				<li><a class="page-scroll" href="#purcahse" >PURCHASE</a></li>
-				<li><a class="page-scroll" href="#cart" >CART</a></li>
-				<li><a class="page-scroll" href="#team">INFO</a></li>
+	<title>Hanbit - words</title>
+<nav class="navbar navbar-inverse" >
+  <div class="container-fluid" style="width: 100%;">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+	 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav" style="width: 100%;">
+      <li><a class="navbar-brand" href="${context}/"><img src="${img}/logo.PNG" alt="" /></a></li>
+		<li><a href="#" id="service"><b>SERVICE</b></a></li>
+		<li><a href="#" id="event"><b>EVENT</b></a></li>
+		<li><a href="#" id="book"><b>BOOK</b></a></li>    
+		<li ><a href="#" id="btn_pur"><b>PURCHASe</b></a></li>
+		<li><a href="#" id="btn_cart"><b>CART</b></a></li>
+		<li style="padding-right: 100px;"><a href="#" id="team"><b>INFO</b></a></li>
 		<c:if test="${empty sessionScope.user}">
-		<!-- 로그인 안한 상태 -->
-		<li style="float: right; margin-right: 30px;"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
-		<li style="float: right"><a href="${context}/member/loginForm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		<li style="float: right"><a href="${context}/member/joinForm" id="join">Join</a></li>
-		<li style="float: right"><a href="${context}/member/mypageForm" id="mypage">My page</a></li>
+	   	<!-- 로그인 안한 상태 -->
+		<li style="float: right; margin-right: 15px;"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
+		<li style="float: right;"><a href="${context}/member/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+		<li style="float: right;"><a href="#joinForm" id="join">Join</a></li>
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right;">${user.name}님 반갑습니다.</li>
 		<li style="float: right;"><a href="${context}/member/mypage">마이페이지</a></li>
 		<li style="float: right;"><input id="btn_logout" type="submit" name="submit" value="로그아웃" /></li>
 		</c:if>
-	</ul>
-	</div>
-</nav>
-
-<!-- Header -->
-    <header>
-   <div class="container">
-       <div class="intro-text">
-           <div class="intro-lead-in">Welcome!!</div>
-           <div class="intro-heading">Nice To Meet You</div>
-           <a href="#services" class="page-scroll btn btn-xl" style="color: black;">Have a nice today!</a>
-       </div>
+      </ul>
+    </div>
   </div>
-  </header>
+</nav>
 
 
 
 <script type="text/javascript">
 	$(function() {
-	
-	/* 	$('#home').click(function() {
+		$('#home').click(function() {
 			alert('혜숙이한테 디폴트페이지 만들어라 하고 연결시켜야함.');
 		});
-		
-		$('#info').click(function() {
-			alert('소개 페이지 만들고 연결시켜야함.');
-		});
-		
 		$('#event').click(function() {
 			alert('event.js로 분할되면 나한테 말해줘 정민아');
-			Event.event();
 		});
 		
 		$('#book').click(function() {
@@ -103,14 +73,14 @@
 			book.all();
 		});
 		
-		$('#purcahse').click(function() {
+		$('#btn_pur').click(function() {
 			alert('구매목록 버튼 클릭');
 			Purchase.main(context);
 		});
-		$('#cart').click(function() {
+		$('#btn_cart').click(function() {
 			alert('장바구니 버튼 클릭');
 			Cart.main(context);
-		}); */
+		});
 		$('#btn_logout').click(function() {
 			alert('로그아웃');
 			Member.logout(context);
@@ -130,5 +100,3 @@
 	<!-- Contact Form JavaScript -->
 	<script src="${startjs}/jqBootstrapValidation.js"></script>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
-</body>

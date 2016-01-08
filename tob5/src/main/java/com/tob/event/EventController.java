@@ -26,7 +26,11 @@ public class EventController {
 	private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 	@Autowired EventServiceImpl service;
 	@Autowired EventVO event;
-	
+	@RequestMapping("/main")
+	public String main(){
+		logger.info("EventController :main()");
+		return "event/main.jsp";
+	}
 	@RequestMapping("/Event")
 	public String event(){
 		logger.info("EventController :Event()");
