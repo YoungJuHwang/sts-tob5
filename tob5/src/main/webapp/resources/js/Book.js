@@ -8,6 +8,7 @@ var book = {
 		},
 		/*책 전체목록 */
 		all : function(userid) {
+			alert('책 전체목록 페이지 진입 ');
 			book.setUserid(userid);
 			alert('책 전체목록 페이지 진입, 넘어온 유저아이디 : '+userid);
 			var abroadArr =[];
@@ -219,8 +220,9 @@ var book = {
 $.each(data.list,function(index,value){
 	$('#c'+index).click(function() {
 		alert('장바구니 클릭 됨.');
+		alert('Cart.put으로 넘기는 유저아이디 : '+userid);
+		Cart.put(arr[index], userid);
 		
-		Cart.put(arr[index]);
 	});
 });
 $.each(data.list,function(i,value){
