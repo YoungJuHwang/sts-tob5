@@ -32,9 +32,9 @@ var Cart = {
 			$(table).appendTo($('#cart_wrap').empty());
 		});
 	},
-	put : function(bookId) {
+	put : function(bookId, userid) {
 		alert('Cart.put()진입 넘겨받은 북아이디 : '+bookId);
-		alert('Cart.getuserid() : '+ Cart.getUserid());
+		alert('Cart.put()진입 넘겨받은 세션아이디 : '+ userid);
 		$.ajax(context+'/cart/put/'+bookId,{
 			data : {
 				bookId : bookId,
