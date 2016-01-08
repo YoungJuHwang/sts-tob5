@@ -72,4 +72,16 @@ public int count() {
 
 
 
+
+public List<BookVO> todayBook(Command command) {
+	logger.info("BookServiceImpl : todayBook");
+	BookMapper mapper = sqlSession.getMapper(BookMapper.class);
+	return mapper.todayBook(command);
+}
+
+
+
+
+
+
 }

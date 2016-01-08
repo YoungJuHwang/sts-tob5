@@ -8,7 +8,7 @@
 INSERT INTO BOOK
 (BOOK_ID,BOOK_NAME,PRICE,WRITER,GRADE,STOCK_SEQ,OPTION_ID,GENRE_ID)
 VALUES
-(#{bookId},#{bookName},#{bookPrice},#{writer},#{grade},#{bookseq},#{optionBook},#{genreId})
+(#{bookId},#{bookName},#{bookPrice},#{writer},#{grade},#{stockSeq},#{optionBook},#{genreId})
 
 </insert>
 
@@ -27,7 +27,7 @@ BOOK_NAME AS bookName,
 PRICE AS bookPrice,
 WRITER AS writer,
 GRADE AS grade,
-STOCK_SEQ AS bookseq,
+STOCK_SEQ AS stockSeq,
 OPTION_ID AS optionBook,
 GENRE_ID AS genreId
 
@@ -49,7 +49,7 @@ BOOK_NAME AS bookName,
 PRICE AS bookPrice,
 WRITER AS writer,
 GRADE AS grade,
-STOCK_SEQ AS bookseq,
+STOCK_SEQ AS stockSeq,
 OPTION_ID AS optionBook,
 GENRE_ID AS genreId
    FROM BOOK ORDER BY bookId DESC
@@ -59,5 +59,20 @@ GENRE_ID AS genreId
  <select id="count" resultType="int">
  	SELECT COUNT(*) AS count FROM BOOK
  </select>
+
+<select id="todayBook" resultType="com.tob.book.BookVO"  parameterType="com.tob.global.Command">
+Select
+BOOK_ID AS bookId,
+BOOK_NAME AS bookName,
+PRICE AS bookPrice,
+WRITER AS writer,
+GRADE AS grade,
+STOCK_SEQ AS stockSeq,
+OPTION_ID AS optionBook,
+GENRE_ID AS genreId
+   FROM BOOK ORDER BY bookId DESC
+          LIMIT #{start}, 1
+</select>
+
 
  </mapper>

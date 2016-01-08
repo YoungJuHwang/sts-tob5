@@ -39,6 +39,7 @@ public Model list(Model model){
 	
 		for (int i = 0; i < list.size();  i++) {
 			if (list.get(i).getCategoryId().equals("abroad")) {
+				
 				listAbroad.add(list.get(i));
 				/*listAbroad = list*/
 				System.out.println("리스트 어브로드는?"+listAbroad);

@@ -27,6 +27,8 @@ public interface BookService {
 	//정보 수정
 	public int change(BookVO book);
 
+	// 오늘의 책
+	public List<BookVO> todayBook(Command command); 
 	
 
 }
