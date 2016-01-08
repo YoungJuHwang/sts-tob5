@@ -158,7 +158,9 @@ var AdminBook = {
 				
 				$('#bookFrm').submit(function(e) {
 					e.preventDefault(); 
+					
 					/* 기본 폼태그의 서브밋을 막아라. 자스의 서브밋을 실행해라 */
+					
 					var postData = new FormData($('#bookFrm')[0]);
 					$.ajax('${context}/admin/book_update',{
 						type : 'post',

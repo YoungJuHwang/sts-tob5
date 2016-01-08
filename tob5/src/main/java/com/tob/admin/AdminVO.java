@@ -14,9 +14,19 @@ public class AdminVO implements Serializable {
 	 
 	private String id;
 	private String password;
+	private String adminEmail;
 	private String confirm_num;
 	
 	
+	
+	public String getAdminEmail() {
+		return adminEmail;
+	}
+
+	public void setAdminEmail(String adminEmail) {
+		this.adminEmail = adminEmail;
+	}
+
 
 	private static AdminVO instance = new AdminVO();
 	public static AdminVO getInstnace(){
