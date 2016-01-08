@@ -99,5 +99,8 @@ var Member = {
 						alert('에러발생상태 : '+status +', 내용 :'+msg);
 					}
 				});
+			},
+			cartlist : function(context, userid) {
+				
 			}
 	};

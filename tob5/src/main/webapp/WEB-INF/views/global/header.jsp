@@ -71,11 +71,11 @@
 		});
 		$('#my_cart').click(function() {
 			alert('내 장바구니 버튼 클릭' + '${user.userid}');
-			Cart.list(context, '${user.userid}');
+			Member.cartlist(context, '${user.userid}');
 		});
 		$('#mypage').click(function() {
 			alert('마이페이지 버튼 클릭');
-			LoginMember.detail('${user.userid}');
+			Member.detail('${user.userid}');
 		});
 	});
 </script>
