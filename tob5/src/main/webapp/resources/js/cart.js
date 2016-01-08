@@ -34,7 +34,7 @@ var Cart = {
 	},
 	put : function(bookId) {
 		alert('Cart.put()진입 넘겨받은 북아이디 : '+bookId);
-		alert('Cart.getuserid() : '+Cart.getUserid());
+		alert('Cart.getuserid() : '+ Cart.getUserid());
 		$.ajax(context+'/cart/put/'+bookId,{
 			data : {
 				bookId : bookId,

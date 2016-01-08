@@ -1,6 +1,15 @@
 var book = {
+		userid : '',
+		getUserid : function() {
+			return this.userid;
+		},
+		setUserid : function(userid) {
+			this.userid = userid; 
+		},
 		/*책 전체목록 */
-		all : function() {
+		all : function(userid) {
+			book.setUserid(userid);
+			alert('책 전체목록 페이지 진입, 넘어온 유저아이디 : '+userid);
 			var abroadArr =[];
 			var abroadArrName =[];
 			
@@ -71,7 +80,8 @@ var book = {
 					$('#'+abroadArr[i]).click(function() {
 						alert('해외도서 페이지,'+abroadArrName[i]+'  페이지로 이동.')
 						book.bookEmpty(abroadArr[i]);
-						book.bookSimplePage('1');
+						book.bookSimplePage('1', userid);
+						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					
 				});
@@ -81,7 +91,8 @@ var book = {
 					$('#'+domesticArr[i]).click(function() {
 						alert('국내도서 페이지로 이동.')
 						book.bookEmpty(domesticArrName[i]);
-						book.bookSimplePage('1');
+						book.bookSimplePage('1', userid);
+						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					
 				});
@@ -89,7 +100,8 @@ var book = {
 					$('#'+ebookArr[i]).click(function() {
 						alert('전자책 페이지로 이동.')
 						book.bookEmpty(ebookArrName[i]);
-						book.bookSimplePage('1');
+						book.bookSimplePage('1', userid);
+						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					
 				});
@@ -99,7 +111,8 @@ var book = {
 					$('#'+newArr[i]).click(function() {
 						alert('신간 페이지로 이동.')
 						book.bookEmpty(newArrName[i]);
-						book.bookSimplePage('1');
+						book.bookSimplePage('1', userid);
+						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					
 				});
@@ -109,7 +122,8 @@ var book = {
 					$('#'+oldArr[i]).click(function() {
 						alert('중고책 페이지로 이동.')
 						book.bookEmpty(oldArrName[i]);
-						book.bookSimplePage('1');
+						book.bookSimplePage('1', userid);
+						alert('넘어가는 유저아이디 : '+ userid);
 					});
 					
 				});
@@ -118,9 +132,10 @@ var book = {
 			});
 		},
 		
-		bookSimplePage : function(pageNo) {
+		bookSimplePage : function(pageNo, userid) {
 			var arr = [];
 		$.getJSON(context +'/book/Book_selectAll/'+pageNo ,function(data){
+			alert('북 심플페이지 진입, 넘어온 유저아이디 : '+userid);
 			var count = data.count;
 			var pageNo = data.pageNo; 
 			var startPage = data.startPage;

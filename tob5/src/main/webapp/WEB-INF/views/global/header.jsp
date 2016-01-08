@@ -75,7 +75,7 @@
 		});
 		$('#mypage').click(function() {
 			alert('마이페이지 버튼 클릭');
-			LoginMember.detail(user.userid);
+			LoginMember.detail('${user.userid}');
 		});
 	});
 </script>
