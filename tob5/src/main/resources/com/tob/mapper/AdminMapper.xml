@@ -5,10 +5,11 @@
 
  <mapper namespace="com.tob.mapper.AdminMapper">
  <insert id="insert" parameterType="com.tob.admin.AdminVO">
- 	INSERT INTO ADMIN (ID,PASSWORD) 
+ 	INSERT INTO ADMIN (ID,PASSWORD,ADMIN_EMAIL) 
  	VALUES (
 	 	#{id},
 	 	#{password},
+	 	#{admin_email}
  	) 
  </insert>
  

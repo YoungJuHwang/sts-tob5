@@ -9,12 +9,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tob.member.MemberServiceImpl;
@@ -33,14 +38,17 @@ import com.tob.global.CommandFactory;
 public class AdminController {
 	private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
 
+	@Autowired AdminService adminService;
+	@Autowired AdminVO admin;
 	@Autowired BookVO book;
 	@Autowired BookServiceImpl bookService;
 	@Autowired MemberVO member;
 	@Autowired MemberServiceImpl memberService;
 	@Autowired EventVO event;
 	@Autowired EventServiceImpl eventService;
-	/*@Autowired private AdminEmailSender adminEmailSender;*/
+	@Autowired private AdminEmailSender adminEmailSender;
 	
+	int auth_Num = 0;
 	
 	@RequestMapping("/book_search")
 	public String bokSearch(){
@@ -164,30 +172,26 @@ public class AdminController {
 		return map;
 	}
 	
-	/*@RequestMapping(value="/join", method=RequestMethod.POST)
+	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public Model joinAdmin(
-			@RequestBody MemberVO param,
+			@RequestBody AdminVO param,
 			Model model
 			){
 		logger.info("멤버컨트롤러 joinMember() - 진입");
-		logger.info("가입 아이디 : {}",param.getUserid());
-		logger.info("가입 이메일 : {}",param.getEmail());
+		logger.info("가입 아이디 : {}",param.getId());
+		logger.info("가입 이메일 : {}",param.getAdminEmail());
 		logger.info("가입 패스워드 : {}",param.getPassword());
-		logger.info("가입 이름 : {}",param.getName());
-		logger.info("가입 전화번호 : {}",param.getPhone());
 		logger.info("가입 인증번호 : {}",param.getConfirm_num());
 		int confirm_Num = Integer.parseInt(param.getConfirm_num());
 		if (auth_Num == confirm_Num) {
-			member.setId(param.getId());
-			member.setPassword(param.getPassword());
-			member.setName(param.getName());
-			member.setEmail(param.getEmail());
-			member.setPhone(param.getPhone());
-			int result = memberService.joinForm(member);
+			admin.setId(param.getId());
+			admin.setPassword(param.getPassword());
+			admin.setAdminEmail(param.getAdminEmail());
+			int result = adminService.insert(admin);
 			if (result == 1) {
 				logger.info("회원가입 성공");
 				model.addAttribute("result","success");
-				model.addAttribute("name",member.getName());
+				model.addAttribute("id",admin.getId());
 			} else {
 				logger.info("회원가입 실패");
 				model.addAttribute("result", "fail");
@@ -199,30 +203,31 @@ public class AdminController {
 		}
 		
 		return model;
-	}*/
+	}
 	
-/*	@RequestMapping("/join_auth")
+	@RequestMapping("/join_auth")
 	public Model joinAuth (
 			@RequestParam("id")String id,
-			@RequestParam("e_mail")String e_mail,
- 		    @RequestParam("name")String name, 
+			@RequestParam("admin_email")String admin_email, 
  		    Model model) throws Exception {
-			AdminEmail email = new AdminEmail();
+			AdminEmail adminemail = new AdminEmail();
+			
+			
 		logger.info("멤버컨트롤러 joinAuth() - 진입");
         
 		auth_Num = (int) (Math.random()*9999) + 1000;
-        	String reciver = e_mail;
-        	String subject = "환영합니다.  "+name+"님, 인증번호 메일입니다.";
-        	String content = name+" 님의 가입 인증번호는 "+auth_Num+"입니다.";
+        	String reciver = admin_email;
+        	String subject = "환영합니다.  "+id+"님, 인증번호 메일입니다.";
+        	String content = id+" 님의 가입 인증번호는 "+auth_Num+"입니다.";
         			
-        	email.setReciver(reciver);
-            email.setSubject(subject);
-            email.setContent(content);
-            emailSender.sendMail(email);
+        	adminemail.setReciver(reciver);
+        	adminemail.setSubject(subject);
+        	adminemail.setContent(content);
+            adminEmailSender.sendMail(adminemail);
             model.addAttribute("success", "success");
         return model;
     }
-	*/
+	
 	@RequestMapping("/join_Result")
 	public String joinResult(){
 		logger.info("멤버컨트롤러 joinResult() - 진입");
@@ -235,8 +240,36 @@ public class AdminController {
 	
 	@RequestMapping("/book_reg")
 	public String bookReg(){
-		logger.info("AdminController-bookreg() 진입");
+		logger.info("AdminController-bookreg()페이지만 진입");
 		return "admin/admin/bookReg.tiles";
+	}
+	
+	@RequestMapping(value="/book_join", method=RequestMethod.POST)
+	public @ResponseBody BookVO bookJoin(
+			@RequestBody BookVO param
+			){
+		logger.info("book_join ajax 넘오와서 컨트롤러 진입");
+		
+		book.setBookId(param.getBookId());
+		book.setBookName(param.getBookName());
+		book.setBookPrice(param.getBookPrice());
+		book.setWriter(param.getWriter());
+		book.setGrade(param.getGrade());
+		book.setStockSeq(param.getStockSeq());
+		book.setOptionBook(param.getOptionBook());
+		book.setGenreId(param.getGenreId());
+		
+		
+		int result = bookService.registration(book);
+        if (result == 1) {
+            logger.info("북 등록 성공");
+            
+        } else {
+            logger.info("북 등록 실패");
+           
+        }
+        return book;
+		
 	}
 	
 	@RequestMapping("/book_list")
