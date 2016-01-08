@@ -39,6 +39,19 @@
 		<constructor-arg index="0" ref="sqlSessionFactory" />
 	</bean>
 	
+	<!-- mail Auth(use) -->
+   <bean id="mailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+    <property name="host" value="smtp.gmail.com" />
+    <property name="port" value="587" />
+    <property name="defaultEncoding" value="utf-8"/>
+    <property name="username" value="dingo44kr@gmail.com" />
+    <property name="password" value="tlsgP0205" />
+    <property name="javaMailProperties">
+    <props>
+        <prop key="mail.smtp.starttls.enable">true</prop>
+    </props>
+    </property>
+	</bean>
 	
 </beans>
 
