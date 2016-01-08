@@ -16,9 +16,9 @@ import com.tob.mapper.CartMapper;
 public class CartServiceImpl implements CartService {
 	private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 	@Autowired private SqlSession sqlSession;
-	
+	@Autowired CartVO cart;
 	@Override
-	public String put(String bookId) {
+	public int put(String bookId) {
 		logger.info("CartServiceImpl : regist 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
 		
@@ -31,10 +31,10 @@ public class CartServiceImpl implements CartService {
         	String var = "-";
         	String strToday2 = sdf2.format(c1.getTime());
         	String result = strToday + var + strToday2;
-
+        cart.setCartNum(result);
      	
-		/*return mapper.put(bookId);*/
-     	return null;
+		/*return mapper.put(cart);*/
+     	return 0;
 	}
 	@Override
 	public List<BookCartVO> getList() {

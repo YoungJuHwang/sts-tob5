@@ -7,7 +7,7 @@ import com.tob.book.BookVO;
 public interface CartService {
 	
 	// 장바구니 담기
-	public String put(String bookid);
+	public int put(String bookid);
 	
 	// 장바구니 목록 확인
 	public List<BookCartVO> getList();

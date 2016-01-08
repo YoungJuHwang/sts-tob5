@@ -76,6 +76,7 @@ public class MemberController {
         logger.info("넘어온 유저아이디 : {}",userid);
         logger.info("유저비번 : {}",password);
         member = service.selectOneBy(userid);
+        System.out.println("member = service.selectOneBy(userid) 통과"+member.getUserid());
         if (member != null) {
             logger.info("로그인성공");
             session.setAttribute("user", member);

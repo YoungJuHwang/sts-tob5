@@ -1,6 +1,17 @@
 var Cart = {
-	main : function(link) {
+		userid : '',
+		getUserid : function() {
+			return this.userid;
+		},
+		setUserid : function(userid) {
+			this.userid = userid; 
+		},
+	main : function(link, userid) {
+		alert('메인으로 넘어옴');
 		$(".mainView").load(link+"/cart/Cart");
+		alert('메인으로 넘어온 유저아이디'+userid);
+		Cart.setUserid(userid);
+		alert('메인으로 넘어온 유저아이디'+Cart.getUserid());
 	},
 	list : function(context) {
 		var arr = [];
@@ -23,6 +34,7 @@ var Cart = {
 	},
 	put : function(bookId) {
 		alert('Cart.put()진입 넘겨받은 북아이디 : '+bookId);
+		alert('Cart.getuserid() : '+Cart.getUserid());
 		$.ajax(context+'/cart/put/'+bookId,{
 			data : {
 				bookId : bookId,

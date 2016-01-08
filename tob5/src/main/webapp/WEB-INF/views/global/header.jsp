@@ -70,8 +70,8 @@
 			Purchase.main(context);
 		});
 		$('#btn_cart').click(function() {
-			alert('장바구니 버튼 클릭');
-			Cart.main(context);
+			alert('장바구니 버튼 클릭'+'${user.userid}');
+			Cart.main(context, '${user.userid}');
 		});
 		$('#mypage').click(function() {
 			alert('마이페이지 버튼 클릭');
