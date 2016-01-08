@@ -62,7 +62,7 @@
 		
 		$('#book').click(function() {
 			alert('책 버튼 클릭, 세션에 넘기는 아이디 : '+'${user.userid}');
-			book.all('${userid}');
+			book.all('${user.userid}');
 		});
 		
 		$('#btn_pur').click(function() {
