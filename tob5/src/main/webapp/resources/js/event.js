@@ -94,44 +94,53 @@ var Event = {
 			var eventPage = '<div class="contents">'
 				+'<div class="event" style="margin:auto">'
 				+'<img alt="" src="'+context+'/resources/images/skill.jpg">'
+				+'<div style="margin-left:8%">'
+				+'<label for="reply" style="display:block;">댓글</label>'
+				+'<textarea name="reply" cols="82" rows="20" style="width:70%; height:10%; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
+				+'<div><button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;"></button>'
+				+'<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;"></button>'
+				+'</div><div id="reply_area" style="padding-top:10px;"></div>'
 				+'</div>';
 				$('.mainView').html(eventPage);
+			
+				alert("배고프오");
+			
 				
+					alert("이게 뜨긴 뜸?");
+				$ ("#reply_btn").click(function() {
+				       if($(".navbar-right a").text() === "로그인"){
+				           alert("댓글을 달려면 로그인을 해주세요");
+				       }else{
+				           $.ajax(context+"/reply/Reply",{
+				                data : {
+				                       "code" : $("#code").text(),
+				                       "writer" : $(".navbar-right a").text(),
+				                       "comment" : $("#readModal textarea[name=reply]").val()
+				                 },
+				                success : function() {
+				                     $ ("#reply_area" ).append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
+				                       // 댓글지우기 //
+				                      $ ("#remove_reply" + (index-1)).click(function() {
+				                           $ ("#" + this.id).parent().remove() ;
+				                       });   
+				                 },
+				                error : function() {
+				                      
+				                 }
+				            });
+				       }
+				 });
 				
-				var index = 1;
-				$("#reply_btn").click(function() {
-					if($(".navbar-right a").text() === "로그인"){
-						alert("댓글을 달려면 로그인을 해주세요");
-					}else{
-						$.ajax(context + "/article/reply ",{
-							data : {
-								"code" : $("#code").text(),
-								"id" : $(".navbar-right a").text(),
-								"content" : $("#readModal textarea[name=reply]").val()
-							},
-							success : function() {
-								$("#reply_area").append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val() + "<button id='remove_reply"+ (index++) +"' style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
-								// 댓글지우기 //
-								$("#remove_reply" + (index-1)).click(function() {
-									$("#" + this.id).parent().remove();
-								});	
-							},
-							error : function() {
-								
-							}
-						});
-					}
-				});
 				
 		});
 	},
       
 
-		
+	
+	
+
+
+	
 }
-
-
-
-
 
 
