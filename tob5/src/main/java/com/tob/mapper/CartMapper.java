@@ -11,7 +11,7 @@ public interface CartMapper {
 		public int put(CartVO cart);
 		
 		//R
-		public List<BookCartVO> getList();
+		public List<BookCartVO> getList(String userid);
 		
 		//U
 		public int changeCount(int count);

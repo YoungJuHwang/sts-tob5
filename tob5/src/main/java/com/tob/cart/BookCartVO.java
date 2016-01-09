@@ -2,7 +2,6 @@ package com.tob.cart;
 
 public class BookCartVO {
 	private String cartNum;
-	private String bookid;
 	private String userid;
 	private String count;
 	private String bookId;		//고유번호
@@ -16,9 +15,6 @@ public class BookCartVO {
 	
 	public String getCartNum() {
 		return cartNum;
-	}
-	public String getBookid() {
-		return bookid;
 	}
 	public String getUserid() {
 		return userid;
@@ -52,9 +48,6 @@ public class BookCartVO {
 	}
 	public void setCartNum(String cartNum) {
 		this.cartNum = cartNum;
-	}
-	public void setBookid(String bookid) {
-		this.bookid = bookid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;

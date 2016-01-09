@@ -115,7 +115,6 @@ var book = {
 						book.bookSimplePage('1', userid);
 						alert('넘어가는 유저아이디 : '+ userid);
 					});
-					
 				});
 				
 				
@@ -230,7 +229,8 @@ $.each(data.list,function(index,value){
 $.each(data.list,function(i,value){
 	$('#b'+index).click(function() {
 		alert('구매 클릭 됨.');
-		Cart.buy(arr[index], userid);		
+		alert('Purcase.buy으로 넘기는 유저아이디 : '+userid);
+		Purchase.buy(arr[index], userid);		
 	});
 });
 				

@@ -46,10 +46,12 @@ public class CartServiceImpl implements CartService {
      	return mapper.put(cart);
 	}
 	@Override
-	public List<BookCartVO> getList() {
+	public List<BookCartVO> getList(String userid) {
 		logger.info("CartServiceImpl : getList 진입");
+		logger.info("넘어온 유저아이디 : " + userid);
+		
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.getList();
+		return mapper.getList(userid);
 	}
 	@Override
 	public int remove(String bookid) {

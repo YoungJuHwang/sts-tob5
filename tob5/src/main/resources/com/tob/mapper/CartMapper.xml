@@ -11,10 +11,10 @@
 		SELECT
 			b.BOOK_NAME AS bookName,
 			b.PRICE AS bookPrice,
-			b.WIRTER AS writer,
-			c.COUNT AS count,
+			c.COUNT AS count
 		FROM BOOK b, CART c
-		WHERE c.USERID = #{id}
+		WHERE c.USERID = #{userid} AND
+		b.BOOK_ID = c.BOOK_ID
 	</select> 
  	<update id="changeCount">
  	

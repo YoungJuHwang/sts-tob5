@@ -28,10 +28,14 @@ public class CartController {
 		return "cart/Cart.jsp";
 	}
 	
-	@RequestMapping("/list")
-	public @ResponseBody List<BookCartVO> list(){
+	@RequestMapping("/list/{userid}")
+	public @ResponseBody List<BookCartVO> list(
+				@PathVariable("userid")String userid
+			){
 		logger.info("카트 컨트롤러 - list() 진입");
-		List<BookCartVO> list = service.getList();
+		logger.info("카트 컨트롤러 - list() 넘어온 유저아이디 : "+userid);
+		List<BookCartVO> list = service.getList(userid);
+		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
 		return list;
 	}
 	

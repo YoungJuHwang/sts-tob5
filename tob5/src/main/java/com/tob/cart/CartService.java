@@ -10,7 +10,7 @@ public interface CartService {
 	public int put(String bookid, String userid);
 	
 	// 장바구니 목록 확인
-	public List<BookCartVO> getList();
+	public List<BookCartVO> getList(String userid);
 	
 	// 장바구니 수량 변경
 	public int changeCount(int count);

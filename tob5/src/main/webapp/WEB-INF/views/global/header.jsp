@@ -37,7 +37,7 @@
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right;">${user.name}님 반갑습니다.</li>
 		<li style="float: right;"><a href="#" id="mypage">마이페이지</a></li>
-		<li style="float: right;"><a href="#" id="myCart">장바구니</a></li>
+		<li style="float: right;"><a href="#" id="my_cart">장바구니</a></li>
 		<li style="float: right;"><a href="${context}/member/logout">로그아웃</a></li>
 		</c:if>
 	</ul>
@@ -71,7 +71,8 @@
 		});
 		$('#my_cart').click(function() {
 			alert('내 장바구니 버튼 클릭' + '${user.userid}');
-			Member.cartlist(context, '${user.userid}');
+			Cart.list('${user.userid}');
+			/* Member.cartlist(context, '${user.userid}'); */
 		});
 		$('#mypage').click(function() {
 			alert('마이페이지 버튼 클릭');
