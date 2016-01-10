@@ -1,6 +1,9 @@
 package com.tob.cart;
 
-public class BookCartVO {
+import java.io.Serializable;
+
+public class BookCartVO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String cartNum;
 	private String userid;
 	private String count;
@@ -12,7 +15,7 @@ public class BookCartVO {
 	private String bookseq; 	//재고량
 	private String optionBook; 	//옵션
 	private String genreId; 	//장르
-	
+
 	public String getCartNum() {
 		return cartNum;
 	}

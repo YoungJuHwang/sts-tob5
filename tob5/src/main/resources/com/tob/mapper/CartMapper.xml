@@ -7,14 +7,15 @@
 			(CART_NUM, BOOK_ID, USERID, COUNT) VALUES
 			(#{cartNum},#{bookId},#{userid},'1')
 	</insert>
-	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="string">
+	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.TodayCartVO">
 		SELECT
 			b.BOOK_NAME AS bookName,
 			b.PRICE AS bookPrice,
 			c.COUNT AS count
 		FROM BOOK b, CART c
 		WHERE c.USERID = #{userid} AND
-		b.BOOK_ID = c.BOOK_ID
+		b.BOOK_ID = c.BOOK_ID AND
+		c.CART_TODAY = #{today}
 	</select> 
  	<update id="changeCount">
  	

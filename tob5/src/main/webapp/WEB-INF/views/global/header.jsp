@@ -48,15 +48,12 @@
 	$(function() {
 	
 		$('#home').click(function() {
-			alert('혜숙이한테 디폴트페이지 만들어라 하고 연결시켜야함.');
 		});
 		
 		$('#info').click(function() {
-			alert('소개 페이지 만들고 연결시켜야함.');
 		});
 		
 		$('#event').click(function() {
-			alert('event.js로 분할되면 나한테 말해줘 정민아');
 			Event.event();
 		});
 		
