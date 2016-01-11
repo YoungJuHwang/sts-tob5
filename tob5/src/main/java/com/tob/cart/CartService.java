@@ -2,8 +2,6 @@ package com.tob.cart;
 
 import java.util.List;
 
-import com.tob.book.BookVO;
-
 public interface CartService {
 	
 	// 장바구니 담기

@@ -25,5 +25,6 @@ public interface MemberMapper {
 		public List<MemberVO> selectSomeBy(String domain, String searchword);
 		public List<MemberVO> selectAll(Command command);
 		public int changePwd(MemberVO member);
-		public MemberVO selectOneBy(String userid);	
+		public MemberVO selectOneBy(String userid);
+		public int myCart(String userid, String bookId);	
 }
