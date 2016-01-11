@@ -1,10 +1,14 @@
 package com.tob.cart;
 
+import java.io.Serializable;
+
 import org.springframework.stereotype.Component;
   
 @Component
-public class CartVO {
+public class CartVO implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String cartNum;
+	private String cartToday;
 	private String bookId;
 	private String userid;
 	private String count;
@@ -12,6 +16,9 @@ public class CartVO {
 	
 	public String getCartNum() {
 		return cartNum;
+	}
+	public String getcartToday() {
+		return cartToday;
 	}
 	public String getBookid() {
 		return bookId;
@@ -24,6 +31,9 @@ public class CartVO {
 	}
 	public void setCartNum(String cartNum) {
 		this.cartNum = cartNum;
+	}
+	public void setcartToday(String today) {
+		this.cartToday = today;
 	}
 	public void setBookid(String bookid) {
 		this.bookId = bookid;

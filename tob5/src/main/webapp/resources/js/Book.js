@@ -115,7 +115,6 @@ var book = {
 						book.bookSimplePage('1', userid);
 						alert('넘어가는 유저아이디 : '+ userid);
 					});
-					
 				});
 				
 				
@@ -215,7 +214,7 @@ var book = {
 					alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
 					book.bookEmpty();
 					book.mainPage(arr[index]);
-					book.todayBook();
+					book.todayBook('1');
 			});
 				
 $.each(data.list,function(index,value){
@@ -230,7 +229,8 @@ $.each(data.list,function(index,value){
 $.each(data.list,function(i,value){
 	$('#b'+index).click(function() {
 		alert('구매 클릭 됨.');
-		Cart.buy(arr[index], userid);		
+		alert('Purcase.buy으로 넘기는 유저아이디 : '+userid);
+		Purchase.buy(arr[index], userid);		
 	});
 });
 				
@@ -269,10 +269,10 @@ $.each(data.list,function(i,value){
 		
 		//------------------------------ 오늘의 책------------
 		todayBook : function(pageNo) {
-			
-			var arr = [];
+			alert('오늘의 책 진입');
+			var bookArr = [];
 			$.getJSON(context +'/book/Book_TodayBook/'+pageNo ,function(data){
-				alert('오늘의 책 진입');
+				alert('오늘의 책 JSON 진입');
 				var count = data.count;
 				var pageNo = data.pageNo; 
 				var startPage = data.startPage;
@@ -281,15 +281,16 @@ $.each(data.list,function(i,value){
 				var totPage = data.totPage;
 				var bookList= '<div id="bookToday" style="color: black; width : 500px; height: 180px; border: 1px solid black;"><h2 style="color: olive;>오늘의 책</h2>';
 				//---------------------------책 정보----------------------------------------
+				alert('오늘의책 까지 들어옴')
 				$.each(data.list,function(index,value){
-					todayBook += '<div class="book1Today">'
+					todayBook += '<div class="BookToday">'
 					todayBook += '<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';//수정필요 사진 경로 및 db 아이디 일치\
 					todayBook += '<font color="gray" size="2px">요런저런 냥아치임 ㅎㅎ</font><br />';
 					todayBook += '<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a><br /><br />';
 					todayBook += '<font color="maroon">'+this.writer+'</font><br />';
 					todayBook += '<font color="black" size="3px">요런저런 냥아치인데 내용에 관한 쿼리좀 넣어주시면 오늘의 책이 좀 볼만할듯 ㄴㅁ륨이ㅏ류 ^오^</font>';
 					todayBook += '<br /><br /><br /><br />';
-					arr.push(this.bookId);
+					bookArr.push(this.bookId);
 				});
 				
 				//-------------------------------------다음페이지------------------------------------------

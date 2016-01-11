@@ -37,6 +37,32 @@ var Cart = {
 		});
 	},
 	
+	list : function(userid) {
+		alert('리스트는 하루동안 담은 내역을 보여주는것으로..');
+		alert('Cart.list 진입, 넘어온 아이디 : '+userid);
+		var arr = [];
+		$.getJSON(context+'/cart/list/'+userid, function(data) {
+			var table = '<div id="cartList"><h1> TOB 배송 상품 장바구니</h1>'
+				+'<table id="pur_list"><tr><th>책 이름</th>'
+				+'<th>가격</th><th>수량</th></tr>';
+			$.each(data, function(i, val) {
+				table +='<tr><td><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
+				+'<td>'+this.bookPrice+'</td>'
+				+'<td>'+this.count+'</td>'
+				+'<td><button id="o'+i+'">주문하기</button></td>'
+				+'<td><button id="d'+i+'">삭제하기</button></td></tr>'
+				arr.push(this.purNum);
+			});
+			table += '</table></div>';
+			/*$(table).appendTo($('.mainView').empty());*/
+			$('.mainView').empty().append(table);
+			
+			/*삭제시 필요한 파라미터 : CART_TODAY, BOOK_ID, USERID*/
+			$.each(data, function(i, val) {
+				
+			});
+		});
+	},
 	/*list : function(context, userid) {
 		var arr = [];
 		$.getJSON(context+'/cart/list', function(data) {
@@ -81,10 +107,6 @@ var Cart = {
 	},
 	
 	remove : function() {
-		
-	},
-	
-	buy : function(bookId, userid) {
 		
 	}
 	

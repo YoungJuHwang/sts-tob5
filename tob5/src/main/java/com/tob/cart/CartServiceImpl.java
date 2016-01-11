@@ -17,6 +17,7 @@ public class CartServiceImpl implements CartService {
 	private static final Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 	@Autowired private SqlSession sqlSession;
 	@Autowired CartVO cart;
+	@Autowired TodayCartVO todaycart;
 	@Override
 	public int put(String bookId, String userid) {
 		logger.info("CartServiceImpl : put 진입");
@@ -26,30 +27,39 @@ public class CartServiceImpl implements CartService {
 
         Calendar c1 = Calendar.getInstance();
 
-    	String strToday = sdf.format(c1.getTime());
+    	String cartToday = sdf.format(c1.getTime());
     	String var = "-";
     	String strToday2 = sdf2.format(c1.getTime());
-    	String result = strToday + var + strToday2;
+    	String result = cartToday + var + strToday2;
     	logger.info("넘어온 책 아이디 : " + bookId);
     	logger.info("넘어온 유저 아이디 : " + userid);
     	logger.info("생성된 카트 넘버 : " + result);
         cart.setCartNum(result);
+        cart.setcartToday(cartToday);
      	cart.setBookid(bookId);
      	cart.setUserid(userid);
      	cart.setCount("1");
      	logger.info("바뀐 카트VO의  책 아이디 : " + cart.getBookid());
     	logger.info("바뀐 카트VO의 유저 아이디 : " + cart.getUserid());
     	logger.info("바뀐 카트VO의 카트 넘버 : " + cart.getCartNum());
+    	logger.info("바뀐 카트VO의 TODAY카트 넘버 : " + cart.getcartToday());
 		/*return mapper.put(cart);*/
      	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
      	//mapper.put(cart);
      	return mapper.put(cart);
 	}
 	@Override
-	public List<BookCartVO> getList() {
+	public List<BookCartVO> getList(String userid) {
 		logger.info("CartServiceImpl : getList 진입");
+		logger.info("넘어온 유저아이디 : " + userid);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+		Calendar c1 = Calendar.getInstance();
+		String today = sdf.format(c1.getTime());
+		todaycart.setUserid(userid);
+		todaycart.setToday(today);
+		
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.getList();
+		return mapper.getList(todaycart);
 	}
 	@Override
 	public int remove(String bookid) {

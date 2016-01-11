@@ -5,13 +5,14 @@ import java.util.List;
 import com.tob.book.BookVO;
 import com.tob.cart.BookCartVO;
 import com.tob.cart.CartVO;
+import com.tob.cart.TodayCartVO;
 
 public interface CartMapper {
 		// C
 		public int put(CartVO cart);
 		
 		//R
-		public List<BookCartVO> getList();
+		public List<BookCartVO> getList(TodayCartVO todaycart);
 		
 		//U
 		public int changeCount(int count);

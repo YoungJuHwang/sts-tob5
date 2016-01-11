@@ -4,17 +4,18 @@
 <mapper namespace="com.tob.mapper.CartMapper">
 	<insert id="put" parameterType="com.tob.cart.CartVO">
 		INSERT INTO CART
-			(CART_NUM, BOOK_ID, USERID, COUNT) VALUES
-			(#{cartNum},#{bookId},#{userid},'1')
+			(CART_NUM, CART_TODAY, BOOK_ID, USERID, COUNT) VALUES
+			(#{cartNum},#{cartToday},#{bookId},#{userid},'1')
 	</insert>
-	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="string">
+	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.TodayCartVO">
 		SELECT
 			b.BOOK_NAME AS bookName,
 			b.PRICE AS bookPrice,
-			b.WIRTER AS writer,
-			c.COUNT AS count,
+			c.COUNT AS count
 		FROM BOOK b, CART c
-		WHERE c.USERID = #{id}
+		WHERE c.USERID = #{userid} AND
+		b.BOOK_ID = c.BOOK_ID AND
+		c.CART_TODAY = #{today}
 	</select> 
  	<update id="changeCount">
  	

@@ -2,6 +2,28 @@ var Purchase = {
 		main : function(link) {
 			$(".mainView").load(link+"/purchase/Purchase");
 		},
+		buy : function(bookId, userid) {
+			alert('Purchase.buy()진입 넘겨받은 북아이디 : '+bookId);
+			alert('Purchase.buy()진입 넘겨받은 유저아이디 : '+userid);
+			$.ajax(context + '/purchase/buy', {
+				data : {
+					bookId : bookId,
+					userid : userid
+				},
+				dataType : "json",
+				type : 'get',
+				contentType : "application/json;",
+				mimeType : "application/json;",
+				async : false,
+				success : function() {
+					alert('형동이형의 장바구니리스트로 가야함.');
+				},
+				error : function() {
+					alert('cart-buy의 ajax 에러');
+				}
+			});
+		},
+		
 		list : function(context) {
 			var arr = [];
 			$.getJSON(context+'/purchase/list', function(data) {
