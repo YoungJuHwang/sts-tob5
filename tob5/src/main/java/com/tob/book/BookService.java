@@ -13,9 +13,11 @@ public interface BookService {
 	public int delete(String book);
 	
 	
-	//책 검색 (책이름으로)
+	//책 검색 (책 id값으로 가져오는)
 	public BookVO searchByBook(String book);
 	
+	//책 검색 ( 책 이름으로 검색창에 구현하는)
+	public List<BookVO> searchByBookName(String nameOfbook);
 	
 	//총 재고량.
 	public int count();
@@ -27,8 +29,6 @@ public interface BookService {
 	//정보 수정
 	public int change(BookVO book);
 
-	// 오늘의 책
-	public List<BookVO> todayBook(Command command); 
 	
 
 }

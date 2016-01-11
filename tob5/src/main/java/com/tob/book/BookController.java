@@ -1,6 +1,7 @@
 package com.tob.book;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -57,8 +58,6 @@ public class BookController {
 			lastPage = totalPage;
 		}
 		Map<String,Object> map = new HashMap<String,Object>();
-		//System.out.println("☆☆ 세====================================="+this.getUserid(session));
-		//map.put("userid", this.getUserid(session));
 		map.put("list", service.selectAll(CommandFactory.list(pageNo)));
 		map.put("count", count);
 		map.put("totalPage", totalPage);
@@ -69,44 +68,6 @@ public class BookController {
 		logger.info("BookController:Book_selectAll()");
 		return map;
 	}
-	/*//전체 책 목록  보여주기 1.(배열 내리기) => 로그인 했을 때.
-		@RequestMapping("/Book_selectAll/{pageNo}/{userid}")
-		public @ResponseBody Map<String,Object> bookAll_login(
-				@PathVariable("pageNo")String pageNo,
-				HttpSession session,
-				Model model
-				){
-			logger.info("BookController bookAll_login()진입.");
-			logger.info("넘어온 페이지No. : {}",pageNo);
-			
-			int pageNumber = Integer.parseInt(pageNo);
-			int pageSize = 4;
-			int groupSize = 3;
-			int count = service.count();
-			logger.info("번호 : {}",count);
-			int totalPage = count/pageSize;
-			if (count%pageSize != 0) {
-				totalPage += 1;
-			}
-			int startPage = pageNumber - ((pageNumber-1) % groupSize);
-			int lastPage = startPage + groupSize -1;
-			if (lastPage > totalPage) {
-				lastPage = totalPage;
-			}
-			Map<String,Object> map = new HashMap<String,Object>();
-			System.out.println("☆☆ 세션====================================="+this.getUserid(session));
-			map.put("userid", this.getUserid(session));
-			map.put("list", service.selectAll(CommandFactory.list(pageNo)));
-			map.put("count", count);
-			map.put("totalPage", totalPage);
-			map.put("pageNo", pageNumber);
-			map.put("startPage", startPage);
-			map.put("lastPage", lastPage);
-			map.put("groupSize", groupSize);
-			logger.info("BookController:Book_selectAll()");
-			return map;
-		}*/
-	
 	
 	// 책 상세 정보 보여주기 2.
 	@RequestMapping("/Book_main/{bookId}")
@@ -153,5 +114,16 @@ public @ResponseBody BookVO bookMain(
 		logger.info("BookController:Book_TodayBook()");
 		return map;
 	}
+	
+	
+	// 책 이름으로 '검색' 기능 구현하기
+	@RequestMapping("/Book_find/{find_name}")
+public @ResponseBody List<BookVO> searchByBookName(
+		@PathVariable("bookName")String name ){
+	logger.info("BookController:searchByBookName()");
+	logger.info("책 이름 : {}",name);
+	List<BookVO>book = service.searchByBookName(name);
+	return book;
+}
 	
 }
