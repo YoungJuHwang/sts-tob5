@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.tob.cart.BookCartVO;
+import com.tob.cart.TodayCartVO;
 import com.tob.global.Command;
 import com.tob.member.MemberVO;
 
@@ -26,5 +28,6 @@ public interface MemberMapper {
 		public List<MemberVO> selectAll(Command command);
 		public int changePwd(MemberVO member);
 		public MemberVO selectOneBy(String userid);
-		public int myCart(String userid, String bookId);	
+		public List<BookCartVO> getList(TodayCartVO todaycart);
+		public MemberVO detail(String userid);
 }

@@ -12,7 +12,8 @@
 	 	GENDER AS gender,
 	 	EMAIL AS email,
 	 	PHONE AS phone,
-	 	ADDR AS addr
+	 	ADDR AS addr,
+	 	PROFILE AS profile
  		FROM MEMBER ORDER BY userid ASC
          LIMIT #{start}, 3
  </select>
@@ -25,7 +26,8 @@
 	 	GENDER AS gender,
 	 	EMAIL AS email,
 	 	PHONE AS phone,
-	 	ADDR AS addr
+	 	ADDR AS addr,
+	 	PROFILE AS profile
  		FROM MEMBER WHERE ${column} LIKE CONCAT('%',#{keyword},'%')
         ORDER BY userid DESC LIMIT #{start}, 2
  </select>
@@ -38,14 +40,15 @@
 	 	GENDER AS gender,
 	 	EMAIL AS email,
 	 	PHONE AS phone,
-	 	ADDR AS addr
+	 	ADDR AS addr,
+	 	PROFILE AS profile
  	FROM MEMBER WHERE USERID = #{userid}
  </select>
  <select id="count" resultType="int">
  	SELECT COUNT(*) AS count FROM MEMBER
  </select>
 <insert id="insert" parameterType="com.tob.member.MemberVO">
- 	INSERT INTO MEMBER (USERID,PASSWORD,NAME,BIRTH,GENDER,EMAIL,PHONE,ADDR) 
+ 	INSERT INTO MEMBER (USERID,PASSWORD,NAME,BIRTH,GENDER,EMAIL,PHONE,ADDR,PROFILE) 
  	VALUES (
 	 	#{userid},
 	 	#{password},
@@ -54,7 +57,8 @@
 	 	#{gender},
 	 	#{email},
 	 	#{phone},
-	 	#{addr}
+	 	#{addr},
+	 	#{profile}
  	)
  </insert>
  <update id="update" parameterType="com.tob.member.MemberVO">

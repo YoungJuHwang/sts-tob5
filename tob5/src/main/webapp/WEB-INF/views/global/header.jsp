@@ -71,8 +71,8 @@
 			Member.cartlist(context, '${user.userid}');
 		});
 		$('#mypage').click(function() {
-			alert('마이페이지 버튼 클릭');
-			Member.detail('${user.userid}');
+			alert('마이페이지 버튼 클릭 후 ${user.userid} 나와야함 ');
+			Member.detail(context+'/member/detail/${user.userid}');
 		});
 	});
 </script>
