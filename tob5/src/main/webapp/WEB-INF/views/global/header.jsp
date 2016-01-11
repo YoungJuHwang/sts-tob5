@@ -67,8 +67,8 @@
 		});
 		$('#my_cart').click(function() {
 			alert('내 장바구니 버튼 클릭' + '${user.userid}');
-			Cart.list('${user.userid}');
-			/* Member.cartlist(context, '${user.userid}'); */
+			/* Cart.list('${user.userid}'); */
+			Member.cartlist(context, '${user.userid}');
 		});
 		$('#mypage').click(function() {
 			alert('마이페이지 버튼 클릭');
