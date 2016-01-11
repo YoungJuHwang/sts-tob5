@@ -13,9 +13,9 @@ import com.tob.account.AccountController;
 @Service
 
 public class AdminServiceImpl implements AdminService{
-	@SuppressWarnings("unused")
-	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
-	@SuppressWarnings("unused")
+
+	private static final Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
+
 	@Autowired private SqlSession sqlSession;
 	 
 	
@@ -31,6 +31,22 @@ public class AdminServiceImpl implements AdminService{
 		logger.info("AdminServiceImpl : change");
 		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
 		return mapper.update(admin);
+	}
+
+	@Override
+	public AdminVO selectById(String id) {
+		logger.info("AdminServiceImpl : selectById");
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		AdminVO member = mapper.selectById(id); //실제로 mapper에 담겨있는 sql문을 실행시켜 주는 부분
+		logger.info("selectById는?"+member);
+		return mapper.selectById(id);
+	}
+
+	@Override
+	public AdminVO selectByEmail(String admin_email) {
+		logger.info("AdminServiceImpl : selectByEmail");
+		AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
+		return mapper.selectByEmail(admin_email);
 	}
 
 	
