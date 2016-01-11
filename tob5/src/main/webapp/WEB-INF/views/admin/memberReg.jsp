@@ -219,6 +219,7 @@ $(function() {
 
 				};
 				$.ajax(context + "/admin/admin_join",{
+					
 					data : JSON.stringify(join_Admin),
 					dataType : "json",
 					type : 'post',
