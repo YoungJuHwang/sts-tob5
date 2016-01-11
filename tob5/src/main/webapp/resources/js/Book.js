@@ -135,31 +135,33 @@ var book = {
 		},
 		
 		bookSimplePage : function(pageNo, userid) {
+			alert('심플페이지 진입');
 			var arr = [];
 		$.getJSON(context +'/book/Book_selectAll/'+pageNo ,function(data){
+			alert('제이슨 넘어감');
 			var count = data.count;
 			var pageNo = data.pageNo; 
 			var startPage = data.startPage;
 			var groupSize = data.groupSize;
 			var lastPage = data.lastPage;
 			var totPage = data.totPage;
-			var bookList= '<div id="bookContents" style="color: black;"><h2>책 목록</h2>';
+			var bookList= '<div id="bookContents" style="color: black;"><h2>책 목록</h2>'
 			//---------------------------책 정보----------------------------------------
 			$.each(data.list,function(index,value){
-				+'<div class="book1">'
-				+'<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';//수정필요 사진 경로 및 db 아이디 일치\
-				+'<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
-				+'<font color="white" ">'+this.optionBook+'</font>'; //수정필요  없애거나 고정값으로 주거나
-				+'<font color="white" style="color: green">이벤트</font>';
-				+'<font color="white" class="maroon">경품</font>';
-				+'<font color="white" style="background-color: purple;">무료배송</font>';
-				+'<font color="gray">'+this.writer+'</font><br />';
-				+'<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
-				+'<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
-				+'<br /><br /><br /><br />';
-				+'<input type="button"  value="장바구니에 담기" id="c'+index+'">';
-				+'<input type="button"  value="바로구매" id="b'+index+'">';
-				+'<br /><br /><br /><br />';
+				bookList +='<div class="book1">';
+					bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';
+					bookList +='<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
+					bookList +='<font color="white" ">'+this.optionBook+'</font>'; 
+					bookList +='<font color="white" style="color: green">이벤트</font>';
+					bookList +='<font color="white" class="maroon">경품</font>';
+					bookList +='<font color="white" style="background-color: purple;">무료배송</font>';
+					bookList +='<font color="gray">'+this.writer+'</font><br />';
+					bookList +='<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
+					bookList +='<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
+					bookList +='<br /><br /><br /><br />';
+					bookList +='<input type="button"  value="장바구니에 담기" id="c'+index+'">';
+					bookList +='<input type="button"  value="바로구매" id="b'+index+'">';
+					bookList +='<br /><br /><br /><br />';
 				arr.push(this.bookId);
 			});
 			
@@ -194,7 +196,7 @@ var book = {
 					}
 					pagination += '</TD>';
 					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
-					+pagination;
+					bookList+=pagination;
 					$('.mainView').html(bookList);
 		//---------------------------------------------------------------------------------
 			bookList+='</div>';
@@ -244,7 +246,6 @@ $.each(data.list,function(i,value){
 	mainPage : function(bookId) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){
 				var bookPage = '<div class="contents">'
-					
 					+'<div class="book">'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="200px" height="301px" align="left">'
 					+'</div>'
@@ -308,9 +309,8 @@ $.each(data.list,function(i,value){
 		
 		//책 검색 텍스트와 버튼---------------------------------------------------
 		inputBookName : function() {
-			$('.mainView').html('<form action=""><input type="text" width="15px" id="textInputName">'
-					+'<input type="button" value="검색" id="btCheckName"></form>'
-					)
+			var find = '<form action=""><input type="text" width="15px" id="textInputName">'
+					+'<input type="button" value="검색" id="btCheckName"></form>';
 					$('#btCheckName').click(function() {
 						if ($("#textInputName").val() == "") {
 							alert("검색어를 입력해주세요.");
