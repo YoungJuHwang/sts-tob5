@@ -184,7 +184,7 @@ var AdminMember = {
 								+'<tr><th>이름</th><td id="data_name">'+data.name+'</td></tr>'
 								+'<tr><th>생년</th><td id="data_birth">'+data.birth+'</td></tr>'
 								+'<tr><th>전화번호</th><td id="data_phone">'+data.phone+'</td></tr>'
-								+'<tr><th>이메일</th><td id="data_email">'+data.email+'"></td></tr>'
+								+'<tr><th>이메일</th><td id="data_email">'+data.email+'</td></tr>'
 								+'<tr><th>성별</th><td id="data_gender">'+data.gender+'</td></tr>'
 								+'<tr><th>주소</th><td id="data_addr">'+data.addr+'</td></tr>'
 								+'<td colspan="2"><button id="confrm" style="width:100px; margin-left: 150px;">홈으로</button></td></tr>'

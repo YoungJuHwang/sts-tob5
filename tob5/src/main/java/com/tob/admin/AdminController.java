@@ -46,7 +46,7 @@ public class AdminController {
 	@Autowired MemberServiceImpl memberService;
 	@Autowired EventVO event;
 	@Autowired EventServiceImpl eventService;
-	@Autowired private AdminEmailSender adminEmailSender;
+	@Autowired private EmailSender emailSender;
 	
 	int auth_Num = 0;
 	
@@ -92,7 +92,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/member_reg")
-	public String memberreg(){
+	public String memberReg(){
 		logger.info("AdminController-memberReg() 진입");
 		return "admin/admin/memberReg.tiles";
 	}
@@ -173,7 +173,7 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/admin_join", method=RequestMethod.POST)
-	public Model joinAdmin(
+	public Model adminJoin(
 			@RequestBody AdminVO param,
 			Model model
 			){
@@ -188,6 +188,7 @@ public class AdminController {
 			admin.setPassword(param.getPassword());
 			admin.setAdminEmail(param.getAdminEmail());
 			int result = adminService.insert(admin);
+			
 			if (result == 1) {
 				logger.info("회원가입 성공");
 				model.addAttribute("result","success");
@@ -208,22 +209,37 @@ public class AdminController {
 	@RequestMapping("/join_auth")
 	public Model joinAuth (
 			@RequestParam("id")String id,
-			@RequestParam("admin_email")String admin_email, 
+			@RequestParam("adminEmail")String adminEmail, 
  		    Model model) throws Exception {
-			AdminEmail adminemail = new AdminEmail();
+			Email email = new Email();
 			
 			
 		logger.info("멤버컨트롤러 joinAuth() - 진입");
+		logger.info("넘어온 id는?"+id);
+		logger.info("넘어온 email은?"+adminEmail);
+		logger.info("멤버컨트롤러 joinAuth() - 진입");
         
+		
+		AdminVO admin_Id_check = adminService.selectById(id);
+        AdminVO admin_Email_check = adminService.selectByEmail(adminEmail);
+		if (admin_Id_check != null) {
+			model.addAttribute("id_fail", "id_fail");
+		}
+		else if (admin_Email_check != null) {
+			model.addAttribute("email_fail", "email_fail");
+		}
+		else {
+			
+		}
 		auth_Num = (int) (Math.random()*9999) + 1000;
-        	String reciver = admin_email;
+        	String reciver = adminEmail;
         	String subject = "환영합니다.  "+id+"님, 인증번호 메일입니다.";
         	String content = id+" 님의 가입 인증번호는 "+auth_Num+"입니다.";
         			
-        	adminemail.setReciver(reciver);
-        	adminemail.setSubject(subject);
-        	adminemail.setContent(content);
-            adminEmailSender.sendMail(adminemail);
+        	email.setReciver(reciver);
+        	email.setSubject(subject);
+        	email.setContent(content);
+        	emailSender.sendMail(email);
             model.addAttribute("success", "success");
         return model;
     }
@@ -243,11 +259,21 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/book_join", method=RequestMethod.POST)
-	public @ResponseBody BookVO bookJoin(
-			@RequestBody BookVO param
+	public Model bookJoin(
+			@RequestBody BookVO param,
+			Model model
 			){
-		logger.info("book_join ajax 넘오와서 컨트롤러 진입");
+		logger.info("book_join 컨트롤러 진입");
 		
+		logger.info("책 아이디 : {}", param.getBookId());
+		logger.info("책 이름 : {}", param.getBookName());
+		logger.info("책 가격 : {}", param.getBookPrice());
+		logger.info("책 작가 : {}", param.getWriter());
+		logger.info("책 등급 : {}", param.getGrade());
+		logger.info("책 재고량 : {}", param.getStockSeq());
+		logger.info("책 옵션 : {}", param.getOptionBook());
+		logger.info("책 장르 : {}", param.getGenreId());
+
 		book.setBookId(param.getBookId());
 		book.setBookName(param.getBookName());
 		book.setBookPrice(param.getBookPrice());
@@ -261,12 +287,13 @@ public class AdminController {
 		int result = bookService.registration(book);
         if (result == 1) {
             logger.info("북 등록 성공");
-            
+            model.addAttribute("result","success");
+			model.addAttribute("bookName",book.getBookName());
         } else {
             logger.info("북 등록 실패");
-           
+            model.addAttribute("result", "fail");
         }
-        return book;
+        return model;
 		
 	}
 	

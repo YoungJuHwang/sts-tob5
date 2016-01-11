@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="${css}/admin.css" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
 
 $(function() {
-	AdminBook.init(context+'/admin/book_reg');
+	 AdminBook.init(context+'/admin/book_reg'); 
 });
 
 var AdminBook ={
@@ -27,15 +26,22 @@ var AdminBook ={
 	+'<div class="form-group">'
 	+'<input type="text" name="bookPrice" id="bookPrice" class="form-control input-lg" placeholder="가격" tabindex="4"></div>'
 	+'<div class="form-group">'
-	+'<input type="text" name="write" id="write" class="form-control input-lg" placeholder="작가" tabindex="5"></div>'
+	+'<input type="text" name="writer" id="writer" class="form-control input-lg" placeholder="작가" tabindex="5"></div>'
 	+'<div class="form-group">'
 	+'<input type="text" name="grade" id="grade" class="form-control input-lg" placeholder="등급" tabindex="6"></div>'
 	+'<div class="form-group">'
-	+'<input type="text" name="bookSeq" id="bookSeq" class="form-control input-lg" placeholder="재고량" tabindex="7"></div>'
-	+'<div class="form-group">'
-	+'<input type="text" name="optionBook" id="optionBook" class="form-control input-lg" placeholder="옵션" tabindex="8"></div>'
-	+'<div class="form-group">'
-	+'<input type="text" name="genreId" id="genreId" class="form-control input-lg" placeholder="장르" tabindex="9"></div>'
+	+'<input type="text" name="stockSeq" id="stockSeq" class="form-control input-lg" placeholder="재고량" tabindex="7"></div>'
+	+'<label class="radio-inline"><input type="radio"name="option" value="md" /> md </label>'
+	+'<label class="radio-inline"><input type="radio"name="option" value="free" /> free </label>'
+	+'<label class="radio-inline"><input type="radio"name="option" value="var" /> var </label>'
+	+'<label class="radio-inline"><input type="radio"name="option" value="foo" /> foo </label>'
+	+'<select name="genre" id="genre">'
+	+'<option name="genre" value="">장르</option>'
+	+'<option name="genre" value="fiction">fiction</option>'
+	+'<option name="genre" value="essay">essay</option>'
+	+'<option name="genre" value="it">it</option>'
+	+'<option name="genre" value="classic">classic</option>'
+	+'<option name="genre" value="poem">poem</option></select>'
 	+'<div class="row"><div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox">'
 	+'<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>'
 	+'<input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1"></span></div>'
@@ -63,8 +69,8 @@ var AdminBook ={
 		var writer = $("#writer").val();
 		var grade = $("#grade").val();
 		var bookseq = $("#bookseq").val();
-		var optionBook = $("#optionBook").val();
-		var genreId = $("#genreId").val();
+		var optionBook = $("input:radio[name=option]:checked").val();
+		var genreId = $("select[name=genre] option:selected").val();
 		
 		if (bookId === "") {
 			alert('공란을 채워주세요.');
@@ -81,7 +87,7 @@ var AdminBook ={
 		else if(grade === "") {
 			alert('공란을 채워주세요.');
 		}
-		else if(bookseq === "") {
+		else if(stockSeq === "") {
 			alert('공란을 채워주세요.');
 		} 
 		else if(optionBook === "") {
@@ -98,16 +104,16 @@ var AdminBook ={
 	var bookReg = {
 			
 			join : function() {
-				
+				alert('join book :join');
 				var join_book = {
 					"bookId" :$("#bookId").val(),
 					"bookName" :$("#bookName").val(),
 					"bookPrice" :$("#bookPrice").val(),
 					"writer" :$("#writer").val(),
 					"grade" :$("#grade").val(),
-					"bookseq" :$("#bookseq").val(),
-					"optionBook" :$("#optionBook").val(),
-					"genreId" :$("#genreId").val()
+					"stockSeq" :$("#stockSeq").val(),
+					"optionBook" :$("input:radio[name=option]:checked").val(),
+					"genreId" :$("select[name=genre] option:selected").val()
 				};
 				
 				$.ajax(context + "/admin/book_join",{
@@ -120,6 +126,7 @@ var AdminBook ={
 					success : function(data) {
 						if(data.result == "success"){
 							alert(data.bookName+"책 등록 완료되었습니다.");
+							location.href(context+'/admin/main');
 						}
 						if(data.result == "fail"){
 							alert("책 등록 실패하였습니다. 다시 시도해주세요.");
@@ -127,7 +134,10 @@ var AdminBook ={
 					},
 					error : function(xhr, status, msg) {
 					}
+					
 				});
+				
+				
 			}
 	};	
 	
@@ -216,3 +226,7 @@ var AdminBook ={
 
 
 </script>
+
+
+
+

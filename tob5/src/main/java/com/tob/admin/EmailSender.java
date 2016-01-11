@@ -15,13 +15,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Component;
  
-import com.tob.admin.AdminEmail;
+import com.tob.admin.Email;
  
 @Component
-public class AdminEmailSender  {
+public class EmailSender  {
      
      
-	public void sendMail(AdminEmail adminEmail) throws MessagingException, UnsupportedEncodingException {
+	public void sendMail(Email adminEmail) throws MessagingException, UnsupportedEncodingException {
 
         // SSL // I USED THIS METHOD            
         Properties propsSSL = new Properties();
@@ -44,7 +44,7 @@ public class AdminEmailSender  {
 
         Transport transportSSL = sessionSSL.getTransport();
         // EVEN IF YOU SKIP PORT NUMBER , IT WOULD WORK
-        transportSSL.connect("smtp.gmail.com", 465, "dingo44kr@gmail.com", "tlsgP0205");
+        transportSSL.connect("smtp.gmail.com", 465, "sellerofkorea@gmail.com", "hjsm0825"); // 이메일주소와, 비번
         transportSSL.sendMessage(messageSSL, messageSSL.getAllRecipients());
         transportSSL.close();
         System.out.println("SSL done.");
