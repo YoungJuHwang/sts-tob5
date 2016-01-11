@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,7 +45,7 @@ public class BookController {
 		logger.info("넘어온 페이지No. : {}",pageNo);
 		
 		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 4;
+		int pageSize = 3;
 		int groupSize = 3;
 		int count = service.count();
 		logger.info("번호 : {}",count);
@@ -155,9 +156,4 @@ public @ResponseBody BookVO bookMain(
 		return map;
 	}
 	
-	/*public String getUserid(HttpSession session){
-		MemberVO member = (MemberVO) session.getAttribute("user");
-		logger.info("세션에 들어있는 유저아이디 : {} "+member.getUserid());
-		return member.getUserid();
-	}*/
 }

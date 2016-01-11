@@ -204,7 +204,6 @@ var book = {
 					alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
 					book.bookEmpty();
 					book.mainPage(arr[index]);
-					book.todayBook('1');
 			});
 
 
@@ -241,19 +240,98 @@ $.each(data.list,function(i,value){
 					+'<br /><br /><br /><br /><br /><br /><br /><br />'
 					+'<font>　　　　　　　</font><font color="black" size="3px">판매가 :</font> <font color="red" size="7pk"><strong>'+data.bookPrice+'</strong></font><font color="purple" size="3px"><strong>[10%↓ 1,500원 할인]</strong></font><br />'
 					+'<font>　　　　　　　</font><font color="black">제휴할인가 :</font> <font color="skyblue" size="3px"><strong><12,820원</strong></font><font color="black">교보-KB국민카드 5% 청구할인(실적무관)</font><font>　　</font>'
-					+'<input type="button" onclick="다음 페이지로.." value="구매하기">'
-					+'<input type="button" onclick="다음 페이지로.." value="장바구니에 담기"><br />'
-					
+					+'<input type="button" value="책검색" id="search">'
 					+'<br /></div></div>';
 				$('.mainView').html(bookPage);
+				$('#search').click(function() {
+					book.bookEmpty();
+					book.inputBookId();
+				});
 			});
+			
 		},
 		
 
 		
 		
-		//------------------------------ 오늘의 책------------
-		todayBook : function(pageNo) {
+		
+		
+		
+		//------------------------ 오늘의책  입력하기.. 이것도 아닌 거 같음
+		inputBookId : function() {
+			$('.mainView').html('<form action=""><input type="text"  id="textInputId">'
+					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
+					)
+					$('#btCheck').click(function() {
+						if ($("#textInputId").val() == "") {
+							alert("책 아이디 값을 입력해주세요.");
+							$("#textInputId").focus();
+							return false;
+						}
+						book.searchForTodayBook2($("#textInputId").val());
+					})
+		},
+		//case 1 ---------------------------------------------------
+		searchForTodayBook : function(bookId) {
+			
+			alert('searchForTodayBook 진입 하였음');
+			$.ajax({
+				url :  +"${context}/book/Book_main"+bookId,
+				data : $('textInputId').val(),
+				dataType : "json",
+				type : 'get',
+				contentType : "application/json",
+				mimeType : "application/json",
+				async : false,
+				success : function(data) {
+					if (data != null) {
+						alert(this.bookName + "책 선정 완료");
+							var showTodayBook = '<h2>오늘의 책</h2>'
+								+'<div><a>'+this.bookName+'</a>'
+								+'</div>'
+					} else {
+						alert("책 등록  오류");
+						return false;
+					}
+				},
+				error : function(e) {
+					alert("에러");
+				}
+				
+			})
+		},
+		//------------------------------------------------------------------------------
+		
+		//case2-------------------------------------------------------------------------
+		searchForTodayBook2 : function() {
+			alert('오늘의 책 2번째 방법 진입');
+			$.getJSON(context +'/book/Book_main/'+bookId ,function(data){
+				var todayBook= '<div id="bookTodaybook" style="color: black; width : 400px; height: 200px; border: 1px solid black;"><h2 style="color: olive;>오늘의 책</h2>';
+				todayBook += '<div class="BookToday">'
+					todayBook += '<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';//수정필요 사진 경로 및 db 아이디 일치\
+					todayBook += '<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a><br /><br />';
+					todayBook += '<font color="maroon" size="1px">'+this.writer+'</font><br />';
+					todayBook += '<font color="black" size="2px">책 내용 들어갈 자리.</font>';
+					todayBook += '<br /><br /><br /><br />';
+			});
+		},
+		
+		
+		//-------------------------------------------------------------------------
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//------------------------------ 오늘의 책-- 망한거----------
+		todayBook242 : function(pageNo) {
 			alert('오늘의 책 진입');
 			var bookArr = [];
 			$.getJSON(context +'/book/Book_TodayBook/'+pageNo ,function(data){
@@ -264,17 +342,17 @@ $.each(data.list,function(i,value){
 				var groupSize = data.groupSize;
 				var lastPage = data.lastPage;
 				var totPage = data.totPage;
-				var todayBook= '<div id="bookToday" style="color: black; width : 500px; height: 180px; border: 1px solid black;"><h2 style="color: olive;>오늘의 책</h2>';
+				var todayBook= '<div id="bookTodaybook214124" style="color: black; width : 400px; height: 200px; border: 1px solid black;"><h2>오늘의 책</h2>';
 				//---------------------------책 정보----------------------------------------
 				alert('오늘의책 까지 들어옴')
 				$.each(data.list,function(index,value){
 					todayBook += '<div class="BookToday">'
 					todayBook += '<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';//수정필요 사진 경로 및 db 아이디 일치\
-					todayBook += '<font color="gray" size="2px">요런저런 냥아치임 ㅎㅎ</font><br />';
 					todayBook += '<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a><br /><br />';
-					todayBook += '<font color="maroon">'+this.writer+'</font><br />';
-					todayBook += '<font color="black" size="3px">요런저런 냥아치인데 내용에 관한 쿼리좀 넣어주시면 오늘의 책이 좀 볼만할듯 ㄴㅁ륨이ㅏ류 ^오^</font>';
+					todayBook += '<font color="maroon" size="1px">'+this.writer+'</font><br />';
+					todayBook += '<font color="black" size="2px">책 내용 들어갈 자리.</font>';
 					todayBook += '<br /><br /><br /><br />';
+					todayBook+='</div>';
 					bookArr.push(this.bookId);
 				});
 				
@@ -314,7 +392,7 @@ $.each(data.list,function(i,value){
 			//---------------------------------------------------------------------------------
 				todayBook+='</div>';
 				
-				$('.mainView').html(todayBook);
+				$('.mainView').append(todayBook);
 		
 			});
 			},
