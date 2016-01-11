@@ -134,14 +134,14 @@ var book = {
 		
 		bookSimplePage : function(pageNo, userid) {
 			var arr = [];
-		$.getJSON(context +'/book/Book_selectAll/'+pageNo ,function(data){
+		$.getJSON(context +'/book/Book_selectAll/'+pageNo,function(data){
 			var count = data.count;
 			var pageNo = data.pageNo; 
 			var startPage = data.startPage;
 			var groupSize = data.groupSize;
 			var lastPage = data.lastPage;
 			var totPage = data.totPage;
-			var bookList= '<div id="bookContents" style="color: black;"><h2>책 목록</h2>';
+			var bookList= '<div id="bookContents" style="color: black;"><h2>책 목록-로그인된 화면</h2>';
 			//---------------------------책 정보----------------------------------------
 			$.each(data.list,function(index,value){
 				bookList += '<div class="book1">'
@@ -155,7 +155,7 @@ var book = {
 				bookList += '<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
 				bookList += '<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
 				bookList += '<br /><br /><br /><br />';
-				bookList += '<input type="button"  value="장바구니에 담기" id="c'+index+'">';
+				bookList += '<input type="button"  value="장바구니에 담기" onclick="book.putInCart('+'\''+this.bookId+'\''+')">';
 				bookList += '<input type="button"  value="바로구매" id="b'+index+'">';
 				bookList += '<br /><br /><br /><br />';
 				arr.push(this.bookId);
@@ -199,16 +199,6 @@ var book = {
 			
 			$('.mainView').html(bookList);
 			
-			
-			$('#cart').click(function() {
-				
-				alert('장바구니에 책이 담겼습니다 ^ㅁ^')
-			});
-			$('#buy').click(function() {
-				alert('구매 페이지로 이동')
-			});
-		
-			
 			$.each(data.list, function(index, value) {
 				$('#'+arr[index]).click(function() {
 					alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
@@ -216,15 +206,7 @@ var book = {
 					book.mainPage(arr[index]);
 					book.todayBook('1');
 			});
-				
-$.each(data.list,function(index,value){
-	$('#c'+index).click(function() {
-		alert('장바구니 클릭 됨.');
-		alert('Cart.put으로 넘기는 유저아이디 : '+userid);
-		Cart.put(arr[index], userid);
-		book.bookSimplePage('1',userid);
-	});
-});
+
 
 $.each(data.list,function(i,value){
 	$('#b'+index).click(function() {
@@ -239,7 +221,10 @@ $.each(data.list,function(i,value){
 		});
 		},
 		
-		
+	putInCart : function(bookId, userid) {
+		alert('장바구니 클릭 됨.');
+		Cart.put(bookId);
+	},
 	mainPage : function(bookId) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){
 				var bookPage = '<div class="contents">'

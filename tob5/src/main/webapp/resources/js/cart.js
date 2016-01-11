@@ -15,13 +15,10 @@ var Cart = {
 		alert('메인으로 넘어온 유저아이디'+Cart.getUserid());
 	},
 
-	put : function(bookId, userid) {
-		alert('Cart.put()진입 넘겨받은 북아이디 : '+bookId);
-		alert('Cart.put()진입 넘겨받은 세션아이디 : '+ userid);
+	put : function(bookId) {
 		$.ajax(context+'/cart/put',{
 			data : {
-				bookId : bookId,
-				userid : userid
+				bookId : bookId
 			},
 			dataType : "json",
 			type : 'get',
@@ -38,8 +35,6 @@ var Cart = {
 	},
 	
 	list : function(userid) {
-		alert('리스트는 하루동안 담은 내역을 보여주는것으로..');
-		alert('Cart.list 진입, 넘어온 아이디 : '+userid);
 		var arr = [];
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
 			var table = '<div id="cartList"><h1> TOB 배송 상품 장바구니</h1>'
@@ -57,10 +52,6 @@ var Cart = {
 			/*$(table).appendTo($('.mainView').empty());*/
 			$('.mainView').empty().append(table);
 			
-			/*삭제시 필요한 파라미터 : CART_TODAY, BOOK_ID, USERID*/
-			$.each(data, function(i, val) {
-				
-			});
 		});
 	},
 	/*list : function(context, userid) {

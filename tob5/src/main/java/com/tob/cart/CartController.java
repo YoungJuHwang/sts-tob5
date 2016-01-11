@@ -2,6 +2,8 @@ package com.tob.cart;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.tob.book.BookVO;
+import com.tob.member.MemberVO;
 
 
 @Controller
+@SessionAttributes("user")
 @RequestMapping("/cart")
 public class CartController {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
@@ -42,13 +47,14 @@ public class CartController {
 	@RequestMapping("/put")
 	public Model put(
 			String bookId,
-			String userid,
+			HttpSession session,
 			Model model
 			){
 		logger.info("카트 컨트롤러 - put() 진입");
 		logger.info("넘어온 북아이디 : {}",bookId);
-		logger.info("넘어온 유저아이디 : {}",userid);
-		int result = service.put(bookId, userid);
+		MemberVO member = (MemberVO) session.getAttribute("user");
+		logger.info("카트 컨트롤러에서 받은 세션의 아이디 : {}"+member.getUserid());
+		int result = service.put(bookId, member.getUserid());
 		return model;
 	}
 	
