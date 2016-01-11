@@ -77,7 +77,7 @@ var AdminMemberList = {
 					if (lastPage != totalPage) {
 						pagination +=
 						    '<a href="#" onclick="AdminMemberList.list('+(startPage + groupSize)+')">'
-		    	            +'<IMG SRC=" ${img}/admin/btn_nxt_page.gif"> &nbsp;'
+		    	            +'<IMG SRC=" ${img}/right.png"> &nbsp;'
 		           			+'</a>'
 		           			+'<a href="#" onclick="AdminMemberList.list('+(totalPage - ((totalPage-1) % groupSize))+')">'
 		                	+'<IMG SRC=" ${img}/admin/btn_nxt_block.gif"> &nbsp;'
