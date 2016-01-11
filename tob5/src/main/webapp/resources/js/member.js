@@ -1,6 +1,7 @@
 var Member = {
-			detail : function(url) {
-				$.getJSON(url,
+			detail : function(userid) {
+				alert('멤버의 detail 진입');
+				$.getJSON(context+'/member/detail/'+userid,
 					function(data){
 					var table = '<table><tr><td rowspan="7" id="td_profile"><img id="profile" src="${context}/images/${member.profile}" width="70%" height="80%"/></td>'
 					+'<th id="item">항목</th><th>빈 칸</th></tr><tr><td>아이디</td><td>${member.userid}</td></tr><tr><td>비밀번호</td><td>${member.password}"'

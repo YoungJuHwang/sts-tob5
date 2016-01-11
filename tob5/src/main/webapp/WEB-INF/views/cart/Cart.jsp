@@ -4,7 +4,7 @@
 </div>
 <script type="text/javascript">
 	$(function() {
-		Cart.list(context);
+		Cart.list(userid);
 		alert('카트 자동 함수 먹음');
 	});
 </script>

@@ -42,6 +42,7 @@ public class CartServiceImpl implements CartService {
      	logger.info("바뀐 카트VO의  책 아이디 : " + cart.getBookid());
     	logger.info("바뀐 카트VO의 유저 아이디 : " + cart.getUserid());
     	logger.info("바뀐 카트VO의 카트 넘버 : " + cart.getCartNum());
+    	logger.info("바뀐 카트VO의 TODAY카트 넘버 : " + cart.getcartToday());
 		/*return mapper.put(cart);*/
      	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
      	//mapper.put(cart);
