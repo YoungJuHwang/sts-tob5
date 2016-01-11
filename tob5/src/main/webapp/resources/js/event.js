@@ -22,8 +22,9 @@ var Event = {
 			
 		},
   ranking : function(pageNo) {
-     $ .getJSON (context +'/event/Event_selectAll/'+pageNo,function (data){
-      	var arr = [];
+	  var arr = [];
+	 
+     $.getJSON (context +'/event/Event_selectAll/'+pageNo,function (data){
       	var count = data.count;
 		var pageNo = data.pageNo; 
 		var startPage = data.startPage;
@@ -32,7 +33,7 @@ var Event = {
 		var totPage = data.totPage;
 		
             var rank = '<div id="test"><h2 style="color: white; padding-top:10;">이벤트</h2></div><div style="height: 550px">'
-           $.each (data.list, function(index , value ) {
+           $.each (data.list, function(index,value) {
            rank += '<div class="img">'
            +'<img src="'+context+'/resources/images/'+this.profile+'" alt="'+this.profile+'" width="150" height="100"></a>'
            +'<div class="desc"><br /><a class="highlight" href= "#" id="'+this.evtId+'">'+this.evtName+'</a>'
@@ -58,28 +59,29 @@ var Event = {
 						+i
 						+'</font>';
 					} else {
-						pagination+='<a href="#" onClick="return event.ranking('+i+')">'
+						pagination+='<a href="#" onClick="return Event.ranking('+i+')">'
 						+'<font>'
 						+i
 						+'</font>'
 						+'</a>';
 					}
-				}		
+				}
+				
 				if ((startPage + groupSize) <= totPage) {
 					pagination += +'<a href="'+context+'/event/Event_selectAll/'+(startPage+groupSize)+'">'
 				}
-				pagination += '</TD>';
-				pagination += '<TD WIDTH=200 ALIGN=RIGHT></div>'
-					
-				  $('.mainView').append(rank);
-				$('.mainView').append(pagination);
+				pagination += '</TD>'
+				pagination += '<TD WIDTH=200 ALIGN=RIGHT></div>';
 				
+				rank += pagination;
+
+				$('#submain').html(rank);
 				
-				$.each(data.list, function(i,value) {
+				$.each(data.list, function(index,value) {
 					
-	                $('#'+ arr[i]).click( function() {
+	                $('#'+ arr[index]).click( function() {
 	                	 alert("이벤트 댓글달기로 이동");
-	                     Event.eventPage(arr[i]);
+	                     Event.eventPage(arr[index]);
 
 				});
 
@@ -96,29 +98,26 @@ var Event = {
 				+'<img alt="" src="'+context+'/resources/images/skill.jpg">'
 				+'<div style="margin-left:8%">'
 				+'<label for="reply" style="display:block;">댓글</label>'
-				+'<textarea name="reply" cols="82" rows="20" style="width:70%; height:10%; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
-				+'<div><button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;"></button>'
-				+'<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;"></button>'
+				+'<textarea name="reply" cols="82" rows="20" style="width:60%; height:10%; color:black;" placeholder="로그인 후 댓글을 입력하세요"></textarea></div>'
+				+'<div><button id="reply_btn" class="btn btn-primary btn-lg center-block" style="margin-left:35%; margin-right:20px; float:left;">입력</button>'
+				+'<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;">입력</button>'
 				+'</div><div id="reply_area" style="padding-top:10px;"></div>'
 				+'</div>';
 				$('.mainView').html(eventPage);
-			
-				alert("배고프오");
-			
-				
-					alert("이게 뜨긴 뜸?");
+
 				$ ("#reply_btn").click(function() {
 				       if($(".navbar-right a").text() === "로그인"){
 				           alert("댓글을 달려면 로그인을 해주세요");
 				       }else{
 				           $.ajax(context+"/reply/Reply",{
 				                data : {
-				                       "code" : $("#code").text(),
 				                       "writer" : $(".navbar-right a").text(),
-				                       "comment" : $("#readModal textarea[name=reply]").val()
+				                       "comment" : $("#readModal textarea[name=reply]").val(),
+				                       "regDate" : $(),
+				                       "thumnail" : $
 				                 },
 				                success : function() {
-				                     $ ("#reply_area" ).append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
+				                     $ ("#reply_area").append("<p style='border:solid; position:relative;'>" + $(".navbar-right a").text() + " | " +$("textarea[name=reply]").val () + "<button id='remove_reply"+ (index++ ) +"'style='position:absolute; right:0; top:0; border:none; color:black; background:white;'>지우기</button></p>");
 				                       // 댓글지우기 //
 				                      $ ("#remove_reply" + (index-1)).click(function() {
 				                           $ ("#" + this.id).parent().remove() ;

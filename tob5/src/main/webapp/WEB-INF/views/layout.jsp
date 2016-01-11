@@ -20,6 +20,7 @@
 				<div class="mainView">
 					<tiles:insertAttribute name="content" />
 				</div>
+				<div id="submain"></div>
 			</section>
 		</div>
 		<div id="footer">

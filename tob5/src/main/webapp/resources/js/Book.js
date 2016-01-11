@@ -192,6 +192,7 @@ var book = {
 					}
 					pagination += '</TD>';
 					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+						
 					bookList += pagination;
 					$('.mainView').html(bookList);
 		//---------------------------------------------------------------------------------
