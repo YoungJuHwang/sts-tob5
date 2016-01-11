@@ -50,25 +50,6 @@ public class AdminController {
 	
 	int auth_Num = 0;
 	
-	@RequestMapping("/book_search")
-	public String bokSearch(){
-		logger.info("AdminController-adminSearch() 진입");
-		return "admin/admin/bookSearch.tiles";
-	}
-	
-	@RequestMapping("/map")
-	public String map(){
-		logger.info("AdminController-map() 진입");
-		return "admin/admin/map.tiles";
-	}
-	
-	@RequestMapping("/book_proxy")
-	public String bookProxy(){
-		logger.info("AdminController-bookProxy() 진입");
-		return "admin/admin/book_proxy.tiles";
-	}
-	
-	
 	
 	@RequestMapping("/main")
 	public String home(){
@@ -76,6 +57,7 @@ public class AdminController {
 		logger.info("Admin");
 		return "admin/admin/main.tiles";
 	}
+
 	
 	@RequestMapping("/member_profile/{userid}")
 	public @ResponseBody MemberVO memberProfile(
@@ -92,8 +74,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/member_reg")
-	public String memberReg(){
-		logger.info("AdminController-memberReg() 진입");
+	public Model memberReg(
+			Model model
+			){
+		logger.info("AdminController-memberReg() 페이지만 진입");
+		return model;
+	}
+	
+	@RequestMapping("/member_reg2")
+	public String memberReg2(
+			){
+		logger.info("AdminController-memberReg2() 페이지만 진입");
 		return "admin/admin/memberReg.tiles";
 	}
 	
@@ -190,11 +181,11 @@ public class AdminController {
 			int result = adminService.insert(admin);
 			
 			if (result == 1) {
-				logger.info("회원가입 성공");
+				logger.info("관리자 등록 성공");
 				model.addAttribute("result","success");
 				model.addAttribute("id",admin.getId());
 			} else {
-				logger.info("회원가입 실패");
+				logger.info("관리자 등록 실패");
 				model.addAttribute("result", "fail");
 			}
 		} 
@@ -202,6 +193,44 @@ public class AdminController {
 		else {
 			model.addAttribute("result", "not_Agreement");
 		}
+		
+		return model;
+	}
+	
+	@RequestMapping(value="/join_member", method=RequestMethod.POST)
+	public Model joinMember(
+			@RequestBody MemberVO param,
+			Model model
+			){
+		logger.info("멤버컨트롤러 joinMember() - 진입");
+		logger.info("가입 아이디 : {}",param.getUserid());
+		logger.info("가입 패스워드 : {}",param.getPassword());
+		logger.info("가입 인증번호 : {}",param.getName());
+		
+		
+			member.setUserid(param.getUserid());
+			member.setPassword(param.getPassword());
+			member.setName(param.getName());
+			member.setEmail(param.getEmail());
+			member.setBirth(param.getBirth());
+			member.setGender(param.getGender());
+			member.setPhone(param.getPhone());
+			member.setAddr(param.getAddr());
+
+			
+			int result = memberService.insert(member);
+			
+			if (result == 1) {
+				logger.info("회원가입 성공");
+				model.addAttribute("result","success");
+				model.addAttribute("name",member.getName());
+			} else {
+				logger.info("회원가입 실패");
+				model.addAttribute("result", "fail");
+			}
+		
+		
+		
 		
 		return model;
 	}
@@ -253,9 +282,11 @@ public class AdminController {
 	
 
 	@RequestMapping("/book_reg")
-	public String bookReg(){
-		logger.info("AdminController-bookreg()페이지만 진입");
-		return "admin/admin/bookReg.tiles";
+	public Model bookReg(
+			Model model
+			){
+		logger.info("AdminController-bookreg() 페이지만 진입");
+		return model;
 	}
 	
 	@RequestMapping(value="/book_join", method=RequestMethod.POST)
