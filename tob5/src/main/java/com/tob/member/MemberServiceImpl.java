@@ -99,5 +99,6 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.logout(userid,password);
 		}
 		
+		
 }
 		
