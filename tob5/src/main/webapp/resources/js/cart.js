@@ -43,7 +43,7 @@ var Cart = {
 			$.each(data, function(i, val) {
 				table +='<tr><td><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
 				+'<td>'+this.bookPrice+'</td>'
-				+'<td>'+this.count+'</td>'
+				+'<td><input type="text" name="count" id="c'+i+'" placeholder="'+this.count+'"></input></td>'
 				+'<td><button id="o'+i+'">주문하기</button></td>'
 				+'<td><button id="d'+i+'">삭제하기</button></td></tr>'
 				arr.push(this.purNum);
