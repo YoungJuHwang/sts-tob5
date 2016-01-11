@@ -9,6 +9,7 @@
 	</insert>
 	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.TodayCartVO">
 		SELECT
+			b.BOOK_ID AS bookId,
 			b.BOOK_NAME AS bookName,
 			b.PRICE AS bookPrice,
 			c.COUNT AS count
@@ -17,6 +18,9 @@
 		b.BOOK_ID = c.BOOK_ID AND
 		c.CART_TODAY = #{today}
 	</select> 
+	<select id="">
+	
+	</select>
  	<update id="changeCount">
  	
  	</update>

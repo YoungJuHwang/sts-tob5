@@ -42,11 +42,19 @@ var Cart = {
 				table +='<tr><td width="50" align="center"></td><td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
 				+'<td width="130" align="center">'+this.bookPrice+'</td>'
 				+'<td width="150" align="center"><div style="float:left"><input type="text" name="count" size="1" id="c'+i+'" value="'+this.count+'"></input></div>'
-				+'<div class="button" style="float:left;margin-left:4px"><input type="submit" class="button_gray" style="width:55px" value="변경"></div></td>'
-				+'<td width="100" align="center"><button id="d'+i+'" align="center">삭제하기</button></td></tr>'
-				arr.push(this.purNum);
+				+'<div class="button" style="float:left;margin-left:4px">'
+/*==>onclick*/	+'<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+','+this.count+'\''+')"></div></td>'
+				+'<td width="100" align="center"><button id="d'+i+'" align="center">삭제</button></td></tr>'
+				arr.push(this.bookId);
 			});
-			table += '</tbody></table></form></div>';
+			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody><tr><td align="center" style="padding: 10px 0 10px 0"><table cellpadding="0" cellspacing="0" border="0" width="610"><tbody><tr><td><table cellpadding="0" cellspacing="0" border="0"'
+				+'width="289"><tbody><tr><td width="140">총 상품가격</td>'
+				+'<td width="149"><strong>합계...</strong></td>'
+				+'</tr><tr><td height="20">배송비</td><td><strong>0</strong>원</td></tr><tr><td height="20">총 주문 상품 수</td>'
+				+'<td><strong>??</strong>권</td>'
+				+'</tr></tbody></table></td><td width="1" bgcolor="#ffffff"></td></tbody></table><table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr><td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
+				+'<td width="149" class="pt1"><span class="pt3">합계 금액...</span></td></tr></tbody></table></td></tr></tbody></table>'
+				+'</form></div>';
 			$('.mainView').empty().append(table);
 			
 		});
@@ -71,9 +79,9 @@ var Cart = {
 		});
 	},*/
 	
-	change : function(bookId, userid) {
+	change : function(bookId, count) {
 		alert('변경 진입, 넘어온 책 아이디값 : ' +bookId);
-		alert('변경 진입, 넘어온 유저아이디값 : ' +userid);
+		alert('변경 진입, 넘어온 책 수량 : ' +count);
 		
 		$.ajax(context+'/cart/change',{
 			data : {
