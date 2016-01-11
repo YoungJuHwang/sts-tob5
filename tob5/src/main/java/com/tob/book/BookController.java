@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -79,38 +80,9 @@ public @ResponseBody BookVO bookMain(
 	return book;
 }
 	
-	// 오늘의 책 보여주기.
-	@RequestMapping("/Book_TodayBook/{pageNo2}")
-	public @ResponseBody Map<String,Object> todayBook(
-			@PathVariable("pageNo2")String pageNo,
-			Model model
-			){
-		logger.info("BookController Book_TodayBook()진입.");
-		logger.info("Book_TodayBook  넘어온 페이지No. : {}",pageNo);
-		
-		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 1;
-		int groupSize = 4; //밑에 보여주는 번호.
-		int count = service.count();
-		logger.info(" Book_TodayBook  번호 : {}",count);
-		int totalPage = count/pageSize;
-		if (count%pageSize != 0) {
-			totalPage += 1;
-		}
-		int startPage = pageNumber - ((pageNumber-1) % groupSize);
-		int lastPage = startPage + groupSize -1;
-		if (lastPage > totalPage) {
-			lastPage = totalPage;
-		}
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("list", service.selectAll(CommandFactory.list(pageNo)));
-		map.put("count", count);
-		map.put("totalPage", totalPage);
-		map.put("pageNo", pageNumber);
-		map.put("startPage", startPage);
-		map.put("lastPage", lastPage);
-		map.put("groupSize", groupSize);
-		logger.info("BookController:Book_TodayBook()");
-		return map;
-	}
+	
+	
+	
+	
+
 }

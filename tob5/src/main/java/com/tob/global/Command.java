@@ -4,7 +4,7 @@ public class Command implements Orderable{
 	private String column, keyword; 
 	private int pageNO, start, end, themeNo;
 	
-	public final int PAGESIZE = 3;
+	public final int PAGESIZE = 1;
 	public Command(String pageNo) {
 		this.pageNO = Integer.parseInt(pageNo);
 		this.start = (Integer.parseInt(pageNo) - 1)*PAGESIZE+1;
