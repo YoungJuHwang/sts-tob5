@@ -279,7 +279,7 @@ $.each(data.list,function(i,value){
 				var groupSize = data.groupSize;
 				var lastPage = data.lastPage;
 				var totPage = data.totPage;
-				var bookList= '<div id="bookToday" style="color: black; width : 500px; height: 180px; border: 1px solid black;"><h2 style="color: olive;>오늘의 책</h2>';
+				var todayBook= '<div id="bookToday" style="color: black; width : 500px; height: 180px; border: 1px solid black;"><h2 style="color: olive;>오늘의 책</h2>';
 				//---------------------------책 정보----------------------------------------
 				alert('오늘의책 까지 들어옴')
 				$.each(data.list,function(index,value){
