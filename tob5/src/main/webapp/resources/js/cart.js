@@ -37,19 +37,16 @@ var Cart = {
 	list : function(userid) {
 		var arr = [];
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<div id="cartList"><h1> TOB 배송 상품 장바구니</h1>'
-				+'<table id="pur_list"><tr><th>책 이름</th>'
-				+'<th>가격</th><th>수량</th></tr>';
+			var table = '<div id="Shop_Basket" style="height:100%"><form action="" name="frm0" id="frm0" method="get" ><table width="866" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2"><table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2"><table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td align="left"><h3 class="title_middle_black"><span class="title_middle_blue">TOB</span>배송 상품 장바구니 </h3></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table width="866" align="center" cellspacing="0" cellpadding="0" border="0" summary class="table_shop_blue"><tbody><tr><th width="50" height="29" align="center"></th><th height="29" width="*" align="center">상품명</th><th width="130" height="29" align="center">가격</th><th width="150" height="29" align="center">수량</th><th width="100" height="29" align="center">삭제 <input type="checkbox" name="AllSelect" onclick="javascript:revcheck(document.frm0)" value="checkbox" checked/></th></tr></tbody></table><table id="item_list" width="866" border="0" align="center" cellpadding="3" cellspacing="0"><tbody>';
 			$.each(data, function(i, val) {
-				table +='<tr><td><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
-				+'<td>'+this.bookPrice+'</td>'
-				+'<td><input type="text" name="count" id="c'+i+'" placeholder="'+this.count+'"></input></td>'
-				+'<td><button id="o'+i+'">주문하기</button></td>'
-				+'<td><button id="d'+i+'">삭제하기</button></td></tr>'
+				table +='<tr><td width="50" align="center"></td><td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
+				+'<td width="130" align="center">'+this.bookPrice+'</td>'
+				+'<td width="150" align="center"><div style="float:left"><input type="text" name="count" size="1" id="c'+i+'" value="'+this.count+'"></input></div>'
+				+'<div class="button" style="float:left;margin-left:4px"><input type="submit" class="button_gray" style="width:55px" value="변경"></div></td>'
+				+'<td width="100" align="center"><button id="d'+i+'" align="center">삭제하기</button></td></tr>'
 				arr.push(this.purNum);
 			});
-			table += '</table></div>';
-			/*$(table).appendTo($('.mainView').empty());*/
+			table += '</tbody></table></form></div>';
 			$('.mainView').empty().append(table);
 			
 		});
