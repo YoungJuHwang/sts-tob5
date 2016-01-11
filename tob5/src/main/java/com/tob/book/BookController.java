@@ -90,7 +90,7 @@ public @ResponseBody BookVO bookMain(
 		
 		int pageNumber = Integer.parseInt(pageNo);
 		int pageSize = 1;
-		int groupSize = 10;
+		int groupSize = 4; //밑에 보여주는 번호.
 		int count = service.count();
 		logger.info(" Book_TodayBook  번호 : {}",count);
 		int totalPage = count/pageSize;
