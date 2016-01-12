@@ -74,8 +74,7 @@ var book = {
 					oldArr.push(this.genreId);
 					oldArrName.push(this.genreName);
 					});
-				$('.mainView').empty().append(table).append(find);
-				
+				$('.mainView').empty().append(table);
 				
 				
 				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
@@ -253,6 +252,7 @@ $.each(data.list,function(i,value){
 				$('#search').click(function() {
 					book.bookEmpty();
 					book.inputBookId();
+					book.inputBookName();
 				});
 			});
 			
@@ -266,7 +266,7 @@ $.each(data.list,function(i,value){
 		
 		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///수민이형
 		inputBookId : function() {
-			$('.mainView').html('<form action=""><input type="text"  id="textInputId">'
+			$('.mainView').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
 					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
 					)
 					$('#btCheck').click(function() {
@@ -298,42 +298,44 @@ $.each(data.list,function(i,value){
 		
 		//책 검색 텍스트와 버튼---------------------------------------------------
 		inputBookName : function() {
-			var find = '<form action=""><input type="text" width="15px" id="textInputName">'
+			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName"> &nbsp;'
 					+'<input type="button" value="검색" id="btCheckName"></form>';
+			$('.mainView').append(finding);
+			
+			
 					$('#btCheckName').click(function() {
 						if ($("#textInputName").val() == "") {
 							alert("검색어를 입력해주세요.");
 							$("#textInputName").focus();
 							return false;
 						}
+						$('#findBybookName').empty();
 						book.findBook($("#textInputName").val());
+						
 					});
 		},
 		
 		//-case2 값 넘겨서 보여주기------------------------------------------------------------------------
-		findBook : function(bookName) {
-			alert('findBook 실행')
-				$.getJSON(context+'/book/Book_find'+bookName,function(data){
-					alert('제이슨 성공')
-						var findResult = '<div id="findBybookName" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>'+data.bookName+'으로 검색결과</h2><br /><br /><br />'
+		findBook : function(searchBookName) {
+			var resultSearchBook = [];
+			
+				$.getJSON(context+'/book/Book_find/'+searchBookName,function(data){
+						var findResult = '<div id="findBybookName" style="color: black; width : 400px; height: 300px;"><h2>['+searchBookName+']  으로 검색결과</h2><br /><br /><br />'
 							$.each(data,function(index,value) {
-								+'<div class="book1">'
-									+'<img alt="" src="'+context+'/resources/images/bookPicture'+index+'.jpg" width="106px" height="150px" align="left">';//수정필요 사진 경로 및 db 아이디 일치\
-									+'<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
-									+'<font color="white" ">'+this.optionBook+'</font>'; 
-									+'<font color="white" class="maroon">경품</font>';
-									+'<font color="white" style="background-color: purple;">검색결과 보너스</font>';
-									+'<font color="gray">'+this.writer+'</font><br />';
-									+'<font color="red" class="white">'+this.bookPrice+'</font><font>원</font>';
-									+'<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
+								findResult +='<div class="findBook1">'
+									+'<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">'
+									+'<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>'
+									+'<font color="white" ">'+this.optionBook+'</font>'
+									+'<font color="white" class="maroon">경품</font>'
+									+'<font color="white" style="background-color: purple;">검색결과 보너스</font>'
+									+'<font color="gray">'+this.writer+'</font><br />'
+									+'<font color="red" class="white">'+this.bookPrice+'</font><font>원</font>'
+									+'<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>'
+									+'<br /><br /><br /><br />'
+									+'<input type="button"  value="장바구니에 담기" id="c'+index+'">'
+									+'<input type="button"  value="바로구매" id="b'+index+'">'
 									+'<br /><br /><br /><br />';
-									+'<input type="button"  value="장바구니에 담기" id="c'+index+'">';
-									+'<input type="button"  value="바로구매" id="b'+index+'">';
-									+'<br /><br /><br /><br />';
-									arr.push(this.bookName);
-									
-									
-									
+									resultSearchBook.push(this.bookName);
 							});
 							$('.mainView').append(findResult);
 				});

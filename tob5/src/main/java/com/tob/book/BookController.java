@@ -117,12 +117,12 @@ public @ResponseBody BookVO bookMain(
 	
 	
 	// 책 이름으로 '검색' 기능 구현하기
-	@RequestMapping("/Book_find/{find_name}")
+	@RequestMapping("/Book_find/{bookName}")
 public @ResponseBody List<BookVO> searchByBookName(
-		@PathVariable("bookName")String name ){
+		@PathVariable("bookName")String bookName ){
 	logger.info("BookController:searchByBookName()");
-	logger.info("책 이름 : {}",name);
-	List<BookVO>book = service.searchByBookName(name);
+	logger.info("책 이름 : {}",bookName);
+	List<BookVO>book = service.searchByBookName(bookName);
 	return book;
 }
 	
