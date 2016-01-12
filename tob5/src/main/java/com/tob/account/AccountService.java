@@ -6,13 +6,15 @@ import com.tob.global.Command;
  
 public interface AccountService {
 	
+	public int count();
 	// 통계
 	// C : 추가(주문목록 추가)
 	public int addList(AccountVO account);
 	
 	// R : 날짜별 주문금액
 	public List<?> getAccountList(Command command);	// 전체주문 리스트 (전체조회)
-	public List<?> searchAccountDay(Command command);// 주문현황 day (날짜로 조회)
+	public int getTotal(String key);				    // 날짜별 금액 리스트 
+	public List<?> searchAccountDay(String account_num);// 주문현황 day (날짜별 합계 조회)
 
 	
 	// U : 날짜별 주문금액 수정

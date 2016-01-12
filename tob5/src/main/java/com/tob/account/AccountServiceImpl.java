@@ -10,12 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.tob.global.Command;
 import com.tob.mapper.AccountMapper;
+import com.tob.mapper.MemberMapper;
  
 
 
 @Service
 public class AccountServiceImpl implements AccountService{
-	private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
+	private static final Logger logger = LoggerFactory.getLogger(AccountServiceImpl.class);
 	@Autowired private SqlSession sqlSession;
 	
 	@Override
@@ -26,15 +27,15 @@ public class AccountServiceImpl implements AccountService{
 	}
 	@Override
 	public List<?> getAccountList(Command command) {
-		logger.info("AccountServiceImpl : addList");
+		logger.info("AccountServiceImpl : getAccountList");
 		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
-		return mapper.selectAll(command);
+		return mapper.selectAllPage(command);
 	}
 	@Override
-	public List<?> searchAccountDay(Command command) {
-		logger.info("AccountServiceImpl : addList");
+	public List<?> searchAccountDay(String account_num) {
+		logger.info("AccountServiceImpl : searchAccountDay");
 		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
-		return mapper.selectOneBy(command);
+		return mapper.selectByDay(account_num);
 	}
 	
 	@Override
@@ -49,6 +50,19 @@ public class AccountServiceImpl implements AccountService{
 		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
 		return mapper.delete(account_num);
 	}
+	@Override
+	public int count() {
+		logger.info("AccountServiceImpl : count");
+		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+		return mapper.count();
+	}
+	@Override
+	public int getTotal(String key) {
+		logger.info("AccountServiceImpl : getTotal");
+		AccountMapper mapper = sqlSession.getMapper(AccountMapper.class);
+		return mapper.selectTotal(key);
+	}
+	
 	
 	
 
