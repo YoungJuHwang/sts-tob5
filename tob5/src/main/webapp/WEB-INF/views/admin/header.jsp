@@ -98,8 +98,8 @@
 	var AdminMemberReg = {
 			init : function(url) {
 				$.getJSON(url, function(data) {
-					var reg = '<div class="container"><div class="row"><div class="col-md-6 col-md-offset-3"><div class="panel panel-login"><div class="panel-heading"><div class="row"><div class="col-xs-6"><a href="#"class="active"id="login-form-link">관리자등록</a></div><div class="col-xs-6"><a href="#"id="register-form-link">회원 등록</a></div></div><hr></div><div class="panel-body"><div class="row"><div class="col-lg-12"><form id="login-form"action="http://phpoll.com/login/process"method="post"role="form"style="display: block;"><div class="form-group"><label></label><input type="text"class="form-control"placeholder="ID"id="admin_id"></div><div class="form-group"><label></label><input type="password"class="form-control"placeholder="password"id="admin_password"></div><div class="form-group"><label></label><input type="email"class="form-control"placeholder="Email"id="admin_email"></div><div class="form-group"style="width: 300px; float: left;"><label></label><input type="text"name="form-control"id="confirm_num"tabindex="2"class="form-control"placeholder="인증번호"></div><button type="button"id="btn_confirm" style="margin-top:6px; font-size: 12px; width: 100px; border-radius: 10px; float: left;"class="btn btn-primary btn-block">인증번호 발송</button><div class="row"style="float: left; margin-top: 20px;"><div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox"><button type="button"class="btn"data-color="info"tabindex="7">I Agree</button><input type="checkbox"name="t_and_c"id="t_and_c"class="hidden"value="1"></span></div><div class="col-xs-8 col-sm-9 col-md-9"style="font-size: 14px; margin-top: 5px;"><strong class="label label-primary">관리자 등록</strong>을 하기전에<a href="#"data-toggle="modal"data-target="#t_and_c_m">규정사항</a>을 확인하십시오</div></div><div class="form-group"style="margin-top: 10px;"><div class="row"><div class="col-sm-6 col-sm-offset-3"style="margin-top: 20px;"><input type="submit"name="register-submit"id="admin_join"tabindex="4"class="form-control btn btn-register"value="Register Now"></div></div></div></form>'
-					+'<form id="register-form"action="http://phpoll.com/register/process" method="post"role="form"style="display: none; "><div class="form-group"><input type="text"name="userid"id="userid"tabindex="1"class="form-control"placeholder="사용자ID"value=""></div><div class="form-group"><input type="password"name="password"id="password"tabindex="2"class="form-control"placeholder="비밀번호"></div><div class="form-group"><input type="text"name="name"id="name"tabindex="1"class="form-control"placeholder="이름"value=""></div><div class="form-group"><input type="text"name="birth"id="birth"tabindex="1"class="form-control"placeholder="생일"value=""></div><div class="form-group"><input type="text"name="gender"id="gender"tabindex="1"class="form-control"placeholder="성별"value=""></div><div class="form-group"><input type="text"name="email"id="email"tabindex="1"class="form-control"placeholder="이메일"value=""></div><div class="form-group"><input type="text"name="phone"id="phone"tabindex="1"class="form-control"placeholder="Phone(  -없이 입력해주세요)"value=""></div><div class="form-group"><input type="text"name="addr"id="addr"tabindex="1"class="form-control"placeholder="주소"value=""></div><div class="form-group"style="margin-top: 0px;"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit"name="login-submit"id="member_join"tabindex="4"class="form-control btn btn-login"value="Register Now"></div></div></div></form></div></div></div></div></div></div></div><div class="modal fade"id="t_and_c_m"tabindex="-1"role="dialog"aria-labelledby="myModalLabel"aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button"class="close"data-dismiss="modal"aria-hidden="true">×</button><h4 class="modal-title"id="myModalLabel">사내 규정사항</h4></div><div class="modal-body"><p>사내 규정사항</p></div><div class="modal-footer"><button type="button"class="btn btn-primary"data-dismiss="modal">I Agree</button></div></div></div></div>';
+					var reg = '<div class="container"><div class="row"><div class="col-md-6 col-md-offset-3"><div class="panel panel-login"><div class="panel-heading"><div class="row"><div class="col-xs-6"><a href="#"class="active"id="login-form-link">관리자등록</a></div><div class="col-xs-6"><a href="#"id="register-form-link">회원 등록</a></div></div><hr></div><div class="panel-body"><div class="row"><div class="col-lg-12"><form id="login-form"action=""method="post"role="form"style="display: block;"><div class="form-group"><label></label><input type="text"class="form-control"placeholder="ID"id="admin_id"></div><div class="form-group"><label></label><input type="password"class="form-control"placeholder="password"id="admin_password"></div><div class="form-group"><label></label><input type="email"class="form-control"placeholder="Email"id="admin_email"></div><div class="form-group"style="width: 300px; float: left;"><label></label><input type="text"name="form-control"id="confirm_num"tabindex="2"class="form-control"placeholder="인증번호"></div><button type="button"id="btn_confirm" style="margin-top:6px; font-size: 12px; width: 100px; border-radius: 10px; float: left;"class="btn btn-primary btn-block">인증번호 발송</button><div class="row"style="float: left; margin-top: 20px;"><div class="col-xs-4 col-sm-3 col-md-3"><span class="button-checkbox"><button type="button"class="btn"data-color="info"tabindex="7">I Agree</button><input type="checkbox"name="t_and_c"id="t_and_c"class="hidden"value="1"></span></div><div class="col-xs-8 col-sm-9 col-md-9"style="font-size: 14px; margin-top: 5px;"><strong class="label label-primary">관리자 등록</strong>을 하기전에<a href="#"data-toggle="modal"data-target="#t_and_c_m">규정사항</a>을 확인하십시오</div></div><div class="form-group"style="margin-top: 10px;"><div class="row"><div class="col-sm-6 col-sm-offset-3"style="margin-top: 20px;"><input type="submit"name="register-submit"id="admin_join"tabindex="4"class="form-control btn btn-register"value="Register Now"></div></div></div></form>'
+					+'<form id="register-form"action="" method="post"role="form"style="display: none; "><div class="form-group"><input type="text"name="userid"id="userid"tabindex="1"class="form-control"placeholder="사용자ID"value=""></div><div class="form-group"><input type="password"name="password"id="password"tabindex="2"class="form-control"placeholder="비밀번호"></div><div class="form-group"><input type="text"name="name"id="name"tabindex="1"class="form-control"placeholder="이름"value=""></div><div class="form-group"><input type="text"name="birth"id="birth"tabindex="1"class="form-control"placeholder="생일"value=""></div><div class="form-group"><input type="text"name="gender"id="gender"tabindex="1"class="form-control"placeholder="성별"value=""></div><div class="form-group"><input type="text"name="email"id="email"tabindex="1"class="form-control"placeholder="이메일"value=""></div><div class="form-group"><input type="text"name="phone"id="phone"tabindex="1"class="form-control"placeholder="Phone(  -없이 입력해주세요)"value=""></div><div class="form-group"><input type="text"name="addr"id="addr"tabindex="1"class="form-control"placeholder="주소"value=""></div><div class="form-group"style="margin-top: 0px;"><div class="row"><div class="col-sm-6 col-sm-offset-3"><input type="submit"name="login-submit"id="member_join"tabindex="4"class="form-control btn btn-login"value="Register Now"></div></div></div></form></div></div></div></div></div></div></div><div class="modal fade"id="t_and_c_m"tabindex="-1"role="dialog"aria-labelledby="myModalLabel"aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-header"><button type="button"class="close"data-dismiss="modal"aria-hidden="true">×</button><h4 class="modal-title"id="myModalLabel">사내 규정사항</h4></div><div class="modal-body"><p>사내 규정사항</p></div><div class="modal-footer"><button type="button"class="btn btn-primary"data-dismiss="modal">I Agree</button></div></div></div></div>';
 				
 					$('.mainView').html(reg);
 					style.style();
@@ -132,7 +132,6 @@
 
 					
 					$("#admin_join").click(function(){
-						alert('클릭');
 						var admin_id = $("#admin_id").val();
 						var admin_password = $("#admin_password").val();
 						var admin_email = $("#admin_email").val();
@@ -304,7 +303,6 @@
 	
 	var AdminReg = {
 			join_Auth : function() {
-				alert('join_auth 진입');
 				$.ajax(context + "/admin/join_auth",{	
 					data : {"id" : $("#admin_id").val(),
 							"adminEmail" :$("#admin_email").val()
@@ -325,7 +323,6 @@
 			},
 			
 			join : function() {
-				alert('join ajax');
 				var join_Admin = {
 					"id" :$("#admin_id").val(),
 					"adminEmail" :$("#admin_email").val(),
@@ -372,7 +369,6 @@
 	
 var AdminMember = {
 		join : function() {
-			alert('join ajax');
 			var join_member = {
 				"userid" :$("#userid").val(),
 				"password" :$("#password").val(),
@@ -409,8 +405,7 @@ var AdminMember = {
 					alert('에러발생상태 : '+status +', 내용 :'+msg);
 					AdminMemberReg.init();
 				}
-				
-				
+	
 			});
 
 		}
@@ -700,7 +695,7 @@ var AdminMember = {
 								+'<tr><th>이메일</th><td id="data_email">'+data.email+'</td></tr>'
 								+'<tr><th>성별</th><td id="data_gender">'+data.gender+'</td></tr>'
 								+'<tr><th>주소</th><td id="data_addr">'+data.addr+'</td></tr>'
-								+'<td colspan="2"><button id="confrm" style="width:100px; margin-left: 150px;">홈으로</button></td></tr>'
+								+'<td colspan="2"><button id="confrm" style="width:100px; margin-left: 150px;">확인</button></td></tr>'
 								+'</table>';
 								
 							
@@ -728,7 +723,7 @@ var AdminMember = {
 				},
 				dataType : 'json',
 				success : function(data) {
-					alert('회원을 추방하였습니다.');
+					alert('회원을 삭제하였습니다.');
 					AdminMemberList.list('1');
 				},
 				error : function(xhr, status, msg) {
@@ -795,7 +790,6 @@ var adminBook ={
 	adminBook.style();
 	
 	$("#reg_book_btn").click(function(){
-		alert('클릭 버튼');
 		var bookId = $("#bookId").val();
 		var bookName = $("#bookName").val();
 		var bookPrice = $("#bookPrice").val();
@@ -837,7 +831,6 @@ var adminBook ={
 	var bookReg = {
 			
 			join : function() {
-				alert('join book :join');
 				var join_book = {
 					"bookId" :$("#bookId").val(),
 					"bookName" :$("#bookName").val(),

@@ -28,6 +28,8 @@ import com.tob.global.Constants;
 import com.tob.global.FileUpload;
 import com.tob.book.BookServiceImpl;
 import com.tob.book.BookVO;
+import com.tob.cart.CartServiceImpl;
+import com.tob.cart.CartVO;
 import com.tob.event.EventServiceImpl;
 import com.tob.event.EventVO;
 import com.tob.global.CommandFactory;
@@ -46,6 +48,8 @@ public class AdminController {
 	@Autowired MemberServiceImpl memberService;
 	@Autowired EventVO event;
 	@Autowired EventServiceImpl eventService;
+	@Autowired CartVO cart;
+	@Autowired CartServiceImpl cartService;
 	@Autowired private EmailSender emailSender;
 	
 	int auth_Num = 0;
@@ -116,7 +120,7 @@ public class AdminController {
 			){
 		
 		logger.info("멤버컨트롤러 member_delete() - 진입");
-		
+
 		int result = memberService.remove(userid);
 		if (result == 1) {
 			logger.info("멤버 삭제 성공");
