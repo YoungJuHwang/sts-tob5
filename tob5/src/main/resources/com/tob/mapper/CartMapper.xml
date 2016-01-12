@@ -18,9 +18,6 @@
 		b.BOOK_ID = c.BOOK_ID AND
 		c.CART_TODAY = #{today}
 	</select> 
-	<select id="">
-	
-	</select>
  	<update id="changeCount">
  	
  	</update>
