@@ -687,22 +687,22 @@ body {
 
 				<div  style="margin: auto; width: 100%;">
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> 
+						<a href="#" class="thumbnail" id="now"> 
 						<img src="${img}/bstbook1.jpg" alt="지금 이 순간" style="width: 141px; height: 203px;">
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> 
+						<a href="#" class="thumbnail" id="sapi"> 
 						<img src="${img}/bstbook2.jpg" alt="사피엔스" style="width: 141px; height: 203px;">
 					</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> 
+						<a href="#" class="thumbnail" id="lonly"> 
 						<img src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다." style="width: 141px; height: 203px;">
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> 
+						<a href="#" class="thumbnail" id="mine"> 
 						<img src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들" style="width: 141px; height: 203px;">
 						</a>
 					</div>
@@ -720,22 +720,22 @@ body {
                  <!-- 분야 추천 -->
                   	<div class="row" >
 					<div class="col-xs-6 col-md-3" >
-					<a href="#" class="thumbnail"> 
+					<a href="#" class="thumbnail" id="memo"> 
 					<img src="${img}/recome1.jpg" alt="메모 습관의 힘" style="width: 141px; height: 203px;">
 					</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail"> 
+					<a href="#" class="thumbnail" id="best"> 
 						<img src="${img}/recome2.jpg" alt="베스트 편곡으로 배우는 아주 특별한 통기타 교본" style="width: 141px; height: 203px;">
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3" >
-					<a href="#" class="thumbnail"> 					
+					<a href="#" class="thumbnail" id="oneday"> 					
 						<img src="${img}/recome3.jpg" alt="하루 세 줄, 마음정리법 일본 최고 의사가 전하는 스트레스 리셋 처방전" style="width: 141px; height: 203px;">
 						</a>
 					</div>
 						<div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail"> 
+					<a href="#" class="thumbnail" id="pathion"> 
 						<img src="${img}/recome4.jpg" alt="패션의 탄생 컬러링북 쇼핑보다 짜릿한 컬러 스타일링" style="width: 141px; height: 203px;">
 						</a>
 					</div>
@@ -755,23 +755,20 @@ body {
 				<a href="#" id="book_more"><img src="${img}/week.png" alt="" /></a>
 			</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="${img}/weekday1.jpg"
-							alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;">
+						<a href="#" class="thumbnail">
+						
+						</a>
+						</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" >
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="${img}/weekday2.jpg"
-							alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;">
+						<a href="#" class="thumbnail"> 
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="${img}/weekday3.jpg"
-							alt="내 스물아홉 이야기" style="width: 141px; height: 203px;">
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> <img src="${img}/weekday4.jpg"
-							alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;">
+						<a href="#" class="thumbnail"> 
 						</a>
 					</div>
 			
@@ -787,36 +784,36 @@ body {
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
-								<img src="..." alt="...">
+								<img src="${img}/E003.jpg" alt="소프트 스킬 리뷰어 이벤트">
 								<div class="caption">
-									<h3>이벤트명</h3>
-									<p>...</p>
+									<h4>소프트 스킬 리뷰어 이벤트</h4>
+									<p>2016/01/01~2016/01/31</p>
 									<p>
-										<a href="#" class="btn btn-primary" role="button">더보기</a>
+										<a href="#" id="soft" class="btn btn-primary" role="button">더보기</a>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
-								<img src="..." alt="...">
+								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
 								<div class="caption">
-									<h3>이벤트명</h3>
-									<p>...</p>
+									<h4>응답하라!! 재테크</h4>
+									<p>2016/01/01/~2016/01/31</p>
 									<p>
-										<a href="#" class="btn btn-primary" role="button">더보기</a>
+										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
 									</p>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
-								<img src="..." alt="...">
+								<img src="${img}/E008.jpg" alt="[특별 기획] 송곳과 한국 사회">
 								<div class="caption">
-									<h3>이벤트명</h3>
-									<p>...</p>
+									<h4>[특별 기획] 송곳과 한국 사회</h4>
+									<p>2015/01/01~2016/01/31</p>
 									<p>
-										<a href="#" class="btn btn-primary" role="button">더보기</a>
+										<a href="#" id="songgok" class="btn btn-primary" role="button">더보기</a>
 									</p>
 								</div>
 							</div>
@@ -951,8 +948,13 @@ body {
 	<!-- Custom Theme JavaScript -->
 	<script src="${startjs}/agency.js"></script>
 
+<script src="${js}/Book.js"></script>
+
+
 <script type="text/javascript">
 $(function() {
+	book.searchForTodayBook2();
+	
 	$('#event_more').click(function() {
 		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
@@ -961,6 +963,47 @@ $(function() {
 		book.all('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});	
+	$('#tech').click( function() {
+   	 alert("이벤트 댓글달기로 이동");
+        Event.eventPage();
+	});
+
+	$('#soft').click( function() {
+	   	 alert("이벤트 댓글달기로 이동");
+	        Event.eventPage();
+		});
+	$('#songgok').click( function() {
+	   	 alert("이벤트 댓글달기로 이동");
+	        Event.eventPage();
+		});
+	$('#sapi').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#lonly').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#mine').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#memo').click(function() {
+		alert("확인");
+		book.mainPage();
+	});	
+	$('#best').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#oneday').click(function() {
+		alert("확인");
+		book.mainPage();
+	});	
+	$('#pathion').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
 });
 
 
