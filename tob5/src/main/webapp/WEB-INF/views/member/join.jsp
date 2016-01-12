@@ -18,7 +18,7 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="control-label col-sm-3" for="pwd">비밀먼호</label>
+					<label class="control-label col-sm-3" for="pwd">비밀번호</label>
 					<div class="col-sm-9">
 						<input type="password" class="form-control" id="password" placeholder="비밀번호를 입력해주세요">
 					</div>
