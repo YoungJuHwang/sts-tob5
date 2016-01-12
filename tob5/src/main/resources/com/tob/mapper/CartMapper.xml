@@ -17,12 +17,13 @@
 		WHERE c.USERID = #{userid} AND
 		b.BOOK_ID = c.BOOK_ID AND
 		c.CART_TODAY = #{today}
-	</select> 
- 	<update id="changeCount">
- 	
+	</select>
+ 	<update id="changeCount" parameterType="com.tob.cart.BookCartVO">
+ 		UPDATE CART SET COUNT = ${count} WHERE
+ 		BOOK_ID = ${bookId} AND USERID = ${userid}
  	</update>
- 	<select id="getBookIdList" resultType="string">
- 		SELECT BOOK_ID FROM CART;
+ 	<select id="getBooksInCart" resultType="string" parameterType="string">
+ 		SELECT BOOK_ID FROM CART WHERE USERID = #{userid};
  	</select>
  	<select id="getUseridList" resultType="string">
  		SELECT USERID FROM CART;

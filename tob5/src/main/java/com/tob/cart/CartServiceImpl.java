@@ -20,7 +20,7 @@ public class CartServiceImpl implements CartService {
 	@Autowired CartVO cart;
 	@Autowired TodayCartVO todaycart;
 	
-	List<?> BookIdList;
+	List<?> BooksInCart;
 	List<?> UserIdList;
 	@Override
 	public int put(String bookId, String userid) {
@@ -38,7 +38,13 @@ public class CartServiceImpl implements CartService {
     	logger.info("넘어온 책 아이디 : " + bookId);
     	logger.info("넘어온 유저 아이디 : " + userid);
     	logger.info("생성된 카트 넘버 : " + result);
-        cart.setCartNum(result);
+        
+    	for (int i = 0; i < BooksInCart.size(); i++) {
+			if (bookId.equals(BooksInCart.get(i))) {
+				return 0;
+			} 
+		}
+    	cart.setCartNum(result);
         cart.setcartToday(cartToday);
      	cart.setBookid(bookId);
      	cart.setUserid(userid);
@@ -47,12 +53,13 @@ public class CartServiceImpl implements CartService {
     	logger.info("바뀐 카트VO의 유저 아이디 : " + cart.getUserid());
     	logger.info("바뀐 카트VO의 카트 넘버 : " + cart.getCartNum());
     	logger.info("바뀐 카트VO의 TODAY카트 넘버 : " + cart.getcartToday());
-     	for (int i = 0; i < BookIdList.size(); i++) {
-			if (BookIdList.get(i-1).equals(BookIdList.get(i)) && UserIdList.get(i-1).equals(UserIdList.get(i))) {
+    	
+     	/*for (int i = 0; i < BookIdList.size(); i++) {
+			if (BookIdList.get(i).equals(BookIdList.get(i)) && UserIdList.get(i-1).equals(UserIdList.get(i))) {
 				i = 0;
 				return 0;
 			}
-		}
+		}*/
     	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
      	return mapper.put(cart);
 	}
@@ -76,10 +83,10 @@ public class CartServiceImpl implements CartService {
 		return mapper.remove(bookId);
 	}
 	@Override
-	public int changeCount(int count) {
+	public int changeCount(String userid, String bookId, int count) {
 		logger.info("CartServiceImpl : changeCount 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.changeCount(count);
+		return mapper.changeCount(userid, bookId, count);
 	}
 	@Override
 	public int removeUserid(String userid) {
@@ -88,11 +95,11 @@ public class CartServiceImpl implements CartService {
 		return mapper.removeUserid(userid);
 	}
 	@Override
-	public List<?> getBookIdList() {
-		logger.info("CartServiceImpl : getBookIdList 진입");
+	public List<?> getBooksInCart(String userid) {
+		logger.info("CartServiceImpl : getBooksInCart 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		BookIdList = mapper.getBookIdList();
-		return mapper.getBookIdList();
+		BooksInCart = mapper.getBooksInCart(userid);
+		return mapper.getBooksInCart(userid);
 	}
 	@Override
 	public List<?> getUseridList() {

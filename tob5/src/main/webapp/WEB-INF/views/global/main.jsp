@@ -953,13 +953,14 @@ body {
 
 <script type="text/javascript">
 $(function() {
-	book.searchForTodayBook2();
+	//book.searchForTodayBook2();
 	
 	$('#event_more').click(function() {
 		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});
 	$('#book_more').click(function() {
+		
 		book.all('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});	

@@ -227,6 +227,7 @@ $.each(data.list,function(i,value){
 		
 		
 	putInCart : function(bookId) {
+		Cart.getBooksInCart();
 		Cart.put(bookId);
 	},
 		
