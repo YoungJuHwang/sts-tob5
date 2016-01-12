@@ -99,7 +99,7 @@
 		});
 		
 		$('#mypage').click(function() {
-			Member.detail('${user.userid}');
+			Member.detail(context+'/member/detail/${user.userid}');
 		});
 		
 		$('#my_cart').click(function() {

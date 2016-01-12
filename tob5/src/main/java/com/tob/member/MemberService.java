@@ -2,6 +2,7 @@ package com.tob.member;
 
 import java.util.List;
 
+import com.tob.cart.BookCartVO;
 import com.tob.global.Command;
 
 
@@ -20,4 +21,5 @@ public interface MemberService {
 	   public List<MemberVO> getList(Command command);
 	   public int changePwd(MemberVO member);
 	   public int remove(String userid);
+	   public List<BookCartVO> getList(String userid);
 	}
