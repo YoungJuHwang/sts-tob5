@@ -9,15 +9,12 @@ import com.tob.global.Command;
 @Repository
 public interface BookMapper {
 
-	public int registration(BookVO o); //책 등록
-	public int delete(String bookid); //등록된 책 삭제 책 번호로
+	public int registration(BookVO o);
+	public int delete(String bookid); 
 	public BookVO searchByBook(String userid);
-	public int update(BookVO book);//책 수정
-	 
+	public int update(BookVO book);
 	public List<BookVO> selectAll(Command command);
-	
-	
 	public int count();
-	public List<BookVO> todayBook(Command command);
+	public List<BookVO> searchByBookName(String bookName);
 
 }

@@ -39,10 +39,10 @@ var Member = {
 					+'<tr><td><button id="changeImg">사진변경</button></td>'
 					+'<td><button id="changeInfo">정보수정</button></td>'
 					+'<td><button id="confirm">확인</button></td></tr></table>';
-					$('#frm').html(table);
+					$('.frm').html(table);
 					Member.style();
-					$('#confirm').click(function() {
-						$('#frm').submit(function(e) {
+					$('.confirm').click(function() {
+						$('.frm').submit(function(e) {
 							e.preventDefault(); /* 기본 폼태그의 서브밋을 막아라. 자스의 서브밋을 실행해라 */
 							$.ajax(context+'/member/update',{
 								type : 'get',
@@ -56,7 +56,7 @@ var Member = {
 								async : true, // 비동기로 할 지 여부, 기본값  true, 생략가능
 								dataType : 'json',
 								success : function(data) {
-									location.href=''+context+'/member.do?page=mypage&userid='+data.userid;
+									location.href=''+context+'/member/detail/'+data.userid;
 								},
 								error : function(xhr, status, msg) {
 									alert('에러발생상태 : '+status +', 내용 :'+msg);
@@ -83,10 +83,10 @@ var Member = {
 			style : function(){
 				$('td').css('text-align','center');
 				$('tr').add('th').add('td').css('float','center');
-				$('#mainView').css('clear','both').css('margin','20px');
-				$('#item').css('width','400px');
-				$('#profile').css('width','300px');
-				$('#td_profile').css('width','400px');
+				$('.mainView').css('clear','both').css('margin','20px');
+				$('.item').css('width','400px');
+				$('.profile').css('width','300px');
+				$('.td_profile').css('width','400px');
 			},
 			remove : function(userid) {
 				$.ajax(''+context+'/member/remove/'+userid,{

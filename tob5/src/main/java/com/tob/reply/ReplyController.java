@@ -32,7 +32,7 @@ public class ReplyController {
 		reply.setComment(comment);
 		reply.setRegDate(regDate);
 		reply.setThumnail(thumnail);
-
+		/*ReplyService.reply()*/;
 	}
 	
 	

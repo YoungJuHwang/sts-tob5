@@ -144,12 +144,12 @@ public class MemberController {
     	logger.info("아이디들어옴 : "+userid);
     	return member;
     }
-    /*@RequestMapping("/remove/{userid}")
+    @RequestMapping("/remove/{userid}")
     public @ResponseBody MemberVO remove(
     		@PathVariable("userid")String userid
     		){
     	logger.info("remove :"+userid);
-    	int result = service.delete(member);
+    	int result = service.remove(userid);
         if (result == 1) {
             logger.info("회원탈퇴 성공");
             
@@ -158,7 +158,7 @@ public class MemberController {
            
         }
         return member;
-    }*/
+    }
     @RequestMapping("/list/{userid}")
 	public @ResponseBody List<BookCartVO> cartlist(
 				@PathVariable("userid")String userid

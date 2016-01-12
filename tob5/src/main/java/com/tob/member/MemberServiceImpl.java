@@ -59,7 +59,7 @@ public class MemberServiceImpl implements MemberService{
 		public int remove(String userid) {
 			logger.info("MemberServiceImpl : remove");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
-			return mapper.delete(userid);
+			return mapper.remove(userid);
 		}
 		@Override
 		public MemberVO selectOneBy(String userid) {
@@ -116,5 +116,6 @@ public class MemberServiceImpl implements MemberService{
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 			return mapper.getList(todaycart);
 		}
+		
 }
 		

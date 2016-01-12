@@ -99,10 +99,8 @@ public class EventController {
 	public @ResponseBody EventVO eventMain(
 			@PathVariable("evtId")String id ){
 		logger.info("EventController evtId()");
-		logger.info("이벤트 번호 : {}",id);
-		
-		
-		return event;
+		logger.info("이벤트 번호 : {}",id);		
+		return event;	
 	}
 	
 	

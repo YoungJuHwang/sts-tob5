@@ -36,7 +36,7 @@ public int delete(String book) {
 
 
 
-@Override  //책 검색 (책이름으로)
+@Override  //책 검색 (책 id값으로)
 public BookVO searchByBook(String book) {
 	BookMapper mapper = sqlSession.getMapper(BookMapper.class);
 	return mapper.searchByBook(book);
@@ -70,15 +70,11 @@ public int count() {
 
 
 
-
-
-
-public List<BookVO> todayBook(Command command) {
-	logger.info("BookServiceImpl : todayBook");
+@Override
+public List<BookVO> searchByBookName(String nameOfbook) {
 	BookMapper mapper = sqlSession.getMapper(BookMapper.class);
-	return mapper.todayBook(command);
+	return mapper.searchByBookName(nameOfbook);
 }
-
 
 
 

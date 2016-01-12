@@ -1,8 +1,10 @@
 package com.tob.book;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,17 +33,18 @@ public class BookController {
 		return "book/main.tiles";
 				
 	}
-	//전체 책 목록  보여주기 1.(배열 내리기)
+	//전체 책 목록  보여주기 1.(배열 내리기) => 로그인 안했을 때.
 	@RequestMapping("/Book_selectAll/{pageNo}")
 	public @ResponseBody Map<String,Object> bookAll(
 			@PathVariable("pageNo")String pageNo,
+			HttpSession session,
 			Model model
 			){
 		logger.info("BookController selectAll()진입.");
 		logger.info("넘어온 페이지No. : {}",pageNo);
 		
 		int pageNumber = Integer.parseInt(pageNo);
-		int pageSize = 4;
+		int pageSize = 3;
 		int groupSize = 3;
 		int count = service.count();
 		logger.info("번호 : {}",count);
@@ -66,8 +69,6 @@ public class BookController {
 		return map;
 	}
 	
-	
-	
 	// 책 상세 정보 보여주기 2.
 	@RequestMapping("/Book_main/{bookId}")
 public @ResponseBody BookVO bookMain(
@@ -90,7 +91,7 @@ public @ResponseBody BookVO bookMain(
 		
 		int pageNumber = Integer.parseInt(pageNo);
 		int pageSize = 1;
-		int groupSize = 10;
+		int groupSize = 4; //밑에 보여주는 번호.
 		int count = service.count();
 		logger.info(" Book_TodayBook  번호 : {}",count);
 		int totalPage = count/pageSize;
@@ -113,4 +114,16 @@ public @ResponseBody BookVO bookMain(
 		logger.info("BookController:Book_TodayBook()");
 		return map;
 	}
+	
+	
+	// 책 이름으로 '검색' 기능 구현하기
+	@RequestMapping("/Book_find/{find_name}")
+public @ResponseBody List<BookVO> searchByBookName(
+		@PathVariable("bookName")String name ){
+	logger.info("BookController:searchByBookName()");
+	logger.info("책 이름 : {}",name);
+	List<BookVO>book = service.searchByBookName(name);
+	return book;
+}
+	
 }

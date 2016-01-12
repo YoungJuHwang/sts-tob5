@@ -53,7 +53,7 @@ STOCK_SEQ AS stockSeq,
 OPTION_ID AS optionBook,
 GENRE_ID AS genreId
    FROM BOOK ORDER BY bookId DESC
-          LIMIT #{start}, 4
+          LIMIT #{start}, 3
 </select>
 
  <select id="count" resultType="int">
@@ -74,5 +74,21 @@ GENRE_ID AS genreId
           LIMIT #{start}, 1
 </select>
 
+<insert id="insert" parameterType="com.tob.book.BookVO">
+INSERT INTO BOOK (BOOKID)VALUES(#{bookId})
+</insert>
+
+<select id="searchByBookName" resultType="com.tob.book.BookVO"  parameterType="String">
+SELECT
+BOOK_ID AS bookId,
+BOOK_NAME AS bookName,
+PRICE AS bookPrice,
+WRITER AS writer,
+GRADE AS grade,
+STOCK_SEQ AS stockSeq,
+OPTION_ID AS optionBook,
+GENRE_ID AS genreId
+   FROM BOOK WHERE BOOK_NAME LIKE CONCAT ('%',#{bookName},'%')
+</select>
 
  </mapper>
