@@ -27,9 +27,8 @@ var book = {
 			var oldArr =[];
 			var oldArrName =[];
 			$.getJSON(context + '/genre/Genre',function(data){
-			
-				var table = '<h3>전체 목록</h3>';
 				book.inputBookName();
+				var table = '<h3>전체 목록</h3>';
 				/*해외도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listAbroadName+'</strong></font><br /><p><p>';
 				$.each(data.listAbroad,function(index,value){
@@ -75,10 +74,11 @@ var book = {
 					oldArr.push(this.genreId);
 					oldArrName.push(this.genreName);
 					});
-				$('.mainView').empty().append(table);
+				$('.mainView').empty().append(table).append(find);
 				
 				
-				/*------------버튼-------------------------------*/
+				
+				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
 				$.each(data.listAbroad,function(i,value){
 					$('#'+abroadArr[i]).click(function() {
 						alert('해외도서 페이지,'+abroadArrName[i]+'  페이지로 이동.')
@@ -129,7 +129,9 @@ var book = {
 					});
 					
 				});
-				/*--------------------------------------*/
+				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
+				
+				
 				
 			});
 		},
@@ -145,6 +147,7 @@ var book = {
 			var groupSize = data.groupSize;
 			var lastPage = data.lastPage;
 			var totPage = data.totPage;
+			
 			var bookList= '<div id="bookContents" style="color: black;"><h2>책 목록</h2>'
 			//---------------------------책 정보----------------------------------------
 			$.each(data.list,function(index,value){
@@ -332,7 +335,7 @@ $.each(data.list,function(i,value){
 									
 									
 							});
-							$('.mainView').html(findResult);
+							$('.mainView').append(findResult);
 				});
 		},
 		
