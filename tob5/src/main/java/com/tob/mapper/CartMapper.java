@@ -13,6 +13,8 @@ public interface CartMapper {
 		
 		//R
 		public List<BookCartVO> getList(TodayCartVO todaycart);
+		public List<?> getBookIdList();
+		public List<?> getUseridList();
 		
 		//U
 		public int changeCount(int count);

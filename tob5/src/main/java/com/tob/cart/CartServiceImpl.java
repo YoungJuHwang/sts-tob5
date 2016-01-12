@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.tomcat.util.http.mapper.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class CartServiceImpl implements CartService {
 	@Autowired CartVO cart;
 	@Autowired TodayCartVO todaycart;
 	
+	List<?> BookIdList;
+	List<?> UserIdList;
 	@Override
 	public int put(String bookId, String userid) {
 		logger.info("CartServiceImpl : put 진입");
@@ -44,15 +47,19 @@ public class CartServiceImpl implements CartService {
     	logger.info("바뀐 카트VO의 유저 아이디 : " + cart.getUserid());
     	logger.info("바뀐 카트VO의 카트 넘버 : " + cart.getCartNum());
     	logger.info("바뀐 카트VO의 TODAY카트 넘버 : " + cart.getcartToday());
-		/*return mapper.put(cart);*/
-     	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-     	//mapper.put(cart);
+     	for (int i = 0; i < BookIdList.size(); i++) {
+			if (BookIdList.get(i-1).equals(BookIdList.get(i)) && UserIdList.get(i-1).equals(UserIdList.get(i))) {
+				i = 0;
+				return 0;
+			}
+		}
+    	CartMapper mapper = sqlSession.getMapper(CartMapper.class);
      	return mapper.put(cart);
 	}
 	@Override
 	public List<BookCartVO> getList(String userid) {
 		logger.info("CartServiceImpl : getList 진입");
-		logger.info("넘어온 유저아이디 : " + userid);
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		Calendar c1 = Calendar.getInstance();
 		String today = sdf.format(c1.getTime());
@@ -79,6 +86,21 @@ public class CartServiceImpl implements CartService {
 		logger.info("CartServiceImpl : removeUserid 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
 		return mapper.removeUserid(userid);
+	}
+	@Override
+	public List<?> getBookIdList() {
+		logger.info("CartServiceImpl : getBookIdList 진입");
+		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
+		BookIdList = mapper.getBookIdList();
+		return mapper.getBookIdList();
+	}
+	@Override
+	public List<?> getUseridList() {
+		logger.info("CartServiceImpl : getUseridList 진입");
+		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
+		UserIdList= mapper.getUseridList();
+		logger.info("getUseridList 의 결과 : {}",UserIdList.size());
+		return mapper.getUseridList();
 	}
 	
 	

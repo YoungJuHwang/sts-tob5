@@ -42,6 +42,22 @@ public class CartController {
 		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
 		return list;
 	}
+	@RequestMapping("/BookIdList")
+	public @ResponseBody List<?> getBookIdList(
+			){
+		logger.info("카트 컨트롤러 - getBookIdList() 진입");
+		List<?> list = service.getBookIdList();
+		logger.info("카트 컨트롤러 getBookIdList() 결과 : " + list.size());
+		return list;
+	}
+	
+	@RequestMapping("/UseridList")
+	public @ResponseBody List<?> getUseridList(){
+		logger.info("카트 컨트롤러 - getUseridList() 진입");
+		List<?> list = service.getUseridList();
+		logger.info("카트 컨트롤러 getUseridList() 결과 : " + list.size());
+		return list;
+	}
 	
 	@RequestMapping("/put")
 	public Model put(

@@ -10,7 +10,11 @@ public interface CartService {
 	// 장바구니 목록 확인
 	public List<BookCartVO> getList(String userid);
 	
-	// 장바구니 책 검색
+	// DB 책 아이디만 담기.
+	public List<?> getBookIdList();
+	
+	// DB 유저 아이디만 담기
+	public List<?> getUseridList();
 	
 	// 장바구니 수량 변경
 	public int changeCount(int count);

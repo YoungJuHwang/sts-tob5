@@ -94,6 +94,8 @@
 		});
 		
 		$('#book_more').click(function() {
+			Cart.getBookIdList();
+			Cart.getUseridList();
 			book.all('${user.userid}');
 		});
 		

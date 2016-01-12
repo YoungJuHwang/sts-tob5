@@ -34,6 +34,20 @@ var Cart = {
 		});
 	},
 	
+	getBookIdList : function() {
+		var bookIdList = [];
+		$.getJSON(context+'/cart/BookIdList', function(data) {
+			
+			bookIdList.push(this.bookId);
+		});
+	},
+	
+	getUseridList : function() {
+		var useridList = [];
+		$.getJSON(context+'/cart/UseridList', function(data) {
+			useridList.push(this.userid);
+		});
+	},
 	
 	
 	list : function(userid) {
