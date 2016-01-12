@@ -1,6 +1,8 @@
 package com.tob.member;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.tob.cart.BookCartVO;
 import com.tob.global.Constants;
 import com.tob.global.FileUpload;
 
@@ -62,6 +65,7 @@ public class MemberController {
         member.setEmail(param.getEmail());
         member.setPhone(param.getPhone());
         member.setAddr(param.getAddr());
+        member.setProfile("default.png");
         int result = service.insert(member);
         if (result == 1) {
             logger.info("회원가입 성공");
@@ -99,9 +103,11 @@ public class MemberController {
     }
     @RequestMapping("/detail/{userid}")
     public @ResponseBody MemberVO detail(
-            @PathVariable("userid")String userid){
+            @PathVariable("userid")String userid
+    		){
         logger.info("멤버컨트롤러 detail() - 진입");
         member = service.selectOneBy(userid);
+        logger.info("멤버컨트롤러 :"+member.getProfile());
         return member;
     }
     @RequestMapping(value="/update",method=RequestMethod.POST)
@@ -131,5 +137,36 @@ public class MemberController {
         }
         return member;
     }
-   
+    @RequestMapping("/updateForm/{userid}")
+    public @ResponseBody MemberVO updataForm(
+    		@PathVariable("userid")String userid
+    		){
+    	logger.info("아이디들어옴 : "+userid);
+    	return member;
+    }
+    @RequestMapping("/remove/{userid}")
+    public @ResponseBody MemberVO remove(
+    		@PathVariable("userid")String userid
+    		){
+    	logger.info("remove :"+userid);
+    	int result = service.remove(userid);
+        if (result == 1) {
+            logger.info("회원탈퇴 성공");
+            
+        } else {
+            logger.info("회원타 실패");
+           
+        }
+        return member;
+    }
+    @RequestMapping("/list/{userid}")
+	public @ResponseBody List<BookCartVO> cartlist(
+				@PathVariable("userid")String userid
+			){
+		logger.info("카트 컨트롤러 - list() 진입");
+		logger.info("카트 컨트롤러 - list() 넘어온 유저아이디 : "+userid);
+		List<BookCartVO> list = service.getList(userid);
+		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
+		return list;
+	}
 }

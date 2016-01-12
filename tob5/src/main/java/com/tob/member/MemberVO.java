@@ -18,6 +18,32 @@ public class MemberVO implements Serializable{
 	private String phone; // 성별
 	private String addr; // 주소
 	private String profile; // 
+	private String count;
+	public String getCount() {
+		return count;
+	}
+
+	public void setCount(String count) {
+		this.count = count;
+	}
+
+	public String getCartNum() {
+		return cartNum;
+	}
+
+	public void setCartNum(String cartNum) {
+		this.cartNum = cartNum;
+	}
+
+	public String getCartToday() {
+		return cartToday;
+	}
+
+	public void setCartToday(String cartToday) {
+		this.cartToday = cartToday;
+	}
+	private String cartNum;
+	private String cartToday;
 	
 	public static MemberVO instance = new MemberVO();
 	public static MemberVO getInstance(){
