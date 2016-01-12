@@ -13,9 +13,10 @@ var Member = {
 					+'<td><button id="changeInfo">정보수정</button><button id="remove">회원탈퇴</button></td>'
 					+'<td><button id="confirm">확인</button></td></tr></table>';
 					$('.mainView').html(table);
+					alert('a머냐고');
 					Member.style();
 					$('#changeInfo').click(function() {
-						alert('정보변경클릭');
+						alert('정보수정클릭한다');
 						Member.updateForm(data.userid);
 					});
 					$('#remove').click(function() {
@@ -25,11 +26,13 @@ var Member = {
 				});
 			},
 			updateForm : function(userid) {
-				
+				alert('업데이트 진입했다');
 				$.getJSON(context+'/member/updateForm/'+userid,
 						function(data){
-					$('<form action="'+context+'/member/update" id="frm">').appendTo($('.mainView').empty());
-					var table = '<table><tr><td rowspan="8" id="td_profile"><img id="profile" src='+context+'/images/'+data.profile+'" width="70%" height="80%"/></td>'
+					var updates = '<form action="'+context+'/member/update" id="frm">';
+					$('.mainView').empty();
+					$('.mainView').append(updates);
+					var table = '<table><tr><td rowspan="8" id="td_profile"><img id="profile" src="'+img+'/'+data.profile+'" width="70%" height="80%"/></td>'
 					+'<th id="item">항목</th><th>빈 칸</th></tr><tr><td>아이디</td><td>'+data.userid+'</td></tr><tr>'
 					+'<td>비밀번호</td><td><input type="password" id="password" value='+data.password+'>'
 					+'</td></tr><tr><td>이름</td><td>'+data.name+'</td></tr><tr><td>생일</td><td>'+data.gender+'</td></tr><tr>'
@@ -39,19 +42,21 @@ var Member = {
 					+'<tr><td><button id="changeImg">사진변경</button></td>'
 					+'<td><button id="changeInfo">정보수정</button></td>'
 					+'<td><button id="confirm">확인</button></td></tr></table>';
-					$('.frm').html(table);
+					$('#frm').append(table);
 					Member.style();
-					$('.confirm').click(function() {
-						$('.frm').submit(function(e) {
+					$('#confirm').click(function() {
+						 	alert('확인');
+						$('#frm').submit(function(e) {
+							alert('예압');
 							e.preventDefault(); /* 기본 폼태그의 서브밋을 막아라. 자스의 서브밋을 실행해라 */
 							$.ajax(context+'/member/update',{
-								type : 'get',
+								/*type : 'get',*/
 								data : {
 									password : $('#password').val(),
 									addr : $('#addr').val(),
 									phone : $('#phone').val(),
-									email : $('#email').val(),
-									page : 'update'
+									email : $('#email').val()
+									/*page : 'update'*/
 								},
 								async : true, // 비동기로 할 지 여부, 기본값  true, 생략가능
 								dataType : 'json',
