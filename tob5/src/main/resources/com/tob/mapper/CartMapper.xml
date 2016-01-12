@@ -25,6 +25,9 @@
  	
  	</update>
  	<delete id="remove">
- 		DETELE FROM CART WHERE BOOK_ID = #{bookid}
+ 		DELETE FROM CART WHERE BOOK_ID = #{bookId}
+ 	</delete>
+ 	<delete id="removeUserid">
+ 		DELETE FROM CART WHERE USERID = #{userid}
  	</delete>
 </mapper>

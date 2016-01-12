@@ -19,4 +19,5 @@ public interface CartMapper {
 		
 		//D
 		public int remove(String bookid);
+		public int removeUserid(String userid);
 }

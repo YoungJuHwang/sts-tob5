@@ -44,7 +44,7 @@ var Cart = {
 				+'<td width="150" align="center"><div style="float:left"><input type="text" name="count" size="1" id="c'+i+'" value="'+this.count+'"></input></div>'
 				+'<div class="button" style="float:left;margin-left:4px">'
 /*==>onclick*/	+'<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+','+this.count+'\''+')"></div></td>'
-				+'<td width="100" align="center"><button id="d'+i+'" align="center">삭제</button></td></tr>'
+/*==>onclick*/	+'<td width="100" align="center"><button id="d'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td></tr>'
 				arr.push(this.bookId);
 			});
 			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody><tr><td align="center" style="padding: 10px 0 10px 0"><table cellpadding="0" cellspacing="0" border="0" width="610"><tbody><tr><td><table cellpadding="0" cellspacing="0" border="0"'
@@ -102,8 +102,25 @@ var Cart = {
 		});
 	},
 	
-	remove : function() {
-		
+	remove : function(bookId, userid) {
+		alert('Cart.remove 진입, 넘어온 책 아이디값 : ' +bookId);
+		$.ajax(context+'/cart/remove', {
+			data : {
+				bookId : bookId,
+				userid : userid
+			},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function() {
+				alert('삭제되었습니다.');
+			},
+			error : function() {
+				
+			}
+		});
 	}
 	
 	

@@ -66,5 +66,28 @@ public class CartController {
 		return model;
 	}
 	
+	@RequestMapping("/remove")
+	public Model remove(
+			String bookId,
+			Model model
+			){
+		logger.info("카트 컨트롤러 = remove() 진입");
+		logger.info("넘어온 북아이디 : {}", bookId);
+		int result = service.remove(bookId);
+		
+		return model;
+	}
+	
+	@RequestMapping("/removeUserid")
+	public Model removeUserid(
+			HttpSession session,
+			Model model
+			){
+		logger.info("카트 컨트롤러 = removeUserid() 진입");
+		MemberVO member = (MemberVO) session.getAttribute("user");
+		int result = service.removeUserid(member.getUserid());
+		return model;
+	}
+	
 	
 }

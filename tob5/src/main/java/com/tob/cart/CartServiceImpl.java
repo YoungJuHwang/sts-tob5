@@ -62,16 +62,22 @@ public class CartServiceImpl implements CartService {
 		return mapper.getList(todaycart);
 	}
 	@Override
-	public int remove(String bookid) {
+	public int remove(String bookId) {
 		logger.info("CartServiceImpl : remove 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
-		return mapper.remove(bookid);
+		return mapper.remove(bookId);
 	}
 	@Override
 	public int changeCount(int count) {
 		logger.info("CartServiceImpl : changeCount 진입");
 		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
 		return mapper.changeCount(count);
+	}
+	@Override
+	public int removeUserid(String userid) {
+		logger.info("CartServiceImpl : removeUserid 진입");
+		CartMapper mapper = sqlSession.getMapper(CartMapper.class);
+		return mapper.removeUserid(userid);
 	}
 	
 	

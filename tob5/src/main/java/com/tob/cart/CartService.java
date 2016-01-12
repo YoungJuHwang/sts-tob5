@@ -15,6 +15,9 @@ public interface CartService {
 	// 장바구니 수량 변경
 	public int changeCount(int count);
 	
-	// 장바구니 삭제
+	// 장바구니 삭제(책아이디)
 	public int remove(String bookid);
+	
+	// 장바구니 삭제(유저아이디)
+	public int removeUserid(String userid);
 }
