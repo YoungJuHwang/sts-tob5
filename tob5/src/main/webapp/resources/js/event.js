@@ -104,7 +104,6 @@ var Event = {
 				+'</div><div id="reply_area" style="padding-top:10px;"></div>'
 				+'</div>';
 				$('.mainView').html(eventPage);
-
 				$ ("#reply_btn").click(function() {
 				       if($(".navbar-right a").text() === "로그인"){
 				           alert("댓글을 달려면 로그인을 해주세요");
@@ -135,7 +134,7 @@ var Event = {
 	},
 
 
-
+	
 	
 };
 
