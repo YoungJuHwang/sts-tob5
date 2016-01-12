@@ -288,6 +288,7 @@ public class AdminController {
 		logger.info("AdminController-bookreg() 페이지만 진입");
 		return model;
 	}
+
 	
 	@RequestMapping(value="/book_join", method=RequestMethod.POST)
 	public Model bookJoin(
@@ -326,12 +327,6 @@ public class AdminController {
         }
         return model;
 		
-	}
-	
-	@RequestMapping("/book_list")
-	public String bookList(){
-		logger.info("AdminController-bookList() 진입");
-		return "admin/admin/bookList.tiles";
 	}
 	
 	@RequestMapping("/book_delete/{bookId}")
@@ -412,6 +407,16 @@ public class AdminController {
 		} else {
 			logger.info("컨트롤러 책 수정실패");
 		}
+		return book;
+	}
+	
+	@RequestMapping("/today_book_search/{bookId}")
+	public @ResponseBody BookVO todayBook(
+			@PathVariable("bookId")String id ){
+		logger.info("BookController:bookId()");
+		logger.info("책 고유번호 : {}",id);
+		book = bookService.searchByBook(id);
+		logger.info("책 이름 : {}",book.getBookName());
 		return book;
 	}
 	

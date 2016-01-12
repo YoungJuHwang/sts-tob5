@@ -26,7 +26,6 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">회원관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#" id="main_memberReg">회원 및 관리자 등록</a></li>
-            <%-- <li><a href="${context}/admin/member_reg2">회원 및 관리자 등록</a></li> --%>
             <li><a href="#" id="main_memberList">전체회원목록 및 수정&삭제</a></li>
           </ul>
         </li>	   
@@ -35,6 +34,7 @@
           <ul class="dropdown-menu">
             <li><a href="#" id="main_bookReg">책 등록</a></li>
             <li><a href="#" id="main_bookList">전체 책 목록</a></li>
+            <li><a href="#" id="main_todayBook">오늘의 책 선정</a></li>
           </ul>
         </li>
           <li class="dropdown">
@@ -85,6 +85,10 @@
 		$('#main_bookList').click(function() {
 			AdminBookList.list('1'); 
 		});
+		
+		$('#main_todayBook').click(function() {
+			AdminBook.inputBookId(); 
+		});
 	});
 	
 	
@@ -103,15 +107,14 @@
 					
 					/* ============ 회원 & 관리자 화면 전환 ============ */
 					$('#register-form-link').click(function(e) {
-						alert('회원');
 						$("#register-form").delay(100).fadeIn(100);
 				 		$("#login-form").fadeOut(100);
 						$('#login-form-link').removeClass('active');
 						$(this).addClass('active');
 						e.preventDefault();
 					});
+					
 					$('#login-form-link').click(function(e) {
-						alert('관리자');
 						$("#login-form").delay(100).fadeIn(100);
 				 		$("#register-form").fadeOut(100);
 						$('#register-form-link').removeClass('active');
@@ -119,14 +122,17 @@
 						e.preventDefault();
 					});
 					
+					/* ========================================== */
+					
+					
 					$("#btn_confirm").click(function(){
-						alert('클릭');
 						AdminReg.join_Auth();
 						$("#btn_confirm").remove();
 					});
 
 					
 					$("#admin_join").click(function(){
+						alert('클릭');
 						var admin_id = $("#admin_id").val();
 						var admin_password = $("#admin_password").val();
 						var admin_email = $("#admin_email").val();
@@ -258,11 +264,6 @@
 		};
  
 	
-	/* ============== 이메일 인증 =======================  */
-	
-	
-	
-	
  	var style = {
  			style : function() {
 				$('.panel-login').css('border-color','#ccc').css('-webkit-box-shadow','0px 2px 3px 0px rgba(0,0,0,0.2)')
@@ -303,6 +304,7 @@
 	
 	var AdminReg = {
 			join_Auth : function() {
+				alert('join_auth 진입');
 				$.ajax(context + "/admin/join_auth",{	
 					data : {"id" : $("#admin_id").val(),
 							"adminEmail" :$("#admin_email").val()
@@ -342,19 +344,22 @@
 					success : function(data) {
 						if(data.result == "success"){
 							alert(data.id+"님 관리자로 등록되었습니다.");
-							location.href(context+'/admin/main');
+							AdminMemberReg.init();
 							
 						}
 						if(data.result == "fail"){
 							alert("관리자 등록을 실패하였습니다. 다시 시도해주세요.");
+							AdminMemberReg.init();
 						}
 						if(data.result == "not_Agreement"){
 							alert("인증번호가 일치하지 않습니다. 인증을 다시 해주세요.");
+							AdminMemberReg.init();
 						}
 					},
 					
 					error : function(xhr, status, msg) {
 						alert('에러발생상태 : '+status +', 내용 :'+msg);
+						AdminMemberReg.init();
 					}
 					
 					
@@ -391,16 +396,18 @@ var AdminMember = {
 					
 					if(data.result == "success"){
 						alert(data.name+" 님 회원가입 성공");
-						AdminMemberList.list('1');
+						AdminMemberReg.init();
 						
 					}
 					if(data.result == "fail"){
 						alert("실패");
+						AdminMemberReg.init();
 					}
 				},
 				
 				error : function(xhr, status, msg) {
 					alert('에러발생상태 : '+status +', 내용 :'+msg);
+					AdminMemberReg.init();
 				}
 				
 				
@@ -417,7 +424,7 @@ var AdminMember = {
  
 	$("#reg_member_btn").click(function() {
 		if($("#userid").val() == "") {
-			alert("사용자 아이디를 입력하세요s.");
+			alert("사용자 아이디를 입력하세요.");
 			$("#userid").focus();
 			return false;
 		}
@@ -461,6 +468,7 @@ var AdminMember = {
 			success: function(data) {
 				if(data.result == "success") { 
 					alert(data.name+"님 회원가입이 완료 되었습니다.");
+					AdminMemberReg.init();
 					
 				} else if(data.result == "chk") { 
 					alert("이미 가입된 ID 입니다.");
@@ -472,6 +480,7 @@ var AdminMember = {
 			},
 			error: function(e) {
 				alert(e);
+				AdminMemberReg.init();
 			}
 		});
 		
@@ -1152,7 +1161,47 @@ var AdminBook = {
 					alert('에러발생상태 : '+status +', 내용 :'+msg);
 				}
 			});
+		},
+		
+		inputBookId : function() {
+			$('.mainView').html('<form class="navbar-form navbar-left" role="search">'
+					+'<div class="form-group">'
+					+'<input type="text" class="form-control" id="textInputId" placeholder="책 ID 입력"></div>'
+					+'<button type="button" class="btn btn-default" value="오늘의 책 선정" id="btCheck">검 색</button></form>');
+					
+					$('#btCheck').click(function() {
+						if ($("#textInputId").val() == "") {
+							alert("책 아이디 값을 입력해주세요.");
+							$("#textInputId").focus();
+							return false;
+						}
+						AdminBook.searchForTodayBook2($("#textInputId").val());
+				})
+		},
+		
+		searchForTodayBook2 : function(bookId) {
+			$.getJSON(context +'/admin/today_book_search/'+bookId ,function(data){
+				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
+					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="106px" height="150px" align="left">'
+					+'<a href="#" id="'+data.bookId+'"><strong>'+data.bookName+'</strong></a><br /><br />'
+					+'<font color="maroon" size="1px">'+data.writer+'</font><br />'
+					+'<font color="black" size="2px">책 내용 들어갈 자리.</font>';
+					$('.mainView').html(todayBook2);
+					$('#'+data.bookId).click(function() {
+						book.mainPage(bookId);
+					});
+			});
+			
+			
 		}
+		
+		
+		
+		
+		
+		
+		
+		
 };
 	
 	
