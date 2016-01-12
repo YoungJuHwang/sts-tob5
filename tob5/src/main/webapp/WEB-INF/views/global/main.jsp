@@ -754,7 +754,7 @@ body {
 			<div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto; ">
 				<a href="#" id="book_more"><img src="${img}/week.png" alt="" /></a>
 			</div>
-						<div class="col-xs-6 col-md-3">
+					<div class="col-xs-6 col-md-3">
 						<a href="#" class="thumbnail"> <img src="${img}/weekday1.jpg"
 							alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;">
 						</a>
@@ -774,6 +774,7 @@ body {
 							alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;">
 						</a>
 					</div>
+			
 		</div>
     </section>
    <hr />
@@ -782,9 +783,46 @@ body {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">EVENT</h2>
-                    <h3 class="section-subheading text-muted" id="event_more">더보기</h3>
-                </div>
+                    <h2 class="section-heading" id="event_more">EVENT</h2>
+					<div class="row">
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="..." alt="...">
+								<div class="caption">
+									<h3>이벤트명</h3>
+									<p>...</p>
+									<p>
+										<a href="#" class="btn btn-primary" role="button">더보기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="..." alt="...">
+								<div class="caption">
+									<h3>이벤트명</h3>
+									<p>...</p>
+									<p>
+										<a href="#" class="btn btn-primary" role="button">더보기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="..." alt="...">
+								<div class="caption">
+									<h3>이벤트명</h3>
+									<p>...</p>
+									<p>
+										<a href="#" class="btn btn-primary" role="button">더보기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
         </div>
 </section>       
@@ -919,12 +957,10 @@ $(function() {
 		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});
-	$('#book').click(function() {
+	$('#book_more').click(function() {
 		book.all('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});	
-	
-	
 });
 
 
