@@ -29,10 +29,12 @@ var Cart = {
 				alert('장바구니에 담겼습니다.');
 			},
 			error : function() {
-				alert('cart-put의 ajax 에러');
+				alert('이미 장바구니에 있습니다.');
 			}
 		});
 	},
+	
+	
 	
 	list : function(userid) {
 		var arr = [];

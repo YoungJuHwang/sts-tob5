@@ -3,9 +3,11 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tob.mapper.CartMapper">
 	<insert id="put" parameterType="com.tob.cart.CartVO">
+		<if test="">
 		INSERT INTO CART
 			(CART_NUM, CART_TODAY, BOOK_ID, USERID, COUNT) VALUES
 			(#{cartNum},#{cartToday},#{bookId},#{userid},'1')
+		</if>
 	</insert>
 	<select id="getList" resultType="com.tob.cart.BookCartVO" parameterType="com.tob.cart.TodayCartVO">
 		SELECT
@@ -21,6 +23,9 @@
  	<update id="changeCount">
  	
  	</update>
+ 	<select id="getBookIdList">
+ 	
+ 	</select>
  	<delete id="remove">
  		DELETE FROM CART WHERE BOOK_ID = #{bookId}
  	</delete>
