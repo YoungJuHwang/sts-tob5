@@ -49,8 +49,8 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
 				<li><a class="page-scroll" href="#services">SERVICE</a></li>
-				<li><a class="page-scroll" href="#event" >EVENT</a></li>
 				<li><a class="page-scroll" href="#book" >BOOK</a></li>
+				<li><a class="page-scroll" href="#event" >EVENT</a></li>
 				<li><a class="page-scroll" href="#team">INFO</a></li>
 		<c:if test="${empty sessionScope.user}">
 		<!-- 로그인 안한 상태 -->
@@ -89,11 +89,11 @@
 		$('#info').click(function() {
 		});
 		
-		$('#event').click(function() {
+		$('#event_more').click(function() {
 			Event.event();
 		});
 		
-		$('#book').click(function() {
+		$('#book_more').click(function() {
 			book.all('${user.userid}');
 		});
 		

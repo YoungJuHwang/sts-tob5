@@ -37,25 +37,41 @@ var Cart = {
 	list : function(userid) {
 		var arr = [];
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
-			var table = '<div id="Shop_Basket" style="height:100%"><form action="" name="frm0" id="frm0" method="get" ><table width="866" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2"><table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2"><table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td align="left"><h3 class="title_middle_black"><span class="title_middle_blue">TOB</span>배송 상품 장바구니 </h3></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table><table width="866" align="center" cellspacing="0" cellpadding="0" border="0" summary class="table_shop_blue"><tbody><tr><th width="50" height="29" align="center"></th><th height="29" width="*" align="center">상품명</th><th width="130" height="29" align="center">가격</th><th width="150" height="29" align="center">수량</th><th width="100" height="29" align="center">삭제 <input type="checkbox" name="AllSelect" onclick="javascript:revcheck(document.frm0)" value="checkbox" checked/></th></tr></tbody></table><table id="item_list" width="866" border="0" align="center" cellpadding="3" cellspacing="0"><tbody>';
+			var table = '<div id="Shop_Basket" style="height:100%"><form action="" name="frm0" id="frm0" method="get" >'
+						+'<table width="866" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2">'
+						+'<table id="table_lis" width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2">'
+						+'<table width="100%" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td align="left"><h3 class="title_middle_black">'
+						+'<span class="title_middle_blue">TOB</span>배송 상품 장바구니 </h3></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>'
+						+'<table width="866" align="center" cellspacing="0" cellpadding="0" border="1px solid silver"><tbody><tr>'
+						+'<th width="50" height="29" text-align="center"></th>'
+						+'<th><img src="${img}/title.png" alt="" /></th>'
+						+'<th><img src="${img}/price.png"alt="" /></th>'
+						+'<th><img src="${img}/count.png"alt="" /></th>'
+						+'<th><img src="${img}/delete.png"alt="" /></th></tr></tbody></table>'
+						+'<table id="item_list" width="866" border="1px solid silver" align="center" cellpadding="3" cellspacing="0"><tbody>';
 			$.each(data, function(i, val) {
-				table +='<tr><td width="50" align="center"></td><td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
-				+'<td width="130" align="center">'+this.bookPrice+'</td>'
-				+'<td width="150" align="center"><div style="float:left"><input type="text" name="count" size="1" id="c'+i+'" value="'+this.count+'"></input></div>'
+				table +='<tr><td width="50" text-align="center"></td><td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
+				+'<td width="130" text-align="center">'+this.bookPrice+'</td>'
+				+'<td width="150"  text-align="center"><div style="float:left"><input type="text" name="count" size="1" id="c'+i+'" value="'+this.count+'"></input></div>'
 				+'<div class="button" style="float:left;margin-left:4px">'
-/*==>onclick*/	+'<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+','+this.count+'\''+')"></div></td>'
+/*==>onclick*/	+'<input type="submit" class="button_gray" style="width:55px" align="center" value="변경" onclick="Cart.change('+'\''+this.bookId+','+this.count+'\''+')"></div></td>'
 				+'<td width="100" align="center"><button id="d'+i+'" align="center">삭제</button></td></tr>'
 				arr.push(this.bookId);
 			});
-			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody><tr><td align="center" style="padding: 10px 0 10px 0"><table cellpadding="0" cellspacing="0" border="0" width="610"><tbody><tr><td><table cellpadding="0" cellspacing="0" border="0"'
+			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody>'
+				+'<tr><td align="center" style="padding: 10px 0 10px 0"><table cellpadding="0" cellspacing="0" border="0" width="610"><tbody><tr><td>'
+				+'<table cellpadding="0" cellspacing="0" border="0"'
 				+'width="289"><tbody><tr><td width="140">총 상품가격</td>'
-				+'<td width="149"><strong>합계...</strong></td>'
+				+'<td width="149"><strong>합계</strong></td>'
 				+'</tr><tr><td height="20">배송비</td><td><strong>0</strong>원</td></tr><tr><td height="20">총 주문 상품 수</td>'
 				+'<td><strong>??</strong>권</td>'
-				+'</tr></tbody></table></td><td width="1" bgcolor="#ffffff"></td></tbody></table><table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr><td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
+				+'</tr></tbody></table></td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
+				+'<table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr>'
+				'<td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
 				+'<td width="149" class="pt1"><span class="pt3">합계 금액...</span></td></tr></tbody></table></td></tr></tbody></table>'
 				+'</form></div>';
 			$('.mainView').empty().append(table);
+			
 			
 		});
 	},
@@ -101,24 +117,10 @@ var Cart = {
 			
 		});
 	},
-	
+
 	remove : function() {
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

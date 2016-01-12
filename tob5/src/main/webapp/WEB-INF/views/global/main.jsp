@@ -746,17 +746,15 @@ body {
                 </div>
            </div>
     </section>
-    
+    <hr />
     <!-- Contact Section -->
       <!-- BOOK -->
-    <section id="book" >
-       <div class="container">
-        <div class="row">
-			<div class="col-lg-8 col-lg-offset-2"
-				style="margin: auto; width: 100%;">
-				<img src="${img}/week.png" alt="" style="padding-top: 20px;" /> <div class="section-subheading text-muted" id="book_more"><h5>더보기</h5></div>
-				<div class="row">
-					<div class="col-xs-6 col-md-3">
+    <section id="book" class="container content-section">
+        <div class="download-section">
+			<div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto; ">
+				<a href="#" id="book_more"><img src="${img}/week.png" alt="" /></a>
+			</div>
+						<div class="col-xs-6 col-md-3">
 						<a href="#" class="thumbnail"> <img src="${img}/weekday1.jpg"
 							alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;">
 						</a>
@@ -776,10 +774,7 @@ body {
 							alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;">
 						</a>
 					</div>
-				</div>
-			</div>
 		</div>
-        </div>
     </section>
    <hr />
    <!-- Event -->
@@ -891,13 +886,13 @@ body {
                             </li>
                             <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
                             </li>
-                        </ul>
+                        </ul> 
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+                    <p class="large text-muted">준비중입니다.</p>
                 </div>
             </div>
         </div>

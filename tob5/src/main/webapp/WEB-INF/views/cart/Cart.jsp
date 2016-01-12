@@ -6,15 +6,15 @@
 <div id="Shop_Basket" style="height:100%">
 	<form action="" name="frm0" id="frm0" method="get" >
 
-	 <table width="866" border="0" cellspacing="0" cellpadding="0">
+	 <table id="tab_title" style="height: 100%">
 	  <tbody>
 	   <tr>
 		<td colspan="2">
-		 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+		 <table style="width: 866; float: center; border: 0; cellspaxing : 0; cellpadding : 0;">
 		  <tbody>
 		   <tr>
 			<td colspan="2">
-			 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			 <table style="width: 866; float: center; border: 0; cellspaxing : 0; cellpadding : 0;">
 			  <tbody>
 			   <tr>
 				<td align="left">
@@ -24,7 +24,6 @@
 				 </h3>
 				</td>
 				<td align="right">
-				 
 				 <div>
 				  <input type="submit" class="btn_samll" onclick="if(!confirm('선택한 상품을 정말 삭제하시겠습니까?')) {return false;}" value="선택상품삭제" />
 				 </div>
@@ -40,7 +39,7 @@
 	  </tr>
      </tbody>
     </table>
-    <table width="866" cellspacing="0" cellpadding="0" border="0" summary class="table_shop_blue">
+    <table width=866; align="center" cellspacing="0" cellpadding="0" border="1px solid silver" >
      <tbody>
       <tr>
        <th width="100" height="29" align="center"></th>
@@ -54,11 +53,10 @@
      </tbody>
     </table>
 
-
     <table id="item_list" width="100%" border="0" align="center" cellpadding="3" cellspacing="0">
      <tbody>
       <tr>
-       <td width="48" bgcolor="#ffffff">
+       <td width="48px" bgcolor="#ffffff">
        	<a href="#" title="Alice: 100 Postcards.. DB에 있는 책의 이미지">
        	 <img src="#" style="width: 48px; padding-left: 10px">
        	</a>
