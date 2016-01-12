@@ -919,7 +919,7 @@ $(function() {
 		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});
-	$('#book_more').click(function() {
+	$('#book').click(function() {
 		book.all('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});	
