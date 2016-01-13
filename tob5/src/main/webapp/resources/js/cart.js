@@ -76,7 +76,8 @@ var Cart = {
 /*==>onclick*/	+'		<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+'\''+')">'
 				+'	</div>'
 				+'</td>'
-/*==>onclick*/	+'<td width="100" align="center"><button id="delete'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td></tr>'
+/*==>onclick*/	+'<td width="100" align="center"><button id="delete'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td>'
+				+'<span id="d'+i+'"></span></tr>';
 				arr.push(this.bookId);
 				
 			});
@@ -107,12 +108,12 @@ var Cart = {
 		$('#count'+i).empty();
 		alert('count i 번째 디브 지웠음.');
 		var result = '<span id="demo"></span>';
-		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+bookId+'\''+')"></input>');
+		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" value="<span id=d'+i+'></span>"' +'" onkeyup="Cart.myFunction('+'\''+i+'\''+','+'\''+bookId+'\''+')"></input>');
 		
-		alert('i 번째 스팬 값 : ' + result);
+	
 		alert('count i 번째 다시 그리고 난 뒤 i 값 : ' +i);
 		alert('count i 번째 다시 그리고 난 뒤 BookId 값 : ' +bookId);
-		
+		alert('i 번째 스팬 값 : ' + result);
 		 var x = document.getElementById("c"+i).value;
 		    document.getElementById("d"+i).innerHTML = x;
 	},
