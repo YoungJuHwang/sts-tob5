@@ -80,10 +80,9 @@ var book = {
 				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
 				$.each(data.listAbroad,function(i,value){
 					$('#'+abroadArr[i]).click(function() {
-						alert('해외도서 페이지,'+abroadArrName[i]+'  페이지로 이동.')
-						book.bookEmpty(abroadArr[i]);
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty();
+						book.bookSimplePage2('1',abroadArr[i],userid);
+						alert('장르아이디 들어갔니? '+abroadArr[i])
 					});
 					
 				});
@@ -91,19 +90,15 @@ var book = {
 				
 				$.each(data.listDomestic,function(i,value){
 					$('#'+domesticArr[i]).click(function() {
-						alert('국내도서 페이지  ,'+domesticArrName[i]+'  페이지로 이동.')
-						book.bookEmpty(domesticArrName[i]);
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty();
+						book.bookSimplePage2('1',domesticArr[i],userid);
 					});
 					
 				});
 				$.each(data.listEbook,function(i,value){
 					$('#'+ebookArr[i]).click(function() {
-						alert('전자책 페이지  ,'+ebookArrName[i]+'  페이지로 이동.')
-						book.bookEmpty(ebookArrName[i]);
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty();
+						book.bookSimplePage2('1',ebookArr[i], userid);
 					});
 					
 				});
@@ -111,18 +106,17 @@ var book = {
 				
 				$.each(data.listNew,function(i,value){
 					$('#'+newArr[i]).click(function() {
-						alert('신간 페이지  ,'+newArrName[i]+'  페이지로 이동.')
 						book.bookEmpty(newArrName[i]);
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookSimplePage2('1',newArr[i], userid);
 					});
 				});
 				
 				
+				
+				// 일부로 안준거.
 				$.each(data.listOld,function(i,value){
 					$('#'+oldArr[i]).click(function() {
-						alert('중고책 페이지  ,'+oldArrName[i]+'  페이지로 이동.')
-						book.bookEmpty(oldArrName[i]);
+						book.bookEmpty();
 						book.bookSimplePage('1', userid);
 						alert('넘어가는 유저아이디 : '+ userid);
 					});
@@ -135,7 +129,115 @@ var book = {
 			});
 		},
 		
-		bookSimplePage : function(pageNo, userid) {
+		//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
+		
+		
+		bookSimplePage2 : function(pageNo,genreId,userid) {
+			var arr= [];
+			$.getJSON(context +'/book/Book_selectAll2/'+pageNo+'/'+genreId ,function(data){
+				var count = data.count;
+				var pageNo = data.pageNo; 
+				var startPage = data.startPage;
+				var groupSize = data.groupSize;
+				var lastPage = data.lastPage;
+				var totPage = data.totPage;
+				
+				var bookList= '<div id="bookContents2" style="color: black;"><h2>책 목록</h2>'
+					$.each(data.list,function(index,value){
+						bookList +='<div class="book1">';
+							bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';
+							bookList +='<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
+							bookList +='<font color="white" ">'+this.optionBook+'</font>'; 
+							bookList +='<font color="white" style="color: green">이벤트</font>';
+							bookList +='<font color="white" class="maroon">경품</font>';
+							bookList +='<font color="white" style="background-color: purple;">무료배송</font>';
+							bookList +='<font color="gray">'+this.writer+'</font><br />';
+							bookList +='<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
+							bookList +='<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
+							bookList +='<br /><br /><br /><br />';
+							bookList +='<input type="button"  value="장바구니에 담기" onclick="book.putInCart('+'\''+this.bookId+'\''+')">';
+							bookList +='<input type="button"  value="바로구매" id="b'+index+'">';
+							bookList +='<br /><br /><br /><br />';
+						arr.push(this.bookId);
+						
+					});
+
+				//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
+					var pagination = '<TABLE id="pagination">'
+						if (startPage != 1) {
+							pagination += '<a href="'+context+'/book/Book_selectAll/1">'
+							+'<IMG SRC="'+img+'/left.png">&nbsp'
+							+'</a>';
+						}
+						if ((startPage - groupSize) > 0 ) {
+							pagination +='<a href="'+context+'/book/Book_selectAll/'+(startPage-groupSize)+'">'
+							+'<IMG SRC="'+img+'/right.png">&nbsp'
+							+'</a>';
+						}
+						
+						for (var i = startPage ; i <= lastPage; i++) {
+							if (i == pageNo) {
+								pagination+='<font style="color:red;font-size: 20px">'
+								+i
+								+'</font>';
+							} else {
+								pagination+='<a href="#" onClick="return book.bookSimplePage2('+i+',\''+genreId+'\''+')">'
+								+'<font>'
+								+i
+								+'</font>'
+								+'</a>';
+							}
+						}		
+						if ((startPage + groupSize) <= totPage) {
+							pagination += +'<a href="'+context+'/book/Book_selectAll/'+(startPage+groupSize)+'">'
+						}
+						pagination += '</TD>';
+						pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+
+						bookList+=pagination;
+						bookList+='</div>';	
+					
+						//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
+			
+				
+				$('.mainView').html(bookList);
+				
+				$.each(data.list, function(index, value) {
+					$('#'+arr[index]).click(function() {
+						alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
+						book.bookEmpty();
+						book.mainPage(arr[index]);
+				});
+
+	$.each(data.list,function(i,value){
+		$('#b'+index).click(function() {
+			alert('구매 클릭 됨.');
+			alert('Purcase.buy으로 넘기는 유저아이디 : '+userid);
+			Purchase.buy(arr[index], userid);		
+		});
+	});
+					
+	
+	
+				});	
+				
+				
+			});
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//-------@@@@@@@@@@@@--------------------------------------------------
+		bookSimplePage : function(pageNo , userid) {
 			var arr = [];
 		$.getJSON(context +'/book/Book_selectAll/'+pageNo ,function(data){
 			var count = data.count;
@@ -230,7 +332,7 @@ $.each(data.list,function(i,value){
 		Cart.getBooksInCart();
 		Cart.put(bookId);
 	},
-		
+		//--------@@@@@@@@@@@@@@@@@-----------------------------------------------
 		
 	mainPage : function(bookId) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){

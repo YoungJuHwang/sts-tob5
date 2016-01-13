@@ -26,6 +26,9 @@ public class Command implements Orderable{
 		this.end = (Integer.parseInt(pageNo)*PAGESIZE);
 	} //검색어도 같이 넘어왔을 때
 	
+	
+	
+	
 	public int getPageNO() {
 		return pageNO;
 	}

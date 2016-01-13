@@ -52,8 +52,8 @@ GRADE AS grade,
 STOCK_SEQ AS stockSeq,
 OPTION_ID AS optionBook,
 GENRE_ID AS genreId
-   FROM BOOK ORDER BY BOOK_ID DESC
-          LIMIT #{start}, 3
+FROM BOOK WHERE GENRE_ID = #{keyword}
+LIMIT #{start}, 3
 </select>
 
  <select id="count" resultType="int">
