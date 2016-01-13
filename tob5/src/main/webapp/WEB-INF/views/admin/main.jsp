@@ -4,11 +4,125 @@
 <div id="map_div" style="width: 400px; height: 300px; margin: auto;" ></div>
 <div id="map" style="width:500px;height:400px; margin: auto;"></div>
 
+<div id="daumForm">  
+    <input id="daumSearch" type="text" value="다음" onkeydown="javascript:if(event.keyCode == 13) daumSearch.search();"/>  
+    <input id="daumSubmit" onclick="javascript:daumSearch.search()"   
+        type="submit" value="검색" />  
+</div>  
+<div id="daumView">  
+    <h3>비디오 검색 결과</h3>  
+        <div id="daumVclip"></div>  
+    <h3>이미지 검색 결과</h3>  
+        <div id="daumImage"></div>  
+    <h3>게시판 검색 결과</h3>  
+        <div id="daumBoard"></div>  
+    <h3>블로그 검색 결과</h3>  
+        <div id="daumBlog"></div>  
+    <h3>웹 검색 결과</h3>  
+        <div id="daumWeb"></div>  
+    <h3>지식 검색 결과</h3>  
+        <div id="daumKnowledge"></div>  
+    <h3>책 검색 결과</h3>  
+        <div id="daumBook"></div>  
+    <h3>카페 검색 결과</h3>  
+        <div id="daumCafe"></div>  
+</div>  
+<div id="daumScript">  
+    <div id="daumVclipScript"></div>  
+    <div id="daumImageScript"></div>  
+    <div id="daumBoardScript"></div>  
+    <div id="daumBlogScript"></div>  
+    <div id="daumWebScript"></div>  
+    <div id="daumKnowledgeScript"></div>  
+    <div id="daumBookScript"></div>  
+    <div id="daumCafeScript"></div>  
+</div>  
+
+
 <script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=53e2827500534f733c75dadaccfdbaa2"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-
+    var daumBook = {  
+            /** 초기화. **/  
+            init : function(r){  
+                daumBook.api = 'http://apis.daum.net/search/book';  
+                daumBook.pgno = 1;  
+                daumBook.result = r;  
+            },  
+            /** callback 함수 호출. **/  
+            pingSearch : function(pgno){  
+                daumBook.pgno = pgno;  
+                  
+                var ds = document.getElementById('daumBookScript');  
+                var callback = 'daumBook.pongSearch';  
+                  
+                daumSearch.pingSearch(ds,daumBook.api, daumBook.pgno,   
+                    callback, daumBook.result);    
+            },  
+            /** 결과를 뿌려줌. **/  
+            pongSearch : function(z){  
+                var dv = document.getElementById('daumBook');  
+                dv.innerHTML ="";  
+                dv.appendChild(daumSearch.pongSearch(this, z));  
+                dv.appendChild(daumSearch.pongPgno(daumBook.pgno,   
+                    z.channel.totalCount/daumBook.result,daumBook.pingSearch));  
+            },  
+            /** li setting **/  
+            getSearch : function(title,content){  
+                var li = document.createElement('li');  
+                  
+                li.appendChild(title);  
+                li.appendChild(content);  
+                  
+                return li;  
+            },  
+            /** 설명 return **/  
+           getContent : function(z){  
+               var div = document.createElement('div');  
+               var a = document.createElement('a');  
+               var b = document.createElement('b');  
+               var ba1 = document.createElement('a');  
+               var ba2 = document.createElement('a');  
+               var ba3 = document.createElement('a');  
+               var ba4 = document.createElement('a');  
+               var img = document.createElement('img');  
+               var aimg = document.createElement('a');  
+                 
+               img.src = z.cover_s_url;  
+                 
+               aimg.target = '_blank';  
+               aimg.imghref = z.cover_s_url;  
+               aimg.style.float = 'left';  
+                            
+               aimg.appendChild(img);  
+                 
+               a.target = '_blank';  
+               a.href = z.link;  
+               a.style.clear = 'left';  
+               a.innerHTML = daumSearch.escapeHtml(z.description) + '<'+'br/>';  
+                 
+               ba1.innerHTML = '저자 : '   
+                    + daumSearch.escapeHtml(z.author) + '<'+'br/>';  
+               ba2.innerHTML = '출판사 : '   
+                    + daumSearch.escapeHtml(z.pub_nm) + '<'+'br/>';  
+               ba3.innerHTML = '카테고리 : '   
+                    + daumSearch.escapeHtml(z.category) + '<'+'br/>';  
+               ba4.innerHTML = '가격 : '   
+                    + daumSearch.escapeHtml(z.sale_price) + '<'+'br/>';  
+                 
+               b.appendChild(ba1);  
+               b.appendChild(ba2);  
+               b.appendChild(ba3);  
+               b.appendChild(ba4);  
+                 
+               div.appendChild(aimg);  
+               div.appendChild(b);  
+               div.appendChild(a);  
+                            
+               return div;  
+           }  
+        };  
 $(function() {
  	lineChartFactor();
 	google.charts.load('current', {'packages':['corechart']});
@@ -40,7 +154,7 @@ var lineChartFactor = function() {
 	for (var i = today; i > 20160101; i--) {
 		$.ajax(context + "/account/chart_line",{
 	       	 data : {
-	       		 "key" : i-1
+	       		 "key" : i
 	       	 },
 	       	 async : false,
 	       	 success : function(data) {
@@ -83,14 +197,6 @@ function drawLineChart() {
 };
 
 /* ============== 차트 ============= */
-
-/* var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-var options = { //지도를 생성할 때 필요한 기본 옵션
-	center: new daum.maps.LatLng(37.49917, 127.02940), //지도의 중심좌표.
-	level: 3 //지도의 레벨(확대, 축소 정도)
-};
-
-var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴 */
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = { 
