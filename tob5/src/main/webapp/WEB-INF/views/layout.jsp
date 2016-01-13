@@ -20,7 +20,6 @@
 				<div class="mainView">
 					<tiles:insertAttribute name="content" />
 				</div>
-				<div id="submain"></div>
 			</section>
 		</div>
 		<div id="footer">
@@ -32,5 +31,6 @@
 <script src="${js}/Book.js"></script>
 <script src="${js}/event.js"></script>
 <script src="${js}/member.js"></script>
+
 </body>
 </html>

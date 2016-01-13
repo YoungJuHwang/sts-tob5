@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-<head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -686,7 +684,7 @@ body {
 
 
 	<!-- Services Section BestSeller -->
-	<section id="services" class="container content-section">
+	<section id="main_section" class="container content-section">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
@@ -770,7 +768,8 @@ body {
 	<hr />
 	<!-- Contact Section -->
 	<!-- BOOK -->
-	<section id="book" class="container content-section">
+	<section id="book_section" class="container content-section">
+		<a href="#" id="book_test">이거눌</a>
 		<div class="download-section">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
@@ -780,14 +779,17 @@ body {
 				<a href="#" class="thumbnail" id="target"> </a>
 			</div>
 		</div>
+		<div id="submain">
+		
+		</div>
 	</section>
 	<hr />
 	<!-- Event -->
-	<section id="event">
+	<section id="event_section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading" id="event_more">EVENT</h2>
+					<h2 class="section-heading" id="event_test">EVENT</h2>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
@@ -830,9 +832,10 @@ body {
 			</div>
 		</div>
 	</section>
+	<section id="event_submain"></section>
 	<hr />
 	<!-- team -->
-	<section id="team" class="bg-light-gray">
+	<section id="info_section" class="bg-light-gray">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -965,16 +968,15 @@ body {
 $(function() {
 	//book.searchForTodayBook2();
 	
-	$('#event_more').click(function() {
-		/* Event.event('${user.userid}');*/
+	$('#event_test').click(function() {
+		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
-		location.href="${context}/event/main";
 	});
-	$('#book_more').click(function() {
-		
+	$('#book_test').click(function() {
+		$('#book_section').empty();
 		book.all('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
-	});	
+	});
 	$('#tech').click( function() {
    	 alert("이벤트 댓글달기로 이동");
         Event.eventPage();
@@ -1017,5 +1019,15 @@ $(function() {
 		book.mainPage();
 	});
 		});
-	</script>
-</body>
+		
+</script>
+
+</body><script src="${js}/agency.js"></script>
+<script src="${js}/bootstrap.js"></script>
+<script src="${js}/bootstrap.min.js"></script>
+<script src="${js}/cbpAnimatedHeader.js"></script>
+<script src="${js}/dbpAnimatedHeader.min.js"></script>
+<script src="${js}/classie.js"></script>
+<script src="${js}/contact_me.js"></script>
+<script src="${js}/jqBootstrapValidation.js"></script>
+<script src="${js}/member.js"></script>

@@ -48,10 +48,10 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
-				<li><a class="page-scroll" href="#services">Main</a></li>
-				<li><a class="page-scroll" href="#book" >BOOK</a></li>
-				<li><a class="page-scroll" href="#event" >EVENT</a></li>
-				<li><a class="page-scroll" href="#team">INFO</a></li>
+				<li><a class="page-scroll" href="#main_section">Main</a></li>
+				<li><a class="page-scroll" href="#book_section" >BOOK</a></li>
+				<li><a class="page-scroll" href="#event_section" >EVENT</a></li>
+				<li><a class="page-scroll" href="#info_section">INFO</a></li>
 		<c:if test="${empty sessionScope.user}">
 		<!-- 로그인 안한 상태 -->
 		<li style="float: right; margin-right: 30px;"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
@@ -82,12 +82,7 @@
 
 <script type="text/javascript">
 	$(function() {
-
-		$('#home').click(function() {
-		});
 		
-		$('#info').click(function() {
-		});
 		
 		$('#event_more').click(function() {
 			Event.event();
@@ -116,9 +111,18 @@
 		src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 	<script src="${startjs}/classie.js"></script>
 	<script src="${startjs}/cbpAnimatedHeader.js"></script>
-
+	
 	<!-- Contact Form JavaScript -->
 	<script src="${startjs}/jqBootstrapValidation.js"></script>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+<script src="${js}/bootstrap.js"></script>
+<script src="${js}/bootstrap.min.js"></script>
+<script src="${js}/cbpAnimatedHeader.js"></script>
+<script src="${js}/dbpAnimatedHeader.min.js"></script>
+<script src="${js}/classie.js"></script>
+<script src="${js}/contact_me.js"></script>
+<script src="${js}/jqBootstrapValidation.js"></script>
+<script src="${js}/member.js"></script>
 </body>
+

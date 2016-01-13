@@ -74,7 +74,7 @@ var book = {
 					oldArr.push(this.genreId);
 					oldArrName.push(this.genreName);
 					});
-				$('.mainView').empty().append(table);
+				$('#book_section').empty().append(table);
 				
 				
 				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
@@ -199,11 +199,10 @@ var book = {
 
 					bookList+=pagination;
 						
-					$('.mainView').html(bookList);
 		//---------------------------------------------------------------------------------
 			bookList+='</div>';
 			
-			$('.mainView').html(bookList);
+			$('#book_section').html(bookList);
 			
 			$.each(data.list, function(index, value) {
 				$('#'+arr[index]).click(function() {
@@ -212,13 +211,13 @@ var book = {
 					book.mainPage(arr[index]);
 			});
 
-$.each(data.list,function(i,value){
-	$('#b'+index).click(function() {
-		alert('구매 클릭 됨.');
-		alert('Purcase.buy으로 넘기는 유저아이디 : '+userid);
-		Purchase.buy(arr[index], userid);		
-	});
-});
+			/*$.each(data.list,function(i,value){
+				$('#b'+index).click(function() {
+					alert('구매 클릭 됨.');
+					alert('Purcase.buy으로 넘기는 유저아이디 : '+userid);
+					Purchase.buy(arr[index], userid);		
+				});
+			});*/
 				
 			});
 			
@@ -249,7 +248,7 @@ $.each(data.list,function(i,value){
 					+'<font>　　　　　　　</font><font color="black">제휴할인가 :</font> <font color="skyblue" size="3px"><strong><12,820원</strong></font><font color="black">교보-KB국민카드 5% 청구할인(실적무관)</font><font>　　</font>'
 					+'<input type="button" value="책검색" id="search">'
 					+'<br /></div></div>';
-				$('.mainView').html(bookPage);
+				$('#book_section').html(bookPage);
 				$('#search').click(function() {
 					book.bookEmpty();
 					book.inputBookId();
@@ -267,7 +266,7 @@ $.each(data.list,function(i,value){
 		
 		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///수민이형
 		inputBookId : function() {
-			$('.mainView').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
+			$('#book_section').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
 					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
 					)
 					$('#btCheck').click(function() {
@@ -276,7 +275,7 @@ $.each(data.list,function(i,value){
 							$("#textInputId").focus();
 							return false;
 						}
-						book.searchForTodayBook2($("#textInputId").val(),".mainView");
+						book.searchForTodayBook2($("#textInputId").val(),"#book_section");
 						
 					})
 		},
@@ -301,7 +300,7 @@ $.each(data.list,function(i,value){
 		inputBookName : function(userid) {
 			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName" name="nameSearch"> &nbsp;'
 					+'<input type="button" value="검색" id="btCheckName"></form>';
-			$('.mainView').append(finding);
+			$('#book_section').append(finding);
 			
 			
 					$('#btCheckName').click(function name() {
@@ -411,7 +410,7 @@ $.each(data.list,function(i,value){
 		
 		// 비우기.
 		bookEmpty : function() {
-			$('.mainView').appendTo($('.mainView').empty());
+			$('#book_section').appendTo($('#book_section').empty());
 		}
 		
 		

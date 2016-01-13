@@ -1,6 +1,6 @@
 var Event = {
 		event : function() {
-			$('.mainView').html('<div class="big"><div class="big_1"><div class="cate">'
+			$('#event_section').html('<div class="big"><div class="big_1"><div class="cate">'
 					+'<div class="cate_1"><a class="highlight" href= "css_syntax.asp"><br>이벤트 </a></div>'
 					+'<div class="cate_2"><a class="highlight" href= "css_syntax.asp"><br>국내도서 </a></div>'
 					+'<div class="cate_3"><a class="highlight" href= "css_syntax.asp"><br>외국도서 </a></div>'
@@ -75,7 +75,7 @@ var Event = {
 				
 				rank += pagination;
 
-				$('#submain').html(rank);
+				$('#event_submain').html(rank);
 				
 				$.each(data.list, function(index,value) {
 					
@@ -103,7 +103,7 @@ var Event = {
 				+'<button id="read_btn" class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true" style="margin-left:0;">입력</button>'
 				+'</div><div id="reply_area" style="padding-top:10px;"></div>'
 				+'</div>';
-				$('.mainView').html(eventPage);
+				$('#event_section').html(eventPage);
 				$ ("#reply_btn").click(function() {
 				       if($(".navbar-right a").text() === "로그인"){
 				           alert("댓글을 달려면 로그인을 해주세요");
