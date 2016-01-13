@@ -15,6 +15,6 @@ public interface BookMapper {
 	public int update(BookVO book);
 	public List<BookVO> selectAll(Command command);
 	public int count();
-	public List<BookVO> searchByBookName(String bookName);
+	public List<BookVO> searchByBookName(Command command);
 
 }

@@ -25,7 +25,7 @@ public class CartController {
 	private static final Logger logger = LoggerFactory.getLogger(CartController.class);
 	@Autowired CartVO cart;
 	@Autowired CartServiceImpl service;
-	
+	List<?> BooksInCart;
 	@RequestMapping("/Cart")
 	public String main(){
 		logger.info("카트 컨트롤러 - main() 진입");
@@ -40,6 +40,24 @@ public class CartController {
 		logger.info("카트 컨트롤러 - list() 넘어온 유저아이디 : "+userid);
 		List<BookCartVO> list = service.getList(userid);
 		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
+		return list;
+	}
+	@RequestMapping("/BookIdList")
+	public @ResponseBody List<?> getBooksInCart(
+			HttpSession session
+			){
+		logger.info("카트 컨트롤러 - getBooksInCart() 진입");
+		MemberVO member = (MemberVO) session.getAttribute("user");
+		BooksInCart = service.getBooksInCart(member.getUserid());
+		logger.info("카트 컨트롤러 getBooksInCart() 결과 : " + BooksInCart.size());
+		return BooksInCart;
+	}
+	
+	@RequestMapping("/UseridList")
+	public @ResponseBody List<?> getUseridList(){
+		logger.info("카트 컨트롤러 - getUseridList() 진입");
+		List<?> list = service.getUseridList();
+		logger.info("카트 컨트롤러 getUseridList() 결과 : " + list.size());
 		return list;
 	}
 	
@@ -59,9 +77,17 @@ public class CartController {
 	
 	@RequestMapping("/change")
 	public Model change(
+			String data,
 			Model model
 			){
 		logger.info("카트 컨트롤러 - change() 진입");
+		logger.info("넘어온 북아이디 : {}",data);
+		String[] result = data.split(",");
+		logger.info("분리된 북아이디 : {}" ,result[0]);
+		logger.info("분리된 수량 : {}" ,result[1]);
+		
+		
+		
 		
 		return model;
 	}

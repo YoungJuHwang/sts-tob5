@@ -959,9 +959,25 @@ body {
 	<script src="${js}/Book.js"></script>
 
 
-	<script type="text/javascript">
-		$(function() {
-			book.searchForTodayBook2();
+
+
+<script type="text/javascript">
+$(function() {
+	//book.searchForTodayBook2();
+	
+	$('#event_more').click(function() {
+		Event.event('${user.userid}');
+		alert('넘기는 유저아이디 : '+'${user.userid}');
+	});
+	$('#book_more').click(function() {
+		
+		book.all('${user.userid}');
+		alert('넘기는 유저아이디 : '+'${user.userid}');
+	});	
+	$('#tech').click( function() {
+   	 alert("이벤트 댓글달기로 이동");
+        Event.eventPage();
+	});
 
 			$('#event_more').click(function() {
 				Event.event('${user.userid}');

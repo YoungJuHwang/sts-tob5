@@ -136,10 +136,8 @@ var book = {
 		},
 		
 		bookSimplePage : function(pageNo, userid) {
-			alert('심플페이지 진입');
 			var arr = [];
 		$.getJSON(context +'/book/Book_selectAll/'+pageNo ,function(data){
-			alert('제이슨 넘어감');
 			var count = data.count;
 			var pageNo = data.pageNo; 
 			var startPage = data.startPage;
@@ -171,12 +169,12 @@ var book = {
 				var pagination = '<TABLE id="pagination">'
 					if (startPage != 1) {
 						pagination += '<a href="'+context+'/book/Book_selectAll/1">'
-						+'<IMG SRC="'+img+'/left.png">&nbsp;'
+						+'<IMG SRC="'+img+'/left.png">&nbsp'
 						+'</a>';
 					}
 					if ((startPage - groupSize) > 0 ) {
 						pagination +='<a href="'+context+'/book/Book_selectAll/'+(startPage-groupSize)+'">'
-						+'<IMG SRC="'+img+'/right.png">&nbsp;'
+						+'<IMG SRC="'+img+'/right.png">&nbsp'
 						+'</a>';
 					}
 					
@@ -226,7 +224,10 @@ $.each(data.list,function(i,value){
 			
 		});
 		},
+		
+		
 	putInCart : function(bookId) {
+		Cart.getBooksInCart();
 		Cart.put(bookId);
 	},
 		
@@ -275,19 +276,19 @@ $.each(data.list,function(i,value){
 							$("#textInputId").focus();
 							return false;
 						}
-						book.searchForTodayBook2($("#textInputId").val());
+						book.searchForTodayBook2($("#textInputId").val(),".mainView");
 						
 					})
 		},
 		//case2--- 값 넘겨서 보여주기 (성공 ㅎ)----------------------------------------------------------------------
-		searchForTodayBook2 : function(bookId) {
+		searchForTodayBook2 : function(bookId,target) {
 			$.getJSON(context +'/book/Book_main/'+bookId ,function(data){
 				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="106px" height="150px" align="left">'
 					+'<a href="#" id="'+data.bookId+'"><strong>'+data.bookName+'</strong></a><br /><br />'
 					+'<font color="maroon" size="1px">'+data.writer+'</font><br />'
 					+'<font color="black" size="2px">책 내용 들어갈 자리.</font>';
-					$('.mainView').html(todayBook2);
+					$(target).html(todayBook2);
 					$('#'+data.bookId).click(function() {
 						book.mainPage(bookId);
 					});
@@ -297,7 +298,7 @@ $.each(data.list,function(i,value){
 		},
 		
 		//책 검색 텍스트와 버튼---------------------------------------------------
-		inputBookName : function() {
+		inputBookName : function(userid) {
 			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName"> &nbsp;'
 					+'<input type="button" value="검색" id="btCheckName"></form>';
 			$('.mainView').append(finding);
@@ -309,19 +310,25 @@ $.each(data.list,function(i,value){
 							$("#textInputName").focus();
 							return false;
 						}
-						$('#findBybookName').empty();
-						book.findBook($("#textInputName").val());
+						$('#submain').empty();
+						book.findBook('1',$("#textInputName").val());
 						
 					});
 		},
 		
 		//-case2 값 넘겨서 보여주기------------------------------------------------------------------------
-		findBook : function(searchBookName) {
+		findBook : function(pageNo,searchBookName) {
 			var resultSearchBook = [];
-			
-				$.getJSON(context+'/book/Book_find/'+searchBookName,function(data){
-						var findResult = '<div id="findBybookName" style="color: black; width : 400px; height: 300px;"><h2>['+searchBookName+']  으로 검색결과</h2><br /><br /><br />'
-							$.each(data,function(index,value) {
+				$.getJSON(context+'/book/Book_find/'+pageNo+'/'+searchBookName ,function(data){
+					var count = data.count;
+					var pageNo = data.pageNo; 
+					var startPage = data.startPage;
+					var groupSize = data.groupSize;
+					var lastPage = data.lastPage;
+					var totPage = data.totPage;
+					
+					var findResult = '<div id="findBybookName" style="color: black; width : 400px; height: 300px;"><h2>['+searchBookName+']  으로 검색결과</h2><br /><br /><br />'
+							$.each(data.list,function(index,value) {
 								findResult +='<div class="findBook1">'
 									+'<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">'
 									+'<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>'
@@ -337,8 +344,48 @@ $.each(data.list,function(i,value){
 									+'<br /><br /><br /><br />';
 									resultSearchBook.push(this.bookName);
 							});
-							$('.mainView').append(findResult);
+				
+			//-------------------------------------다음페이지------------------------------------------
+			var pagination = '<div style="width : 200px; margin:auto;"><TABLE id="pagination">'
+				if (startPage != 1) {
+					pagination += '<a href="'+context+'/book/Book_find/'+pageNo+'/'+searchBookName+'">'
+					+'<img src="'+img+'/left.png">&nbsp'
+					+'</a>';
+				}
+				if ((startPage - groupSize) > 0 ) {
+					pagination +='<a href="'+context+'/book/Book_find/'+(startPage-groupSize)+'/'+searchBookName+'">'
+					+'<img src="'+img+'/right.png">&nbsp'
+					+'</a>';
+				}
+				
+				for (var i = startPage ; i <= lastPage; i++) {
+					if (i == pageNo) {
+						pagination+='<font style="color:green;font-size: 20px">'
+						+i
+						+'</font>';
+					} else {
+						pagination+='<a href="#" onClick="return book.findBook('+i+'),'+searchBookName+'">'
+						+'<font>'
+						+i
+						+'</font>'
+						+'</a>';
+					}
+				}		
+				if ((startPage + groupSize) <= totPage) {
+					pagination += +'<a href="'+context+'/book/Book_find/'+(startPage+groupSize)+'">'
+				}
+				pagination += '</TD>';
+				pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+
+					findResult+=pagination;
+					
+				
+	//---------------------------------------------------------------------------------
+				findResult+='</div>';
+		
+		$('#submain').html(findResult);
 				});
+				
 		},
 		
 		

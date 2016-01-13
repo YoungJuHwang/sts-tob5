@@ -17,7 +17,7 @@ public interface BookService {
 	public BookVO searchByBook(String book);
 	
 	//책 검색 ( 책 이름으로 검색창에 구현하는)
-	public List<BookVO> searchByBookName(String nameOfbook);
+	public List<BookVO> searchByBookName(Command command);
 	
 	//총 재고량.
 	public int count();

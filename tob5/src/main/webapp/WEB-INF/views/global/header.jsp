@@ -93,10 +93,6 @@
 			Event.event();
 		});
 		
-		$('#book_more').click(function() {
-			book.all('${user.userid}');
-		});
-		
 		$('#mypage').click(function() {
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
