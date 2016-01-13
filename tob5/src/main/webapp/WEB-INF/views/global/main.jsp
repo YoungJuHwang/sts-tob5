@@ -822,10 +822,19 @@ body {
 	
 	<!-- BOOK -->
 	<section id="book_section" class="container content-section">
-				<hr />
-				<div id="book">
-					<a href="#" id="book_test">목록</a>
+		<div class="container">
+			<hr />
+			<div class="row">
+				<div class="col-lg-12">
+					<h2 class="section-heading" id="book_more" style="color: white;">BOOK</h2>
 				</div>
+				<div class="col-sm-6 col-md-4">
+					<h2 class="section-heading" style="color: white;">EXAM</h2>
+					<h2 class="section-heading" style="color: white;">EXAM2</h2>
+					<h2 class="section-heading" style="color: white;">EXAM3</h2>
+				</div>
+			</div>
+		</div>	
 	</section>
 	
 	
@@ -870,6 +879,42 @@ body {
 									<p>2015/01/01~2016/01/31</p>
 									<p>
 										<a href="#" id="songgok" class="btn btn-primary" role="button">더보기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
+								<div class="caption">
+									<h4>응답하라!! 재테크</h4>
+									<p>2016/01/01/~2016/01/31</p>
+									<p>
+										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
+								<div class="caption">
+									<h4>응답하라!! 재테크</h4>
+									<p>2016/01/01/~2016/01/31</p>
+									<p>
+										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 col-md-4">
+							<div class="thumbnail">
+								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
+								<div class="caption">
+									<h4>응답하라!! 재테크</h4>
+									<p>2016/01/01/~2016/01/31</p>
+									<p>
+										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
 									</p>
 								</div>
 							</div>
@@ -1014,16 +1059,9 @@ body {
 <script type="text/javascript">
 $(function() {
 	//book.searchForTodayBook2();
-	
-	$('#event_more').click(function() {
-		Event.event('${user.userid}');
-		alert('넘기는 유저아이디 : '+'${user.userid}');
-	});
 		
-	$('#book_test').click(function() {
-		$('#book').empty();
-		book.all('${user.userid}');
-		alert('넘기는 유저아이디 : '+'${user.userid}');
+	$('#book_more').click(function() {
+		book
 	});
 	$('#tech').click( function() {
 		alert("이벤트 댓글달기로 이동");

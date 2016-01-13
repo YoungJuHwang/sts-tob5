@@ -37,18 +37,18 @@ public class MemberController {
     @RequestMapping("/joinForm")
     public String joinForm(){
         logger.info("멤버컨트롤러 joinForm() - 진입");
-        return "member/join.tiles";
+        return "member/join.part";
     }
     @RequestMapping("/loginForm")
     public String loginForm(){
         logger.info("멤버컨트롤러 loginForm() - 진입");
-        return "member/login.tiles";
+        return "member/login.part";
     }
     
     @RequestMapping("/mypageForm")
     public String mypagForm(){
         logger.info("멤버컨트롤러 mypageForm() - 진입");
-        return "member/mypage.tiles";
+        return "member/mypage.part";
     }
     @RequestMapping("/join")
     public @ResponseBody MemberVO insert(

@@ -29,7 +29,7 @@ public class CartController {
 	@RequestMapping("/Cart")
 	public String main(){
 		logger.info("카트 컨트롤러 - main() 진입");
-		return "cart/Cart.tiles";
+		return "cart/Cart.part";
 	}
 	
 	@RequestMapping("/list/{userid}")
