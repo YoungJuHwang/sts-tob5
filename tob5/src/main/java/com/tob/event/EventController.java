@@ -27,16 +27,18 @@ public class EventController {
 	private static final Logger logger = LoggerFactory.getLogger(EventController.class);
 	@Autowired EventServiceImpl service;
 	@Autowired EventVO event;
+	
 	@RequestMapping("/main")
 	public String main(){
 		logger.info("EventController :main()");
-		return "event/main.jsp";
+		return "event/Event.part";
 	}
-	@RequestMapping("/Event")
+	/*@RequestMapping("/Event")
 	public String event(){
 		logger.info("EventController :Event()");
 		return "event/Event.tiles";
-	}
+	}*/
+	
 	@RequestMapping("/join_event1")
 	public Model joinEvent1(String evtId, String evtName, 
 			String fromDt, String toDt, String profile, Model model

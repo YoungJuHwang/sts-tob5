@@ -966,8 +966,9 @@ $(function() {
 	//book.searchForTodayBook2();
 	
 	$('#event_more').click(function() {
-		Event.event('${user.userid}');
+		/* Event.event('${user.userid}');*/
 		alert('넘기는 유저아이디 : '+'${user.userid}');
+		location.href="${context}/event/main";
 	});
 	$('#book_more').click(function() {
 		
@@ -979,55 +980,42 @@ $(function() {
         Event.eventPage();
 	});
 
-			$('#event_more').click(function() {
-				Event.event('${user.userid}');
-				alert('넘기는 유저아이디 : ' + '${user.userid}');
-			});
-			$('#book_more').click(function() {
-				book.all('${user.userid}');
-				alert('넘기는 유저아이디 : ' + '${user.userid}');
-			});
-			$('#tech').click(function() {
-				alert("이벤트 댓글달기로 이동");
-				Event.eventPage();
-			});
-
-			$('#soft').click(function() {
-				alert("이벤트 댓글달기로 이동");
-				Event.eventPage();
-			});
-			$('#songgok').click(function() {
-				alert("이벤트 댓글달기로 이동");
-				Event.eventPage();
-			});
-			$('#sapi').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#lonly').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#mine').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#memo').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#best').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#oneday').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#pathion').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
+	$('#soft').click(function() {
+		alert("이벤트 댓글달기로 이동");
+		Event.eventPage();
+	});
+	$('#songgok').click(function() {
+		alert("이벤트 댓글달기로 이동");
+		Event.eventPage();
+	});
+	$('#sapi').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#lonly').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#mine').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#memo').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#best').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#oneday').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#pathion').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
 		});
 	</script>
 </body>

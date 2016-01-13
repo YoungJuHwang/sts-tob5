@@ -30,7 +30,7 @@ public class BookController {
 	@RequestMapping("/Book")
 	public String book(){
 		logger.info("BookController:Book()");
-		return "book/main.jsp";
+		return "book/Book.part";
 				
 	}
 	//전체 책 목록  보여주기 1.(배열 내리기) => 로그인 안했을 때.

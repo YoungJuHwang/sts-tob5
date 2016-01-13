@@ -92,13 +92,16 @@ var Cart = {
 				+'<table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr>'
 				'<td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
 				+'<td width="149" class="pt1"><span class="pt3">합계 금액...</span></td></tr></tbody></table></td></tr></tbody></table>'
-				+'</div>';
+				+'</div>'
+				+'<input type="text" id="fname" onkeyup="Cart.myFunction()">';
 			$('.mainView').empty().append(table);
 			
 			
 		});
 	},
-	
+	myFunction : function() {
+		
+	},
 	change : function(bookid, count) {
 		alert('onclick은 객체로 받아들이네..'+bookid);
 		alert('onclick은 객체로 받아들이네..'+count);

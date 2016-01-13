@@ -20,7 +20,7 @@
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	
-	<title>Hanbit - words</title>
+	<title>Hanbit - words(Part_Header)</title>
 <nav class="navbar navbar-inverse" >
   <div class="container-fluid" style="width: 100%;">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -69,8 +69,9 @@
 		});
 		
 		$('#book').click(function() {
-			alert('책 버튼 클릭');
-			book.all();
+			$('#content').empty();
+			book.all('${user.userid}');
+			alert('넘기는 유저아이디 : '+'${user.userid}');
 		});
 		
 		$('#btn_pur').click(function() {

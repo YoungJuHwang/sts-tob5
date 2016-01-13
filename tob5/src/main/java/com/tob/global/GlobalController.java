@@ -12,10 +12,14 @@ public class GlobalController {
 private static final Logger logger = LoggerFactory.getLogger(GlobalController.class);
 	
 	
-@RequestMapping("/") //get방식
+	@RequestMapping("/") //get방식
 	public String main(){
 		return "global/main.tiles";
 	}
-
+	
+	@RequestMapping("/part_header")
+	public String partHeader(){
+		return "global/part_header.jsp";
+	}
 
 }

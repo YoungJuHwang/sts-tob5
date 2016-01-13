@@ -48,7 +48,7 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
-				<li><a class="page-scroll" href="#services">SERVICE</a></li>
+				<li><a class="page-scroll" href="#services">Main</a></li>
 				<li><a class="page-scroll" href="#book" >BOOK</a></li>
 				<li><a class="page-scroll" href="#event" >EVENT</a></li>
 				<li><a class="page-scroll" href="#team">INFO</a></li>
