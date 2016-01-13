@@ -7,14 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+<title>Hanbit - words</title>
+
 <!-- Bootstrap Core CSS -->
     <link href="${startcss}/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="${startcss}/agency.css" rel="stylesheet">
-	
-	<!-- 팝업 -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.0.1/magnific-popup.css" />
 	
 	   <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -23,7 +22,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	
 
-<title>Hanbit - words</title>
+
 
 
 <body id="page-top" class="index">
@@ -102,19 +101,21 @@
 	});
 </script>
 
-	<!-- Bootstrap Core JavaScript -->
-	<script src="${startjs}/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="${startjs}/jquery.js"></script>
 
-	<!-- Plugin JavaScript -->
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="${startjs}/classie.js"></script>
-	<script src="${startjs}/cbpAnimatedHeader.js"></script>
-	
-	<!-- Contact Form JavaScript -->
-	<script src="${startjs}/jqBootstrapValidation.js"></script>
-<script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="${startjs}/bootstrap.min.js"></script>
 
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="${startjs}/classie.js"></script>
+    <script src="${startjs}/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="${startjs}/jqBootstrapValidation.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="${startjs}/agency.js"></script>
 </body>
 

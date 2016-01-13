@@ -782,7 +782,7 @@ body {
 		<hr />
 			<div class="row">
 				<div class="col-lg-12">
-					<h2 class="section-heading" id="event_more" style="color: white;">EVENT</h2>
+				<a href=""  id="event_more"><img src="${img}/event.png" alt="" /></a> 
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
 						<div id="event_test"></div>
@@ -869,10 +869,7 @@ body {
 		<div class="container">
 		<hr />
 			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2 class="section-heading" style="color: white;">TOB TEAM</h2>
-					<h3 class="section-subheading text-muted">팀원들을 소개합니다.</h3>
-				</div>
+					<img src="${img}/team.png" alt="" />
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
@@ -1054,7 +1051,7 @@ $(function() {
 		alert("확인");
 		book.mainPage();
 	});
-		});
+});
 		
 </script>
 
