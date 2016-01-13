@@ -4,7 +4,7 @@
 }
 a{ text-decoration: none;}
 a.highlight {
-      color: black;
+      color: white;
 }
 .big{
 	width: 100%;
@@ -22,9 +22,10 @@ a.highlight {
 	width: 250px;
 	height: 400px;
 	float: left;
+	color: white;
 }
 .sea{
-	width: 950px;
+	width: 750px;
 	height: 400px;
 	float: left;
 }

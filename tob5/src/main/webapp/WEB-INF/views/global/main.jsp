@@ -750,7 +750,7 @@ body {
 		<hr />
 			<div class="row">
 				<div class="col-lg-12">
-					<h2 class="section-heading" id="event_more">EVENT</h2>
+					<h2 class="section-heading" id="event_more" style="color: white;">EVENT</h2>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
@@ -794,7 +794,6 @@ body {
 		</div>
 	</section>
 	<section id="event_submain"></section>
-	<hr />
 	<!-- team -->
 	<section id="info_section">
 		<div class="container">
