@@ -90,7 +90,9 @@ public @ResponseBody Map<String,Object> searchByBookName(
 		@PathVariable("bookName")String bookName,
 		Model model
 		){
+		
 		logger.info("===============Integer.parseInt(pageNo)전  검색된 번호 :{}",pageNo);
+		logger.info("===============bookName:{}",bookName);
 		int pageNumber = Integer.parseInt(pageNo);
 		int pageSize = 3;
 		int groupSize = 3; //밑에 보여주는 번호.
@@ -114,7 +116,8 @@ public @ResponseBody Map<String,Object> searchByBookName(
 		map.put("startPage", startPage);
 		map.put("lastPage", lastPage);
 		map.put("groupSize", groupSize);
-		logger.info("BookController:Book_find() 검색된 책 이름 텍스트 :{}",bookName);
+		map.put("bookName2", bookName);
+		logger.info("BookController:Book_find() 검색된 책 이름  :{}",bookName);
 		logger.info("BookController:Book_find() 페이지 번호 :{}",pageNo);
 		return map;
 }
