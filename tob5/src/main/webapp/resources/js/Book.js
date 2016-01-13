@@ -298,26 +298,26 @@ $.each(data.list,function(i,value){
 		
 		//책 검색 텍스트와 버튼---------------------------------------------------
 		inputBookName : function(userid) {
-			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName"> &nbsp;'
+			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName" name="nameSearch"> &nbsp;'
 					+'<input type="button" value="검색" id="btCheckName"></form>';
 			$('.mainView').append(finding);
 			
 			
-					$('#btCheckName').click(function() {
-						if ($("#textInputName").val() == "") {
+					$('#btCheckName').click(function name() {
+						if ($("input:text[name=nameSearch]").val() == "") {
 							alert("검색어를 입력해주세요.");
-							$("#textInputName").focus();
+							$("input:text[name=nameSearch]").focus();
 							return false;
 						}
 						$('#submain').empty();
-						book.findBook('1',$("#textInputName").val());
-						
+						book.findBook('1',$("input:text[name=nameSearch]").val());
 					});
 		},
 		
 		//-case2 값 넘겨서 보여주기------------------------------------------------------------------------
 		findBook : function(pageNo,searchBookName) {
 			var resultSearchBook = [];
+			alert('책이름'+searchBookName);
 				$.getJSON(context+'/book/Book_find/'+pageNo+'/'+searchBookName ,function(data){
 					var count = data.count;
 					var pageNo = data.pageNo; 
@@ -325,6 +325,7 @@ $.each(data.list,function(i,value){
 					var groupSize = data.groupSize;
 					var lastPage = data.lastPage;
 					var totPage = data.totPage;
+					var bookName2 = data.bookName2;
 					
 					var findResult = '<div id="findBybookName" style="color: black; width : 400px; height: 300px;"><h2>['+searchBookName+']  으로 검색결과</h2><br /><br /><br />'
 							$.each(data.list,function(index,value) {
@@ -340,52 +341,70 @@ $.each(data.list,function(i,value){
 									+'<br /><br /><br /><br />'
 									+'<input type="button"  value="장바구니에 담기" id="c'+index+'">'
 									+'<input type="button"  value="바로구매" id="b'+index+'">'
-									+'<br /><br /><br /><br />';
+									+'<br /><br /><br /><br /></div>';
 									resultSearchBook.push(this.bookName);
 							});
-				
+					findResult += '</div>';
 			//-------------------------------------다음페이지------------------------------------------
 			var pagination = '<div style="width : 200px; margin:auto;"><TABLE id="pagination">'
 				if (startPage != 1) {
-					pagination += '<a href="'+context+'/book/Book_find/'+pageNo+'/'+searchBookName+'">'
+					pagination += '<a href="'+context+'/book/Book_find/1/">'
 					+'<img src="'+img+'/left.png">&nbsp'
 					+'</a>';
 				}
 				if ((startPage - groupSize) > 0 ) {
-					pagination +='<a href="'+context+'/book/Book_find/'+(startPage-groupSize)+'/'+searchBookName+'">'
+					pagination +='<a href="'+context+'/book/Book_find/'+(startPage-groupSize)+'">'
 					+'<img src="'+img+'/right.png">&nbsp'
 					+'</a>';
 				}
 				
+				
 				for (var i = startPage ; i <= lastPage; i++) {
 					if (i == pageNo) {
-						pagination+='<font style="color:green;font-size: 20px">'
+						pagination+='<font style="color:orange;font-size: 20px">'
 						+i
 						+'</font>';
 					} else {
-						pagination+='<a href="#" onClick="return book.findBook('+i+'),'+searchBookName+'">'
+						pagination+='<a href="#" onClick="return book.findBook('+i+','+bookName2+')">'
 						+'<font>'
 						+i
 						+'</font>'
 						+'</a>';
 					}
 				}		
+				
+				
 				if ((startPage + groupSize) <= totPage) {
 					pagination += +'<a href="'+context+'/book/Book_find/'+(startPage+groupSize)+'">'
 				}
 				pagination += '</TD>';
 				pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
-
-					findResult+=pagination;
+				pagination+='</div>';
+					
 					
 				
 	//---------------------------------------------------------------------------------
-				findResult+='</div>';
+				findResult+=pagination;
 		
 		$('#submain').html(findResult);
 				});
 				
 		},
+		
+		
+		
+		
+		// 검색2 ajax---------------------------------------------------------------------------
+		
+		findBook2 : function() {
+			
+		},
+		
+		
+		
+		
+		
+		
 		
 		
 		
