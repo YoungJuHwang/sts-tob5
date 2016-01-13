@@ -28,7 +28,7 @@
  	WHERE EVENT_ID = #{evtId}
  </update>
  <delete id="delete" parameterType="string">
- 	DELETE FROM MOVIE WHERE EVENT_ID = #{evtId}
+ 	DELETE FROM EVENT WHERE EVENT_ID = #{evtId}
  </delete>
 
 
