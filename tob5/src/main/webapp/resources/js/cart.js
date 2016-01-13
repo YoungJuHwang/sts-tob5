@@ -93,7 +93,7 @@ var Cart = {
 				+'</td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
 				+'<table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr>'
 				+'<td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
-				+'<td width="149" class="pt1"><span class="pt3">합계 금액...</span></td></tr></tbody></table></td></tr></tbody>'
+				+'<td width="149" class="pt1"><span class="pt3">합계 금액이 들어와야댐</span></td></tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
 			$('#cart_section').empty().append(table);
@@ -117,6 +117,16 @@ var Cart = {
 		 var x = document.getElementById("c"+i).value;
 		    document.getElementById("d"+i).innerHTML = x;
 	},
+	
+	putInCart : function(bookId) {
+		Cart.getBooksInCart();
+		Cart.put(bookId);
+	},
+	
+	putInPur : function() {
+		
+	},
+	
 	
 	/*change : function(bookid, count) {
 		alert('onclick은 먹음'+bookid);

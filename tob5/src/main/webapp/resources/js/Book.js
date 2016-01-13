@@ -153,8 +153,8 @@ var book = {
 					bookList +='<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
 					bookList +='<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
 					bookList +='<br /><br /><br /><br />';
-					bookList +='<input type="button"  value="장바구니에 담기" onclick="book.putInCart('+'\''+this.bookId+'\''+')">';
-					bookList +='<input type="button"  value="바로구매" id="b'+index+'">';
+					bookList +='<input type="button"  value="장바구니에 담기" onclick="Cart.putInCart('+'\''+this.bookId+'\''+')">';
+					bookList +='<input type="button"  value="바로구매" onclick="Cart.putInPur('+'\''+this.bookId+'\''+')">';
 					bookList +='<br /><br /><br /><br />';
 				arr.push(this.bookId);
 			});
@@ -219,10 +219,7 @@ var book = {
 		},
 		
 		
-	putInCart : function(bookId) {
-		Cart.getBooksInCart();
-		Cart.put(bookId);
-	},
+	
 		
 		
 	mainPage : function(bookId) {
