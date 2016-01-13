@@ -14,4 +14,6 @@ public interface EventMapper {
 	public int update(EventVO o);
 	public int count();
 	public int delete(String evtId);
+	public EventVO searchByEvent(String event);
+	public List<EventVO> searchByEventName(Command command);
 }

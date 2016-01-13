@@ -106,6 +106,40 @@ public class EventController {
 		logger.info("이벤트 번호 : {}",id);		
 		return event;	
 	}
+	@RequestMapping("/Event_find/{pageNo}/{evtName}")
+		public @ResponseBody Map<String,Object> searchByEventName(
+				@PathVariable("pageNo")String pageNo,
+				@PathVariable("evtName")String evtName,
+				Model model
+				){
+				logger.info("===============Integer.parseInt(pageNo)전  검색된 번호 :{}",pageNo);
+				int pageNumber = Integer.parseInt(pageNo);
+				int pageSize = 3;
+				int groupSize = 3; //밑에 보여주는 번호.
+				int count = service.count();
+				logger.info(" Event_find  번호 : {}",count);
+				int totalPage = count/pageSize;
+				if (count%pageSize != 0) {
+					totalPage += 1;
+				}
+				int startPage = pageNumber - ((pageNumber-1) % groupSize);
+				int lastPage = startPage + groupSize -1;
+				if (lastPage > totalPage) {
+					lastPage = totalPage;
+				}
+				Map<String,Object> map = new HashMap<String,Object>();
+				
+				map.put("list", service.searchByEventName(CommandFactory.search("EVENT_NAME",evtName,pageNo)));
+				map.put("totalPage", totalPage);
+				map.put("pageNo", pageNumber);
+				map.put("startPage", startPage);
+				map.put("lastPage", lastPage);
+				map.put("groupSize", groupSize);
+				logger.info("EventController:Event_find() 검색된  이벤트 이름 텍스트 :{}",evtName);
+				logger.info("EventController:Event_find() 페이지 번호 :{}",pageNo);
+				
+				return map;
+	}
 	
 	
 	

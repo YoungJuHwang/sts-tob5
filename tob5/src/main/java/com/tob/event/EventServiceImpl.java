@@ -44,5 +44,16 @@ public class EventServiceImpl implements EventService {
 		EventMapper mapper = sqlSession.getMapper(EventMapper.class);
 		return mapper.insert(o);
 	}
+	@Override
+	public EventVO searchByEvent(String event) {
+		EventMapper mapper = sqlSession.getMapper(EventMapper.class);
+		return mapper.searchByEvent(event);
+	}
+	@Override
+	public List<EventVO> searchByEventName(Command command) {
+		EventMapper mapper = sqlSession.getMapper(EventMapper.class);
+		return mapper.searchByEventName(command);
+	}
+	
 
 }

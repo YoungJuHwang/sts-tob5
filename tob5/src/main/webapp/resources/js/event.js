@@ -1,24 +1,35 @@
 var Event = {
 		event : function() {
 			$('.mainView').html('<div class="big"><div class="big_1"><div class="cate">'
-					+'<div class="cate_1"><a class="highlight" href= "css_syntax.asp"><br>이벤트 </a></div>'
-					+'<div class="cate_2"><a class="highlight" href= "css_syntax.asp"><br>국내도서 </a></div>'
-					+'<div class="cate_3"><a class="highlight" href= "css_syntax.asp"><br>외국도서 </a></div>'
-					+'<div class="cate_4"><a class="highlight" href= "css_syntax.asp"><br>eBook </a></div>'
-					+'<div class="cate_5"><a class="highlight" href= "css_syntax.asp"><br>문화 이벤트 </a></div>'
-					+'<div class="cate_6"><a class="highlight" href= "css_syntax.asp"><br>당첨자 발표 </a></div>'
-					+'<div class="cate_7"><a class="highlight" href= "css_syntax.asp"><br>지난 이벤트 </a></div></div>'
+					+'<div class="cate_1"><a class="highlight" href= "#"><br>이벤트 </a></div>'
+					+'<div class="cate_2"><a class="highlight" href= "#"><br>국내도서 </a></div>'
+					+'<div class="cate_3"><a class="highlight" href= "#"><br>외국도서 </a></div>'
+					+'<div class="cate_4"><a class="highlight" href= "#"><br>eBook </a></div>'
+					+'<div class="cate_5"><a class="highlight" href= "#"><br>문화 이벤트 </a></div>'
+					+'<div class="cate_6"><a class="highlight" href= "#"><br>당첨자 발표 </a></div>'
+					+'<div class="cate_7"><a class="highlight" href= "#"><br>지난 이벤트 </a></div></div>'
 					+'<div class="sea"><div class="sea_1"><div class="sm_1 auto"><h1>추천이벤트</h1><ol><li></li><li></li><li></li></ol></div></div>'
 					+'<div class="sea_2"><div class="sm_2 auto"><div class="sm_2_1"><form action=""><input type="checkbox" name="book" value="전체" checked>전체  '
 					+'<input type="checkbox" name="book" value="국내도서">국내도서 <input type="checkbox" name="book" value="외국도서">외국도서'
 					+'<input type="checkbox" name="book" value="eBook">eBook <input type="checkbox" name="book" value="문화 이벤트">문화 이벤트 </form></div>'
 					+'<div class="sm_2_2"><form action="action_page.php"><input type="radio" name="promotion" value="전체" checked>전체 '
 					+'<input type="radio" name="promotion" value="경품/할인">경품/할인 <input type="radio" name="promotion" value="1+1">1+1 </form></div>'
-					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="검색"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>'
+					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="nameSearch"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>'
 			);
+
+			$('#search').click(function name() {
+				if ($("input:text[name=nameSearch]").val() == "") {
+					alert("검색어를 입력해주세요.");
+					$("input:text[name=nameSearch]").focus();
+					return false;
+				}
+				$('#submain').empty();
+				Event.findEvent('1',$("input:text[name=nameSearch]").val());
+			});
 			
 			
 				Event.ranking('1');
+				$('.mainView').css('background-image', '${startimages}/team/tema.png');
 			
 		},
   ranking : function(pageNo) {
@@ -132,7 +143,69 @@ var Event = {
 				
 		});
 	},
-
+		findEvent : function(pageNo,searchEventName) {
+			 var resultSearchEvent = [];
+			$.getJSON(context+'/event/Event_find/'+pageNo+'/'+searchEventName,function(data){
+				var count = data.count;
+				var pageNo = data.pageNo; 
+				var startPage = data.startPage;
+				var groupSize = data.groupSize;
+				var lastPage = data.lastPage;
+				var totPage = data.totPage;
+				
+				var findRe = '<div id="findByEventName" style="color: black; width : 400px; height: 300px;"><h2>['+searchEventName+']  으로 검색결과</h2><br /><br /><br />'
+					$.each(data.list, function(index,value) {
+						findRe += '<div class="img2">'
+							   +'<img alt="" src="'+context+'/resources/images/'+this.profile+'" width="106px" height="150px" align="left">'
+							   +'<div class="desc"><br /><a class="highlight" href= "#" id="'+this.evtId+'">'+this.evtName+'</a>'
+					           +'<br /><br />'+this.fromDt +'~' +this.toDt+'</div></div>';
+								resultSearchEvent.push(this.evtName);
+					});
+				
+				var pagination = '<div style="width : 200px; margin:auto;"><TABLE id="pagination">'
+					if (startPage != 1) {
+						pagination += '<a href="'+context+'/event/Event_find/1/">'
+						+'<img src="'+img+'/left.png">&nbsp'
+						+'</a>';
+					}
+					if ((startPage - groupSize) > 0 ) {
+						pagination +='<a href="'+context+'/event/Event_find/'+(startPage-groupSize)+'">'
+						+'<img src="'+img+'/right.png">&nbsp'
+						+'</a>';
+					}
+					
+					
+					for (var i = startPage ; i <= lastPage; i++) {
+						if (i == pageNo) {
+							pagination+='<font style="color:orange;font-size: 20px">'
+							+i
+							+'</font>';
+						} else {
+							pagination+='<a href="#" onClick="return Event.findEvent('+i+',\''+searchEventName+'\''+')">'
+							+'<font>'
+							+i
+							+'</font>'
+							+'</a>';
+						}
+					}		
+					
+					
+					if ((startPage + groupSize) <= totPage) {
+						pagination += +'<a href="'+context+'/event/Event_find/'+(startPage+groupSize)+'">'
+					}
+					pagination += '</TD>';
+					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+					pagination+='</div>';
+					
+					
+					findRe+=pagination;
+					
+					$('#submain').html(findRe);
+							});
+							
+					},
+			
+		
 
 	
 	

@@ -10,4 +10,6 @@ public interface EventService {
 	public int delete(String evtId);
 	public int count();
 	public List<EventVO> selectAll(Command command);
+	public EventVO searchByEvent(String event);
+	public List<EventVO> searchByEventName(Command command);
 }
