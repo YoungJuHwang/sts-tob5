@@ -44,7 +44,7 @@
 <script>
 	$(function() {
 		$('#loginConfirm').click(function() {
-			alert('클릭');
+			alert('정민아');
 			if ($("#userid").val() == "") {
 				alert("아이디를 입력하세요.");
 				$("#userid").focus();
@@ -60,7 +60,7 @@
 	});
 	var member = {
 		login : function() {
-			alert('login진입');
+			alert('login하지말고꺼져');
 			$.ajax({
 				url : '${context}/member/login',
 				data : {

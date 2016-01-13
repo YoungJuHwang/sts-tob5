@@ -49,8 +49,8 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
 				<li><a class="page-scroll" href="#services">SERVICE</a></li>
-				<li><a class="page-scroll" href="#event" >EVENT</a></li>
 				<li><a class="page-scroll" href="#book" >BOOK</a></li>
+				<li><a class="page-scroll" href="#event" >EVENT</a></li>
 				<li><a class="page-scroll" href="#team">INFO</a></li>
 		<c:if test="${empty sessionScope.user}">
 		<!-- 로그인 안한 상태 -->
@@ -59,8 +59,7 @@
 		<li style="float: right"><a href="${context}/member/joinForm" id="join">Join</a></li>
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
-		<li style="float: right;">${user.name}님 반갑습니다.</li>
-		<li style="float: right;"><a href="#" id="mypage">마이페이지</a></li>
+		<li style="float: right; padding-right: 10px;"><a href="#" id="mypage">마이페이지</a></li>
 		<li style="float: right;"><a href="#" id="my_cart">장바구니</a></li>
 		<li style="float: right;"><a href="${context}/member/logout">로그아웃</a></li>
 		</c:if>
@@ -90,12 +89,8 @@
 		$('#info').click(function() {
 		});
 		
-		$('#event').click(function() {
+		$('#event_more').click(function() {
 			Event.event();
-		});
-		
-		$('#book').click(function() {
-			book.all('${user.userid}');
 		});
 		
 		$('#mypage').click(function() {

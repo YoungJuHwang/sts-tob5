@@ -154,7 +154,7 @@ public class MemberController {
             logger.info("회원탈퇴 성공");
             
         } else {
-            logger.info("회원타 실패");
+            logger.info("회원탈퇴 실패");
            
         }
         return member;
@@ -169,4 +169,5 @@ public class MemberController {
 		logger.info("카트 컨트롤러 list() 결과 : " + list.size());
 		return list;
 	}
+    /*@RequestMapping("")*/
 }

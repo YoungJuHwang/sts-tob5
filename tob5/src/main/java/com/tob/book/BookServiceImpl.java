@@ -71,9 +71,9 @@ public int count() {
 
 
 @Override
-public List<BookVO> searchByBookName(String nameOfbook) {
+public List<BookVO> searchByBookName(Command command) {
 	BookMapper mapper = sqlSession.getMapper(BookMapper.class);
-	return mapper.searchByBookName(nameOfbook);
+	return mapper.searchByBookName(command);
 }
 
 
