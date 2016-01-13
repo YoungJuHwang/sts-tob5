@@ -106,8 +106,10 @@ var Cart = {
 		alert('Cart.myFuncion진입 넘어온 값 : '+ bookId);
 		$('#count'+i).empty();
 		alert('count i 번째 디브 지웠음.');
-		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+this.bookId+'\''+')"></input>');
+		var result = '<span id="demo"></span>';
+		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+bookId+'\''+')"></input>');
 		
+		alert('i 번째 스팬 값 : ' + result);
 		alert('count i 번째 다시 그리고 난 뒤 i 값 : ' +i);
 		alert('count i 번째 다시 그리고 난 뒤 BookId 값 : ' +bookId);
 		

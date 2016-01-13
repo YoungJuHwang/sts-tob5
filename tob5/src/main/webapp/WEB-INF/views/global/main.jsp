@@ -649,8 +649,8 @@ body {
 }
 </style>
 <body id="page-top" class="index">
-	<!-- Services Section BestSeller -->
-	<section id="best_section" class="container content-section">
+	<!--******************** Services Section BestSeller *********************-->
+<section id="best_section" class="container content-section">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
@@ -662,166 +662,104 @@ body {
 
 				<div style="margin: auto; width: 100%;">
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="now"> <img
-							src="${img}/bstbook1.jpg" alt="지금 이 순간"
-							style="width: 141px; height: 203px;">
-						</a>
+						<label class="thumbnail" id="now">
+							<img src="${img}/bstbook1.jpg" alt="지금 이 순간"
+							style="width: 141px; height: 203px;"> </label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="sapi"> <img
-							src="${img}/bstbook2.jpg" alt="사피엔스"
+						<label class="thumbnail" id="sapi">
+						<img src="${img}/bstbook2.jpg" alt="사피엔스"
 							style="width: 141px; height: 203px;">
-						</a>
+						</label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="lonly"> <img
-							src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다."
-							style="width: 141px; height: 203px;">
-						</a>
+						<label class="thumbnail" id="lonly"> 
+						 <img src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다."
+							style="width: 141px; height: 203px;"></label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="mine"> <img
-							src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들"
-							style="width: 141px; height: 203px;">
-						</a>
+						<label class="thumbnail" id="mine">
+						<img src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들"
+							style="width: 141px; height: 203px;"></label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="mine"> <img
+						<label class="thumbnail" id="mine"> <img
 							src="${img}/bstbook5.jpg" alt="언제 들어도 좋은 말"
-							style="width: 141px; height: 203px;">
-						</a>
+							style="width: 141px; height: 203px;"></label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="mine"> <img
+						<label class="thumbnail" id="mine"><img
 							src="${img}/bstbook6.jpg" alt="중동 테러리즘]"
-							style="width: 141px; height: 203px;">
-						</a>
+							style="width: 141px; height: 203px;"></label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="mine"> <img
+						<label class="thumbnail" id="mine">
+						<img
 							src="${img}/bstbook7.jpg" alt="혼자 있는 시간의 힘"
-							style="width: 141px; height: 203px;">
-						</a>
+							style="width: 141px; height: 203px;"></label>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="mine"> <img
+						<label class="thumbnail" id="mine"><img
 							src="${img}/bstbook8.jpg" alt="마법천자문"
-							style="width: 141px; height: 203px;">
-						</a>
+							style="width: 141px; height: 203px;"></label>
 					</div>
 				</div>
 				<!-- 종료 -->
 			</div>
 		</div>
 </section>
-		<!-- Download Section -->
-		<section id="recommend_section" class="container content-section">
-		<div class="download-section">
-			<div class="container">
-				<div class="col-lg-8 col-lg-offset-2"
-					style="width: 100%; margin: auto;">
-					<hr />
-					<img src="${img}/reco.png" alt="" style="padding-top: 10px;" />
-					<!-- 분야 추천 -->
-					<div class="row">
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="memo"> <img
-								src="${img}/recome1.jpg" alt="메모 습관의 힘"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="best"> <img
-								src="${img}/recome2.jpg" alt="베스트 편곡으로 배우는 아주 특별한 통기타 교본"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="oneday"> <img
-								src="${img}/recome3.jpg"
-								alt="하루 세 줄, 마음정리법 일본 최고 의사가 전하는 스트레스 리셋 처방전"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="pathion"> <img
-								src="${img}/recome4.jpg" alt="패션의 탄생 컬러링북 쇼핑보다 짜릿한 컬러 스타일링"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="pathion"> <img
-								src="${img}/recome5.jpg" alt="작고 소박한 나만의 생업 만들기"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="pathion"> <img
-								src="${img}/recome6.jpg" alt="마윈"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="pathion"> <img
-								src="${img}/recome7.jpg" alt="혼자가 편한 사람들"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						<div class="col-xs-6 col-md-3">
-							<a href="#" class="thumbnail" id="pathion"> <img
-								src="${img}/recome8.jpg" alt="그리스 컬러링 여행"
-								style="width: 141px; height: 203px;">
-							</a>
-						</div>
-						
-					</div>
-				</div>
-				<!-- 끝 -->
-				</div>
-		</div>
-	</section>
+
 	
-	<!-- Contact Section -->
-	
-	<!-- Week -->
-		
-	<section id="week_section" class="container content-section">
+	<!--************************* Week Section **********************-->
+<section id="week_section" class="container content-section">
 	<hr />
 		<div class="download-section">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
-				<a href="#"><img src="${img}/week.png" alt="" /></a>
+				<label><img src="${img}/week.png" alt="" /></label>
 			</div>
 			<div class="row">
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="you"> <img src="${img}/weekday1.jpg"
-							alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;">
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="happy"> <img src="${img}/weekday2.jpg"
-							alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;">
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="story"> <img src="${img}/weekday3.jpg"
-							alt="내 스물아홉 이야기" style="width: 141px; height: 203px;">
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="okay"> <img src="${img}/weekday4.jpg"
-							alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;">
-						</a>
-					</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="you"><img src="${img}/weekday1.jpg"
+						alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;"></label>
 				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="happy"><img src="${img}/weekday2.jpg"
+						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="story"><img src="${img}/weekday3.jpg"
+						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="okay"><img src="${img}/weekday4.jpg"
+						alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;"></label>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="you"><img src="${img}/weekday1.jpg"
+						alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;"></label>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="happy"><img src="${img}/weekday2.jpg"
+						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="story"><img src="${img}/weekday3.jpg"
+						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
+				</div>
+				<div class="col-xs-6 col-md-3">
+					<label class="thumbnail" id="okay"><img src="${img}/weekday4.jpg"
+						alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;"></label>
+				</div>
+			</div>
 		</div>
 		<div id="submain">
 		
 		</div>
-	</section>
+</section>
 	
-	<!-- BOOK -->
-	<section id="book_section" class="container content-section">
+	<!--******************** BOOK ************************-->
+<section id="book_section" class="container content-section">
 		<div class="container">
 			<hr />
 			<div class="row">
@@ -835,11 +773,11 @@ body {
 				</div>
 			</div>
 		</div>	
-	</section>
+</section>
 	
 	
-	<!-- Event -->
-	<section id="event_section">
+	<!--****************************** Event *****************************-->
+<section id="event_section">
 		<div class="container">
 		<hr />
 			<div class="row">
@@ -854,7 +792,7 @@ body {
 									<h4>소프트 스킬 리뷰어 이벤트</h4>
 									<p>2016/01/01~2016/01/31</p>
 									<p>
-										<a href="#" id="soft" class="btn btn-primary" role="button">더보기</a>
+										<label id="soft" class="btn btn-primary">더보기</label>
 									</p>
 								</div>
 							</div>
@@ -866,7 +804,7 @@ body {
 									<h4>응답하라!! 재테크</h4>
 									<p>2016/01/01/~2016/01/31</p>
 									<p>
-										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
+										<label id="tech" class="btn btn-primary" role="button">더보기</label>
 									</p>
 								</div>
 							</div>
@@ -878,7 +816,7 @@ body {
 									<h4>[특별 기획] 송곳과 한국 사회</h4>
 									<p>2015/01/01~2016/01/31</p>
 									<p>
-										<a href="#" id="songgok" class="btn btn-primary" role="button">더보기</a>
+										<label id="songgok" class="btn btn-primary" role="button">더보기</label>
 									</p>
 								</div>
 							</div>
@@ -890,7 +828,7 @@ body {
 									<h4>응답하라!! 재테크</h4>
 									<p>2016/01/01/~2016/01/31</p>
 									<p>
-										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
+										<label id="tech" class="btn btn-primary" role="button">더보기</label>
 									</p>
 								</div>
 							</div>
@@ -902,7 +840,7 @@ body {
 									<h4>응답하라!! 재테크</h4>
 									<p>2016/01/01/~2016/01/31</p>
 									<p>
-										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
+										<label id="tech" class="btn btn-primary" role="button">더보기</label>
 									</p>
 								</div>
 							</div>
@@ -914,7 +852,7 @@ body {
 									<h4>응답하라!! 재테크</h4>
 									<p>2016/01/01/~2016/01/31</p>
 									<p>
-										<a href="#" id="tech" class="btn btn-primary" role="button">더보기</a>
+										<label id="tech" class="btn btn-primary" role="button">더보기</label>
 									</p>
 								</div>
 							</div>
@@ -923,10 +861,11 @@ body {
 				</div>
 			</div>
 		</div>
-	</section>
-	<section id="event_submain"></section>
-	<!-- team -->
-	<section id="info_section">
+</section>
+<section id="event_submain"></section>
+	
+	<!--****************************** team ****************************-->
+<section id="info_section">
 		<div class="container">
 		<hr />
 			<div class="row">
@@ -938,46 +877,47 @@ body {
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Hwang YoungJu</h4>
 						<p class="text-muted" style="color: white;">Team Leader</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+							<li>
+							<label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Kim Sumin</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
 						</ul>
 					</div>
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Seong YonWoo</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
 						</ul>
 					</div>
 				</div>
@@ -987,12 +927,12 @@ body {
 						<h4 style="color: white;">Lee JeongMin</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
 						</ul>
 					</div>
 				</div>
@@ -1002,12 +942,12 @@ body {
 						<h4 style="color: white;">Lee HyeSuk</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
 						</ul>
 					</div>
 				</div>
@@ -1017,12 +957,12 @@ body {
 						<h4 style="color: white;">Hong HyeongDong</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
-							<li><a href="#"><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
-							<li><a href="#"><img
-									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+							<li><label><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
+							<li><label><img
+									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
 						</ul>
 					</div>
 				</div>
@@ -1033,10 +973,15 @@ body {
 				</div>
 			</div>
 		</div>
-	</section>
+</section>
+
 	<section id="cart_section"></section>
+	<section id="join_section"></section>
+	<section id="login_section"></section>
+	
 </body>
 
+	
 	<!-- Bootstrap Core JavaScript -->
 	<script src="${startjs}/bootstrap.min.js"></script>
 
@@ -1059,23 +1004,25 @@ body {
 <script type="text/javascript">
 $(function() {
 	//book.searchForTodayBook2();
-		
+	
 	$('#book_more').click(function() {
-		book
+		book.all('${user.userid}');
+		alert('넘기는 유저아이디 : '+'${user.userid}');
+	});
+	$('#event_more').click(function() {
+		alert('이벤트 메인으로, 세션아이디 : '+'${user.userid}');
+		Event.event('${user.userid}');
 	});
 	$('#tech').click( function() {
 		alert("이벤트 댓글달기로 이동");
-		$('#event_test').empty();
         Event.eventPage();
 	});
 	$('#soft').click(function() {
 		alert("이벤트 댓글달기로 이동");
-		$('#event_test').empty();
 		Event.eventPage();
 	});
 	$('#songgok').click(function() {
 		alert("이벤트 댓글달기로 이동");
-		$('#event_test').empty();
 		Event.eventPage();
 	});
 	$('#sapi').click(function() {

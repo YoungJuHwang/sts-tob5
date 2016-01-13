@@ -31,7 +31,7 @@ public class EventController {
 	@RequestMapping("/main")
 	public String main(){
 		logger.info("EventController :main()");
-		return "event/Event.part";
+		return "event/Event.jsp";
 	}
 	/*@RequestMapping("/Event")
 	public String event(){

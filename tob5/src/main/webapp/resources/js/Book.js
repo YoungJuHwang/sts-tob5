@@ -31,7 +31,7 @@ var book = {
 				/*해외도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listAbroadName+'</strong></font><br /><p><p>';
 				$.each(data.listAbroad,function(index,value){
-					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					abroadArr.push(this.genreId);
 					abroadArrName.push(this.genreName);
 					});
@@ -41,7 +41,7 @@ var book = {
 				/*국내도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listDomesticName+'</strong></font><br /><p><p>';
 				$.each(data.listDomestic,function(index,value){
-					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					domesticArr.push(this.genreId);
 					domesticArrName.push(this.genreName);
 					});
@@ -51,7 +51,7 @@ var book = {
 				/*전자책 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listEbookName+'</strong></font><br /><p><p>';
 				$.each(data.listEbook,function(index,value){
-					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					ebookArr.push(this.genreId);
 					ebookArrName.push(this.genreName);
 					});
@@ -61,7 +61,7 @@ var book = {
 				/*신간 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listNewName+'</strong></font><br /><p><p>';
 				$.each(data.listNew,function(index,value){
-					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					newArr.push(this.genreId);
 					newArrName.push(this.genreName);
 					});
@@ -69,11 +69,11 @@ var book = {
 				/*중고책*/
 				table += '<div class="alpha"><font color="red"><strong>'+data.listOldName+'</strong></font><br /><p><p>';
 				$.each(data.listOld,function(index,value){
-					table += '<li><a href="#" id="'+this.genreId+'">'+this.genreName+'</a></li></div>'; 
+					table += '<li><label id="'+this.genreId+'">'+this.genreName+'</label></li></div>'; 
 					oldArr.push(this.genreId);
 					oldArrName.push(this.genreName);
 					});
-				$('#book_main').html(table);
+				$('#book_section').html(table);
 				
 				
 				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
@@ -144,7 +144,7 @@ var book = {
 			$.each(data.list,function(index,value){
 				bookList +='<div class="book1">';
 					bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';
-					bookList +='<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
+					bookList +='<label id="'+this.bookId+'"><strong>'+this.bookName+'</strong></label>';
 					bookList +='<font color="white" ">'+this.optionBook+'</font>'; 
 					bookList +='<font color="white" style="color: green">이벤트</font>';
 					bookList +='<font color="white" class="maroon">경품</font>';
@@ -178,11 +178,11 @@ var book = {
 							+i
 							+'</font>';
 						} else {
-							pagination+='<a href="#" onClick="return book.bookSimplePage('+i+')">'
+							pagination+='<label onClick="return book.bookSimplePage('+i+')">'
 							+'<font>'
 							+i
 							+'</font>'
-							+'</a>';
+							+'</label>';
 						}
 					}		
 					if ((startPage + groupSize) <= totPage) {
@@ -196,7 +196,7 @@ var book = {
 		//---------------------------------------------------------------------------------
 			bookList+='</div>';
 			
-			$('.mainView').html(bookList);
+			$('#book_section').html(bookList);
 			
 			$.each(data.list, function(index, value) {
 				$('#'+arr[index]).click(function() {
@@ -242,7 +242,7 @@ var book = {
 					+'<font>　　　　　　　</font><font color="black">제휴할인가 :</font> <font color="skyblue" size="3px"><strong><12,820원</strong></font><font color="black">교보-KB국민카드 5% 청구할인(실적무관)</font><font>　　</font>'
 					+'<input type="button" value="책검색" id="search">'
 					+'<br /></div></div>';
-				$('.mainView').html(bookPage);
+				$('#book_section').html(bookPage);
 				$('#search').click(function() {
 					book.bookEmpty();
 					book.inputBookId();
@@ -260,7 +260,7 @@ var book = {
 		
 		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///수민이형
 		inputBookId : function() {
-			$('.mainView').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
+			$('#book_section').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
 					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
 					)
 					$('#btCheck').click(function() {
@@ -269,7 +269,7 @@ var book = {
 							$("#textInputId").focus();
 							return false;
 						}
-						book.searchForTodayBook2($("#textInputId").val(),".mainView");
+						book.searchForTodayBook2($("#textInputId").val(),"#book_section");
 						
 					})
 		},
@@ -278,7 +278,7 @@ var book = {
 			$.getJSON(context +'/book/Book_main/'+bookId ,function(data){
 				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="106px" height="150px" align="left">'
-					+'<a href="#" id="'+data.bookId+'"><strong>'+data.bookName+'</strong></a><br /><br />'
+					+'<label id="'+data.bookId+'"><strong>'+data.bookName+'</strong></label><br /><br />'
 					+'<font color="maroon" size="1px">'+data.writer+'</font><br />'
 					+'<font color="black" size="2px">책 내용 들어갈 자리.</font>';
 					$(target).html(todayBook2);
@@ -294,7 +294,7 @@ var book = {
 		inputBookName : function(userid) {
 			var finding = '<form action=""><input type="text" style="border-color: red;" width="15px" id="textInputName" name="nameSearch"> &nbsp;'
 					+'<input type="button" value="검색" id="btCheckName"></form>';
-			$('.mainView').append(finding);
+			$('#book_section').append(finding);
 			
 			
 					$('#btCheckName').click(function name() {
@@ -325,7 +325,7 @@ var book = {
 							$.each(data.list,function(index,value) {
 								findResult +='<div class="findBook1">'
 									+'<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">'
-									+'<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>'
+									+'<label id="'+this.bookId+'"><strong>'+this.bookName+'</strong></label>'
 									+'<font color="white" ">'+this.optionBook+'</font>'
 									+'<font color="white" class="maroon">경품</font>'
 									+'<font color="white" style="background-color: purple;">검색결과 보너스</font>'
@@ -359,11 +359,11 @@ var book = {
 						+i
 						+'</font>';
 					} else {
-						pagination+='<a href="#" onClick="return book.findBook('+i+','+bookName2+')">'
+						pagination+='<label onClick="return book.findBook('+i+','+bookName2+')">'
 						+'<font>'
 						+i
 						+'</font>'
-						+'</a>';
+						+'</label>';
 					}
 				}		
 				

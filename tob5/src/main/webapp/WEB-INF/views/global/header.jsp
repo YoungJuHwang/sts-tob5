@@ -50,7 +50,6 @@
 				<li class="hidden"><a href="#page-top"></a></li>
 				<li><a class="page-scroll" href="#book_section" >BOOK MENU</a></li>
 				<li><a class="page-scroll" href="#best_section">BESTSELLER</a></li>
-				<li><a class="page-scroll" href="#recommend_section">RECOMMEND</a></li>
 				<li><a class="page-scroll" href="#week_section" >WEEKBOOK</a></li>
 				<li><a class="page-scroll" href="#event_section" >EVENT</a></li>
 				<li><a class="page-scroll" href="#info_section">TEAM</a></li>
@@ -82,16 +81,8 @@
 
 
 
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 	$(function() {
-		$('#event_more').click(function() {
-			alert('이벤트 메인으로, 세션아이디 : '+'${user.userid}');
-			Event.event('${user.userid}');
-		});
-		$('#book_more').click(function() {
-			book.all('${user.userid}');
-			alert('넘기는 유저아이디 : '+'${user.userid}');
-		});
 		$('#mypage').click(function() {
 			Member.detail(context+'/member/detail/${user.userid}');
 		});
@@ -105,7 +96,7 @@
 			Member.logout(context);
 		});
 	});
-</script> -->
+</script>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="${startjs}/bootstrap.min.js"></script>
