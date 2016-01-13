@@ -82,8 +82,6 @@
 
 <script type="text/javascript">
 	$(function() {
-		
-		
 		$('#event_more').click(function() {
 			Event.event();
 		});
@@ -116,13 +114,6 @@
 	<script src="${startjs}/jqBootstrapValidation.js"></script>
 <script src=" https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js "></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" ></script>
-<script src="${js}/bootstrap.js"></script>
-<script src="${js}/bootstrap.min.js"></script>
-<script src="${js}/cbpAnimatedHeader.js"></script>
-<script src="${js}/dbpAnimatedHeader.min.js"></script>
-<script src="${js}/classie.js"></script>
-<script src="${js}/contact_me.js"></script>
-<script src="${js}/jqBootstrapValidation.js"></script>
-<script src="${js}/member.js"></script>
+
 </body>
 
