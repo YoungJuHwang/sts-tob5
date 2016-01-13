@@ -90,8 +90,34 @@ header .intro-text .intro-heading {
 	}
 }
 
-section {
-	padding: 100px 0
+section #event_section {
+	padding-bottom: 10px; 
+	padding-top: 40px; 
+}
+
+section #week_section {
+	padding-bottom: 10px; 
+	padding-top: 50px; 
+}
+section #recommend_section {
+	padding-bottom: 10px; 
+	padding-top: 50px; 
+}
+section #best_section {
+	padding-bottom: 10px; 
+	padding-top: 50px; 
+}
+section #book_section {
+	padding-bottom: 10px; 
+	padding-top: 50px; 
+}
+section #event_submain {
+	padding-bottom: 10px; 
+	padding-top: 50px; 
+}
+section #info_section {
+	padding-bottom: 10px; 
+	padding-top: 50px; 
 }
 
 section h2.section-heading {
@@ -624,7 +650,7 @@ body {
 </style>
 <body id="page-top" class="index">
 	<!-- Services Section BestSeller -->
-	<section id="main_section" class="container content-section">
+	<section id="best_section" class="container content-section">
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
@@ -659,12 +685,37 @@ body {
 							style="width: 141px; height: 203px;">
 						</a>
 					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="mine"> <img
+							src="${img}/bstbook5.jpg" alt="언제 들어도 좋은 말"
+							style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="mine"> <img
+							src="${img}/bstbook6.jpg" alt="중동 테러리즘]"
+							style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="mine"> <img
+							src="${img}/bstbook7.jpg" alt="혼자 있는 시간의 힘"
+							style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="mine"> <img
+							src="${img}/bstbook8.jpg" alt="마법천자문"
+							style="width: 141px; height: 203px;">
+						</a>
+					</div>
 				</div>
 				<!-- 종료 -->
 			</div>
 		</div>
-
+</section>
 		<!-- Download Section -->
+		<section id="recommend_section" class="container content-section">
 		<div class="download-section">
 			<div class="container">
 				<div class="col-lg-8 col-lg-offset-2"
@@ -698,6 +749,31 @@ body {
 								style="width: 141px; height: 203px;">
 							</a>
 						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="pathion"> <img
+								src="${img}/recome5.jpg" alt="작고 소박한 나만의 생업 만들기"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="pathion"> <img
+								src="${img}/recome6.jpg" alt="마윈"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="pathion"> <img
+								src="${img}/recome7.jpg" alt="혼자가 편한 사람들"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="pathion"> <img
+								src="${img}/recome8.jpg" alt="그리스 컬러링 여행"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						
 					</div>
 				</div>
 				<!-- 끝 -->
@@ -706,15 +782,15 @@ body {
 	</section>
 	
 	<!-- Contact Section -->
-	<!-- BOOK -->
+	
+	<!-- Week -->
 		
-	<section id="book_section" class="container content-section">
-		<a href="#" id="book_test">이거눌</a>
+	<section id="week_section" class="container content-section">
 	<hr />
 		<div class="download-section">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
-				<a href="#" id="book_more"><img src="${img}/week.png" alt="" /></a>
+				<a href="#"><img src="${img}/week.png" alt="" /></a>
 			</div>
 			<div class="row">
 					<div class="col-xs-6 col-md-3">
@@ -744,6 +820,15 @@ body {
 		</div>
 	</section>
 	
+	<!-- BOOK -->
+	<section id="book_section" class="container content-section">
+				<hr />
+				<div id="book"></div>
+		<a href="#" id="book_test">목록</a>
+		
+	</section>
+	
+	
 	<!-- Event -->
 	<section id="event_section">
 		<div class="container">
@@ -753,6 +838,7 @@ body {
 					<h2 class="section-heading" id="event_more" style="color: white;">EVENT</h2>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
+						<div id="event_test"></div>
 							<div class="thumbnail">
 								<img src="${img}/E003.jpg" alt="소프트 스킬 리뷰어 이벤트">
 								<div class="caption">
@@ -928,26 +1014,29 @@ body {
 $(function() {
 	//book.searchForTodayBook2();
 	
-	$('#event_test').click(function() {
+	$('#event_more').click(function() {
 		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});
+		
 	$('#book_test').click(function() {
-		$('#book_section').empty();
+		$('#book').empty();
 		book.all('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
 	});
 	$('#tech').click( function() {
-   	 alert("이벤트 댓글달기로 이동");
+		alert("이벤트 댓글달기로 이동");
+		$('#event_test').empty();
         Event.eventPage();
 	});
-
 	$('#soft').click(function() {
 		alert("이벤트 댓글달기로 이동");
+		$('#event_test').empty();
 		Event.eventPage();
 	});
 	$('#songgok').click(function() {
 		alert("이벤트 댓글달기로 이동");
+		$('#event_test').empty();
 		Event.eventPage();
 	});
 	$('#sapi').click(function() {

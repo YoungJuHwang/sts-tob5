@@ -48,10 +48,12 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
-				<li><a class="page-scroll" href="#main_section">Main</a></li>
-				<li><a class="page-scroll" href="#book_section" >BOOK</a></li>
+				<li><a class="page-scroll" href="#best_section">BESTSELLER</a></li>
+				<li><a class="page-scroll" href="#recommend_section">RECOMMEND</a></li>
+				<li><a class="page-scroll" href="#week_section" >WEEKBOOK</a></li>
+				<li><a class="page-scroll" href="#book_section" >BOOK MENU</a></li>
 				<li><a class="page-scroll" href="#event_section" >EVENT</a></li>
-				<li><a class="page-scroll" href="#info_section">INFO</a></li>
+				<li><a class="page-scroll" href="#info_section">TEAM</a></li>
 		<c:if test="${empty sessionScope.user}">
 		<!-- 로그인 안한 상태 -->
 		<li style="float: right; margin-right: 30px;"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>

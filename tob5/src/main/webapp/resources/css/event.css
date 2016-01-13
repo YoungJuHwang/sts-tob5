@@ -76,26 +76,30 @@ a.highlight {
 .sm_1{
 	width: 650px;
 	height: 180px;
-	border: 1px solid black; 
+	border: 1px solid white; 
 	margin-top: 5px;
+	color: white;
 }
 .sm_2{
 	width: 650px;
 	height: 180px;
-	border: 1px solid black;
+	border: 1px solid white;
 	margin-top: 5px;
 }
 .sm_2_1{
 	width: 650px;
 	height: 60px;
+	color: white;
 }
 .sm_2_2{
 	width: 650px;
 	height: 60px;
+	color: white;
 }
 .sm_2_3{
 	width: 650px;
 	height: 60px;
+	color: white;
 }
 .img{
     height: 300px;
