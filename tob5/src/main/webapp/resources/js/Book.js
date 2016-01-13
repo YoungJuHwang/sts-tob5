@@ -254,6 +254,7 @@ $.each(data.list,function(i,value){
 					book.bookEmpty();
 					book.inputBookId();
 					book.inputBookName();
+					book.google();
 				});
 			});
 			
@@ -265,7 +266,7 @@ $.each(data.list,function(i,value){
 		
 		
 		
-		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///수민이형
+		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///관리자
 		inputBookId : function() {
 			$('.mainView').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
 					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
@@ -280,7 +281,7 @@ $.each(data.list,function(i,value){
 						
 					})
 		},
-		//case2--- 값 넘겨서 보여주기 (성공 ㅎ)----------------------------------------------------------------------
+		//case2--- 값 넘겨서 보여주기 ////메인----------------------------------------------------------------------
 		searchForTodayBook2 : function(bookId,target) {
 			$.getJSON(context +'/book/Book_main/'+bookId ,function(data){
 				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
@@ -318,7 +319,7 @@ $.each(data.list,function(i,value){
 		//-case2 값 넘겨서 보여주기------------------------------------------------------------------------
 		findBook : function(pageNo,searchBookName) {
 			var resultSearchBook = [];
-			alert('책이름'+searchBookName);
+			alert('검색된 책 이름:'+searchBookName);
 				$.getJSON(context+'/book/Book_find/'+pageNo+'/'+searchBookName ,function(data){
 					var count = data.count;
 					var pageNo = data.pageNo; 
@@ -366,7 +367,7 @@ $.each(data.list,function(i,value){
 						+i
 						+'</font>';
 					} else {
-						pagination+='<a href="#" onClick="return book.findBook('+i+','+bookName2+')">'
+						pagination+='<a href="#" onClick="return book.findBook('+i+',\''+searchBookName+'\''+')">'
 						+'<font>'
 						+i
 						+'</font>'
@@ -394,18 +395,23 @@ $.each(data.list,function(i,value){
 		
 		
 		
-		
-		// 검색2 ajax---------------------------------------------------------------------------
-		
-		findBook2 : function() {
-			
+		//---------구글검색----------------------------------------------------------------------
+		google : function() {
+			var googleView = '<div align="Left"><table cellpadding="0" cellspacing="0" bgcolor="" width="300" height="40" style="padding-top:3;"><tr>'
+				+'<td width="100%" height="47" align="right"><form action="http://www.google.co.kr/cse" id="cse-search-box">'
+				+'<p align="right" style="line-height:100%; margin-top:0; margin-bottom:0;"><font color="blue" size="2"><b><u>G</u></b></font>'
+				+'<font color="red" size="2"><b><u>o</u></b></font><font color="#FF9933" size="2"><b><u>o</u></b></font><font color="#006699" size="2"><b><u>g</u></b></font>'
+				+'<font color="black" size="2"><b><u>l</u></b></font><font color="#0099FF" size="2"><b><u>e</u></b></font><b><font size="2"><u></u></font></b>'
+				+'<font color="#009966" size="2"><b><u>S</u></b></font><font color="red" size="2"><b><u>e</u></b></font><font color="#0099FF" size="2"><b><u>a</u></b></font>'
+				+'<font color="#6666FF" size="2"><b><u>r</u></b></font><font color="#66CCFF" size="2"><b><u>c</u></b></font><font color="#CC0000" size="2"><b><u>h</u></b></font>'
+				+'<font color="white" size="2"><b><u>&nbsp;</u></b></font><font color="#CC0000" size="2"><b></b></font>'
+				+'<input type="hidden" name="cx" value="partner-pub-7372605513442392:ue9vq1-a32y" /><input type="hidden" name="ie" value="UTF-8" />'
+				+'<input type="text" name="q" size="31" /><b><font size="2">&nbsp;</font></b><input type="submit" name="sa" value="     &#xac80;&#xc0c9;     " />&nbsp;<br>'
+				+'<script type="text/javascript" src="http://www.google.co.kr/cse/brand?form=cse-search-box&amp;lang=ko"></script><font color="#0033CC" '
+				+'size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><script type="text/javascript" src="http://www.google.co.kr/cse/brand?form=cse-search-box&amp;lang=ko"></script>'
+				+'</form></td></tr></table></div>'
+				$('.mainView').append(googleView);
 		},
-		
-		
-		
-		
-		
-		
 		
 		
 		
