@@ -709,7 +709,7 @@ body {
 	<!-- BOOK -->
 		
 	<section id="book_section" class="container content-section">
-	<a href="#" id="book_test">이거눌</a>
+		<a href="#" id="book_test">이거눌</a>
 	<hr />
 		<div class="download-section">
 			<div class="col-lg-8 col-lg-offset-2"
@@ -904,7 +904,7 @@ body {
 			</div>
 		</div>
 	</section>
-
+</body>
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="${startjs}/bootstrap.min.js"></script>
@@ -983,5 +983,5 @@ $(function() {
 		
 </script>
 
-</body>
+
 
