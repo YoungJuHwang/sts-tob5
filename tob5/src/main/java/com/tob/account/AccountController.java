@@ -44,12 +44,8 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 	@Autowired AccountVO account;
 	@Autowired AccountServiceImpl accountService;
 	
-	@RequestMapping("/main")
-	public String home(){
-		logger.info("AccountController-home() 진입");
-		return "account/account/main.tiles";
-	}
 
+	
 	
 	@RequestMapping("/chart_line")
 	public void lineChart(
@@ -67,8 +63,46 @@ private static final Logger logger = LoggerFactory.getLogger(AccountController.c
 		model.addAttribute("year", year);
 		model.addAttribute("month", month);
 		model.addAttribute("day", day);
-
 	}
-
+	
+	@RequestMapping("/test")
+	public String test() {
+		logger.info("test 진입");
+		return "admin/admin/test.tiles";
+	}
+	
+	@RequestMapping("/ratio")
+	public Model ratio(
+			Model model
+			) {
+		
+		int adult = 0;
+		int cartoon = 0;
+		int child = 0;
+		
+		logger.info("파이차트 진입");
+		List<String> list = accountService.ratio();
+		logger.info("리스트 사이즈 {}",list.size());
+		for (int i = 0; i < list.size(); i++) {
+			
+			if (list.get(i)!=null) {
+				
+				switch (list.get(i)) {
+				case "adult": adult++; ;break;
+				case "cartoon": cartoon++; break;
+				case "child": child++; break;
+				default: break;	
+			}
+		}
+		}
+		logger.info("adult: {}", adult);
+		logger.info("cartoon: {}", cartoon);
+		logger.info("child: {}", child);
+		
+		model.addAttribute("adult", adult);
+		model.addAttribute("cartoon", cartoon);
+		model.addAttribute("child", child);
+		return model;
+	}
 	
 }

@@ -2,24 +2,17 @@ package com.tob.account;
 
 import java.util.List;
 
-import com.tob.global.Command;
- 
+import org.springframework.stereotype.Service;
+
+import com.tob.book.BookVO;
+
+@Service
 public interface AccountService {
 	
-	public int count();
-	// 통계
-	// C : 추가(주문목록 추가)
-	public int addList(AccountVO account);
-	
 	// R : 날짜별 주문금액
-	public List<?> getAccountList(Command command);	// 전체주문 리스트 (전체조회)
 	public int getTotal(String key);				    // 날짜별 금액 리스트 
-	public List<?> searchAccountDay(String account_num);// 주문현황 day (날짜별 합계 조회)
+	
+	public List<String> ratio();				    // 장르 비율 
+	
 
-	
-	// U : 날짜별 주문금액 수정
-	public int change(AccountVO account);
-	
-	// D : 날짜별 주문금액 삭제
-	public int remove(String account_num);
 }
