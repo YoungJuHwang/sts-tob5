@@ -7,8 +7,9 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <div class="navbar-header" style="margin-left: 30px;" >
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" 
+      data-target="#bs-example-navbar-collapse-1" aria-expanded="false" >
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -19,9 +20,9 @@
       </a>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="margin-left: 30px;">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="${context}/admin/main">관리자 홈<span class="sr-only">(current)</span></a></li>
+        <li class="active" style="width: 100px;"><a href="${context}/admin/main" >관리자 홈<span class="sr-only">(current)</span></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">회원관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -47,25 +48,75 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">주문 관리 <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="${context}/admin/purchase_list">전체 주문 목록</a></li>
+            <li><a href="${context}/account/test">테스트 페이지</a></li>
             <li><a href="${context}/admin/account_list">날짜별 주문 목록</a></li>
           </ul>
         </li>
       </ul>
       
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" id="search_text" class="form-control" placeholder="Search">
-        </div>
-        <button id="main_search" class="btn btn-default">검 색</button>
-      </form>
+      <form id="search_form" action="javascript:search_query();" method="post" class="navbar-form navbar-left">
+      
+      <select id=searchType style="margin-left: 100px;">
+                <option value="all">전체 검색</option>
+                <option value="title">제목 검색</option>
+                <option value="keyword">주제어 검색</option>
+                <option value="publisher">출판사 검색</option> 
+            </select> 
+              
+            <div class="form-group" style="margin-left: 20px;">
+            <input type="text" class="form-control" placeholder="책 검색" size="10" id="query" name="query"/></div>
+            <button type="submit" id="main_search" class="btn btn-default">검 색</button>
+		</form>
      
     </div>
   </div>
 </nav>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script type="text/javascript">
+/* =================== 검색 ====================== */	
+
+function search_query() {      
+	var query = $("#query").val();
+	var category = $("#category").val();
+	var searchType = $("#searchType").val();
+	var url = "http://apis.daum.net/search/book"
+	url += "?output=json";
+	url += "&searchType=" + searchType;
+	url += "&apikey=53e2827500534f733c75dadaccfdbaa2"
+	url += "&q=" + query;
+	url += "&callback=?";
+	
+	$.getJSON(url,function(data) {
+		result = "<div class='panel panel-default' style='width: 80%; margin: auto;'>"
+			+"<div class='panel-heading'>"
+			+"<div style='color: #7fb3b3; font-size: 30px; font-family: 굴림; margin-left: 500px; font-weight:bold' >"
+			+"결과 목록</div></div>"
+			+"<table class='table'>"
+		result += "<tr>";
+		result += "<th WIDTH=20%>제목</th><th WIDTH=30%>본문</th><th WIDTH=10%>저자</th><th WIDTH=10%>카테고리</th><th WIDTH=10%>판매가격</th><th WIDTH=10%>상세보기</th>";
+		result += "</tr>";
+		for (var i in data.channel.item)
+		{
+			result += "<tr>";
+			result += "<td width=20%>"+data.channel.item[i].title+"</td>";
+			result += "<td width=30%>"+data.channel.item[i].description+"</td>";
+			result += "<td width=10%>"+data.channel.item[i].author+"</td>";
+			result += "<td width=10%>"+data.channel.item[i].category+"</td>";
+			result += "<td width=10%>"+data.channel.item[i].sale_price+"</td>";
+			result += "<td width=10%><a onclick='daumBook.link("+"\""+data.channel.item[i].link+"\""+")'>"+data.channel.item[i].link+"</a></td>";
+			result += "</tr>";
+		} 
+		result += "</table>";
+	}).error(function(XMLHttpRequest, textStatus, errorThrown)
+	{          
+		result = textStatus;
+	}).complete(function(){
+		$(".mainView").html(result);                                    
+	});
+}
+
+/* =========================================== */
 	$(function() {
 		
 		$('#main_memberReg').click(function() {
@@ -87,19 +138,18 @@
 		$('#main_todayBook').click(function() {
 			AdminBook.inputBookId(); 
 		});
-		
-		$('#main_search').click(function() {
-			alert('클릭');
-		});
+
 	});
 	
-	/* =================== 검색 ====================== */	
+	/* ============== 다음 책 정보 사이트 이동 ================= */
 	
-	var AdminSearch = {
-			search : function() {	
-			alert('진입');			
-			}		
-	};
+	var daumBook = {
+			link : function(url) {
+				alert(url);
+				window.open(url);
+			}
+			
+	}
 	
 	
 	/* ============== 관리자 및 회원 등록 ====================== */

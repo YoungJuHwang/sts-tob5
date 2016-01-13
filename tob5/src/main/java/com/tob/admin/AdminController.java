@@ -61,7 +61,19 @@ public class AdminController {
 		logger.info("Admin");
 		return "admin/admin/main.tiles";
 	}
+	
+	@RequestMapping("/api_exam01")
+	public String apiTest(){
+		logger.info("AdminController-apiTest() 진입");
 
+		return "admin/admin/api_exam01.tiles";
+	}
+	
+	@RequestMapping("/api_proxy")
+	public String apiTest2(){
+		logger.info("AdminController-api_proxy() 진입");
+		return "admin/admin/api_proxy.tiles";
+	}
 	
 	@RequestMapping("/member_profile/{userid}")
 	public @ResponseBody MemberVO memberProfile(

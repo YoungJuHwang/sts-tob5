@@ -5,62 +5,14 @@
 
  <mapper namespace="com.tob.mapper.AccountMapper">
  
- <insert id="insert" parameterType="com.tob.member.MemberVO">
- 	INSERT INTO ACCOUNT (ACCOUNT_NUM,TOTAL,ID) 
- 	VALUES (
-	 	#{account_num},
-	 	#{total},
-	 	#{id} 
- 	)
- </insert>
- 
- <select id="selectAllPage" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
- 	SELECT 
-	 	ACCOUNT_NUM AS account_num,
-	 	TOTAL AS total,
-	 	ID AS id
- 	FROM ACCOUNT ORDER BY account_num ASC
-         LIMIT #{start}, 3
- </select>
- 
  <select id="selectTotal" resultType="int" parameterType="string">
  	SELECT SUM(SUM) FROM PURCHASE WHERE ACCOUNT_NUM= #{account_num}
  </select>
- 
- <select id="selectOneBy" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
- 	SELECT 
- 		ACCOUNT_NUM AS account_num,
-	 	TOTAL AS total,
-	 	ID AS id
- 	FROM ACCOUNT WHERE ACCOUNT_NUM= #{account_num}
+
+ <select id="ratio" resultType="string">
+ 	SELECT GENRE_ID FROM PURCHASE, 
+ 	BOOK WHERE PURCHASE.BOOK_ID=BOOK.BOOK_ID
  </select>
- 
-  <select id="selectByDay" resultType="com.tob.account.AccountVO" parameterType="string">
- 	SELECT TOTAL 
- 	FROM ACCOUNT 
- 	WHERE ACCOUNT_NUM = #{account_num}
- </select>
- 
- <select id="count" resultType="int">
- 	SELECT COUNT(*) AS count FROM ACCOUNT
- </select>
- 
-     
- <select id="countByKeyword" resultType="int" parameterType="com.tob.global.Command">
- SELECT COUNT(*) AS count 
- FROM ACCOUNT
- WHERE ${column} LIKE '%' || #{keyword} || '%'
- </select>
- 
- <update id="update">
-   	UPDATE ACCOUNT SET 
-   		TOTAL = #{total}
-   	WHERE ACCOUNT_NUM = #{account_num} 
- </update>
- 
- <delete id="delete" parameterType="string">
- 	DELETE FROM ACCOUNT WHERE ACCOUNT_NUM = #{account_num}
- </delete>
    
  </mapper>
  
