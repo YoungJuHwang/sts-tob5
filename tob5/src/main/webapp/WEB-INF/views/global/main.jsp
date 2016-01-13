@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,16 +15,22 @@
 <link href="${startcss}/agency.css" rel="stylesheet">
 
 
-   <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+<!-- Custom Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+	rel="stylesheet" type="text/css">
+<link href='https://fonts.googleapis.com/css?family=Kaushan+Script'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
+	rel='stylesheet' type='text/css'>
+<link
+	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
+	rel='stylesheet' type='text/css'>
 
 <style type="text/css">
 header {
 	background-image: url('${startimages}/header/Banned-Book.jpg');
-	width : 100%;
+	width: 100%;
 	background-repeat: none;
 	background-attachment: scroll;
 	background-position: center center;
@@ -613,61 +620,64 @@ body {
 	webkit-tap-highlight-color: #fed136
 }
 </style>
-
-
-
 <body id="page-top" class="index">
 
-	
-  <!-- 슬라이더 -->
+
+	<!-- 슬라이더 -->
 
 
-<div style="margin: 20px; ">
+	<div style="margin: 20px;">
 
-	<div class="slider-box">
-		<div class="col-lg-12 text-center">
-			<div id="carousel-example-generic" class="carousel slide">
-				<!-- Indicators -->
-				<ol class="carousel-indicators hidden-xs">
-					<li data-target="#carousel-example-generic" data-slide-to="0"
-						class="active"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="4"></li>
-					<li data-target="#carousel-example-generic" data-slide-to="5"></li>
-				</ol>
+		<div class="slider-box">
+			<div class="col-lg-12 text-center">
+				<div id="carousel-example-generic" class="carousel slide">
+					<!-- Indicators -->
+					<ol class="carousel-indicators hidden-xs">
+						<li data-target="#carousel-example-generic" data-slide-to="0"
+							class="active"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="3"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="4"></li>
+						<li data-target="#carousel-example-generic" data-slide-to="5"></li>
+					</ol>
 
-				<!-- Wrapper for slides -->
-				<div class="carousel-inner" style="height: 400px; width: 100%;">
-					<div class="item active">
-						<img class="img-responsive img-full" style="height: 100%; width: 100%;"
-							src="${img}/main-slider1.jpg" alt="">
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner" style="height: 400px; width: 100%;">
+						<div class="item active">
+							<img class="img-responsive img-full"
+								style="height: 100%; width: 100%;" src="${img}/main-slider1.jpg"
+								alt="">
+						</div>
+						<div class="item">
+							<img class="img-responsive img-full"
+								style="height: 100%; width: 100%;" src="${img}/main-slider2.jpg"
+								alt="">
+						</div>
+						<div class="item">
+							<img class="img-responsive img-full"
+								style="height: 100%; width: 100%;" src="${img}/main-slider3.jpg"
+								alt="">
+						</div>
+						<div class="item">
+							<img class="img-responsive img-full"
+								style="height: 100%; width: 100%;" src="${img}/main-slider4.jpg"
+								alt="">
+						</div>
+						<div class="item">
+							<img class="img-responsive img-full"
+								style="height: 100%; width: 100%;"
+								src="${img}/main-slider5.jpeg" alt="">
+						</div>
+
+						<!-- Controls -->
+						<a class="left carousel-control" href="#carousel-example-generic"
+							data-slide="prev"> <span class="icon-prev"></span>
+						</a> <a class="right carousel-control"
+							href="#carousel-example-generic" data-slide="next"> <span
+							class="icon-next"></span>
+						</a>
 					</div>
-					<div class="item">
-						<img class="img-responsive img-full" style="height: 100%; width: 100%;"
-							src="${img}/main-slider2.jpg" alt="">
-					</div>
-					<div class="item">
-						<img class="img-responsive img-full" style="height: 100%; width: 100%;"
-							src="${img}/main-slider3.jpg" alt="">
-					</div>
-					<div class="item">
-						<img class="img-responsive img-full" style="height: 100%; width: 100%;"
-							src="${img}/main-slider4.jpg" alt="">
-					</div>
-					<div class="item">
-						<img class="img-responsive img-full" style="height: 100%; width: 100%;"
-							src="${img}/main-slider5.jpeg" alt="">
-					</div>
-					
-					<!-- Controls -->
-				<a class="left carousel-control" href="#carousel-example-generic"
-					data-slide="prev"> <span class="icon-prev"></span>
-				</a> <a class="right carousel-control" href="#carousel-example-generic"
-					data-slide="next"> <span class="icon-next"></span>
-				</a>
-			</div>
 				</div>
 			</div>
 
@@ -675,35 +685,40 @@ body {
 	</div>
 
 
-    <!-- Services Section BestSeller -->
-    <section id="services" class="container content-section">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto;">
-            
-                <hr />
-                  <img src="${img}/bstseller.png" alt="" style="padding-top: 20px;"/>
-                  <!-- 베스트셀러 시작 -->
-			
+	<!-- Services Section BestSeller -->
+	<section id="services" class="container content-section">
+		<div class="row">
+			<div class="col-lg-8 col-lg-offset-2"
+				style="width: 100%; margin: auto;">
 
-				<div  style="margin: auto; width: 100%;">
+				<hr />
+				<img src="${img}/bstseller.png" alt="" style="padding-top: 20px;" />
+				<!-- 베스트셀러 시작 -->
+
+
+				<div style="margin: auto; width: 100%;">
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="now"> 
-						<img src="${img}/bstbook1.jpg" alt="지금 이 순간" style="width: 141px; height: 203px;">
+						<a href="#" class="thumbnail" id="now"> <img
+							src="${img}/bstbook1.jpg" alt="지금 이 순간"
+							style="width: 141px; height: 203px;">
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="sapi"> 
-						<img src="${img}/bstbook2.jpg" alt="사피엔스" style="width: 141px; height: 203px;">
-					</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="lonly"> 
-						<img src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다." style="width: 141px; height: 203px;">
+						<a href="#" class="thumbnail" id="sapi"> <img
+							src="${img}/bstbook2.jpg" alt="사피엔스"
+							style="width: 141px; height: 203px;">
 						</a>
 					</div>
 					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" id="mine"> 
-						<img src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들" style="width: 141px; height: 203px;">
+						<a href="#" class="thumbnail" id="lonly"> <img
+							src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다."
+							style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="mine"> <img
+							src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들"
+							style="width: 141px; height: 203px;">
 						</a>
 					</div>
 				</div>
@@ -711,76 +726,68 @@ body {
 			</div>
 		</div>
 
-    <!-- Download Section -->
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto; ">
-                <hr />
-                <img src="${img}/reco.png" alt="" style="padding-top: 10px;"/>
-                 <!-- 분야 추천 -->
-                  	<div class="row" >
-					<div class="col-xs-6 col-md-3" >
-					<a href="#" class="thumbnail" id="memo"> 
-					<img src="${img}/recome1.jpg" alt="메모 습관의 힘" style="width: 141px; height: 203px;">
-					</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail" id="best"> 
-						<img src="${img}/recome2.jpg" alt="베스트 편곡으로 배우는 아주 특별한 통기타 교본" style="width: 141px; height: 203px;">
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3" >
-					<a href="#" class="thumbnail" id="oneday"> 					
-						<img src="${img}/recome3.jpg" alt="하루 세 줄, 마음정리법 일본 최고 의사가 전하는 스트레스 리셋 처방전" style="width: 141px; height: 203px;">
-						</a>
-					</div>
+		<!-- Download Section -->
+		<div class="download-section">
+			<div class="container">
+				<div class="col-lg-8 col-lg-offset-2"
+					style="width: 100%; margin: auto;">
+					<hr />
+					<img src="${img}/reco.png" alt="" style="padding-top: 10px;" />
+					<!-- 분야 추천 -->
+					<div class="row">
 						<div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail" id="pathion"> 
-						<img src="${img}/recome4.jpg" alt="패션의 탄생 컬러링북 쇼핑보다 짜릿한 컬러 스타일링" style="width: 141px; height: 203px;">
-						</a>
+							<a href="#" class="thumbnail" id="memo"> <img
+								src="${img}/recome1.jpg" alt="메모 습관의 힘"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="best"> <img
+								src="${img}/recome2.jpg" alt="베스트 편곡으로 배우는 아주 특별한 통기타 교본"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="oneday"> <img
+								src="${img}/recome3.jpg"
+								alt="하루 세 줄, 마음정리법 일본 최고 의사가 전하는 스트레스 리셋 처방전"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
+						<div class="col-xs-6 col-md-3">
+							<a href="#" class="thumbnail" id="pathion"> <img
+								src="${img}/recome4.jpg" alt="패션의 탄생 컬러링북 쇼핑보다 짜릿한 컬러 스타일링"
+								style="width: 141px; height: 203px;">
+							</a>
+						</div>
 					</div>
-					</div>
-					</div>
-                  <!-- 끝 -->
-                  <hr />                    
-                </div>
-           </div>
-    </section>
-    <hr />
-    <!-- Contact Section -->
-      <!-- BOOK -->
-    <section id="book" class="container content-section">
-        <div class="download-section">
-			<div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto; ">
+				</div>
+				<!-- 끝 -->
+				<hr />
+			</div>
+		</div>
+	</section>
+	<hr />
+	<!-- Contact Section -->
+	<!-- BOOK -->
+	<section id="book" class="container content-section">
+		<div class="download-section">
+			<div class="col-lg-8 col-lg-offset-2"
+				style="width: 100%; margin: auto;">
 				<a href="#" id="book_more"><img src="${img}/week.png" alt="" /></a>
 			</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail">
-						
-						</a>
-						</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail" >
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> 
-						</a>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<a href="#" class="thumbnail"> 
-						</a>
-					</div>
-			
+			<div class="col-xs-6 col-md-3">
+				<a href="#" class="thumbnail" id="target"> </a>
+			</div>
 		</div>
-    </section>
-   <hr />
-   <!-- Event -->
-    <section id="event">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading" id="event_more">EVENT</h2>
+	</section>
+	<hr />
+	<!-- Event -->
+	<section id="event">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading" id="event_more">EVENT</h2>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
 							<div class="thumbnail">
@@ -820,120 +827,121 @@ body {
 						</div>
 					</div>
 				</div>
-            </div>
-        </div>
-</section>       
-<hr />
-<!-- team -->
-<section id="team" class="bg-light-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">TOB TEAM</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="#" class="img-responsive img-circle" alt="">
-                        <h4>Hwang YoungJu</h4>
-                        <p class="text-muted">Team Leader</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><img src="${startimages}/icon/icon-twitter.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/facebook-icon.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="#" class="img-responsive img-circle" alt="">
-                         <h4>Kim Sumin</h4>
-                        <p class="text-muted">준비중</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><img src="${startimages}/icon/icon-twitter.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/facebook-icon.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="#" class="img-responsive img-circle" alt="">
-                        <h4>Seong YonWoo</h4>
-                        <p class="text-muted">준비중</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><img src="${startimages}/icon/icon-twitter.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/facebook-icon.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                  <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="#" class="img-responsive img-circle" alt="">
-                        <h4>Lee JeongMin</h4>
-                        <p class="text-muted">준비중</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><img src="${startimages}/icon/icon-twitter.png" alt="" /></a>
-                            </li>
-                       		<li><a href="#"><img src="${startimages}/icon/facebook-icon.png" alt="" /></a>
-                            </li>
-                         <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                  <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="#" class="img-responsive img-circle" alt="">
-                         <h4>Lee HyeSuk</h4>
-                        <p class="text-muted">준비중</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><img src="${startimages}/icon/icon-twitter.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/facebook-icon.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                  <div class="col-sm-4">
-                    <div class="team-member">
-                        <img src="#" class="img-responsive img-circle" alt="">
-                        <h4>Hong HyeongDong</h4>
-                        <p class="text-muted">준비중</p>
-                        <ul class="list-inline social-buttons">
-                            <li><a href="#"><img src="${startimages}/icon/icon-twitter.png" alt="" /></a>
-                            </li>
-                           <li><a href="#"><img src="${startimages}/icon/facebook-icon.png" alt="" /></a>
-                            </li>
-                            <li><a href="#"><img src="${startimages}/icon/linkedin.png" alt="" /></a>
-                            </li>
-                        </ul> 
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <p class="large text-muted">준비중입니다.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-   
-   
+			</div>
+		</div>
+	</section>
+	<hr />
+	<!-- team -->
+	<section id="team" class="bg-light-gray">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2 class="section-heading">TOB TEAM</h2>
+					<h3 class="section-subheading text-muted">Lorem ipsum dolor
+						sit amet consectetur.</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img src="#" class="img-responsive img-circle" alt="">
+						<h4>Hwang YoungJu</h4>
+						<p class="text-muted">Team Leader</p>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img src="#" class="img-responsive img-circle" alt="">
+						<h4>Kim Sumin</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img src="#" class="img-responsive img-circle" alt="">
+						<h4>Seong YonWoo</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img src="#" class="img-responsive img-circle" alt="">
+						<h4>Lee JeongMin</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img src="#" class="img-responsive img-circle" alt="">
+						<h4>Lee HyeSuk</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="team-member">
+						<img src="#" class="img-responsive img-circle" alt="">
+						<h4>Hong HyeongDong</h4>
+						<p class="text-muted">준비중</p>
+						<ul class="list-inline social-buttons">
+							<li><a href="#"><img
+									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/facebook-icon.png" alt="" /></a></li>
+							<li><a href="#"><img
+									src="${startimages}/icon/linkedin.png" alt="" /></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 text-center">
+					<p class="large text-muted">준비중입니다.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
 	<!-- Bootstrap Core JavaScript -->
 	<script src="${startjs}/bootstrap.min.js"></script>
 
@@ -948,7 +956,9 @@ body {
 	<!-- Custom Theme JavaScript -->
 	<script src="${startjs}/agency.js"></script>
 
-<script src="${js}/Book.js"></script>
+	<script src="${js}/Book.js"></script>
+
+
 
 
 <script type="text/javascript">
@@ -969,44 +979,55 @@ $(function() {
         Event.eventPage();
 	});
 
-	$('#soft').click( function() {
-	   	 alert("이벤트 댓글달기로 이동");
-	        Event.eventPage();
-		});
-	$('#songgok').click( function() {
-	   	 alert("이벤트 댓글달기로 이동");
-	        Event.eventPage();
-		});
-	$('#sapi').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#lonly').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#mine').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#memo').click(function() {
-		alert("확인");
-		book.mainPage();
-	});	
-	$('#best').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#oneday').click(function() {
-		alert("확인");
-		book.mainPage();
-	});	
-	$('#pathion').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-});
+			$('#event_more').click(function() {
+				Event.event('${user.userid}');
+				alert('넘기는 유저아이디 : ' + '${user.userid}');
+			});
+			$('#book_more').click(function() {
+				book.all('${user.userid}');
+				alert('넘기는 유저아이디 : ' + '${user.userid}');
+			});
+			$('#tech').click(function() {
+				alert("이벤트 댓글달기로 이동");
+				Event.eventPage();
+			});
 
-
-</script>
+			$('#soft').click(function() {
+				alert("이벤트 댓글달기로 이동");
+				Event.eventPage();
+			});
+			$('#songgok').click(function() {
+				alert("이벤트 댓글달기로 이동");
+				Event.eventPage();
+			});
+			$('#sapi').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+			$('#lonly').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+			$('#mine').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+			$('#memo').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+			$('#best').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+			$('#oneday').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+			$('#pathion').click(function() {
+				alert("확인");
+				book.mainPage();
+			});
+		});
+	</script>
 </body>
