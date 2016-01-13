@@ -229,15 +229,62 @@ INSERT INTO EVENT VALUES('markrecommend','[교보 외서] 2015년 마크 주커�
 
 
 
-INSERT INTO BOOK VALUES('1','책a','11000','저자a','8.3','1',null,null);
-INSERT INTO BOOK VALUES('2','책b','12000','저자b','8.3','7',null,null);
-INSERT INTO BOOK VALUES('3','책c','13000','저자c','8.3','4',null,null);
-INSERT INTO BOOK VALUES('4','책d','14000','저자d','8.3','5',null,null);
-INSERT INTO BOOK VALUES('5','책e','15000','저자e','8.3','7',null,null);
-INSERT INTO BOOK VALUES('6','책f','16000','저자f','8.3','9',null,null);
-INSERT INTO BOOK VALUES('7','책g','17000','저자g','8.3','3',null,null);
-INSERT INTO BOOK VALUES('8','책h','18000','저자h','8.3','6',null,null);
-INSERT INTO BOOK VALUES('9','책i','19000','저자i','8.3','1',null,null);
+INSERT INTO BOOK VALUES('20','고양이1','11000','저자a','8.3','1','free','child');
+INSERT INTO BOOK VALUES('21','고양이2','12000','저자b','8.3','7','free','child');
+INSERT INTO BOOK VALUES('22','고양이3','13000','저자c','8.3','4','free','child');
+INSERT INTO BOOK VALUES('33','고양이4','13000','저자c','8.3','4','free','child');
+INSERT INTO BOOK VALUES('34','고양이5','13000','저자c','8.3','4','free','child');
+
+INSERT INTO BOOK VALUES('34','이소설은','13000','저자c','8.3','4','foo','fiction');
+INSERT INTO BOOK VALUES('35','픽션','13000','저자c','8.3','4','foo','fiction');
+INSERT INTO BOOK VALUES('36','입니다','13000','저자c','8.3','4','foo','fiction');
+INSERT INTO BOOK VALUES('37','개망','13000','저자c','8.3','4','foo','fiction');
+INSERT INTO BOOK VALUES('38','ㅇㅇㅇ','13000','저자c','8.3','4','foo','fiction');
+
+INSERT INTO BOOK VALUES('39','고양이의 정석','33000','여누','11.3','42','foo','cham');
+INSERT INTO BOOK VALUES('40','개의 정석','33000','여누','11.3','42','foo','cham');
+INSERT INTO BOOK VALUES('41','ㅅㅅ의 정석','33000','여누','11.3','42','foo','cham');
+INSERT INTO BOOK VALUES('42','ㄴㄴ의 정석','33000','여누','11.3','42','foo','cham');
+INSERT INTO BOOK VALUES('43','ㅇㅇ의 정석','33000','여누','11.3','42','foo','cham');
+
+INSERT INTO BOOK VALUES('23','아기책1','16,000','저자6','8.3','25','free','baby');
+INSERT INTO BOOK VALUES('24','이뻐요2','12,000','저자5','8.3','55','free','baby');
+INSERT INTO BOOK VALUES('25','짜증낭','13,000','저자4','8.3','45','free','baby');
+INSERT INTO BOOK VALUES('26','으아아앙','18,000','저자3','8.3','35','free','baby');
+INSERT INTO BOOK VALUES('27','아기책2','19,000','저자2','8.3','12','free','baby');
+
+INSERT INTO BOOK VALUES('28','코미디1','19,000','저자2','8.3','12','foo','comedy');
+INSERT INTO BOOK VALUES('29','미디2','19,000','저자2','8.3','12','foo','comedy');
+INSERT INTO BOOK VALUES('30','디3','19,000','저자2','8.3','12','foo','comedy');
+INSERT INTO BOOK VALUES('31','3','19,000','저자2','8.3','12','foo','comedy');
+INSERT INTO BOOK VALUES('32','3디','19,000','저자2','8.3','12','foo','comedy');
+
+
+
+INSERT INTO BOOK VALUES('10','성인 ADHD 인지행동치료 프로그램: 내담자용 워크북','13,000','Steven A. Safren','8.3','13','free','adult');
+INSERT INTO BOOK VALUES('11','성인 경험학습의 이해: 이론과 실제','6,000',' 김영석, 이로미, 이성엽, 최성애','9.3','11','foo','adult');
+INSERT INTO BOOK VALUES('12','성인의 주의력결핍 과잉행동 장애(ADHD)','23,000','Steven A. Safren , Susan Sprich, Carol A. Perlman, Michael W. Otto','8.3','13','free','adult');
+INSERT INTO BOOK VALUES('13',' 알프레드 성인용 피아노 1급 레슨교재','43,000','Perlman Michael','4.3','13','foo','adult');
+INSERT INTO BOOK VALUES('14','알프레드 성인용 제3급 이론교재','21,000','Carol A. Perlman','5.8','13','free','adult');
+
+INSERT INTO BOOK VALUES('15',' 만화 공인중개사 특별세트(2016)','12000','이용훈','9.6','10','free','cartoon');
+INSERT INTO BOOK VALUES('16','나홀로 부동산 경매 [개정판 5판]','9000','이용훈','3.3','4','free','cartoon');
+INSERT INTO BOOK VALUES('17','지금 이 순간','13000','기욤뮈소','5.3','15','free','cartoon');
+INSERT INTO BOOK VALUES('18','당신 거기 있어줄래요','15000','기욤뮈소','9.3','43','free','cartoon');
+INSERT INTO BOOK VALUES('19','들꽃 향기로 남은 너','16000','이민기','8.5','42','free','cartoon');
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 INSERT INTO CART VALUES('a-a','a','1','a','1');

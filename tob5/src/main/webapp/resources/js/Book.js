@@ -79,9 +79,9 @@ var book = {
 				/*---------------------------다음페이지로 넘어가기.-------------------------------*/
 				$.each(data.listAbroad,function(i,value){
 					$('#'+abroadArr[i]).click(function() {
-						alert('해외도서 페이지,'+abroadArrName[i]+'  페이지로 이동.')
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty();
+						book.bookSimplePage2('1',abroadArr[i],userid);
+						alert('장르아이디 들어갔니? '+abroadArr[i])
 					});
 					
 				});
@@ -89,17 +89,15 @@ var book = {
 				
 				$.each(data.listDomestic,function(i,value){
 					$('#'+domesticArr[i]).click(function() {
-						alert('국내도서 페이지  ,'+domesticArrName[i]+'  페이지로 이동.')
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty();
+						book.bookSimplePage2('1',domesticArr[i],userid);
 					});
 					
 				});
 				$.each(data.listEbook,function(i,value){
 					$('#'+ebookArr[i]).click(function() {
-						alert('전자책 페이지  ,'+ebookArrName[i]+'  페이지로 이동.')
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty();
+						book.bookSimplePage2('1',ebookArr[i], userid);
 					});
 					
 				});
@@ -107,13 +105,14 @@ var book = {
 				
 				$.each(data.listNew,function(i,value){
 					$('#'+newArr[i]).click(function() {
-						alert('신간 페이지  ,'+newArrName[i]+'  페이지로 이동.')
-						book.bookSimplePage('1', userid);
-						alert('넘어가는 유저아이디 : '+ userid);
+						book.bookEmpty(newArrName[i]);
+						book.bookSimplePage2('1',newArr[i], userid);
 					});
 				});
 				
 				
+				
+				// 일부로 안준거.
 				$.each(data.listOld,function(i,value){
 					$('#'+oldArr[i]).click(function() {
 						alert('중고책 페이지  ,'+oldArrName[i]+'  페이지로 이동.')
@@ -129,7 +128,115 @@ var book = {
 			});
 		},
 		
-		bookSimplePage : function(pageNo, userid) {
+		//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
+		
+		
+		bookSimplePage2 : function(pageNo,genreId,userid) {
+			var arr= [];
+			$.getJSON(context +'/book/Book_selectAll2/'+pageNo+'/'+genreId ,function(data){
+				var count = data.count;
+				var pageNo = data.pageNo; 
+				var startPage = data.startPage;
+				var groupSize = data.groupSize;
+				var lastPage = data.lastPage;
+				var totPage = data.totPage;
+				
+				var bookList= '<div id="bookContents2" style="color: black;"><h2>책 목록</h2>'
+					$.each(data.list,function(index,value){
+						bookList +='<div class="book1">';
+							bookList +='<img alt="" src="'+context+'/resources/images/'+this.bookId+'.jpg" width="106px" height="150px" align="left">';
+							bookList +='<a href="#" id="'+this.bookId+'"><strong>'+this.bookName+'</strong></a>';
+							bookList +='<font color="white" ">'+this.optionBook+'</font>'; 
+							bookList +='<font color="white" style="color: green">이벤트</font>';
+							bookList +='<font color="white" class="maroon">경품</font>';
+							bookList +='<font color="white" style="background-color: purple;">무료배송</font>';
+							bookList +='<font color="gray">'+this.writer+'</font><br />';
+							bookList +='<font color="red" class="white">'+this.bookPrice+'</font><font>원</font><font  size="2px">[10%할인!]</font>';
+							bookList +='<font style="background-color: gray" class="white">회원평점</font><font color="red" >'+this.grade+'</font>';
+							bookList +='<br /><br /><br /><br />';
+							bookList +='<input type="button"  value="장바구니에 담기" onclick="book.putInCart('+'\''+this.bookId+'\''+')">';
+							bookList +='<input type="button"  value="바로구매" id="b'+index+'">';
+							bookList +='<br /><br /><br /><br />';
+						arr.push(this.bookId);
+						
+					});
+
+				//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
+					var pagination = '<TABLE id="pagination">'
+						if (startPage != 1) {
+							pagination += '<a href="'+context+'/book/Book_selectAll/1">'
+							+'<IMG SRC="'+img+'/left.png">&nbsp'
+							+'</a>';
+						}
+						if ((startPage - groupSize) > 0 ) {
+							pagination +='<a href="'+context+'/book/Book_selectAll/'+(startPage-groupSize)+'">'
+							+'<IMG SRC="'+img+'/right.png">&nbsp'
+							+'</a>';
+						}
+						
+						for (var i = startPage ; i <= lastPage; i++) {
+							if (i == pageNo) {
+								pagination+='<font style="color:red;font-size: 20px">'
+								+i
+								+'</font>';
+							} else {
+								pagination+='<a href="#" onClick="return book.bookSimplePage2('+i+',\''+genreId+'\''+')">'
+								+'<font>'
+								+i
+								+'</font>'
+								+'</a>';
+							}
+						}		
+						if ((startPage + groupSize) <= totPage) {
+							pagination += +'<a href="'+context+'/book/Book_selectAll/'+(startPage+groupSize)+'">'
+						}
+						pagination += '</TD>';
+						pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+
+						bookList+=pagination;
+						bookList+='</div>';	
+					
+						//----@#$%$#^$&^@%&@#^#$^#$^@#%&^^&#%^&*%^*#%^*&#&*#&*^$&*//
+			
+				
+				$('.mainView').html(bookList);
+				
+				$.each(data.list, function(index, value) {
+					$('#'+arr[index]).click(function() {
+						alert("책 상세 정보를 보여주는 페이지로 넘어갑니다.");
+						book.bookEmpty();
+						book.mainPage(arr[index]);
+				});
+
+	$.each(data.list,function(i,value){
+		$('#b'+index).click(function() {
+			alert('구매 클릭 됨.');
+			alert('Purcase.buy으로 넘기는 유저아이디 : '+userid);
+			Purchase.buy(arr[index], userid);		
+		});
+	});
+					
+	
+	
+				});	
+				
+				
+			});
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//-------@@@@@@@@@@@@--------------------------------------------------
+		bookSimplePage : function(pageNo , userid) {
 			var arr = [];
 		$.getJSON(context +'/book/Book_selectAll/'+pageNo ,function(data){
 			var count = data.count;
@@ -218,10 +325,6 @@ var book = {
 		});
 		},
 		
-		
-	
-		
-		
 	mainPage : function(bookId) {
 			$.getJSON(context + '/book/Book_main/'+bookId ,function(data){
 				var bookPage = '<div class="contents">'
@@ -244,6 +347,7 @@ var book = {
 					book.bookEmpty();
 					book.inputBookId();
 					book.inputBookName();
+					book.google();
 				});
 			});
 			
@@ -255,7 +359,7 @@ var book = {
 		
 		
 		
-		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///수민이형
+		//------------------------ 오늘의책  입력하기 버튼이랑 텍스트. ///관리자
 		inputBookId : function() {
 			$('#book_section').html('<form action=""><input type="text" style=" border-bottom-color: blue;  border-top-color:green;"  id="textInputId"> &nbsp; '
 					+'<input type="button" value="오늘의 책 선정" id="btCheck"></form>'
@@ -270,7 +374,7 @@ var book = {
 						
 					})
 		},
-		//case2--- 값 넘겨서 보여주기 (성공 ㅎ)----------------------------------------------------------------------
+		//case2--- 값 넘겨서 보여주기 ////메인----------------------------------------------------------------------
 		searchForTodayBook2 : function(bookId,target) {
 			$.getJSON(context +'/book/Book_main/'+bookId ,function(data){
 				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
@@ -308,7 +412,7 @@ var book = {
 		//-case2 값 넘겨서 보여주기------------------------------------------------------------------------
 		findBook : function(pageNo,searchBookName) {
 			var resultSearchBook = [];
-			alert('책이름'+searchBookName);
+			alert('검색된 책 이름:'+searchBookName);
 				$.getJSON(context+'/book/Book_find/'+pageNo+'/'+searchBookName ,function(data){
 					var count = data.count;
 					var pageNo = data.pageNo; 
@@ -381,14 +485,23 @@ var book = {
 				});
 				
 		},
-		
-		
-		
-		
-		
-		
-		
-		
+		//---------구글검색----------------------------------------------------------------------
+		google : function() {
+			var googleView = '<div align="Left"><table cellpadding="0" cellspacing="0" bgcolor="" width="300" height="40" style="padding-top:3;"><tr>'
+				+'<td width="100%" height="47" align="right"><form action="http://www.google.co.kr/cse" id="cse-search-box">'
+				+'<p align="right" style="line-height:100%; margin-top:0; margin-bottom:0;"><font color="blue" size="2"><b><u>G</u></b></font>'
+				+'<font color="red" size="2"><b><u>o</u></b></font><font color="#FF9933" size="2"><b><u>o</u></b></font><font color="#006699" size="2"><b><u>g</u></b></font>'
+				+'<font color="black" size="2"><b><u>l</u></b></font><font color="#0099FF" size="2"><b><u>e</u></b></font><b><font size="2"><u></u></font></b>'
+				+'<font color="#009966" size="2"><b><u>S</u></b></font><font color="red" size="2"><b><u>e</u></b></font><font color="#0099FF" size="2"><b><u>a</u></b></font>'
+				+'<font color="#6666FF" size="2"><b><u>r</u></b></font><font color="#66CCFF" size="2"><b><u>c</u></b></font><font color="#CC0000" size="2"><b><u>h</u></b></font>'
+				+'<font color="white" size="2"><b><u>&nbsp;</u></b></font><font color="#CC0000" size="2"><b></b></font>'
+				+'<input type="hidden" name="cx" value="partner-pub-7372605513442392:ue9vq1-a32y" /><input type="hidden" name="ie" value="UTF-8" />'
+				+'<input type="text" name="q" size="31" /><b><font size="2">&nbsp;</font></b><input type="submit" name="sa" value="     &#xac80;&#xc0c9;     " />&nbsp;<br>'
+				+'<script type="text/javascript" src="http://www.google.co.kr/cse/brand?form=cse-search-box&amp;lang=ko"></script><font color="#0033CC" '
+				+'size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><script type="text/javascript" src="http://www.google.co.kr/cse/brand?form=cse-search-box&amp;lang=ko"></script>'
+				+'</form></td></tr></table></div>'
+				$('.mainView').append(googleView);
+		},
 		
 		
 		
