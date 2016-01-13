@@ -75,9 +75,11 @@ GRADE AS grade,
 STOCK_SEQ AS stockSeq,
 OPTION_ID AS optionBook,
 GENRE_ID AS genreId
-FROM BOOK WHERE ${column} LIKE CONCAT ('%',#{keyword},'%')
+FROM BOOK WHERE ${column}
+ LIKE CONCAT ('%',#{keyword},'%')
 ORDER BY BOOK_ID DESC
 LIMIT #{start}, 3
+
    
 </select>
 
