@@ -15,11 +15,22 @@ var Event = {
 					+'<input type="checkbox" name="book" value="eBook">eBook <input type="checkbox" name="book" value="문화 이벤트">문화 이벤트 </form></div>'
 					+'<div class="sm_2_2"><form action="action_page.php"><input type="radio" name="promotion" value="전체" checked>전체 '
 					+'<input type="radio" name="promotion" value="경품/할인">경품/할인 <input type="radio" name="promotion" value="1+1">1+1 </form></div>'
-					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="검색"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>'
-			);
+					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="nameSearch"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>');
+		
+
+			$('#search').click(function name() {
+				if ($("input:text[name=nameSearch]").val() == "") {
+					alert("검색어를 입력해주세요.");
+					$("input:text[name=nameSearch]").focus();
+					return false;
+				}
+				$('#submain').empty();
+				Event.findEvent('1',$("input:text[name=nameSearch]").val());
+			});
 			
 			
 				Event.ranking('1');
+				$('.mainView').css('background-image', '${startimages}/team/tema.png');
 			
 		},
   ranking : function(pageNo) {
@@ -37,7 +48,7 @@ var Event = {
            $.each (data.list, function(index,value) {
            rank += '<div class="img">'
            +'<img src="'+context+'/resources/images/'+this.profile+'" alt="'+this.profile+'" width="150" height="100"></a>'
-           +'<div class="desc"><br /><a class="highlight" href= "#" id="'+this.evtId+'">'+this.evtName+'</a>'
+           +'<div class="desc"><br /><label class="highlight" id="'+this.evtId+'">'+this.evtName+'</label>'
            +'<br /><br />'+this.fromDt +'~' +this.toDt+'</div></div>';
                 arr.push (this.evtId);
            });
@@ -60,11 +71,11 @@ var Event = {
 						+i
 						+'</font>';
 					} else {
-						pagination+='<a href="#" onClick="return Event.ranking('+i+')">'
+						pagination+='<label onClick="return Event.ranking('+i+')">'
 						+'<font>'
 						+i
 						+'</font>'
-						+'</a>';
+						+'</label>';
 					}
 				}
 				
@@ -133,7 +144,69 @@ var Event = {
 				
 		});
 	},
-
+		findEvent : function(pageNo,searchEventName) {
+			 var resultSearchEvent = [];
+			$.getJSON(context+'/event/Event_find/'+pageNo+'/'+searchEventName,function(data){
+				var count = data.count;
+				var pageNo = data.pageNo; 
+				var startPage = data.startPage;
+				var groupSize = data.groupSize;
+				var lastPage = data.lastPage;
+				var totPage = data.totPage;
+				
+				var findRe = '<div id="findByEventName" style="color: black; width : 400px; height: 300px;"><h2>['+searchEventName+']  으로 검색결과</h2><br /><br /><br />'
+					$.each(data.list, function(index,value) {
+						findRe += '<div class="img2">'
+							   +'<img alt="" src="'+context+'/resources/images/'+this.profile+'" width="106px" height="150px" align="left">'
+							   +'<div class="desc"><br /><label class="highlight" id="'+this.evtId+'">'+this.evtName+'</label>'
+					           +'<br /><br />'+this.fromDt +'~' +this.toDt+'</div></div>';
+								resultSearchEvent.push(this.evtName);
+					});
+				
+				var pagination = '<div style="width : 200px; margin:auto;"><TABLE id="pagination">'
+					if (startPage != 1) {
+						pagination += '<a href="'+context+'/event/Event_find/1/">'
+						+'<img src="'+img+'/left.png">&nbsp'
+						+'</a>';
+					}
+					if ((startPage - groupSize) > 0 ) {
+						pagination +='<a href="'+context+'/event/Event_find/'+(startPage-groupSize)+'">'
+						+'<img src="'+img+'/right.png">&nbsp'
+						+'</a>';
+					}
+					
+					
+					for (var i = startPage ; i <= lastPage; i++) {
+						if (i == pageNo) {
+							pagination+='<font style="color:orange;font-size: 20px">'
+							+i
+							+'</font>';
+						} else {
+							pagination+='<label onClick="return Event.findEvent('+i+',\''+searchEventName+'\''+')">'
+							+'<font>'
+							+i
+							+'</font>'
+							+'</label>';
+						}
+					}		
+					
+					
+					if ((startPage + groupSize) <= totPage) {
+						pagination += +'<a href="'+context+'/event/Event_find/'+(startPage+groupSize)+'">'
+					}
+					pagination += '</TD>';
+					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
+					pagination+='</div>';
+					
+					
+					findRe+=pagination;
+					
+					$('#submain').html(findRe);
+							});
+							
+					},
+			
+		
 
 	
 	
