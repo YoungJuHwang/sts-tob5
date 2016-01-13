@@ -99,8 +99,9 @@ var Cart = {
 		});
 	},
 	
-	change : function(data) {
-		alert('onclick은 객체로 받아들이네..'+data);
+	change : function(bookid, count) {
+		alert('onclick은 객체로 받아들이네..'+bookid);
+		alert('onclick은 객체로 받아들이네..'+count);
 		
 		$.ajax(context+'/cart/change',{
 			data : {
