@@ -21,7 +21,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 	
 	<title>Hanbit - words</title>
-<nav class="navbar navbar-inverse" >
+<nav class="navbar navbar-inverse" style=" z-index: 5;">
   <div class="container-fluid" style="width: 100%;">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >

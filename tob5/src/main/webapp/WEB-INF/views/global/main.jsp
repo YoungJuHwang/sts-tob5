@@ -28,6 +28,10 @@
 	rel='stylesheet' type='text/css'>
 
 <style type="text/css">
+
+.index {
+background-image: url('${startimages}/team/tema.png');
+}
 header {
 	background-image: url('${startimages}/header/Banned-Book.jpg');
 	width: 100%;
@@ -621,70 +625,6 @@ body {
 }
 </style>
 <body id="page-top" class="index">
-
-
-	<!-- 슬라이더 -->
-
-
-	<div style="margin: 20px;">
-
-		<div class="slider-box">
-			<div class="col-lg-12 text-center">
-				<div id="carousel-example-generic" class="carousel slide">
-					<!-- Indicators -->
-					<ol class="carousel-indicators hidden-xs">
-						<li data-target="#carousel-example-generic" data-slide-to="0"
-							class="active"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="3"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="4"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="5"></li>
-					</ol>
-
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner" style="height: 400px; width: 100%;">
-						<div class="item active">
-							<img class="img-responsive img-full"
-								style="height: 100%; width: 100%;" src="${img}/main-slider1.jpg"
-								alt="">
-						</div>
-						<div class="item">
-							<img class="img-responsive img-full"
-								style="height: 100%; width: 100%;" src="${img}/main-slider2.jpg"
-								alt="">
-						</div>
-						<div class="item">
-							<img class="img-responsive img-full"
-								style="height: 100%; width: 100%;" src="${img}/main-slider3.jpg"
-								alt="">
-						</div>
-						<div class="item">
-							<img class="img-responsive img-full"
-								style="height: 100%; width: 100%;" src="${img}/main-slider4.jpg"
-								alt="">
-						</div>
-						<div class="item">
-							<img class="img-responsive img-full"
-								style="height: 100%; width: 100%;"
-								src="${img}/main-slider5.jpeg" alt="">
-						</div>
-
-						<!-- Controls -->
-						<a class="left carousel-control" href="#carousel-example-generic"
-							data-slide="prev"> <span class="icon-prev"></span>
-						</a> <a class="right carousel-control"
-							href="#carousel-example-generic" data-slide="next"> <span
-							class="icon-next"></span>
-						</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-
 	<!-- Services Section BestSeller -->
 	<section id="services" class="container content-section">
 		<div class="row">
@@ -763,30 +703,50 @@ body {
 					</div>
 				</div>
 				<!-- 끝 -->
-				<hr />
-			</div>
+				</div>
 		</div>
 	</section>
-	<hr />
+	
 	<!-- Contact Section -->
 	<!-- BOOK -->
 	<section id="book" class="container content-section">
+	<hr />
 		<div class="download-section">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
 				<a href="#" id="book_more"><img src="${img}/week.png" alt="" /></a>
 			</div>
-			<div class="col-xs-6 col-md-3">
-				<a href="#" class="thumbnail" id="target"> </a>
-			</div>
+			<div class="row">
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="you"> <img src="${img}/weekday1.jpg"
+							alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="happy"> <img src="${img}/weekday2.jpg"
+							alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="story"> <img src="${img}/weekday3.jpg"
+							alt="내 스물아홉 이야기" style="width: 141px; height: 203px;">
+						</a>
+					</div>
+					<div class="col-xs-6 col-md-3">
+						<a href="#" class="thumbnail" id="okay"> <img src="${img}/weekday4.jpg"
+							alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;">
+						</a>
+					</div>
+				</div>
 		</div>
 	</section>
-	<hr />
+	
 	<!-- Event -->
-	<section id="event">
+	<section id="event" style="color: white;">
 		<div class="container">
+		<hr />
 			<div class="row">
-				<div class="col-lg-12 text-center">
+				<div class="col-lg-12">
 					<h2 class="section-heading" id="event_more">EVENT</h2>
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
@@ -830,23 +790,22 @@ body {
 			</div>
 		</div>
 	</section>
-	<hr />
 	<!-- team -->
-	<section id="team" class="bg-light-gray">
+	<section id="team">
 		<div class="container">
+		<hr />
 			<div class="row">
 				<div class="col-lg-12 text-center">
-					<h2 class="section-heading">TOB TEAM</h2>
-					<h3 class="section-subheading text-muted">Lorem ipsum dolor
-						sit amet consectetur.</h3>
+					<h2 class="section-heading" style="color: white;">TOB TEAM</h2>
+					<h3 class="section-subheading text-muted">팀원들을 소개합니다.</h3>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img src="#" class="img-responsive img-circle" alt="">
-						<h4>Hwang YoungJu</h4>
-						<p class="text-muted">Team Leader</p>
+						<h4 style="color: white;">Hwang YoungJu</h4>
+						<p class="text-muted" style="color: white;">Team Leader</p>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><img
 									src="${startimages}/icon/icon-twitter.png" alt="" /></a></li>
@@ -860,7 +819,7 @@ body {
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img src="#" class="img-responsive img-circle" alt="">
-						<h4>Kim Sumin</h4>
+						<h4 style="color: white;">Kim Sumin</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><img
@@ -875,7 +834,7 @@ body {
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img src="#" class="img-responsive img-circle" alt="">
-						<h4>Seong YonWoo</h4>
+						<h4 style="color: white;">Seong YonWoo</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><img
@@ -890,7 +849,7 @@ body {
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img src="#" class="img-responsive img-circle" alt="">
-						<h4>Lee JeongMin</h4>
+						<h4 style="color: white;">Lee JeongMin</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><img
@@ -905,7 +864,7 @@ body {
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img src="#" class="img-responsive img-circle" alt="">
-						<h4>Lee HyeSuk</h4>
+						<h4 style="color: white;">Lee HyeSuk</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><img
@@ -920,7 +879,7 @@ body {
 				<div class="col-sm-4">
 					<div class="team-member">
 						<img src="#" class="img-responsive img-circle" alt="">
-						<h4>Hong HyeongDong</h4>
+						<h4 style="color: white;">Hong HyeongDong</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
 							<li><a href="#"><img
@@ -963,8 +922,7 @@ body {
 
 <script type="text/javascript">
 $(function() {
-	//book.searchForTodayBook2();
-	
+
 	$('#event_more').click(function() {
 		Event.event('${user.userid}');
 		alert('넘기는 유저아이디 : '+'${user.userid}');
@@ -979,55 +937,59 @@ $(function() {
         Event.eventPage();
 	});
 
-			$('#event_more').click(function() {
-				Event.event('${user.userid}');
-				alert('넘기는 유저아이디 : ' + '${user.userid}');
-			});
-			$('#book_more').click(function() {
-				book.all('${user.userid}');
-				alert('넘기는 유저아이디 : ' + '${user.userid}');
-			});
-			$('#tech').click(function() {
-				alert("이벤트 댓글달기로 이동");
-				Event.eventPage();
-			});
-
-			$('#soft').click(function() {
-				alert("이벤트 댓글달기로 이동");
-				Event.eventPage();
-			});
-			$('#songgok').click(function() {
-				alert("이벤트 댓글달기로 이동");
-				Event.eventPage();
-			});
-			$('#sapi').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#lonly').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#mine').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#memo').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#best').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#oneday').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-			$('#pathion').click(function() {
-				alert("확인");
-				book.mainPage();
-			});
-		});
+	$('#soft').click(function() {
+		alert("이벤트 댓글달기로 이동");
+		Event.eventPage();
+	});
+	$('#songgok').click(function() {
+		alert("이벤트 댓글달기로 이동");
+		Event.eventPage();
+	});
+	$('#sapi').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#lonly').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#mine').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#memo').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#best').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#oneday').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#pathion').click(function() {
+		alert("확인");
+		book.mainPage();
+	});
+	$('#you').click(function() {
+		book.searchForTodayBook2(); 
+	});
+	$('#happy').click(function() {
+		book.searchForTodayBook2(); 
+	});
+	
+	$('#story').click(function() {
+		book.searchForTodayBook2(); 
+	});
+	
+	$('#okay').click(function() {
+		book.searchForTodayBook2(); 
+	});
+	
+	
+	
+});
 	</script>
 </body>
