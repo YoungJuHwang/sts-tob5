@@ -48,10 +48,10 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
+				<li><a class="page-scroll" href="#book_section" >BOOK MENU</a></li>
 				<li><a class="page-scroll" href="#best_section">BESTSELLER</a></li>
 				<li><a class="page-scroll" href="#recommend_section">RECOMMEND</a></li>
 				<li><a class="page-scroll" href="#week_section" >WEEKBOOK</a></li>
-				<li><a class="page-scroll" href="#book_section" >BOOK MENU</a></li>
 				<li><a class="page-scroll" href="#event_section" >EVENT</a></li>
 				<li><a class="page-scroll" href="#info_section">TEAM</a></li>
 		<c:if test="${empty sessionScope.user}">
@@ -62,7 +62,7 @@
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right; padding-right: 10px;"><a href="#" id="mypage">마이페이지</a></li>
-		<li style="float: right;"><a href="#" id="my_cart">장바구니</a></li>
+		<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
 		<li style="float: right;"><a href="${context}/member/logout">로그아웃</a></li>
 		</c:if>
 			</ul>

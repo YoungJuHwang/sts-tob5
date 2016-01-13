@@ -52,9 +52,6 @@ var Cart = {
 	
 	list : function(userid) {
 		var arr = [];
-		var priceList = [];
-		var countList = [];
-		
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
 			var table = '<div id="Shop_Basket" style="height:100%">'
 						+'<table width="866" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2">'
@@ -66,19 +63,22 @@ var Cart = {
 						+'<th height="29" align="center">상품명</th>'
 						+'<th width="130" height="29" align="center">가격</th>'
 						+'<th width="130" height="29" align="center">수량</th>'
-						+'<th width="110" height="29" align="center">보관/삭제</tr></tbody></table>'
-						+'<table id="item_list" width="866" border="1px solid silver" align="center" cellpadding="3" cellspacing="0"><tbody>';
+						+'<th width="110" height="29" align="center">보관/삭제</tr></tbody>';
 			$.each(data, function(i, val) {
 				table +='<tr><td width="50" text-align="center"></td>'
 				+'<td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
 				+'<td width="130" text-align="center">'+this.bookPrice * this.count+'</td>'    //<form name="changeCount" Action="#" Method="post">	 빈 공간 폼테그.
-				+'<td width="150"  text-align="center">                                 <div style="float:left"><input type="text" name="count" size="1" id="c'+i+'" value="'+this.count+'"></input></div>'
-				+'<div class="button" style="float:left;margin-left:4px">'
-/*==>onclick*/	+'<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+','+this.count+'\''+')"></div>    </td>'
-/*==>onclick*/	+'<td width="100" align="center"><button id="d'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td></tr>'
+				+'<td width="150"  text-align="center">'
+				+'	<div style="float:left" id="count'+i+'">'
+				+'		<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+this.bookId+'\''+')"></input>'
+				+'	</div>'
+				+'	<div class="button" style="float:left;margin-left:4px">'
+/*==>onclick*/	+'		<input type="submit" class="button_gray" style="width:55px" value="변경" onclick="Cart.change('+'\''+this.bookId+'\''+')">'
+				+'	</div>'
+				+'</td>'
+/*==>onclick*/	+'<td width="100" align="center"><button id="delete'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td></tr>'
 				arr.push(this.bookId);
-				countList.push(this.count);
-				priceList.push(this.bookPrice);
+				
 			});
 			
 			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody>'
@@ -87,24 +87,37 @@ var Cart = {
 				+'width="289"><tbody><tr><td width="140">총 상품가격</td>'
 				+'<td width="149"><strong>합계가 들어와야되</strong></td>'
 				+'</tr><tr><td height="20">배송비</td><td><strong>0</strong>원</td></tr><tr><td height="20">총 주문 상품 수</td>'
-				+'<td><strong>??</strong>권</td>'
-				+'</tr></tbody></table></td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
+				+'<td><strong></span></strong>권</td>'
+				+'<td></td></tr></tbody></table>'
+				+'</td><td width="1" bgcolor="#ffffff"></td></tbody></table>'
 				+'<table cellpadding="0" cellspacing="0" border="0" width="600"><tbody><tr>'
-				'<td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
-				+'<td width="149" class="pt1"><span class="pt3">합계 금액...</span></td></tr></tbody></table></td></tr></tbody></table>'
-				+'</div>'
-				+'<input type="text" id="fname" onkeyup="Cart.myFunction()">';
-			$('.mainView').empty().append(table);
+				+'<td width="140" height="20" class="pt1"><strong>총 결제 예상 금액</strong></td>'
+				+'<td width="149" class="pt1"><span class="pt3">합계 금액...</span></td></tr></tbody></table></td></tr></tbody>'
+				+'</table>'
+				+'</div>';
+			$('#cart_section').empty().append(table);
 			
 			
 		});
 	},
-	myFunction : function() {
+	
+	myFunction : function(i, bookId) {
+		alert('Cart.myFuncion진입 넘어온 값 : '+i);
+		alert('Cart.myFuncion진입 넘어온 값 : '+ bookId);
+		$('#count'+i).empty();
+		alert('count i 번째 디브 지웠음.');
+		$('#count'+i).append('<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+this.bookId+'\''+')"></input>');
 		
+		alert('count i 번째 다시 그리고 난 뒤 i 값 : ' +i);
+		alert('count i 번째 다시 그리고 난 뒤 BookId 값 : ' +bookId);
+		
+		 var x = document.getElementById("c"+i).value;
+		    document.getElementById("d"+i).innerHTML = x;
 	},
-	change : function(bookid, count) {
-		alert('onclick은 객체로 받아들이네..'+bookid);
-		alert('onclick은 객체로 받아들이네..'+count);
+	
+	/*change : function(bookid, count) {
+		alert('onclick은 먹음'+bookid);
+		alert('onclick은 먹음.'+count);
 		
 		$.ajax(context+'/cart/change',{
 			data : {
@@ -123,7 +136,7 @@ var Cart = {
 			}
 			
 		});
-	},
+	},*/
 	
 	remove : function(bookId, userid) {
 			alert('Cart.remove 진입, 넘어온 책 아이디값 : ' +bookId);

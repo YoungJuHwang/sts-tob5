@@ -823,9 +823,9 @@ body {
 	<!-- BOOK -->
 	<section id="book_section" class="container content-section">
 				<hr />
-				<div id="book"></div>
-		<a href="#" id="book_test">목록</a>
-		
+				<div id="book">
+					<a href="#" id="book_test">목록</a>
+				</div>
 	</section>
 	
 	
@@ -989,6 +989,7 @@ body {
 			</div>
 		</div>
 	</section>
+	<section id="cart_section"></section>
 </body>
 
 	<!-- Bootstrap Core JavaScript -->
