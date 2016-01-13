@@ -14,27 +14,38 @@
  	)
  </insert>
  
- <select id="selectAll" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
+ <select id="selectAllPage" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
  	SELECT 
 	 	ACCOUNT_NUM AS account_num,
 	 	TOTAL AS total,
 	 	ID AS id
- 	FROM (SELECT ROWNUM AS seq, account.* FROM Account account)
- 	WHERE seq BETWEEN #{start} AND #{end}
+ 	FROM ACCOUNT ORDER BY account_num ASC
+         LIMIT #{start}, 3
  </select>
-
+ 
+ <select id="selectTotal" resultType="int" parameterType="string">
+ 	SELECT SUM(SUM) FROM PURCHASE WHERE ACCOUNT_NUM= #{account_num}
+ </select>
+ 
  <select id="selectOneBy" resultType="com.tob.account.AccountVO" parameterType="com.tob.global.Command">
- 	SELECT
+ 	SELECT 
  		ACCOUNT_NUM AS account_num,
 	 	TOTAL AS total,
 	 	ID AS id
- 	FROM ACCOUNT WHERE ACCOUNT_NUM = #{account_num}
+ 	FROM ACCOUNT WHERE ACCOUNT_NUM= #{account_num}
+ </select>
+ 
+  <select id="selectByDay" resultType="com.tob.account.AccountVO" parameterType="string">
+ 	SELECT TOTAL 
+ 	FROM ACCOUNT 
+ 	WHERE ACCOUNT_NUM = #{account_num}
  </select>
  
  <select id="count" resultType="int">
  	SELECT COUNT(*) AS count FROM ACCOUNT
  </select>
  
+     
  <select id="countByKeyword" resultType="int" parameterType="com.tob.global.Command">
  SELECT COUNT(*) AS count 
  FROM ACCOUNT
@@ -51,5 +62,6 @@
  	DELETE FROM ACCOUNT WHERE ACCOUNT_NUM = #{account_num}
  </delete>
    
-   
  </mapper>
+ 
+ 

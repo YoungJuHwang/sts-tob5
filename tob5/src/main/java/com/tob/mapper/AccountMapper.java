@@ -15,8 +15,10 @@ public interface AccountMapper {
 	public int insert(AccountVO account);
 	 
 	// R : 조회
-	public List<AccountVO> selectAll(Command command); 	// 전체조회
-	public List<AccountVO> selectOneBy(Command command); 	// 날짜로 조회
+	public List<AccountVO> selectAllPage(Command command); 	// 전체조회(페이징)
+	public int selectTotal(String key); 				// 전체조회
+	public void getTotal(); 				// 전체조회
+	public List<AccountVO> selectByDay(String account_num); 	// 날짜로 조회
 	public int count(); 								// 전체주문수 조회
 	public int countByKeyword(Command command); 		// 검색결과 갯수만 조회
 	

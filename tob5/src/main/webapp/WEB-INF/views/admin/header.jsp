@@ -34,7 +34,7 @@
           <ul class="dropdown-menu">
             <li><a href="#" id="main_bookReg">책 등록</a></li>
             <li><a href="#" id="main_bookList">전체 책 목록</a></li>
-            <li><a href="#" id="main_todayBook">오늘의 책 선정</a></li>
+            <li><a href="#" id="main_todayBook">이주의 책 선정</a></li>
           </ul>
         </li>
           <li class="dropdown">
@@ -49,17 +49,15 @@
           <ul class="dropdown-menu">
             <li><a href="${context}/admin/purchase_list">전체 주문 목록</a></li>
             <li><a href="${context}/admin/account_list">날짜별 주문 목록</a></li>
-            <li><a href="${context}/admin/book_search">검색테스트</a></li>
-            <li><a href="${context}/admin/map">지도</a></li>
           </ul>
         </li>
       </ul>
       
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" id="search_text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">검 색</button>
+        <button id="main_search" class="btn btn-default">검 색</button>
       </form>
      
     </div>
@@ -89,8 +87,19 @@
 		$('#main_todayBook').click(function() {
 			AdminBook.inputBookId(); 
 		});
+		
+		$('#main_search').click(function() {
+			alert('클릭');
+		});
 	});
 	
+	/* =================== 검색 ====================== */	
+	
+	var AdminSearch = {
+			search : function() {	
+			alert('진입');			
+			}		
+	};
 	
 	
 	/* ============== 관리자 및 회원 등록 ====================== */
@@ -188,8 +197,7 @@
 						}
 						
 					});
-					
-					
+			
 					/* =============== 이용약관 부분 ================= */
 					
 					$('.button-checkbox').each(function () {
@@ -258,11 +266,9 @@
 				    });
 	
 				});
-			},
-				
+			},			
 		};
  
-	
  	var style = {
  			style : function() {
 				$('.panel-login').css('border-color','#ccc').css('-webkit-box-shadow','0px 2px 3px 0px rgba(0,0,0,0.2)')
@@ -358,13 +364,8 @@
 						alert('에러발생상태 : '+status +', 내용 :'+msg);
 						AdminMemberReg.init();
 					}
-					
-					
 				});
-
 			}
-			
-			
 	};
 	
 var AdminMember = {
@@ -411,11 +412,8 @@ var AdminMember = {
 		}
 	}; 
 	
-
-
-	
 /* ============================================================ */
- 
+
  
 	$("#reg_member_btn").click(function() {
 		if($("#userid").val() == "") {
@@ -453,7 +451,6 @@ var AdminMember = {
 			$("addr").focus();
 			return false;
 		}
-
 		
 		$.ajax({
 			type:"post",
@@ -511,8 +508,6 @@ var AdminMember = {
 		
 	});
 	
-	
-	
 	/* ============== 회원 리스트 및 수정 & 삭제부분 ============== */
 	
 	var AdminMemberList = {
@@ -547,8 +542,7 @@ var AdminMember = {
 						+'<TD WIDTH=20% ALIGN=CENTER>'
 						+'<A style="margin-right: 5px" id="'+this.userid+'" onclick="AdminMember.detail('+'\''+this.userid+'\''+')">수정</A>'
 						+'<A style="margin-left: 5px" onclick="AdminMember.remove('+'\''+this.userid+'\''+')">삭제</A></TD></TR>';
-						
-						
+												
 					});
 					
 					table += '</TABLE></div>';
@@ -592,8 +586,7 @@ var AdminMember = {
 		           			+'</a>';
 					}
 					pagination +='</TD>';
-					
-					
+										
 					pagination += '<TD WIDTH=200 ALIGN=RIGHT>'
 					+'<FORM NAME="memberSearch" action="'+context+'/admin/memberSearch/1" style="color: black">'
 					+'<SELECT NAME="column" SIZE=1>'
@@ -615,13 +608,10 @@ var AdminMember = {
 					
 					table += pagination;
 					$('.mainView').html(table);
-					
-					
-					
+										
 					AdminMemberList.style();
 					
 				});
-
 		},
 		
 		style : function(){
@@ -697,8 +687,7 @@ var AdminMember = {
 								+'<tr><th>주소</th><td id="data_addr">'+data.addr+'</td></tr>'
 								+'<td colspan="2"><button id="confrm" style="width:100px; margin-left: 150px;">확인</button></td></tr>'
 								+'</table>';
-								
-							
+					
 							$('.mainView').html(table);
 							$('#confrm').click(function() {
 								AdminMemberList.list('1');
@@ -866,10 +855,7 @@ var adminBook ={
 				
 			}
 	};	
-	
-	
-	
-	
+
 	$('.button-checkbox').each(function () {
         // Settings
         var $widget = $(this),
@@ -936,7 +922,6 @@ var adminBook ={
 	}
 		
 };
-
 	
 	/* ============== 책 리스트 수정 및 삭제 ============= */
 	
@@ -975,8 +960,7 @@ var adminBook ={
 					});
 					
 					table += '</TABLE></div>';
-					
-					
+									
 					var pagination ='<TABLE id="pagination">'
 					+'<TR>'
 					+'</TD>'
@@ -1037,9 +1021,7 @@ var adminBook ={
 					
 					table += pagination;
 					$('.mainView').html(table);
-					
-					
-					
+										
 					AdminBookList.style();
 					
 				});
@@ -1053,8 +1035,7 @@ var adminBook ={
 			.css('CELLSPACING','0').css('CELLPADDING','1px').css('ALIGN','CENTER');
 			
 		},
-	
-		 
+			 
 	bookNotExist : function() {
 		var table ='<h1>회원목록</h1><table id="tab_member"><tr><th>아이디</th>';
 			table += '<th>이름</th><th>성별</th><th>생년원일</th><th>전화번호</th><th>이메일</th></tr>';
@@ -1158,11 +1139,12 @@ var AdminBook = {
 		
 		inputBookId : function() {
 			$('.mainView').html('<form class="navbar-form navbar-left" role="search">'
-					+'<div class="form-group">'
+					+'<div class="form-group" style="margin: auto;">'
 					+'<input type="text" class="form-control" id="textInputId" placeholder="책 ID 입력"></div>'
-					+'<button type="button" class="btn btn-default" value="오늘의 책 선정" id="btCheck">검 색</button></form>');
+					+'<button type="button" class="btn btn-default" value="이주의 책 선정" id="btCheck">검 색</button></form>');
 					
 					$('#btCheck').click(function() {
+						alert('클릭');
 						if ($("#textInputId").val() == "") {
 							alert("책 아이디 값을 입력해주세요.");
 							$("#textInputId").focus();
@@ -1174,7 +1156,7 @@ var AdminBook = {
 		
 		searchForTodayBook2 : function(bookId) {
 			$.getJSON(context +'/admin/today_book_search/'+bookId ,function(data){
-				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>오늘의 책</h2><br /><br /><br />'
+				var todayBook2= '<div id="bookTodaybook" style="color: black; width : 400px; height: 300px; border: 1px solid black;"><h2>이주의 책</h2><br /><br /><br />'
 					+'<img alt="" src="'+context+'/resources/images/'+data.bookId+'.jpg" width="106px" height="150px" align="left">'
 					+'<a href="#" id="'+data.bookId+'"><strong>'+data.bookName+'</strong></a><br /><br />'
 					+'<font color="maroon" size="1px">'+data.writer+'</font><br />'
@@ -1184,16 +1166,8 @@ var AdminBook = {
 						book.mainPage(bookId);
 					});
 			});
-			
-			
-		}
-		
-		
-		
-		
-		
-		
-		
+					
+		}	
 		
 };
 	
