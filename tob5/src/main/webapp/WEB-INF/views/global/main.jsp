@@ -1,1060 +1,413 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="">
-<meta name="author" content="">
-<!-- Bootstrap Core CSS -->
-<link href="${startcss}/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<link href="${startcss}/agency.css" rel="stylesheet">
-
-
-<!-- Custom Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css">
-<link href='https://fonts.googleapis.com/css?family=Kaushan+Script'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic'
-	rel='stylesheet' type='text/css'>
-<link
-	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
-	rel='stylesheet' type='text/css'>
-
-<style type="text/css">
-
-.index {
-background-image: url('${startimages}/team/tema.png');
-}
-header {
-	background-image: url('${startimages}/header/Banned-Book.jpg');
-	width: 100%;
-	background-repeat: none;
-	background-attachment: scroll;
-	background-position: center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;
-	-o-background-size: cover;
-	text-align: center;
-	color: #fff
-}
-
-header .intro-text {
-	padding-top: 100px;
-	padding-bottom: 50px
-}
-
-header .intro-text .intro-lead-in {
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial,
-		sans-serif;
-	font-style: italic;
-	font-size: 22px;
-	line-height: 22px;
-	margin-bottom: 25px
-}
-
-header .intro-text .intro-heading {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	font-size: 50px;
-	line-height: 50px;
-	margin-bottom: 25px
-}
-
-@media ( min-width :768px) {
-	header .intro-text {
-		padding-top: 300px;
-		padding-bottom: 200px
-	}
-	header .intro-text .intro-lead-in {
-		font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial,
-			sans-serif;
-		font-style: italic;
-		font-size: 40px;
-		line-height: 40px;
-		margin-bottom: 25px
-	}
-	header .intro-text .intro-heading {
-		font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-		text-transform: uppercase;
-		font-weight: 700;
-		font-size: 75px;
-		line-height: 75px;
-		margin-bottom: 50px
-	}
-}
-
-section #event_section {
-	padding-bottom: 10px; 
-	padding-top: 40px; 
-}
-
-section #week_section {
-	padding-bottom: 10px; 
-	padding-top: 50px; 
-}
-section #recommend_section {
-	padding-bottom: 10px; 
-	padding-top: 50px; 
-}
-section #best_section {
-	padding-bottom: 10px; 
-	padding-top: 50px; 
-}
-section #book_section {
-	padding-bottom: 10px; 
-	padding-top: 50px; 
-}
-section #event_submain {
-	padding-bottom: 10px; 
-	padding-top: 50px; 
-}
-section #info_section {
-	padding-bottom: 10px; 
-	padding-top: 50px; 
-}
-
-section h2.section-heading {
-	font-size: 40px;
-	margin-top: 0;
-	margin-bottom: 15px
-}
-
-section h3.section-subheading {
-	font-size: 16px;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial,
-		sans-serif;
-	text-transform: none;
-	font-style: italic;
-	font-weight: 400;
-	margin-bottom: 75px
-}
-
-@media ( min-width :768px) {
-	section {
-		padding: 150px 0
-	}
-}
-
-.service-heading {
-	margin: 15px 0;
-	text-transform: none
-}
-
-#portfolio .portfolio-item {
-	margin: 0 0 15px;
-	right: 0
-}
-
-#portfolio .portfolio-item .portfolio-link {
-	display: block;
-	position: relative;
-	max-width: 400px;
-	margin: 0 auto
-}
-
-#portfolio .portfolio-item .portfolio-link .portfolio-hover {
-	background: rgba(254, 209, 54, .9);
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	opacity: 0;
-	transition: all ease .5s;
-	-webkit-transition: all ease .5s;
-	-moz-transition: all ease .5s
-}
-
-#portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
-	opacity: 1
-}
-
-#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content
-	{
-	position: absolute;
-	width: 100%;
-	height: 20px;
-	font-size: 20px;
-	text-align: center;
-	top: 50%;
-	margin-top: -12px;
-	color: #fff
-}
-
-#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content i
-	{
-	margin-top: -12px
-}
-
-#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h3,
-	#portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h4
-	{
-	margin: 0
-}
-
-#portfolio .portfolio-item .portfolio-caption {
-	max-width: 400px;
-	margin: 0 auto;
-	background-color: #fff;
-	text-align: center;
-	padding: 25px
-}
-
-#portfolio .portfolio-item .portfolio-caption h4 {
-	text-transform: none;
-	margin: 0
-}
-
-#portfolio .portfolio-item .portfolio-caption p {
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial,
-		sans-serif;
-	font-style: italic;
-	font-size: 16px;
-	margin: 0
-}
-
-#portfolio * {
-	z-index: 2
-}
-
-@media ( min-width :767px) {
-	#portfolio .portfolio-item {
-		margin: 0 0 30px
-	}
-}
-
-.timeline {
-	list-style: none;
-	padding: 0;
-	position: relative
-}
-
-.timeline:before {
-	top: 0;
-	bottom: 0;
-	position: absolute;
-	content: "";
-	width: 2px;
-	background-color: #f1f1f1;
-	left: 40px;
-	margin-left: -1.5px
-}
-
-.timeline>li {
-	margin-bottom: 50px;
-	position: relative;
-	min-height: 50px
-}
-
-.timeline>li:before, .timeline>li:after {
-	content: " ";
-	display: table
-}
-
-.timeline>li:after {
-	clear: both
-}
-
-.timeline>li .timeline-panel {
-	width: 100%;
-	float: right;
-	padding: 0 20px 0 100px;
-	position: relative;
-	text-align: left
-}
-
-.timeline>li .timeline-panel:before {
-	border-left-width: 0;
-	border-right-width: 15px;
-	left: -15px;
-	right: auto
-}
-
-.timeline>li .timeline-panel:after {
-	border-left-width: 0;
-	border-right-width: 14px;
-	left: -14px;
-	right: auto
-}
-
-.timeline>li .timeline-image {
-	left: 0;
-	margin-left: 0;
-	width: 80px;
-	height: 80px;
-	position: absolute;
-	z-index: 100;
-	background-color: #fed136;
-	color: #fff;
-	border-radius: 100%;
-	border: 7px solid #f1f1f1;
-	text-align: center
-}
-
-.timeline>li .timeline-image h4 {
-	font-size: 10px;
-	margin-top: 12px;
-	line-height: 14px
-}
-
-.timeline>li.timeline-inverted>.timeline-panel {
-	float: right;
-	text-align: left;
-	padding: 0 20px 0 100px
-}
-
-.timeline>li.timeline-inverted>.timeline-panel:before {
-	border-left-width: 0;
-	border-right-width: 15px;
-	left: -15px;
-	right: auto
-}
-
-.timeline>li.timeline-inverted>.timeline-panel:after {
-	border-left-width: 0;
-	border-right-width: 14px;
-	left: -14px;
-	right: auto
-}
-
-.timeline>li:last-child {
-	margin-bottom: 0
-}
-
-.timeline .timeline-heading h4 {
-	margin-top: 0;
-	color: inherit
-}
-
-.timeline .timeline-heading h4.subheading {
-	text-transform: none
-}
-
-.timeline .timeline-body>p, .timeline .timeline-body>ul {
-	margin-bottom: 0
-}
-
-@media ( min-width :768px) {
-	.timeline:before {
-		left: 50%
-	}
-	.timeline>li {
-		margin-bottom: 100px;
-		min-height: 100px
-	}
-	.timeline>li .timeline-panel {
-		width: 41%;
-		float: left;
-		padding: 0 20px 20px 30px;
-		text-align: right
-	}
-	.timeline>li .timeline-image {
-		width: 100px;
-		height: 100px;
-		left: 50%;
-		margin-left: -50px
-	}
-	.timeline>li .timeline-image h4 {
-		font-size: 13px;
-		margin-top: 16px;
-		line-height: 18px
-	}
-	.timeline>li.timeline-inverted>.timeline-panel {
-		float: right;
-		text-align: left;
-		padding: 0 30px 20px 20px
-	}
-}
-
-@media ( min-width :992px) {
-	.timeline>li {
-		min-height: 150px
-	}
-	.timeline>li .timeline-panel {
-		padding: 0 20px 20px
-	}
-	.timeline>li .timeline-image {
-		width: 150px;
-		height: 150px;
-		margin-left: -75px
-	}
-	.timeline>li .timeline-image h4 {
-		font-size: 18px;
-		margin-top: 30px;
-		line-height: 26px
-	}
-	.timeline>li.timeline-inverted>.timeline-panel {
-		padding: 0 20px 20px
-	}
-}
-
-@media ( min-width :1200px) {
-	.timeline>li {
-		min-height: 170px
-	}
-	.timeline>li .timeline-panel {
-		padding: 0 20px 20px 100px
-	}
-	.timeline>li .timeline-image {
-		width: 170px;
-		height: 170px;
-		margin-left: -85px
-	}
-	.timeline>li .timeline-image h4 {
-		margin-top: 40px
-	}
-	.timeline>li.timeline-inverted>.timeline-panel {
-		padding: 0 100px 20px 20px
-	}
-}
-
-.team-member {
-	text-align: center;
-	margin-bottom: 50px
-}
-
-.team-member img {
-	margin: 0 auto;
-	border: 7px solid #fff
-}
-
-.team-member h4 {
-	margin-top: 25px;
-	margin-bottom: 0;
-	text-transform: none
-}
-
-.team-member p {
-	margin-top: 0
-}
-
-aside.clients img {
-	margin: 50px auto
-}
-
-section#contact {
-	background-color: #222;
-	background-position: center;
-	background-repeat: no-repeat
-}
-
-section#contact .section-heading {
-	color: #fff
-}
-
-section#contact .form-group {
-	margin-bottom: 25px
-}
-
-section#contact .form-group input, section#contact .form-group textarea
-	{
-	padding: 20px
-}
-
-section#contact .form-group input.form-control {
-	height: auto
-}
-
-section#contact .form-group textarea.form-control {
-	height: 236px
-}
-
-section#contact .form-control:focus {
-	border-color: #fed136;
-	box-shadow: none
-}
-
-section#contact ::-webkit-input-placeholder {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: #bbb
-}
-
-section#contact :-moz-placeholder {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: #bbb
-}
-
-section#contact ::-moz-placeholder {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: #bbb
-}
-
-section#contact :-ms-input-placeholder {
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: 700;
-	color: #bbb
-}
-
-section#contact .text-danger {
-	color: #e74c3c
-}
-
-footer {
-	padding: 25px 0;
-	text-align: center
-}
-
-footer span.copyright {
-	line-height: 40px;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	text-transform: none
-}
-
-footer ul.quicklinks {
-	margin-bottom: 0;
-	line-height: 40px;
-	font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	text-transform: uppercase;
-	text-transform: none
-}
-
-ul.social-buttons {
-	margin-bottom: 0
-}
-
-ul.social-buttons li a {
-	display: block;
-	background-color: #222;
-	height: 40px;
-	width: 40px;
-	border-radius: 100%;
-	font-size: 20px;
-	line-height: 40px;
-	color: #fff;
-	outline: 0;
-	-webkit-transition: all .3s;
-	-moz-transition: all .3s;
-	transition: all .3s
-}
-
-ul.social-buttons li a:hover, ul.social-buttons li a:focus, ul.social-buttons li a:active
-	{
-	background-color: #fed136
-}
-
-.btn:focus, .btn:active, .btn.active, .btn:active:focus {
-	outline: 0
-}
-
-.portfolio-modal .modal-content {
-	border-radius: 0;
-	background-clip: border-box;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	border: 0;
-	min-height: 100%;
-	padding: 100px 0;
-	text-align: center
-}
-
-.portfolio-modal .modal-content h2 {
-	margin-bottom: 15px;
-	font-size: 3em
-}
-
-.portfolio-modal .modal-content p {
-	margin-bottom: 30px
-}
-
-.portfolio-modal .modal-content p.item-intro {
-	margin: 20px 0 30px;
-	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial,
-		sans-serif;
-	font-style: italic;
-	font-size: 16px
-}
-
-.portfolio-modal .modal-content ul.list-inline {
-	margin-bottom: 30px;
-	margin-top: 0
-}
-
-.portfolio-modal .modal-content img {
-	margin-bottom: 30px
-}
-
-.portfolio-modal .close-modal {
-	position: absolute;
-	width: 75px;
-	height: 75px;
-	background-color: transparent;
-	top: 25px;
-	right: 25px;
-	cursor: pointer
-}
-
-.portfolio-modal .close-modal:hover {
-	opacity: .3
-}
-
-.portfolio-modal .close-modal .lr {
-	height: 75px;
-	width: 1px;
-	margin-left: 35px;
-	background-color: #222;
-	transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-webkit-transform: rotate(45deg);
-	z-index: 1051
-}
-
-.portfolio-modal .close-modal .lr .rl {
-	height: 75px;
-	width: 1px;
-	background-color: #222;
-	transform: rotate(90deg);
-	-ms-transform: rotate(90deg);
-	-webkit-transform: rotate(90deg);
-	z-index: 1052
-}
-
-.portfolio-modal .modal-backdrop {
-	opacity: 0;
-	display: none
-}
-
-::-moz-selection {
-	text-shadow: none;
-	background: #fed136
-}
-
-::selection {
-	text-shadow: none;
-	background: #fed136
-}
-
-img::selection {
-	background: 0 0
-}
-
-img::-moz-selection {
-	background: 0 0
-}
-
-body {
-	webkit-tap-highlight-color: #fed136
-}
-</style>
-<body id="page-top" class="index">
-	<!--******************** Services Section BestSeller *********************-->
-<section id="best_section" class="container content-section">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2"
-				style="width: 100%; margin: auto;">
-
-				<hr />
-				<img src="${img}/bstseller.png" alt="" style="padding-top: 20px;" />
-				<!-- 베스트셀러 시작 -->
-
-
-				<div style="margin: auto; width: 100%;">
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="now">
-							<img src="${img}/bstbook1.jpg" alt="지금 이 순간"
-							style="width: 141px; height: 203px;"> </label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="sapi">
-						<img src="${img}/bstbook2.jpg" alt="사피엔스"
-							style="width: 141px; height: 203px;">
-						</label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="lonly"> 
-						 <img src="${img}/bstbook3.jpg" alt="가끔은 격하게 위로워야 한다."
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine">
-						<img src="${img}/bstbook4.jpg" alt="내안에서 나를 만드는 것들"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine"> <img
-							src="${img}/bstbook5.jpg" alt="언제 들어도 좋은 말"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine"><img
-							src="${img}/bstbook6.jpg" alt="중동 테러리즘]"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine">
-						<img
-							src="${img}/bstbook7.jpg" alt="혼자 있는 시간의 힘"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-					<div class="col-xs-6 col-md-3">
-						<label class="thumbnail" id="mine"><img
-							src="${img}/bstbook8.jpg" alt="마법천자문"
-							style="width: 141px; height: 203px;"></label>
-					</div>
-				</div>
-				<!-- 종료 -->
-			</div>
-		</div>
-</section>
-
 	
-	<!--************************* Week Section **********************-->
-<section id="week_section" class="container content-section">
-	<hr />
-		<div class="download-section">
-			<div class="col-lg-8 col-lg-offset-2"
-				style="width: 100%; margin: auto;">
-				<label><img src="${img}/week.png" alt="" /></label>
-			</div>
-			<div class="row">
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="you"><img src="${img}/weekday1.jpg"
-						alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="happy"><img src="${img}/weekday2.jpg"
-						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="story"><img src="${img}/weekday3.jpg"
-						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="okay"><img src="${img}/weekday4.jpg"
-						alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="you"><img src="${img}/weekday1.jpg"
-						alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="happy"><img src="${img}/weekday2.jpg"
-						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="story"><img src="${img}/weekday3.jpg"
-						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
-				</div>
-				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="okay"><img src="${img}/weekday4.jpg"
-						alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;"></label>
-				</div>
-			</div>
-		</div>
-		<div id="submain">
-		
-		</div>
-</section>
 	
-	<!--******************** BOOK ************************-->
-<section id="book_section" class="container content-section">
+<div class="preloader">
+		<img src="${normal}/img2/loader.gif" alt="Preloader image">
+	</div>
+	<nav class="navbar">
 		<div class="container">
-			<hr />
-			<div class="row">
-				<div class="col-lg-12">
-					<h2 class="section-heading" id="book_more" style="color: white;">BOOK</h2>
-				</div>
-				<div class="col-sm-6 col-md-4">
-					<h2 class="section-heading" style="color: white;">EXAM</h2>
-					<h2 class="section-heading" style="color: white;">EXAM2</h2>
-					<h2 class="section-heading" style="color: white;">EXAM3</h2>
-				</div>
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="${normal}/img2/logo.png" data-active-url="${normal}/img2/logo-active.png" alt=""></a>
 			</div>
-		</div>	
-</section>
-	
-	
-	<!--****************************** Event *****************************-->
-<section id="event_section">
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-right main-nav">
+					<li><a href="#intro">Intro</a></li>
+					<li><a href="#services">Services</a></li>
+					<li><a href="#team">Team</a></li>
+					<li><a href="#pricing">Pricing</a></li>
+					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign Up</a></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+	<header id="intro">
 		<div class="container">
-		<hr />
-			<div class="row">
-				<div class="col-lg-12">
-				<label id="event_more"><img src="${img}/event.png" alt="" /></label> 
+			<div class="table">
+				<div class="header-text">
 					<div class="row">
-						<div class="col-sm-6 col-md-4">
-						<div id="event_test"></div>
-							<div class="thumbnail">
-								<img src="${img}/E003.jpg" alt="소프트 스킬 리뷰어 이벤트">
-								<div class="caption">
-									<h4>소프트 스킬 리뷰어 이벤트</h4>
-									<p>2016/01/01~2016/01/31</p>
-									<p>
-										<label id="soft" class="btn btn-primary">더보기</label>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
-								<div class="caption">
-									<h4>응답하라!! 재테크</h4>
-									<p>2016/01/01/~2016/01/31</p>
-									<p>
-										<label id="tech" class="btn btn-primary" role="button">더보기</label>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img src="${img}/E008.jpg" alt="[특별 기획] 송곳과 한국 사회">
-								<div class="caption">
-									<h4>[특별 기획] 송곳과 한국 사회</h4>
-									<p>2015/01/01~2016/01/31</p>
-									<p>
-										<label id="songgok" class="btn btn-primary" role="button">더보기</label>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
-								<div class="caption">
-									<h4>응답하라!! 재테크</h4>
-									<p>2016/01/01/~2016/01/31</p>
-									<p>
-										<label id="tech" class="btn btn-primary" role="button">더보기</label>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
-								<div class="caption">
-									<h4>응답하라!! 재테크</h4>
-									<p>2016/01/01/~2016/01/31</p>
-									<p>
-										<label id="tech" class="btn btn-primary" role="button">더보기</label>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6 col-md-4">
-							<div class="thumbnail">
-								<img src="${img}/E004.jpg" alt="응답하라!! 재테크">
-								<div class="caption">
-									<h4>응답하라!! 재테크</h4>
-									<p>2016/01/01/~2016/01/31</p>
-									<p>
-										<label id="tech" class="btn btn-primary" role="button">더보기</label>
-									</p>
-								</div>
-							</div>
+						<div class="col-md-12 text-center">
+							<h3 class="light white">Take care of your body.</h3>
+							<h1 class="white typed">It's the only place you have to live.</h1>
+							<span class="typed-cursor">|</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-</section>
-<section id="event_submain"></section>
-	
-	<!--****************************** team ****************************-->
-<section id="info_section">
+	</header>
+	<section>
+		<div class="cut cut-top"></div>
 		<div class="container">
-		<hr />
-			<div class="row">
-					<img src="${img}/team.png" alt="" />
-			</div>
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Hwang YoungJu</h4>
-						<p class="text-muted" style="color: white;">Team Leader</p>
-						<ul class="list-inline social-buttons">
-							<li>
-							<label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
+			<div class="row intro-tables">
+				<div class="col-md-4">
+					<div class="intro-table intro-table-first">
+						<h5 class="white heading">Today's Schedule</h5>
+						<div class="owl-carousel owl-schedule bottom">
+							<div class="item">
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Early Exercise</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Muscle Building</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Cardio</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Early Exercise</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Muscle Building</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Cardio</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Early Exercise</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Muscle Building</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+								<div class="schedule-row row">
+									<div class="col-xs-6">
+										<h5 class="regular white">Cardio</h5>
+									</div>
+									<div class="col-xs-6 text-right">
+										<h5 class="white">8:30 - 10:00</h5>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Kim Sumin</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
+				<div class="col-md-4">
+					<div class="intro-table intro-table-hover">
+						<h5 class="white heading hide-hover">Premium Membership</h5>
+						<div class="bottom">
+							<h4 class="white heading small-heading no-margin regular">Register Today</h4>
+							<h4 class="white heading small-pt">20% Discount</h4>
+							<a href="#" class="btn btn-white-fill expand">Register</a>
+						</div>
 					</div>
 				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<label><img src="#" class="img-responsive img-circle" alt=""></label>
-						<h4 style="color: white;">Seong YonWoo</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
+				<div class="col-md-4">
+					<div class="intro-table intro-table-third">
+						<h5 class="white heading">Happy Clients</h5>
+						<div class="owl-testimonials bottom">
+							<div class="item">
+								<h4 class="white heading content">I couldn't be more happy with the results!</h4>
+								<h5 class="white heading light author">Adam Jordan</h5>
+							</div>
+							<div class="item">
+								<h4 class="white heading content">I can't believe how much better I feel!</h4>
+								<h5 class="white heading light author">Greg Pardon</h5>
+							</div>
+							<div class="item">
+								<h4 class="white heading content">Incredible transformation and I feel so healthy!</h4>
+								<h5 class="white heading light author">Christina Goldman</h5>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
-						<h4 style="color: white;">Lee JeongMin</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
-						<h4 style="color: white;">Lee HyeSuk</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-sm-4">
-					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
-						<h4 style="color: white;">Hong HyeongDong</h4>
-						<p class="text-muted">준비중</p>
-						<ul class="list-inline social-buttons">
-							<li><label><img
-									src="${startimages}/icon/icon-twitter.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/facebook-icon.png" alt="" /></label></li>
-							<li><label><img
-									src="${startimages}/icon/linkedin.png" alt="" /></label></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-8 col-lg-offset-2 text-center">
-					<p class="large text-muted">준비중입니다.</p>
 				</div>
 			</div>
 		</div>
-</section>
-
-	<section id="cart_section"></section>
-	<section id="pur_section"></section>
-	<section id="join_section"></section>
-	<section id="login_section"></section>
-	<section id="mypage_section"></section>
+	</section>
+	<section id="services" class="section section-padded">
+		<div class="container">
+			<div class="row text-center title">
+				<h2>Services</h2>
+				<h4 class="light muted">Achieve the best results with our wide variety of training options!</h4>
+			</div>
+			<div class="row services">
+				<div class="col-md-4">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="${normal}/img2/icons/heart-blue.png" alt="" class="icon">
+						</div>
+						<h4 class="heading">Cardio Training</h4>
+						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="${normal}/img2/icons/guru-blue.png" alt="" class="icon">
+						</div>
+						<h4 class="heading">Yoga Pilates</h4>
+						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="service">
+						<div class="icon-holder">
+							<img src="${normal}/img2/icons/weight-blue.png" alt="" class="icon">
+						</div>
+						<h4 class="heading">Power Training</h4>
+						<p class="description">A elementum ligula lacus ac quam ultrices a scelerisque praesent vel suspendisse scelerisque a aenean hac montes.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cut cut-bottom"></div>
+	</section>
+	<section id="team" class="section gray-bg">
+		<div class="container">
+			<div class="row title text-center">
+				<h2 class="margin-top">Team</h2>
+				<h4 class="light muted">We're a dream team!</h4>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover1.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">$69.00</h3>
+								<h5 class="light light-white">1 - 5 sessions / month</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team3.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>Ben Adamson</h4>
+							<h5 class="muted regular">Fitness Instructor</h5>
+						</div>
+						<button data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill">Sign Up Now</button>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover2.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">$69.00</h3>
+								<h5 class="light light-white">1 - 5 sessions / month</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team1.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>Eva Williams</h4>
+							<h5 class="muted regular">Personal Trainer</h5>
+						</div>
+						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Sign Up Now</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team text-center">
+						<div class="cover" style="background:url('${normal}/img2/team/team-cover3.jpg'); background-size:cover;">
+							<div class="overlay text-center">
+								<h3 class="white">$69.00</h3>
+								<h5 class="light light-white">1 - 5 sessions / month</h5>
+							</div>
+						</div>
+						<img src="${normal}/img2/team/team2.jpg" alt="Team Image" class="avatar">
+						<div class="title">
+							<h4>John Phillips</h4>
+							<h5 class="muted regular">Personal Trainer</h5>
+						</div>
+						<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue-fill ripple">Sign Up Now</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="pricing" class="section">
+		<div class="container">
+			<div class="row title text-center">
+				<h2 class="margin-top white">Pricing</h2>
+				<h4 class="light white">Choose your favorite pricing plan and sign up today!</h4>
+			</div>
+			<div class="row no-margin">
+				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
+					<div class="pricing">
+						<div class="box-main active" data-img="${normal}/img2/pricing1.jpg">
+							<h4 class="white">Yoga Pilates</h4>
+							<h4 class="white regular light">$850.00 <span class="small-font">/ year</span></h4>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
+							<i class="info-icon icon_question"></i>
+						</div>
+						<div class="box-second active">
+							<ul class="white-list text-left">
+								<li>One Personal Trainer</li>
+								<li>Big gym space for training</li>
+								<li>Free tools &amp; props</li>
+								<li>Free locker</li>
+								<li>Free before / after shower</li>
+							</ul>
+						</div>
+					</div>
+					<div class="pricing">
+						<div class="box-main" data-img="${normal}/img2/pricing2.jpg">
+							<h4 class="white">Cardio Training</h4>
+							<h4 class="white regular light">$100.00 <span class="small-font">/ year</span></h4>
+							<a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-white-fill">Sign Up Now</a>
+							<i class="info-icon icon_question"></i>
+						</div>
+						<div class="box-second">
+							<ul class="white-list text-left">
+								<li>One Personal Trainer</li>
+								<li>Big gym space for training</li>
+								<li>Free tools &amp; props</li>
+								<li>Free locker</li>
+								<li>Free before / after shower</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="section section-padded blue-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2">
+					<div class="owl-twitter owl-carousel">
+						<div class="item text-center">
+							<i class="icon fa fa-twitter"></i>
+							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
+							<h4 class="light-white light">#health #training #exercise</h4>
+						</div>
+						<div class="item text-center">
+							<i class="icon fa fa-twitter"></i>
+							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
+							<h4 class="light-white light">#health #training #exercise</h4>
+						</div>
+						<div class="item text-center">
+							<i class="icon fa fa-twitter"></i>
+							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
+							<h4 class="light-white light">#health #training #exercise</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content modal-popup">
+				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
+				<h3 class="white">Sign Up</h3>
+				<form action="" class="popup-form">
+					<input type="text" class="form-control form-white" placeholder="Full Name">
+					<input type="text" class="form-control form-white" placeholder="Email Address">
+					<div class="dropdown">
+						<button id="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Pricing Plan
+						</button>
+						<ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
+							<li class="animated lightSpeedIn"><a href="#">1 month membership ($150)</a></li>
+							<li class="animated lightSpeedIn"><a href="#">3 month membership ($350)</a></li>
+							<li class="animated lightSpeedIn"><a href="#">1 year membership ($1000)</a></li>
+							<li class="animated lightSpeedIn"><a href="#">Free trial class</a></li>
+						</ul>
+					</div>
+					<div class="checkbox-holder text-left">
+						<div class="checkbox">
+							<input type="checkbox" value="None" id="squaredOne" name="check" />
+							<label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
+						</div>
+					</div>
+					<button type="submit" class="btn btn-submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-6 text-center-mobile">
+					<h3 class="white">Reserve a Free Trial Class!</h3>
+					<h5 class="light regular light-white">Shape your body and improve your health.</h5>
+					<a href="#" class="btn btn-blue ripple trial-button">Start Free Trial</a>
+				</div>
+				<div class="col-sm-6 text-center-mobile">
+					<h3 class="white">Opening Hours <span class="open-blink"></span></h3>
+					<div class="row opening-hours">
+						<div class="col-sm-6 text-center-mobile">
+							<h5 class="light-white light">Mon - Fri</h5>
+							<h3 class="regular white">9:00 - 22:00</h3>
+						</div>
+						<div class="col-sm-6 text-center-mobile">
+							<h5 class="light-white light">Sat - Sun</h5>
+							<h3 class="regular white">10:00 - 18:00</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row bottom-footer text-center-mobile">
+				<div class="col-sm-8">
+					<p>&copy; 2015 All Rights Reserved. Powered by <a href="http://www.phir.co/">PHIr</a> exclusively for <a href="http://tympanus.net/codrops/">Codrops</a></p>
+				</div>
+				<div class="col-sm-4 text-right text-center-mobile">
+					<ul class="social-footer">
+						<li><a href="http://www.facebook.com/pages/Codrops/159107397912"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="http://www.twitter.com/codrops"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="https://plus.google.com/101095823814290637419"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Holder for mobile navigation -->
+	<div class="mobile-nav">
+		<ul>
+		</ul>
+		<a href="#" class="close-link"><i class="arrow_up"></i></a>
+	</div>
 	
-</body>
-
-	
-	<!-- Bootstrap Core JavaScript -->
-	<script src="${startjs}/bootstrap.min.js"></script>
-
-	<!-- Plugin JavaScript -->
-	<script
-		src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	<script src="${startjs}/cbpAnimatedHeader.js"></script>
-
-	<!-- Contact Form JavaScript -->
-	<script src="${startjs}/jqBootstrapValidation.js"></script>
-
-	<!-- Custom Theme JavaScript -->
-	<script src="${startjs}/agency.js"></script>
-
-	<script src="${js}/Book.js"></script>
-
-
-
-
-<script type="text/javascript">
-$(function() {
-	//book.searchForTodayBook2();
-	
-	$('#book_more').click(function() {
-		book.all('${user.userid}');
-		alert('넘기는 유저아이디 : '+'${user.userid}');
-	});
-	$('#event_more').click(function() {
-		alert('이벤트 메인으로, 세션아이디 : '+'${user.userid}');
-		Event.event('${user.userid}');
-	});
-	$('#tech').click( function() {
-		alert("이벤트 댓글달기로 이동");
-        Event.eventPage();
-	});
-	$('#soft').click(function() {
-		alert("이벤트 댓글달기로 이동");
-		Event.eventPage();
-	});
-	$('#songgok').click(function() {
-		alert("이벤트 댓글달기로 이동");
-		Event.eventPage();
-	});
-	$('#sapi').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#lonly').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#mine').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#memo').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#best').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#oneday').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-	$('#pathion').click(function() {
-		alert("확인");
-		book.mainPage();
-	});
-});
-		
-</script>
 
 
 

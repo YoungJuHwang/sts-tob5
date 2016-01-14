@@ -2,13 +2,13 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
 <!doctype html>
 <html lang="en">
+
+	
 <head>
    <meta charset="UTF-8" />
       <title>TOB</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-   
-   <link rel="stylesheet" href="${css}/book.css" />
-   <link rel="stylesheet" href="${css}/event.css" />
+   	
 </head>
 <body>
 	<div id="wrap">
@@ -31,6 +31,15 @@
 <script src="${js}/Book.js"></script>
 <script src="${js}/event.js"></script>
 <script src="${js}/member.js"></script>
-
+<!-- Scripts -->
+	<script src="${normal}/js2/jquery-1.11.1.min.js"></script>
+	<script src="${normal}/js2/owl.carousel.min.js"></script>
+	<script src="${normal}/js2/bootstrap.min.js"></script>
+	<script src="${normal}/js2/wow.min.js"></script>
+	<script src="${normal}/js2/typewriter.js"></script>
+	<script src="${normal}/js2/jquery.onepagenav.js"></script>
+	<script src="${normal}/js2/main.js"></script>
+   <!-- Normalize -->
+	
 </body>
 </html>

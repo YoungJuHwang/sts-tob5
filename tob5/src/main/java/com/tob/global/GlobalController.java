@@ -16,10 +16,6 @@ private static final Logger logger = LoggerFactory.getLogger(GlobalController.cl
 	public String main(){
 		return "global/main.tiles";
 	}
-	
-	@RequestMapping("/part_header")
-	public String partHeader(){
-		return "global/part_header.jsp";
-	}
+
 
 }
