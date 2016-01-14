@@ -42,12 +42,18 @@
 </head>
 <body>
 	<div id="wrap">
+		<div id="header">
+			<tiles:insertAttribute name="header" />
+		</div>
 		<div id="content">
 			<section class="sectionClass">
 				<div class="mainView">
 					<tiles:insertAttribute name="content" />
 				</div>
 			</section>
+		</div>
+		<div id="footer">
+			<tiles:insertAttribute name="footer" />
 		</div>
 	</div>
 <script src="${js}/purchase.js"></script> 

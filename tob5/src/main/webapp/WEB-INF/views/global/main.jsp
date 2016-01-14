@@ -8,7 +8,7 @@
 	</div>
 	
 	
-	<!-- ************************* 네비게이션 바**************************** -->
+	<!-- ************************* 네비게이션 바 **************************** -->
 	<nav class="navbar">
 		<div class="container">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -19,16 +19,30 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#"><img src="${normal}/img2/logo.png" data-active-url="${normal}/img2/logo-active.png" alt=""></a>
+				<a class="navbar-brand" href="${context}/"><img src="${normal}/img2/logo.png" data-active-url="${normal}/img2/logo-active.png" alt=""></a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
+			
+			
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right main-nav">
 					<li><a href="#info">Info</a></li>
 					<li><a href="#book_section">BOOK</a></li>
 					<li><a href="#best_section">BEST-SELLER</a></li>
 					<li><a href="#week_section">WEEK-BOOK</a></li>
-					<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
+					<li><a href="#event_section">EVENT</a></li>
+			<c:if test="${empty sessionScope.user}">
+			<!-- 로그인 안한 상태 -->
+			<li><a href="${context}/admin/main">Admin</a></li>
+			<li><a href="#" data-toggle="modal" data-target="#modal1" class="btn btn-blue">Sign In</a></li>
+			<li style="float: right"><a href="${context}/member/joinForm" id="join">회원가입</a></li>
+			</c:if>
+			<c:if test="${not empty sessionScope.user}">
+			<li style="float: right; padding-right: 10px;"><a href="#mypage_section" id="mypage">마이페이지</a></li>
+			<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
+			<li style="float: right;"><a href="${context}/member/logout">Log out</a></li>
+			</c:if>
+					
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -62,8 +76,7 @@
 	<section id="book_section" class="section section-padded">
 		<div class="container">
 			<div class="row text-center title">
-				<h2>Services</h2>
-				<h4 class="light muted">Achieve the best results with our wide variety of training options!</h4>
+				<label id="book_more"><h1 class="light muted">BOOK 메인으로 들어가기!!!</h1></label>
 			</div>
 			<div class="row services">
 				<div class="col-md-4">
@@ -98,12 +111,11 @@
 		<div class="cut cut-bottom"></div>
 	</section>
 	
-	
+
 	<section id="best_section" class="section gray-bg">
 		<div class="container">
 			<div class="row title text-center">
-				<h2 class="margin-top">Team</h2>
-				<h4 class="light muted">We're a dream team!</h4>
+				<label id="best_more"><h1 class="light muted">BEST-SECTION</h1></label>
 			</div>
 			<div class="row">
 				<div class="col-md-4">
@@ -159,11 +171,11 @@
 	</section>
 	
 	
+	
 	<section id="week_section" class="section">
 		<div class="container">
 			<div class="row title text-center">
-				<h2 class="margin-top white">Pricing</h2>
-				<h4 class="light white">Choose your favorite pricing plan and sign up today!</h4>
+				<label id="week_more"><h1 class="light white">WEEK-SECTION</h1></label>
 			</div>
 			<div class="row no-margin">
 				<div class="col-md-7 no-padding col-md-offset-5 pricings text-center">
@@ -207,15 +219,17 @@
 	</section>
 	
 	
-	<section class="section section-padded blue-bg">
+	
+	
+	<section id="event_section" class="section section-padded blue-bg">
 		<div class="container">
 			<div class="row">
+				<label id="event_more"><h1>EVENT-SECTION</h1></label>
 				<div class="col-md-8 col-md-offset-2">
 					<div class="owl-twitter owl-carousel">
 						<div class="item text-center">
 							<i class="icon fa fa-twitter"></i>
-							<h4 class="white light">To enjoy the glow of good health, you must exercise.</h4>
-							<h4 class="light-white light">#health #training #exercise</h4>
+							<label id="event_tag"><h1 class="white light">EVENT 댓글달기 로직 확인</h1></label>
 						</div>
 						<div class="item text-center">
 							<i class="icon fa fa-twitter"></i>
@@ -232,36 +246,38 @@
 			</div>
 		</div>
 	</section>
+	<section id="event_submain"></section>
+	<section id="mypage_section"></section>
+	<section id="cart_section"></section>
+	<section id="join_section"></section>
+	<section id="pur_section"></section>
+	
+	
 	<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content modal-popup">
 				<a href="#" class="close-link"><i class="icon_close_alt2"></i></a>
-				<h3 class="white">Sign Up</h3>
+				<h3 class="white">Sign In</h3>
 				<form action="" class="popup-form">
-					<input type="text" class="form-control form-white" placeholder="Full Name">
-					<input type="text" class="form-control form-white" placeholder="Email Address">
-					<div class="dropdown">
-						<button id="dLabel" class="form-control form-white dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Pricing Plan
-						</button>
-						<ul class="dropdown-menu animated fadeIn" role="menu" aria-labelledby="dLabel">
-							<li class="animated lightSpeedIn"><a href="#">1 month membership ($150)</a></li>
-							<li class="animated lightSpeedIn"><a href="#">3 month membership ($350)</a></li>
-							<li class="animated lightSpeedIn"><a href="#">1 year membership ($1000)</a></li>
-							<li class="animated lightSpeedIn"><a href="#">Free trial class</a></li>
-						</ul>
-					</div>
+					<input type="text" class="form-control form-white" placeholder="ID">
+					<input type="text" class="form-control form-white" placeholder="Password">
 					<div class="checkbox-holder text-left">
 						<div class="checkbox">
 							<input type="checkbox" value="None" id="squaredOne" name="check" />
 							<label for="squaredOne"><span>I Agree to the <strong>Terms &amp; Conditions</strong></span></label>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-submit">Submit</button>
+					<button type="button" class="btn btn-submit"><a href="${context}/member/loginForm">Log In</a></button>
+					<!-- <button type="submit" class="btn btn-submit">Submit</button> -->
 				</form>
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	
+	
 	<footer>
 		<div class="container">
 			<div class="row">
@@ -305,6 +321,29 @@
 		<a href="#" class="close-link"><i class="arrow_up"></i></a>
 	</div>
 	
-
+<script type="text/javascript">
+	$(function() {
+		$('#book_more').click(function() {
+			alert('섹션의 유저아이디 : '+'${user.userid}');
+			book.all('${user.userid}');
+		});
+		$('#event_more').click(function() {
+			Event.event('${user.userid}');
+		});
+		$('#event_tag').click(function() {
+			Event.eventPage();
+		});
+		$('#mypage').click(function() {
+			Member.detail(context+'/member/detail/${user.userid}');
+		});
+		$('#my_cart').click(function() {
+			Cart.list('${user.userid}');
+		});
+		$('#pur_list').click(function() {
+			Purchase.list(context);
+		});
+		
+	});
+</script>
 
 

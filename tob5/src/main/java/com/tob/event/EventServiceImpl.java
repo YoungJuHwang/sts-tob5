@@ -35,7 +35,7 @@ public class EventServiceImpl implements EventService {
 		return mapper.count();
 	}
 	@Override
-	public List<EventVO> selectAll(Command command) {
+	public List<EventVO> selectAll(CommandEvent command) {
 		EventMapper mapper = sqlSession.getMapper(EventMapper.class);
 		return mapper.selectAll(command);
 	}
@@ -50,7 +50,7 @@ public class EventServiceImpl implements EventService {
 		return mapper.searchByEvent(event);
 	}
 	@Override
-	public List<EventVO> searchByEventName(Command command) {
+	public List<EventVO> searchByEventName(CommandEvent command) {
 		EventMapper mapper = sqlSession.getMapper(EventMapper.class);
 		return mapper.searchByEventName(command);
 	}

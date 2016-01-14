@@ -9,7 +9,7 @@ public interface EventService {
 	public int update(EventVO o);
 	public int delete(String evtId);
 	public int count();
-	public List<EventVO> selectAll(Command command);
+	public List<EventVO> selectAll(CommandEvent command);
 	public EventVO searchByEvent(String event);
-	public List<EventVO> searchByEventName(Command command);
+	public List<EventVO> searchByEventName(CommandEvent command);
 }
