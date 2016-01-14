@@ -657,12 +657,9 @@ body {
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
-
 				<hr />
 				<img src="${img}/bstseller.png" alt="" style="padding-top: 20px;" />
 				<!-- 베스트셀러 시작 -->
-
-
 				<div style="margin: auto; width: 100%;">
 					<div class="col-xs-6 col-md-3">
 						<label class="thumbnail" id="now">
@@ -711,7 +708,6 @@ body {
 			</div>
 		</div>
 </section>
-
 	
 	<!--************************* Week Section **********************-->
 <section id="week_section" class="container content-section">
@@ -764,14 +760,14 @@ body {
 <section id="book_section" class="container content-section">
 		<div class="container">
 			<hr />
-			<div class="row">
+			<div class="row" >
 				<div class="col-lg-12">
-					<h2 class="section-heading" id="book_more" style="color: white;">BOOK</h2>
+					<img class="section-heading" src="${img}/book.png" alt="" id="book_more" />
 				</div>
 				<div class="col-sm-6 col-md-4">
-					<h2 class="section-heading" style="color: white;">EXAM</h2>
-					<h2 class="section-heading" style="color: white;">EXAM2</h2>
-					<h2 class="section-heading" style="color: white;">EXAM3</h2>
+					<h3 class="section-heading" style="color: white;">you can click</h3>
+					<h2 class="section-heading" style="color: white;">title book</h2>
+					<h2 class="section-heading" style="color: white;">example</h2>
 				</div>
 			</div>
 		</div>	
@@ -922,7 +918,7 @@ body {
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Lee JeongMin</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
@@ -937,7 +933,7 @@ body {
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Lee HyeSuk</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
@@ -952,7 +948,7 @@ body {
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Hong HyeongDong</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
@@ -1024,6 +1020,10 @@ $(function() {
 	$('#songgok').click(function() {
 		alert("이벤트 댓글달기로 이동");
 		Event.eventPage();
+	});
+	$('#now').click(function() {
+		alert("확인");
+		book.mainPage();
 	});
 	$('#sapi').click(function() {
 		alert("확인");

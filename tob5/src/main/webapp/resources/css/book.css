@@ -1,13 +1,23 @@
 @CHARSET "UTF-8";
 
+
 .wrap{
-width: 1200px;
+width: 500px;
 height: 900px;
 }
 .alpha{
+width : 80px;
+ margin-top: 10px;
+ vertical-align: middle;
 	
-    margin: 10px;
-	
+}
+
+#book_section li{
+ vertical-align: middle;
+	width: 80px;
+	float: left;
+	 color: white;
+ display:block;
 }
 
 .book1{
