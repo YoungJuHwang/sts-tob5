@@ -782,7 +782,7 @@ body {
 		<hr />
 			<div class="row">
 				<div class="col-lg-12">
-				<a href=""  id="event_more"><img src="${img}/event.png" alt="" /></a> 
+				<a href="#" id="event_more"><img src="${img}/event.png" alt="" /></a> 
 					<div class="row">
 						<div class="col-sm-6 col-md-4">
 						<div id="event_test"></div>
