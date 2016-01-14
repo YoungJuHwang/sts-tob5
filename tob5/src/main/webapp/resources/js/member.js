@@ -13,7 +13,6 @@ var Member = {
 					+'<td><button id="changeInfo">정보수정</button><button id="remove">회원탈퇴</button></td>'
 					+'<td><button id="confirm">확인</button></td></tr></table>';
 					$('.mainView').html(table);
-					alert('a머냐고');
 					Member.style();
 					$('#changeInfo').click(function() {
 						alert('정보수정클릭한다');

@@ -976,6 +976,7 @@ body {
 	<section id="pur_section"></section>
 	<section id="join_section"></section>
 	<section id="login_section"></section>
+	<section id="mypage_section"></section>
 	
 </body>
 

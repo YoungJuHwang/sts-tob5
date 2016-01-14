@@ -60,7 +60,7 @@
 		<li style="float: right"><a href="${context}/member/joinForm" id="join">Join</a></li>
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
-		<li style="float: right; padding-right: 10px;"><a href="#" id="mypage">마이페이지</a></li>
+		<li style="float: right; padding-right: 10px;"><a href="#mypage_section" id="mypage">마이페이지</a></li>
 		<li style="float: right;"><a class="page-scroll" href="#cart_section" id="my_cart">장바구니</a></li>
 		<li style="float: right;"><a href="${context}/member/logout">로그아웃</a></li>
 		</c:if>
