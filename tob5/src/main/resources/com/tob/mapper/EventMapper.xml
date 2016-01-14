@@ -53,7 +53,7 @@ FROM EVENT WHERE EVENT_ID = #{evtId}
  	 	PROFILE AS profile
 FROM EVENT WHERE ${column}
  LIKE CONCAT ('%',#{keyword},'%')
-ORDER BY EVENT_ID DESC
-LIMIT #{start}, 3
+
+
 </select>
  </mapper>

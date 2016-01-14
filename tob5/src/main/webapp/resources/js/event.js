@@ -15,16 +15,16 @@ var Event = {
 					+'<input type="checkbox" name="book" value="eBook">eBook <input type="checkbox" name="book" value="문화 이벤트">문화 이벤트 </form></div>'
 					+'<div class="sm_2_2"><form action="action_page.php"><input type="radio" name="promotion" value="전체" checked>전체 '
 					+'<input type="radio" name="promotion" value="경품/할인">경품/할인 <input type="radio" name="promotion" value="1+1">1+1 </form></div>'
-					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" name="nameSearch"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>');
+					+'<div class="sm_2_3"><form action="">이벤트 검색:<input type="text" style="color : black" name="nameSearch"><input type="button" value="검색" id="search"></form></div></div></div></div></div></div></div>');
 		
 
 			$('#search').click(function name() {
 				if ($("input:text[name=nameSearch]").val() == "") {
-					alert("검색어를 입력해주세요.");
+					alert("이벤트 검색어를 입력해주세요.");
 					$("input:text[name=nameSearch]").focus();
 					return false;
 				}
-				$('#submain').empty();
+				$('#event_submain').empty();
 				Event.findEvent('1',$("input:text[name=nameSearch]").val());
 			});
 			
@@ -156,7 +156,7 @@ var Event = {
 				
 				var findRe = '<div id="findByEventName" style="color: black; width : 400px; height: 300px;"><h2>['+searchEventName+']  으로 검색결과</h2><br /><br /><br />'
 					$.each(data.list, function(index,value) {
-						findRe += '<div class="img2">'
+						findRe += '<div class="img">'
 							   +'<img alt="" src="'+context+'/resources/images/'+this.profile+'" width="106px" height="150px" align="left">'
 							   +'<div class="desc"><br /><label class="highlight" id="'+this.evtId+'">'+this.evtName+'</label>'
 					           +'<br /><br />'+this.fromDt +'~' +this.toDt+'</div></div>';
@@ -201,7 +201,7 @@ var Event = {
 					
 					findRe+=pagination;
 					
-					$('#submain').html(findRe);
+					$('#event_submain').html(findRe);
 							});
 							
 					},

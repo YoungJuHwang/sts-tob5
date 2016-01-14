@@ -78,7 +78,7 @@ public class EventController {
 		
 		int pageNumber = Integer.parseInt(pageNo);
 		int pageSize = 8;
-		int groupSize = 3;
+		int groupSize = 5;
 		int count = service.count();
 		logger.info("번호 : {}",count);
 		int totalPage = count/pageSize;
@@ -91,7 +91,7 @@ public class EventController {
 			lastPage = totalPage;
 		}
 		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("list", service.selectAll(CommandFactory.list(pageNo)));
+		map.put("list", service.selectAll(CommandEventFactory.list(pageNo)));
 		map.put("count", count);
 		map.put("totalPage", totalPage);
 		map.put("pageNo", pageNumber);
@@ -114,10 +114,12 @@ public class EventController {
 				@PathVariable("evtName")String evtName,
 				Model model
 				){
-				logger.info("===============Integer.parseInt(pageNo)전  검색된 번호 :{}",pageNo);
+		logger.info("=== EventController searchByEventName() 진입 ===");
+				logger.info("Integer.parseInt(pageNo)전  검색된 번호 :{}",pageNo);
+				logger.info("받아온 이벤트 이름 :{}",evtName);
 				int pageNumber = Integer.parseInt(pageNo);
-				int pageSize = 3;
-				int groupSize = 3; //밑에 보여주는 번호.
+				int pageSize = 8;
+				int groupSize = 1;//밑에 보여주는 번호.
 				int count = service.count();
 				logger.info(" Event_find  번호 : {}",count);
 				int totalPage = count/pageSize;
@@ -131,13 +133,13 @@ public class EventController {
 				}
 				Map<String,Object> map = new HashMap<String,Object>();
 				
-				map.put("list", service.searchByEventName(CommandFactory.search("EVENT_NAME",evtName,pageNo)));
+				map.put("list", service.searchByEventName(CommandEventFactory.search("EVENT_NAME",evtName,pageNo)));
 				map.put("totalPage", totalPage);
 				map.put("pageNo", pageNumber);
 				map.put("startPage", startPage);
 				map.put("lastPage", lastPage);
 				map.put("groupSize", groupSize);
-				logger.info("EventController:Event_find() 검색된  이벤트 이름 텍스트 :{}",evtName);
+				logger.info("EventController:Event_find() 커맨드를 거친 이벤트 이 :{}",evtName);
 				logger.info("EventController:Event_find() 페이지 번호 :{}",pageNo);
 				
 				return map;
