@@ -24,9 +24,10 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
 	rel='stylesheet' type='text/css'>
+	
+
 
 <style type="text/css">
-
 .index {
 background-image: url('${startimages}/team/tema.png');
 }
@@ -647,6 +648,8 @@ img::-moz-selection {
 body {
 	webkit-tap-highlight-color: #fed136
 }
+
+
 </style>
 <body id="page-top" class="index">
 	<!--******************** Services Section BestSeller *********************-->
@@ -654,12 +657,9 @@ body {
 		<div class="row">
 			<div class="col-lg-8 col-lg-offset-2"
 				style="width: 100%; margin: auto;">
-
 				<hr />
 				<img src="${img}/bstseller.png" alt="" style="padding-top: 20px;" />
 				<!-- 베스트셀러 시작 -->
-
-
 				<div style="margin: auto; width: 100%;">
 					<div class="col-xs-6 col-md-3">
 						<label class="thumbnail" id="now">
@@ -708,14 +708,12 @@ body {
 			</div>
 		</div>
 </section>
-
 	
 	<!--************************* Week Section **********************-->
 <section id="week_section" class="container content-section">
 	<hr />
 		<div class="download-section">
-			<div class="col-lg-8 col-lg-offset-2"
-				style="width: 100%; margin: auto;">
+				<div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto;">
 				<label><img src="${img}/week.png" alt="" /></label>
 			</div>
 			<div class="row">
@@ -728,19 +726,19 @@ body {
 						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="story"><img src="${img}/weekday3.jpg"
+					<label class="thumbnail" id="story"><img src="${img}/recome1.jpg"
 						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="okay"><img src="${img}/weekday4.jpg"
+					<label class="thumbnail" id="okay"><img src="${img}/recome2.jpg"
 						alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="you"><img src="${img}/weekday1.jpg"
+					<label class="thumbnail" id="you"><img src="${img}/recome3.jpg"
 						alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="happy"><img src="${img}/weekday2.jpg"
+					<label class="thumbnail" id="happy"><img src="${img}/recome4.jpg"
 						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
@@ -762,14 +760,14 @@ body {
 <section id="book_section" class="container content-section">
 		<div class="container">
 			<hr />
-			<div class="row">
+			<div class="row" >
 				<div class="col-lg-12">
-					<h2 class="section-heading" id="book_more" style="color: white;">BOOK</h2>
+					<img class="section-heading" src="${img}/book.png" alt="" id="book_more" />
 				</div>
 				<div class="col-sm-6 col-md-4">
-					<h2 class="section-heading" style="color: white;">EXAM</h2>
-					<h2 class="section-heading" style="color: white;">EXAM2</h2>
-					<h2 class="section-heading" style="color: white;">EXAM3</h2>
+					<h3 class="section-heading" style="color: white;">you can click</h3>
+					<h2 class="section-heading" style="color: white;">title book</h2>
+					<h2 class="section-heading" style="color: white;">example</h2>
 				</div>
 			</div>
 		</div>	
@@ -920,7 +918,7 @@ body {
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Lee JeongMin</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
@@ -935,7 +933,7 @@ body {
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Lee HyeSuk</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
@@ -950,7 +948,7 @@ body {
 				</div>
 				<div class="col-sm-4">
 					<div class="team-member">
-						<img src="#" class="img-responsive img-circle" alt="">
+						<label><img src="#" class="img-responsive img-circle" alt=""></label>
 						<h4 style="color: white;">Hong HyeongDong</h4>
 						<p class="text-muted">준비중</p>
 						<ul class="list-inline social-buttons">
@@ -1023,6 +1021,10 @@ $(function() {
 	$('#songgok').click(function() {
 		alert("이벤트 댓글달기로 이동");
 		Event.eventPage();
+	});
+	$('#now').click(function() {
+		alert("확인");
+		book.mainPage();
 	});
 	$('#sapi').click(function() {
 		alert("확인");

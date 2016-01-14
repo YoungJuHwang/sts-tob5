@@ -27,7 +27,7 @@ var book = {
 			var oldArr =[];
 			var oldArrName =[];
 			$.getJSON(context + '/genre/Genre',function(data){
-				var table = '<h3>전체 목록</h3>';
+				var table = '<h3 style="color: white;">전체 목록</h3>';
 				/*해외도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listAbroadName+'</strong></font><br /><p><p>';
 				$.each(data.listAbroad,function(index,value){
@@ -35,8 +35,6 @@ var book = {
 					abroadArr.push(this.genreId);
 					abroadArrName.push(this.genreName);
 					});
-				
-				
 				
 				/*국내도서 */
 				table += '<div class="alpha"><font color="red"><strong>'+data.listDomesticName+'</strong></font><br /><p><p>';
