@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.tob.cart.BookCartVO;
 import com.tob.cart.TodayCartVO;
 import com.tob.global.Command;
+import com.tob.global.Command2;
 import com.tob.mapper.CartMapper;
 import com.tob.mapper.MemberMapper;
 
@@ -86,7 +87,7 @@ public class MemberServiceImpl implements MemberService{
 			return mapper.selectSomeBy(domain, searchword);
 		}
 		@Override
-		public List<MemberVO> getList(Command command) {
+		public List<MemberVO> getList(Command2 command) {
 			logger.info("MemberServiceImpl : getList");
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 			return mapper.selectAll(command);
