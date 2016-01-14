@@ -52,7 +52,7 @@
 				<li><a class="page-scroll" href="#week_section" >WEEKBOOK</a></li>
 				<li><a class="page-scroll" href="#event_section" >EVENT</a></li>
 				<li><a class="page-scroll" href="#info_section">TEAM</a></li>
-				<li><label class="page-scroll" id="pur_list">PURCHASE</label></li>
+				<li><label class="page-scroll" id="pur_list" style="color: white;">PURCHASE</label></li>
 		<c:if test="${empty sessionScope.user}">
 		<!-- 로그인 안한 상태 -->
 		<li style="float: right; margin-right: 30px;"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
