@@ -52,6 +52,7 @@ var Cart = {
 	
 	list : function(userid) {
 		var arr = [];
+		var list = [];
 		$.getJSON(context+'/cart/list/'+userid, function(data) {
 			var table = '<div id="Shop_Basket" style="height:100%">'
 						+'<table width="866" align="center" border="0" cellspacing="0" cellpadding="0"><tbody><tr><td colspan="2">'
@@ -60,7 +61,7 @@ var Cart = {
 						+'<span class="title_middle_blue">TOB</span>배송 상품 장바구니 </h3></td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></table>'
 						+'<table width="866" align="center" cellspacing="0" cellpadding="0" border="1px solid silver"><tbody><tr>'
 						+'<th width="50" height="29" text-align="center"></th>'
-						+'<th height="29" align="center">상품명</th>'
+						+'<th height="29" align="center">상품명<span id=""></span></th>'
 						+'<th width="130" height="29" align="center">가격</th>'
 						+'<th width="130" height="29" align="center">수량</th>'
 						+'<th width="110" height="29" align="center">보관/삭제</tr></tbody>';
@@ -79,7 +80,7 @@ var Cart = {
 /*==>onclick*/	+'<td width="100" align="center"><button id="delete'+i+'" align="center" onclick="Cart.remove('+'\''+this.bookId+'\''+')">삭제</button></td>'
 				+'<span id="d'+i+'"></span></tr>';
 				arr.push(this.bookId);
-				
+				list.push()
 			});
 			
 			table += '</tbody></table><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top: 10px" bgcolor="#E3EDF7"><tbody>'
@@ -96,8 +97,8 @@ var Cart = {
 				+'<td width="149" class="pt1"><span class="pt3">합계 금액이 들어와야댐</span></td></tr></tbody></table>                </td></tr></tbody>'
 				+'</table>'
 				+'</div>';
-			$('#cart_section').empty().append(table);
 			
+			$('#cart_section').empty().append(table);
 			
 		});
 	},
