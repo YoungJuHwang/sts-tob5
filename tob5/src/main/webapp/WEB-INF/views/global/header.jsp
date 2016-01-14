@@ -47,17 +47,17 @@
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="hidden"><a href="#page-top"></a></li>
-				<li><a class="page-scroll" href="#book_section" >BOOK MENU</a></li>
-				<li><a class="page-scroll" href="#best_section">BESTSELLER</a></li>
-				<li><a class="page-scroll" href="#week_section" >WEEKBOOK</a></li>
-				<li><a class="page-scroll" href="#event_section" >EVENT</a></li>
-				<li><a class="page-scroll" href="#info_section">TEAM</a></li>
-				<li><label class="page-scroll" id="pur_list" style="color: white;">PURCHASE</label></li>
+				<li><a class="page-scroll" href="#book_section" >목록</a></li>
+				<li><a class="page-scroll" href="#best_section">베스트셀러</a></li>
+				<li><a class="page-scroll" href="#week_section" >주간</a></li>
+				<li><a class="page-scroll" href="#event_section" >이벤트</a></li>
+				<li><a class="page-scroll" href="#info_section">팀 소개</a></li>
+				<li><label class="page-scroll" id="pur_list" style="color: white;">구매</label></li>
 		<c:if test="${empty sessionScope.user}">
 		<!-- 로그인 안한 상태 -->
 		<li style="float: right; margin-right: 30px;"><a href="${context}/admin/main"><span class="glyphicon glyphicon-user"></span>관리자</a></li>
-		<li style="float: right"><a href="${context}/member/loginForm"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-		<li style="float: right"><a href="${context}/member/joinForm" id="join">Join</a></li>
+		<li style="float: right"><a href="${context}/member/loginForm"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+		<li style="float: right"><a href="${context}/member/joinForm" id="join">회원가입</a></li>
 		</c:if>
 		<c:if test="${not empty sessionScope.user}">
 		<li style="float: right; padding-right: 10px;"><a href="#" id="mypage">마이페이지</a></li>

@@ -24,9 +24,10 @@
 <link
 	href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700'
 	rel='stylesheet' type='text/css'>
+	
+
 
 <style type="text/css">
-
 .index {
 background-image: url('${startimages}/team/tema.png');
 }
@@ -647,6 +648,8 @@ img::-moz-selection {
 body {
 	webkit-tap-highlight-color: #fed136
 }
+
+
 </style>
 <body id="page-top" class="index">
 	<!--******************** Services Section BestSeller *********************-->
@@ -714,8 +717,7 @@ body {
 <section id="week_section" class="container content-section">
 	<hr />
 		<div class="download-section">
-			<div class="col-lg-8 col-lg-offset-2"
-				style="width: 100%; margin: auto;">
+				<div class="col-lg-8 col-lg-offset-2" style="width: 100%; margin: auto;">
 				<label><img src="${img}/week.png" alt="" /></label>
 			</div>
 			<div class="row">
@@ -728,19 +730,19 @@ body {
 						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="story"><img src="${img}/weekday3.jpg"
+					<label class="thumbnail" id="story"><img src="${img}/recome1.jpg"
 						alt="내 스물아홉 이야기" style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="okay"><img src="${img}/weekday4.jpg"
+					<label class="thumbnail" id="okay"><img src="${img}/recome2.jpg"
 						alt="괜찮아, 괜찮아 그래도 괜찮아." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="you"><img src="${img}/weekday1.jpg"
+					<label class="thumbnail" id="you"><img src="${img}/recome3.jpg"
 						alt="참 좋은 당신을 만났습니다." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
-					<label class="thumbnail" id="happy"><img src="${img}/weekday2.jpg"
+					<label class="thumbnail" id="happy"><img src="${img}/recome4.jpg"
 						alt="나는 이제 좀 행복해져야겠다." style="width: 141px; height: 203px;"></label>
 				</div>
 				<div class="col-xs-6 col-md-3">
