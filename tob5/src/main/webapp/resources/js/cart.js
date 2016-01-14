@@ -9,7 +9,7 @@ var Cart = {
 	
 	main : function(link, userid) {
 		alert('메인으로 넘어옴');
-		$(".mainView").load(link+"/cart/Cart");
+		$("#cart_section").load(link+"/cart/Cart");
 		alert('메인으로 넘어온 유저아이디'+userid);
 		Cart.setUserid(userid);
 		alert('메인으로 넘어온 유저아이디'+Cart.getUserid());
@@ -68,7 +68,7 @@ var Cart = {
 			$.each(data, function(i, val) {
 				table +='<tr><td width="50" text-align="center"></td>'
 				+'<td width="*"><a href="#" id="'+this.bookName+'">'+this.bookName+'</a></td>'
-				+'<td width="130" text-align="center">'+this.bookPrice * this.count+'</td>'    //<form name="changeCount" Action="#" Method="post">	 빈 공간 폼테그.
+				+'<td width="130" text-align="center">'+this.bookPrice * this.count +'</td>'    //<form name="changeCount" Action="#" Method="post">	 빈 공간 폼테그.
 				+'<td width="150"  text-align="center">'
 				+'	<div style="float:left" id="count'+i+'">'
 				+'		<input type="text" size="1" id="c'+i+'" value="'+this.count+'" onkeyup="Cart.myFunction('+i+','+'\''+this.bookId+'\''+')"></input>'
