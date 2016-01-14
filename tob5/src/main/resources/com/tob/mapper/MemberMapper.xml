@@ -69,4 +69,17 @@
  <delete id="remove" parameterType="string">
  	DELETE FROM MEMBER WHERE USERID = #{userid}
  </delete>
+ <select id="searchByEmail" parameterType="string" resultType="com.tob.member.MemberVO">
+ 	SELECT 
+ 		USERID AS userid,
+	 	PASSWORD AS password,
+	 	NAME AS name,
+	 	BIRTH AS birth,
+	 	GENDER AS gender,
+	 	EMAIL AS email,
+	 	PHONE AS phone,
+	 	ADDR AS addr,
+	 	PROFILE AS profile
+	 FROM MEMBER WHERE EMAIL = #{email}
+ </select>
  </mapper>

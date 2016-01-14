@@ -5,7 +5,7 @@ import java.util.List;
 public interface PurchaseService {
   
 	// 주문내역 추가
-		public int add(PurchaseVO o);
+		public int add(String userid, String bookId, String price);
 		
 		// 주문내역 (주문번호로) 조회
 		public PurchaseVO searchBypurNum(String purNum);
@@ -22,4 +22,6 @@ public interface PurchaseService {
 		// 주문내역 삭제
 		public int remove(String purNum);
 		
+		// 형변환 예외처리
+		public int TypeChange(String price);
 }

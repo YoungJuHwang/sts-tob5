@@ -4,7 +4,10 @@
  
 <mapper namespace="com.tob.mapper.PurchaseMapper">
 	<insert id="add">
-	
+		INSERT INTO PURCHASE 
+		(PUR_NUM, SUM, ACCOUNT_NUM, USERID, BOOK_ID) 
+		VALUES 
+		(#{purNum}, #{sum}, #{accountNum}, #{userid}, #{bookid})
 	</insert>
 	<select id="searchBypurNum">
 	

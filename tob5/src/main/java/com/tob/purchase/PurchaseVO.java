@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class PurchaseVO {
 	private String purNum;
-	private String sum;
+	private int sum;
 	private String accountNum;
 	private String userid;
 	private String bookid;
@@ -19,7 +19,7 @@ public class PurchaseVO {
 	public String getPurNum() {
 		return purNum;
 	}
-	public String getSum() {
+	public int getSum() {
 		return sum;
 	}
 	public String getAccountNum() {
@@ -31,7 +31,7 @@ public class PurchaseVO {
 	public void setPurNum(String purNum) {
 		this.purNum = purNum;
 	}
-	public void setSum(String sum) {
+	public void setSum(int sum) {
 		this.sum = sum;
 	}
 	public void setAccountNum(String accountNum) {

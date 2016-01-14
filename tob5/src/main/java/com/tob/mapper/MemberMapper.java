@@ -19,6 +19,9 @@ public interface MemberMapper {
 		public MemberVO logout(String userid, String password); 
 		public int insert(MemberVO member);
 		public MemberVO searchById(String userid);
+		
+		public MemberVO searchByEmail(String email);
+		
 		public int change(MemberVO member);
 		public int count();  
 		public int countByKeyword(Command command); 

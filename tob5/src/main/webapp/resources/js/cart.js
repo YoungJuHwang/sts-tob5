@@ -124,11 +124,55 @@ var Cart = {
 		Cart.put(bookId);
 	},
 	
-	putInPur : function() {
-		
+	putInPurchase : function(userid, bookId, price) {
+		Cart.send_email();
+		alert('Cart.putInPurchase진입. 구매 클릭 됨.');
+		alert('넘어온 유저아이디  : '+userid);
+		alert('넘어온 책 아이디 : '+bookId);
+		alert('넘어온 책 가격 : '+price);
+	    $.ajax(context+'/purchase/buy', {
+	    	data : {
+	    		userid : userid,
+	    		bookId : bookId,
+	    		price : price
+	    	},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function() {
+				alert('구매 완료.');
+			},
+			error : function() {
+				alert('ajax 에러');
+			}
+	    });
 	},
 	
-	
+	send_email : function() {
+		alert('Cart.send_email진입');
+		$.ajax(context+'/purchase/sendEmail', {
+			data : {
+				
+			},
+			dataType : "json",
+			type : 'get',
+			contentType : "application/json;",
+			mimeType : "application/json;",
+			async : false,
+			success : function(data) {
+				if (data.login_check =="login") {
+					alert('인증번호가 발송되었습니다.');
+				} else {
+					alert('로그인 후 이용가능합니다.');
+				}
+			},
+			error : function() {
+				alert('ajax 에러');
+			}
+		});
+	},
 	/*change : function(bookid, count) {
 		alert('onclick은 먹음'+bookid);
 		alert('onclick은 먹음.'+count);

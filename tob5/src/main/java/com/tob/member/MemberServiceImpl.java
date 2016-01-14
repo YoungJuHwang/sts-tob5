@@ -3,8 +3,10 @@ package com.tob.member;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
+import org.apache.tomcat.util.http.mapper.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,6 +117,13 @@ public class MemberServiceImpl implements MemberService{
 			
 			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
 			return mapper.getList(todaycart);
+		}
+		@Override
+		public MemberVO searchByEmail(String email) {
+			logger.info("MemberServiceImpl : searchByEmail 진입");
+			logger.info("넘어온 이메일 : " + email);
+			MemberMapper mapper = sqlSession.getMapper(MemberMapper.class);
+			return mapper.searchByEmail(email);
 		}
 		
 }

@@ -17,6 +17,9 @@ public interface MemberService {
 	   public MemberVO logout(String userid, String password);
 	   public int count();
 	   public MemberVO searchById(String userid);
+	   
+	   public MemberVO searchByEmail(String email);
+	   
 	   public List<MemberVO> searchBySearchword(String domain,String searchword);
 	   public List<MemberVO> getList(Command command);
 	   public int changePwd(MemberVO member);
