@@ -225,10 +225,6 @@ INSERT INTO EVENT VALUES('comments','<사는게 참 좋다> 한줄평 이벤트'
 INSERT INTO EVENT VALUES('markrecommend','[교보 외서] 2015년 마크 주커버그 추천 도서','2016/01/01','2016/01/31','E0016.jpg');
 
 
-
-
-
-
 INSERT INTO BOOK VALUES('20','고양이1','11000','저자a','8.3','1','free','child');
 INSERT INTO BOOK VALUES('21','고양이2','12000','저자b','8.3','7','free','child');
 INSERT INTO BOOK VALUES('22','고양이3','13000','저자c','8.3','4','free','child');
